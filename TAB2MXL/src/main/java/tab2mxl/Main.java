@@ -22,6 +22,7 @@ public class Main {
 		System.out.println("Nabaa says hi");
 		System.out.println("Maisha's second hi!!!");
 		System.out.println("Alis first second");
+		System.out.println("Alis second third");
 	}
 
 }
