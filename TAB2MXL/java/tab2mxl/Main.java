@@ -18,6 +18,7 @@ public class Main {
 		System.out.println("Lars version");
 		System.out.println("Maisha version 1");
 		System.out.println("Nabaa version");
+		System.out.println("Ali version");
 	}
 
 }
