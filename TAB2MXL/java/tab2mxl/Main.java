@@ -16,6 +16,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		System.out.println("Tabula rasa");
 		System.out.println("Lars version");
+		System.out.println("Maisha version 1");
 	}
 
 }
