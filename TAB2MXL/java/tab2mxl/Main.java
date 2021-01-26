@@ -28,7 +28,7 @@ public class Main {
 		System.out.println("Maisha's Version 2");
 		System.out.println("Ali Version test 2");
 		
-		System.out.println("Lars Version test 5");
+		System.out.println("Lars Version test pull");
 
 
 	}
