@@ -8,23 +8,25 @@ public class TablatureScanner {
     try {
       File myObj = new File("drumTablature.txt");
       Scanner myReader = new Scanner(myObj);
+      boolean bool=true;
       while (myReader.hasNextLine()) {
         String data = myReader.nextLine();
-        if (data.startsWith("E|"))
+        if (bool && data.startsWith("E|"))
         {
         	System.out.println("Guitar");
-        	break;
+        	bool=false;
         }
-        else if (data.startsWith("G|"))
+        else if (bool && data.startsWith("G|"))
         {
         	System.out.println("Bass");
-        	break;
+        	bool=false;
         }
-        else if (data.startsWith("C |"))
+        else if (bool && data.startsWith("C |"))
         {
         	System.out.println("Drums");
-        	break;
+        	bool=false;
         }
+        System.out.println(data);
       }
       myReader.close();
     } catch (FileNotFoundException e) {
