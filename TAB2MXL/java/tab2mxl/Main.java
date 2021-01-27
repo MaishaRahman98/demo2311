@@ -14,6 +14,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Tabula rasa v3");
+		System.out.println("Ali conflict");
 
 	}
 
