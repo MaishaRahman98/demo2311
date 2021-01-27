@@ -15,8 +15,15 @@ public class Main {
 		// TODO Auto-generated method stub
 		System.out.println("Tabula rasa v4");
 		System.out.println("Maisha's conflict starter.");
+
 		System.out.println("Ali4");
 		System.out.println("Ali5");
-	}
 
+		System.out.println("Ali4");
+		System.out.println("lars conflict");
+
+		System.out.println("M's conflict");
+		System.out.println("Lars change");
+	}
 }
+
