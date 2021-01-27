@@ -19,6 +19,7 @@ public class Main {
 		System.out.println("lars conflict");
 
 		System.out.println("M's conflict");
+		System.out.println("Lars change");
 	}
 
 
