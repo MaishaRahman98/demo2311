@@ -24,6 +24,7 @@ public class Main {
 
 		System.out.println("M's conflict");
 		System.out.println("Lars change");
+		System.out.println("A's change");
 	}
 }
 
