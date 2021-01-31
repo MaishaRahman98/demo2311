@@ -57,12 +57,12 @@ public class TablatureScanner
       }
         
       myReader.close();
-      System.out.println("return Balls");
     } catch (FileNotFoundException e) 
     {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
+    System.out.println("return 0");
 }
 }
 
