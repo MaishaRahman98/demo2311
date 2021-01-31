@@ -3,6 +3,11 @@ package tab2mxl;
 public class Bass {
 	char type; //number of strings
 	String s1, s2, s3, s4, s5;
+	String[] note1 = {"G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G"};
+	String[] note2 = {"D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D"};
+	String[] note3 = {"A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A"};
+	String[] note4 = {"E", "F", "Gb","G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"};
+	String[] note5 = {"B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
 	
 	public Bass ()
 	{
@@ -24,12 +29,9 @@ public class Bass {
 	
 	public Bass (String s1, String s2, String s3, String s4, String s5)
 	{
-		this.type = '5';
-		this.s1 = s1;
-		this.s2 = s2;
-		this.s3 = s3;
-		this.s4 = s4;
+		this(s1, s2, s3, s4);
 		this.s5 = s5;
+		this.type = '5';
 	}
 	
 	public static Bass getInstance(String s1, String s2, String s3, String s4)
@@ -46,17 +48,17 @@ public class Bass {
 	{
 		for (int i = 2 ; s1.charAt(i) != '|' ; i++)
 		{
-			if (s1.charAt(i) != '-')
-				System.out.println("String = 1 and Fret = " + s1.charAt(i));
+			if (Character.isDigit(s1.charAt(i)))
+				System.out.println("String = 1 and Fret = " + s1.charAt(i) + " Note: " + note1[Character.getNumericValue(s1.charAt(i))]);
 			
-			if (s2.charAt(i) != '-')
-				System.out.println("String = 2 and Fret = " + s2.charAt(i));
+			if (Character.isDigit(s2.charAt(i)))
+				System.out.println("String = 2 and Fret = " + s2.charAt(i) + " Note: " + note2[Character.getNumericValue(s2.charAt(i))]);
 			
-			if (s3.charAt(i) != '-')
-				System.out.println("String = 3 and Fret = " + s3.charAt(i));
+			if (Character.isDigit(s3.charAt(i)))
+				System.out.println("String = 3 and Fret = " + s3.charAt(i) + " Note: " + note3[Character.getNumericValue(s3.charAt(i))]);
 			
-			if (s4.charAt(i) != '-')
-				System.out.println("String = 4 and Fret = " + s4.charAt(i));
+			if (Character.isDigit(s4.charAt(i)))
+				System.out.println("String = 4 and Fret = " + s4.charAt(i) + " Note: " + note4[Character.getNumericValue(s4.charAt(i))]);
 			
 		}
 	}
