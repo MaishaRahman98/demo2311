@@ -21,6 +21,7 @@ public class Main {
 		System.out.println("Ali version");
 		System.out.println("balls");
 		System.out.println("balls1");
+		System.out.println("balls2");
 	}
 
 }
