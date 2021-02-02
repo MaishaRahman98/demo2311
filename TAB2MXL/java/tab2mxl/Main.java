@@ -14,7 +14,8 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		System.out.println("Tabula rasa v4");
+		System.out.println("Nabaa");
+	
 	}
 }
 
