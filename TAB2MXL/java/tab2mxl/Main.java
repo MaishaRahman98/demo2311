@@ -17,6 +17,11 @@ public class Main {
 		System.out.println("Tabula rasa v4");
 		System.out.println("Maisha's personal branch change");
 
+<<<<<<< HEAD
+=======
+		System.out.println("Nabaa");
+	
+>>>>>>> refs/heads/Nabaa_Gaziy
 	}
 }
 
