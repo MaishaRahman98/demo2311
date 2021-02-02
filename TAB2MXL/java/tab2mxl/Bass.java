@@ -7,7 +7,7 @@ public class Bass
 	final String[] note1 = {"G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G"};
 	final String[] note2 = {"D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D"};
 	final String[] note3 = {"A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A"};
-	final String[] note4 = {"E", "F", "Gb","G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"};
+	final String[] note4 = {"E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"};
 	final String[] note5 = {"B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
 	
 	private Bass()
