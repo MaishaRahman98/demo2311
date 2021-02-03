@@ -13,6 +13,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
+<<<<<<< HEAD
 
 		// TODO Auto-generated method stub
 		System.out.println("Tabula rasa");
@@ -41,7 +42,8 @@ public class Main {
 
 		System.out.println("shawn branch change");
 		System.out.println("shawn second branch change");
-
+		System.out.println("Tabula rasa v4");
+		System.out.println("Lars Changes");
 	}
 }
 
