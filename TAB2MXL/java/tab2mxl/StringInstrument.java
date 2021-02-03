@@ -2,7 +2,7 @@ package tab2mxl;
 
 public class StringInstrument {
 	public static void main(String[] args) {
-		System.out.println("change");
+		final String[] notes = {"E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"};
 	}
 
 }
