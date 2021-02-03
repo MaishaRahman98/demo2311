@@ -1,5 +1,5 @@
 package tab2mxl;
-
+// test
 public class Bass extends StringInstrument
 {
 	private char type; //number of strings
