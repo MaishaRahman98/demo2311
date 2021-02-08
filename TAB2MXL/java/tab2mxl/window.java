@@ -1,14 +1,12 @@
 package tab2mxl;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -28,11 +26,13 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
+import java.awt.Component;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class window implements ActionListener{
 
 	public JFrame frame;
-	private JLabel lblWelcomeMessage;
 	private JFileChooser openfile;
 	private BufferedImage ori;
 	private JScrollPane scrollPane;
@@ -69,52 +69,57 @@ public class window implements ActionListener{
 		frame = new JFrame();
 		frame.setBounds(100, 100, 590, 428);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Welcome!");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				JOptionPane.showMessageDialog(null, "Welcome to the zero version of this project!");
-				lblWelcomeMessage.setText("Welcome to the zero version of this project!");
-			}
-		});
-		btnNewButton.setForeground(Color.PINK);
-		btnNewButton.setBackground(UIManager.getColor("Button.light"));
-		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		btnNewButton.setBounds(10, 24, 101, 23);
-		frame.getContentPane().add(btnNewButton);
-		
-		JButton btnNewButton_import = new JButton("Choose file");
-		btnNewButton_import.setBackground(UIManager.getColor("Button.light"));
-		btnNewButton_import.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnNewButton_import.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		btnNewButton_import.setBounds(10, 55, 101, 25);
-		frame.getContentPane().add(btnNewButton_import);
+		JButton btnNewButton = new JButton("Choose a file");
+//		btnNewButton.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+				btnNewButton.addActionListener(this);
+				btnNewButton.setActionCommand("Open");
+//			}
+//		});
+		btnNewButton.setHorizontalAlignment(SwingConstants.TRAILING);
+		btnNewButton.setAutoscrolls(true);
+		btnNewButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "JPanel title", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(117, 24, 453, 361);
 		panel.setBorder(BorderFactory.createEmptyBorder());
-		frame.getContentPane().add(panel);
-		panel.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(6, 17, 441, 338);
-		panel.add(scrollPane_1);
+		scrollPane_1.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		
 		textArea = new JTextArea();
+		textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		scrollPane_1.setViewportView(textArea);
-		
-		lblWelcomeMessage = new JLabel("New project!");
-		lblWelcomeMessage.setBounds(6, 0, 286, 15);
-		panel.add(lblWelcomeMessage);
-		lblWelcomeMessage.setForeground(Color.PINK);
-		lblWelcomeMessage.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWelcomeMessage.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+					.addGap(0))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+					.addGap(0))
+		);
+		panel.setLayout(gl_panel);
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+		);
+		frame.getContentPane().setLayout(groupLayout);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -132,8 +137,17 @@ public class window implements ActionListener{
 		
 		
 		iSave = new JMenuItem("Save");
+		iSave.addActionListener(this);
+		iSave.setActionCommand("Save");
+		
 		iSaveAs = new JMenuItem("SaveAs");
+		iSaveAs.addActionListener(this);
+		iSaveAs.setActionCommand("SaveAs");
+		
 		iExit = new JMenuItem("Exit");
+		iExit.addActionListener(this);
+		iExit.setActionCommand("Exit");
+		
 //		iNew, iOpen,iSave, iSaveAs, iExit
 		menu1.add(iNew);
 		menu1.add(iOpen);
@@ -145,9 +159,21 @@ public class window implements ActionListener{
 		mnNewMenu.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		menuBar.add(mnNewMenu);
 		
-		JMenu mnNewMenu_1 = new JMenu("Fromat");
-		mnNewMenu_1.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		menuBar.add(mnNewMenu_1);
+		JMenu mnNewMenu_Format = new JMenu("Fromat");
+		mnNewMenu_Format.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		menuBar.add(mnNewMenu_Format);
+//===========================================================================
+		JMenuItem mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
+		mnNewMenu_Format.add(mntmNewMenuItemwarp);
+//		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
+		mntmNewMenuItemwarp.addActionListener(this);
+		mntmNewMenuItemwarp.setActionCommand("Word Wrap");
+//===========================================================================
+		JMenu mnNewMenufont = new JMenu("Font");
+		mnNewMenu_Format.add(mnNewMenufont);
+		
+		JMenu mnNewMenufontsize = new JMenu("Font Size");
+		mnNewMenu_Format.add(mnNewMenufontsize);
 		
 		JMenu mnNewMenu_2 = new JMenu("Color");
 		mnNewMenu_2.setFont(new Font("Times New Roman", Font.BOLD, 12));
@@ -169,9 +195,11 @@ public class window implements ActionListener{
 		switch(command){
 			case "New": file.newfile(); break;
 			case "Open": file.open(); break;
+			case "SaveAs":file.saveas();break;
+			case "Save": file.save();break;
+			case "Exit": file.exit();break;
 		}
 	}
-	
 }
 
 
