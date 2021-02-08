@@ -12,7 +12,7 @@ public class Functioncallfile {
 	String filename;
 	String fileaddress;
 	Font arial, comicSansMS, timesNewRoman;
-	String fontname;
+	String fontname="Arial";
 	public Functioncallfile(window win) {
 		this.win = win;
 		

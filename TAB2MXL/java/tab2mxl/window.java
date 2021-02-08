@@ -104,6 +104,10 @@ public class window implements ActionListener{
 		textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		scrollPane_1.setViewportView(textArea);
+		
+		format.fontname = "Arial";
+		format.font(16);
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
