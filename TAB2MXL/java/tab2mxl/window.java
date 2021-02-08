@@ -86,10 +86,12 @@ public class window implements ActionListener{
 		panel.setBorder(BorderFactory.createEmptyBorder());
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBorder(null);
 		scrollPane_1.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		
 		textArea = new JTextArea();
+		textArea.setBorder(null);
 		textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		scrollPane_1.setViewportView(textArea);
@@ -172,8 +174,59 @@ public class window implements ActionListener{
 		JMenu mnNewMenufont = new JMenu("Font");
 		mnNewMenu_Format.add(mnNewMenufont);
 		
+		JMenuItem mntmNewMenuItem_Arial = new JMenuItem("Arial");
+		mnNewMenufont.add(mntmNewMenuItem_Arial);
+		mntmNewMenuItem_Arial.addActionListener(this);
+		mntmNewMenuItem_Arial.setActionCommand("Word Wrap");
+		
+		JMenuItem mntmNewMenuItem_Comic_Sans_Ms = new JMenuItem("Comic Sans Ms");
+		mnNewMenufont.add(mntmNewMenuItem_Comic_Sans_Ms);
+		mntmNewMenuItem_Comic_Sans_Ms.addActionListener(this);
+		mntmNewMenuItem_Comic_Sans_Ms.setActionCommand("Word Wrap");
+		
+		JMenuItem mntmNewMenuItem_Time_New_Roman = new JMenuItem("Time New Roman");
+		mntmNewMenuItem_Time_New_Roman.setAutoscrolls(true);
+		mnNewMenufont.add(mntmNewMenuItem_Time_New_Roman);
+		mntmNewMenuItem_Time_New_Roman.addActionListener(this);
+		mntmNewMenuItem_Time_New_Roman.setActionCommand("Word Wrap");
+		
 		JMenu mnNewMenufontsize = new JMenu("Font Size");
 		mnNewMenu_Format.add(mnNewMenufontsize);
+		
+		JMenuItem mntmNewMenuItem_size4 = new JMenuItem("4");
+		mnNewMenufontsize.add(mntmNewMenuItem_size4);
+		mntmNewMenuItem_size4.addActionListener(this);
+		mntmNewMenuItem_size4.setActionCommand("Word Wrap");
+		
+		JMenuItem mntmNewMenuItem_size8 = new JMenuItem("8");
+		mnNewMenufontsize.add(mntmNewMenuItem_size8);
+		mntmNewMenuItem_size8.addActionListener(this);
+		mntmNewMenuItem_size8.setActionCommand("Word Wrap");
+		
+		JMenuItem mntmNewMenuItem_size12 = new JMenuItem("12");
+		mnNewMenufontsize.add(mntmNewMenuItem_size12);
+		mntmNewMenuItem_size12.addActionListener(this);
+		mntmNewMenuItem_size12.setActionCommand("Word Wrap");
+		
+		JMenuItem mntmNewMenuItem_size16 = new JMenuItem("16");
+		mnNewMenufontsize.add(mntmNewMenuItem_size16);
+		mntmNewMenuItem_size16.addActionListener(this);
+		mntmNewMenuItem_size16.setActionCommand("Word Wrap");
+		
+		JMenuItem mntmNewMenuItem_size20 = new JMenuItem("20");
+		mnNewMenufontsize.add(mntmNewMenuItem_size20);
+		mntmNewMenuItem_size20.addActionListener(this);
+		mntmNewMenuItem_size20.setActionCommand("Word Wrap");
+		
+		JMenuItem mntmNewMenuItem_size24 = new JMenuItem("24");
+		mnNewMenufontsize.add(mntmNewMenuItem_size24);
+		mntmNewMenuItem_size24.addActionListener(this);
+		mntmNewMenuItem_size24.setActionCommand("Word Wrap");
+		
+		JMenuItem mntmNewMenuItem_size28 = new JMenuItem("28");
+		mnNewMenufontsize.add(mntmNewMenuItem_size28);
+		mntmNewMenuItem_size28.addActionListener(this);
+		mntmNewMenuItem_size28.setActionCommand("Word Wrap");
 		
 		JMenu mnNewMenu_2 = new JMenu("Color");
 		mnNewMenu_2.setFont(new Font("Times New Roman", Font.BOLD, 12));

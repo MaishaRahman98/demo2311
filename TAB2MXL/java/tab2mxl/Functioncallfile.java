@@ -74,5 +74,8 @@ public class Functioncallfile {
 	public void exit() {
 		System.exit(0);
 	}
-
+//====================================================================================format below
+	public void wrap() {
+		
+	}
 }
