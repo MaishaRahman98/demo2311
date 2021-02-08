@@ -38,6 +38,8 @@ public class window implements ActionListener{
 	private JScrollPane scrollPane;
 	private JMenuItem iNew, iOpen,iSave, iSaveAs, iExit;
 	public JTextArea textArea;
+	boolean wrap_on = false;
+	public JMenuItem mntmNewMenuItemwarp;
 	Functioncallfile file = new Functioncallfile(this);
 	/**
 	 * Launch the application.
@@ -165,7 +167,7 @@ public class window implements ActionListener{
 		mnNewMenu_Format.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		menuBar.add(mnNewMenu_Format);
 //===========================================================================
-		JMenuItem mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
+		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
 		mnNewMenu_Format.add(mntmNewMenuItemwarp);
 //		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
 		mntmNewMenuItemwarp.addActionListener(this);
@@ -177,18 +179,18 @@ public class window implements ActionListener{
 		JMenuItem mntmNewMenuItem_Arial = new JMenuItem("Arial");
 		mnNewMenufont.add(mntmNewMenuItem_Arial);
 		mntmNewMenuItem_Arial.addActionListener(this);
-		mntmNewMenuItem_Arial.setActionCommand("Word Wrap");
+		mntmNewMenuItem_Arial.setActionCommand("Arial");
 		
 		JMenuItem mntmNewMenuItem_Comic_Sans_Ms = new JMenuItem("Comic Sans Ms");
 		mnNewMenufont.add(mntmNewMenuItem_Comic_Sans_Ms);
 		mntmNewMenuItem_Comic_Sans_Ms.addActionListener(this);
-		mntmNewMenuItem_Comic_Sans_Ms.setActionCommand("Word Wrap");
+		mntmNewMenuItem_Comic_Sans_Ms.setActionCommand("Comic Sans Ms");
 		
 		JMenuItem mntmNewMenuItem_Time_New_Roman = new JMenuItem("Time New Roman");
 		mntmNewMenuItem_Time_New_Roman.setAutoscrolls(true);
 		mnNewMenufont.add(mntmNewMenuItem_Time_New_Roman);
 		mntmNewMenuItem_Time_New_Roman.addActionListener(this);
-		mntmNewMenuItem_Time_New_Roman.setActionCommand("Word Wrap");
+		mntmNewMenuItem_Time_New_Roman.setActionCommand("Time New Roman");
 		
 		JMenu mnNewMenufontsize = new JMenu("Font Size");
 		mnNewMenu_Format.add(mnNewMenufontsize);
@@ -251,6 +253,7 @@ public class window implements ActionListener{
 			case "SaveAs":file.saveas();break;
 			case "Save": file.save();break;
 			case "Exit": file.exit();break;
+			case "Word Wrap": file.wrap();break;
 		}
 	}
 }

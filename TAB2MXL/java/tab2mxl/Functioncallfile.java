@@ -76,6 +76,17 @@ public class Functioncallfile {
 	}
 //====================================================================================format below
 	public void wrap() {
-		
+		if (win.wrap_on == false) {
+			win.wrap_on=true;
+			win.textArea.setLineWrap(true);
+			win.textArea.setWrapStyleWord(true);
+			win.mntmNewMenuItemwarp.setText("Word Wrap: On");
+		}
+		else if (win.wrap_on == true) {
+			win.wrap_on=false;
+			win.textArea.setLineWrap(false);
+			win.textArea.setWrapStyleWord(false);
+			win.mntmNewMenuItemwarp.setText("Word Wrap: Off");
+		}
 	}
 }
