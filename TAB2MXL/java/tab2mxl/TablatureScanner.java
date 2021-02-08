@@ -12,7 +12,6 @@ public class TablatureScanner
       File myObj = new File("bassTablature.txt");
       Scanner myReader = new Scanner(myObj);
       String s1, s2, s3, s4, s5;
-      Bass bass;
       while (myReader.hasNextLine()) 
       {
         String data = myReader.nextLine();
@@ -37,14 +36,12 @@ public class TablatureScanner
             			if (data.startsWith("B|"))
             			{
             				s5 = data;
-            				bass = Bass.getInstance(s1, s2, s3, s4, s5);
-            				bass.printTab();
+            				StringInstrument.getBassFiveString(s1, s2, s3, s4, s5);
             				break;
             			}
             			else
             			{
-            				bass = Bass.getInstance(s1, s2, s3, s4);
-            				bass.printTab();
+            				StringInstrument.getBassFourString(s1, s2, s3, s4);
             				break;
             			}
             		}

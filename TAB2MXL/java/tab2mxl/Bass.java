@@ -4,23 +4,14 @@ public class Bass extends StringInstrument
 {
 	private char type; //number of strings
 	private String s1, s2, s3, s4, s5;
-	final String[] note1 = {"G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G"};
-	final String[] note2 = {"D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D"};
-	final String[] note3 = {"A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A"};
-	final String[] note4 = {"E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"};
-	final String[] note5 = {"B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
-	
 	private Bass()
 	{
-		this.type = ' ';
-		this.s1 = "";
-		this.s2 = "";
-		this.s3 = "";
-		this.s4 = "";
+		super();
 	}
 	
 	private Bass(String s1, String s2, String s3, String s4)
-	{
+	{	
+		super();
 		this.type = '4';
 		this.s1 = s1;
 		this.s2 = s2;
@@ -30,7 +21,7 @@ public class Bass extends StringInstrument
 	
 	private Bass(String s1, String s2, String s3, String s4, String s5)
 	{
-		this(s1, s2, s3, s4);
+		super();
 		this.s5 = s5;
 		this.type = '5';
 	}
@@ -50,19 +41,19 @@ public class Bass extends StringInstrument
 		for (int i = 2 ; s1.charAt(i) != '|' ; i++)
 		{
 			if (Character.isDigit(s1.charAt(i)))
-				System.out.println("String = 1 Fret = " + s1.charAt(i) + " Note: " + note1[Character.getNumericValue(s1.charAt(i))]);
+				System.out.println("String = 1 Fret = " + s1.charAt(i) + " Note: " + Notes.bassNotes("note1",Character.getNumericValue(s1.charAt(i))));
 			
 			if (Character.isDigit(s2.charAt(i)))
-				System.out.println("String = 2 Fret = " + s2.charAt(i) + " Note: " + note2[Character.getNumericValue(s2.charAt(i))]);
+				System.out.println("String = 2 Fret = " + s2.charAt(i) + " Note: " + Notes.bassNotes("note2",Character.getNumericValue(s2.charAt(i))));
 			
 			if (Character.isDigit(s3.charAt(i)))
-				System.out.println("String = 3 Fret = " + s3.charAt(i) + " Note: " + note3[Character.getNumericValue(s3.charAt(i))]);
+				System.out.println("String = 3 Fret = " + s3.charAt(i) + " Note: " + Notes.bassNotes("note3",Character.getNumericValue(s3.charAt(i))));
 			
 			if (Character.isDigit(s4.charAt(i)))
-				System.out.println("String = 4 Fret = " + s4.charAt(i) + " Note: " + note4[Character.getNumericValue(s4.charAt(i))]);
+				System.out.println("String = 4 Fret = " + s4.charAt(i) + " Note: " + Notes.bassNotes("note4",Character.getNumericValue(s4.charAt(i))));
 			
 			if (s5 != null && Character.isDigit(s5.charAt(i)))
-				System.out.println("String = 4 Fret = " + s5.charAt(i) + " Note: " + note5[Character.getNumericValue(s5.charAt(i))]);
+				System.out.println("String = 4 Fret = " + s5.charAt(i) + " Note: " + Notes.bassNotes("note5",Character.getNumericValue(s5.charAt(i))));
 		}
 	}
 		
