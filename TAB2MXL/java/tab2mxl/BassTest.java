@@ -9,9 +9,13 @@ import org.junit.jupiter.api.Test;
 
 class BassTest {
 
+	String s1 = "G|------------------|";
+	String s2 = "D|------5-----------|";
+	String s3 = "A|-7--7---7--5------|";
+	String s4 = "E|-------------8--7-|";
 	
-	Bass b4 = Bass.getInstance("String 1", "String 2", "String 3", "String 4");
-	Bass b5 = Bass.getInstance("String 1", "String 2", "String 3", "String 4", "String 5");
+	Bass b4 = Bass.getInstance(s1, s2, s3, s4);
+	Bass b5 = Bass.getInstance(s1, s2, s3, s4, "String 5");
 	
 	
     @BeforeAll
@@ -39,8 +43,8 @@ class BassTest {
 	@Test
 	void testString1() {
 		String actualS1 = b5.getS1();
-		String expectedS1 = "String 1";
-		assertEquals(expectedS1, actualS1, "The string should be String 1 because that is the first argument being passed to getInstance.");
+		String expectedS1 = s1;
+		assertEquals(expectedS1, actualS1, "The string should be s1 because that is the first argument being passed to getInstance.");
 	}
 
 }
