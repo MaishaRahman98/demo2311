@@ -41,6 +41,7 @@ public class window implements ActionListener{
 	boolean wrap_on = false;
 	public JMenuItem mntmNewMenuItemwarp;
 	Functioncallfile file = new Functioncallfile(this);
+	Functioncallfile format = new Functioncallfile(this);
 	/**
 	 * Launch the application.
 	 */
@@ -62,6 +63,8 @@ public class window implements ActionListener{
 	 */
 	public window() {
 		initialize();
+		format.fontname = "Arial";
+		format.font(16);
 	}
 
 	/**
@@ -93,6 +96,10 @@ public class window implements ActionListener{
 		scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		
 		textArea = new JTextArea();
+		
+		
+		
+		
 		textArea.setBorder(null);
 		textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -123,6 +130,8 @@ public class window implements ActionListener{
 				.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
 				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
 		);
+		
+
 		frame.getContentPane().setLayout(groupLayout);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -198,37 +207,37 @@ public class window implements ActionListener{
 		JMenuItem mntmNewMenuItem_size4 = new JMenuItem("4");
 		mnNewMenufontsize.add(mntmNewMenuItem_size4);
 		mntmNewMenuItem_size4.addActionListener(this);
-		mntmNewMenuItem_size4.setActionCommand("Word Wrap");
+		mntmNewMenuItem_size4.setActionCommand("size4");
 		
 		JMenuItem mntmNewMenuItem_size8 = new JMenuItem("8");
 		mnNewMenufontsize.add(mntmNewMenuItem_size8);
 		mntmNewMenuItem_size8.addActionListener(this);
-		mntmNewMenuItem_size8.setActionCommand("Word Wrap");
+		mntmNewMenuItem_size8.setActionCommand("size8");
 		
 		JMenuItem mntmNewMenuItem_size12 = new JMenuItem("12");
 		mnNewMenufontsize.add(mntmNewMenuItem_size12);
 		mntmNewMenuItem_size12.addActionListener(this);
-		mntmNewMenuItem_size12.setActionCommand("Word Wrap");
+		mntmNewMenuItem_size12.setActionCommand("size12");
 		
 		JMenuItem mntmNewMenuItem_size16 = new JMenuItem("16");
 		mnNewMenufontsize.add(mntmNewMenuItem_size16);
 		mntmNewMenuItem_size16.addActionListener(this);
-		mntmNewMenuItem_size16.setActionCommand("Word Wrap");
+		mntmNewMenuItem_size16.setActionCommand("size16");
 		
 		JMenuItem mntmNewMenuItem_size20 = new JMenuItem("20");
 		mnNewMenufontsize.add(mntmNewMenuItem_size20);
 		mntmNewMenuItem_size20.addActionListener(this);
-		mntmNewMenuItem_size20.setActionCommand("Word Wrap");
+		mntmNewMenuItem_size20.setActionCommand("size20");
 		
 		JMenuItem mntmNewMenuItem_size24 = new JMenuItem("24");
 		mnNewMenufontsize.add(mntmNewMenuItem_size24);
 		mntmNewMenuItem_size24.addActionListener(this);
-		mntmNewMenuItem_size24.setActionCommand("Word Wrap");
+		mntmNewMenuItem_size24.setActionCommand("size24");
 		
 		JMenuItem mntmNewMenuItem_size28 = new JMenuItem("28");
 		mnNewMenufontsize.add(mntmNewMenuItem_size28);
 		mntmNewMenuItem_size28.addActionListener(this);
-		mntmNewMenuItem_size28.setActionCommand("Word Wrap");
+		mntmNewMenuItem_size28.setActionCommand("size28");
 		
 		JMenu mnNewMenu_2 = new JMenu("Color");
 		mnNewMenu_2.setFont(new Font("Times New Roman", Font.BOLD, 12));
@@ -253,6 +262,16 @@ public class window implements ActionListener{
 			case "SaveAs":file.saveas();break;
 			case "Save": file.save();break;
 			case "Exit": file.exit();break;
+			case "size4": file.font(4);break;
+			case "size8": file.font(8);break;
+			case "size12": file.font(12);break;
+			case "size16": file.font(16);break;
+			case "size20": file.font(20);break;
+			case "size24": file.font(24);break;
+			case "size28": file.font(28);break;
+			case "Arial": file.setfont(command);break;
+			case "Comic Sans Ms": file.setfont(command);break;
+			case "Time New Roman": file.setfont(command);break;
 			case "Word Wrap": file.wrap();break;
 		}
 	}

@@ -1,6 +1,7 @@
 package tab2mxl;
 
 import java.awt.FileDialog;
+import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -10,6 +11,8 @@ public class Functioncallfile {
 	window win;
 	String filename;
 	String fileaddress;
+	Font arial, comicSansMS, timesNewRoman;
+	String fontname;
 	public Functioncallfile(window win) {
 		this.win = win;
 		
@@ -87,6 +90,27 @@ public class Functioncallfile {
 			win.textArea.setLineWrap(false);
 			win.textArea.setWrapStyleWord(false);
 			win.mntmNewMenuItemwarp.setText("Word Wrap: Off");
+		}
+	}
+	
+	public void font(int fontSize) {
+		arial = new Font("Arial", Font.PLAIN, fontSize);
+		comicSansMS = new Font("Comic Sans Ms", Font.PLAIN, fontSize);
+		timesNewRoman = new Font("Time New Roman", Font.PLAIN, fontSize);
+		setfont(fontname);
+	}
+	public void setfont(String font) {
+		fontname = font;
+		switch(fontname) {
+		case "Arial":
+			win.textArea.setFont(arial);
+			break;
+		case "Comic Sans Ms":
+			win.textArea.setFont(comicSansMS);
+			break;
+		case "Time New Roman":
+			win.textArea.setFont(timesNewRoman);
+			break;
 		}
 	}
 }
