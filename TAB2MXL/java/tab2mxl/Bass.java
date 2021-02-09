@@ -12,6 +12,11 @@ public class Bass extends StringInstrument
 	private Bass(String s1, String s2, String s3, String s4)
 	{	
 		super(s1, s2, s3, s4);
+	//	this.type = '4';
+	//	this.this.getStr1() = this.getStr1();
+	//	this.this.getStr2() = this.getStr2();
+	//	this.this.getStr3() = this.getStr3();
+	//	this.this.getStr4() = this.getStr4();
 	}
 	
 	private Bass(String s1, String s2, String s3, String s4, String s5)
