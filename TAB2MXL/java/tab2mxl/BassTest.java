@@ -13,9 +13,10 @@ class BassTest {
 	String s2 = "D|------5-----------|";
 	String s3 = "A|-7--7---7--5------|";
 	String s4 = "E|-------------8--7-|";
+	String s5 = "B|-------------8--7-|";
 	
 	Bass b4 = Bass.getInstance(s1, s2, s3, s4);
-	Bass b5 = Bass.getInstance(s1, s2, s3, s4, "String 5");
+	Bass b5 = Bass.getInstance(s1, s2, s3, s4, s5);
 	
 	
     @BeforeAll
