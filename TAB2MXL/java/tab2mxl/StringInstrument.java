@@ -16,22 +16,28 @@ public class StringInstrument {
 		this.str4 = "";
 		this.str5 = "";
 	}
-	public StringInstrument(String str1, String str2, String str3, String str4) {
+	public StringInstrument(char type, String str1, String str2, String str3, String str4) {
+		this.type = type;
 		this.str1 = str1;
 		this.str2 = str2;
 		this.str3 = str3;
 		this.str4 = str4;	
 	}
-
-	public static void getBassFourString(String str1, String str2, String str3, String str4) {
-		Bass bassFour;
-		bassFour = Bass.getInstance(str1,str2,str3,str4);
-		bassFour.printTab();
+	public StringInstrument(char type, String str1, String str2, String str3, String str4, String str5) {
+		this(type, str1, str2, str3, str4);
+		this.str5 = str5;	
+		
 	}
-	public static void getBassFiveString(String str1, String str2, String str3, String str4, String str5) {
-		Bass bassFive;
-		bassFive = Bass.getInstance(str1,str2,str3,str4,str5);
-		bassFive.printTab();
+
+	public static void getBass(String str1, String str2, String str3, String str4) {
+		Bass bass;
+		bass = Bass.getInstance(str1,str2,str3,str4);
+		bass.printTab();
+	}
+	public static void getBass(String str1, String str2, String str3, String str4, String str5) {
+		Bass bass;
+		bass = Bass.getInstance(str1,str2,str3,str4,str5);
+		bass.printTab();
 		
 	}
 	

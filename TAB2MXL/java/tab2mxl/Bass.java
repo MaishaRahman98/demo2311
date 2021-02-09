@@ -6,10 +6,12 @@ public class Bass extends StringInstrument
 	private String s1, s2, s3, s4, s5;
 	private Bass()
 	{
+		super();
 	}
 	
 	private Bass(String s1, String s2, String s3, String s4)
 	{	
+		super ('4', s1, s2, s3, s4);
 		this.type = '4';
 		this.s1 = s1;
 		this.s2 = s2;
