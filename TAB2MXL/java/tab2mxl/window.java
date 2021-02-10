@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.PipedInputStream;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -43,6 +44,14 @@ public class window implements ActionListener{
 	public JMenuItem mntmNewMenuItemwarp;
 	Functioncallfile file = new Functioncallfile(this);
 	Functioncallfile format = new Functioncallfile(this);
+	
+	private PipedInputStream pipein = new PipedInputStream();
+	private PipedInputStream pipein2 = new PipedInputStream();
+	private Thread reader;
+	private Thread reader2;
+	boolean quit;
+	
+	
 	//==========================================================
 	StringInstrument stringin = new StringInstrument();
 //	Bass bassin = new Bass();
