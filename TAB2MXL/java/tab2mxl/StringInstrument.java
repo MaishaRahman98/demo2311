@@ -32,18 +32,20 @@ public class StringInstrument {
 	}
 	
 
-	public static Bass getBass(String str1, String str2, String str3, String str4) {
+	public static void getBass(String str1, String str2, String str3, String str4) {
 		Bass bassFour;
 		bassFour = Bass.getInstance(str1,str2,str3,str4);
-		return bassFour;
+//		return bassFour;
+		bassFour.printTab();
 
 	}
 
 
-	public static Bass getBass(String str1, String str2, String str3, String str4, String str5) {
+	public static void getBass(String str1, String str2, String str3, String str4, String str5) {
 		Bass bassFive;
 		bassFive = Bass.getInstance(str1,str2,str3,str4,str5);
-		return bassFive;
+//		return bassFive;
+		bassFive.printTab();
 
 		
 	}
