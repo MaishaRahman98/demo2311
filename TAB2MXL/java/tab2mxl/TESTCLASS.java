@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class BassTest {
+class TESTCLASS {
 
 	
 	Bass b4 = Bass.getInstance("String 1", "String 2", "String 3", "String 4");
@@ -38,7 +38,7 @@ class BassTest {
 	}
 	@Test
 	void testString1() {
-		String actualS1 = b5.getS1();
+		String actualS1 = b5.getStr1();
 		String expectedS1 = "String 1";
 		assertEquals(expectedS1, actualS1, "The string should be String 1 because that is the first argument being passed to getInstance.");
 	}
