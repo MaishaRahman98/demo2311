@@ -45,19 +45,19 @@ public class Bass extends StringInstrument
 		for (int i = 2 ; this.getStr1().charAt(i) != '|' ; i++)
 		{
 			if (Character.isDigit(this.getStr1().charAt(i)))
-				System.out.println("String = 1 Fret = " + this.getStr1().charAt(i) + " Note: " + Notes.bassNotes("note1",Character.getNumericValue(this.getStr1().charAt(i))));
+				System.out.println("String = 1 Fret = " + this.getStr1().charAt(i) + " Note: " + Notes.guitarNotes("note1",Character.getNumericValue(this.getStr1().charAt(i))));
 			
 			if (Character.isDigit(this.getStr2().charAt(i)))
-				System.out.println("String = 2 Fret = " + this.getStr2().charAt(i) + " Note: " + Notes.bassNotes("note2",Character.getNumericValue(this.getStr2().charAt(i))));
+				System.out.println("String = 2 Fret = " + this.getStr2().charAt(i) + " Note: " + Notes.guitarNotes("note2",Character.getNumericValue(this.getStr2().charAt(i))));
 			
 			if (Character.isDigit(this.getStr3().charAt(i)))
-				System.out.println("String = 3 Fret = " + this.getStr3().charAt(i) + " Note: " + Notes.bassNotes("note3",Character.getNumericValue(this.getStr3().charAt(i))));
+				System.out.println("String = 3 Fret = " + this.getStr3().charAt(i) + " Note: " + Notes.guitarNotes("note3",Character.getNumericValue(this.getStr3().charAt(i))));
 			
 			if (Character.isDigit(this.getStr4().charAt(i)))
-				System.out.println("String = 4 Fret = " + this.getStr4().charAt(i) + " Note: " + Notes.bassNotes("note4",Character.getNumericValue(this.getStr4().charAt(i))));
+				System.out.println("String = 4 Fret = " + this.getStr4().charAt(i) + " Note: " + Notes.guitarNotes("note4",Character.getNumericValue(this.getStr4().charAt(i))));
 			
 			if (this.getStr5() != null && Character.isDigit(this.getStr5().charAt(i)))
-				System.out.println("String = 4 Fret = " + this.getStr5().charAt(i) + " Note: " + Notes.bassNotes("note5",Character.getNumericValue(this.getStr5().charAt(i))));
+				System.out.println("String = 4 Fret = " + this.getStr5().charAt(i) + " Note: " + Notes.guitarNotes("note5",Character.getNumericValue(this.getStr5().charAt(i))));
 		}
 	}
 		

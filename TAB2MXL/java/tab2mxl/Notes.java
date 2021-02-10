@@ -7,7 +7,7 @@ public class Notes {
 	final static String[] noteBass4 = {"E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"};
 	final static String[] noteBass5 = {"B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
 	
-	public static String bassNotes(String line, int pos) {
+	public static String guitarNotes(String line, int pos) {
 		if(line == "note1") {
 			return noteBass1[pos];
 		}
