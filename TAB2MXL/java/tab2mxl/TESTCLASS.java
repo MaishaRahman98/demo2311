@@ -42,5 +42,24 @@ class TESTCLASS {
 		String expectedS1 = "String 1";
 		assertEquals(expectedS1, actualS1, "The string should be String 1 because that is the first argument being passed to getInstance.");
 	}
+	@Test
+	void testString2() {
+		String actualS2 = b5.getStr2();
+		String expectedS2 = "String 2";
+		assertEquals(expectedS2, actualS2, "The string should be String 2 because that is the first argument being passed to getInstance.");
+	}
+	@Test
+	void testString3() {
+		String actualS3 = b4.getStr3();
+		String expectedS3 = "String 3";
+		assertEquals(expectedS3, actualS3, "The string should be String 3 because that is the first argument being passed to getInstance.");
+	}@Test
+	void testString4() {
+		String actualS4 = b4.getStr4();
+		String expectedS4 = "String 4";
+		assertEquals(expectedS4, actualS4, "The string should be String 4 because that is the first argument being passed to getInstance.");
+	}
+
+
 
 }
