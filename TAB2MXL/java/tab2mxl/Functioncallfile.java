@@ -13,6 +13,7 @@ public class Functioncallfile {
 	String fileaddress;
 	Font arial, comicSansMS, timesNewRoman;
 	String fontname="Arial";
+	String text;
 	//==============================================
 	TablatureScanner ts = new TablatureScanner(win);
 	//==============================================
@@ -124,7 +125,9 @@ public class Functioncallfile {
 		}
 		else {
 //			win.textArea.getText().printTab();
-			ts.detect(win.textArea.getText());
+			text = win.textArea.getText();
+			win.textArea.setText(null);
+			ts.detect(text);
 		}
 	}
 	//============================================

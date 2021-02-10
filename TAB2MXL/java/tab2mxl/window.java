@@ -111,8 +111,9 @@ public class window implements ActionListener{
 		scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		
 		textArea = new JTextArea();
-		
+
 		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+
 		System.setOut(printStream);
 		System.setErr(printStream);
 		
