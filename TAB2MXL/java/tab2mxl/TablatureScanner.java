@@ -41,7 +41,7 @@ public class TablatureScanner
             			}
             			else
             			{
-            				StringInstrument.getBass(s1, s2, s3, s4,"");
+            				StringInstrument.getBass(s1, s2, s3, s4, "0");
             				break;
             			}
             		}

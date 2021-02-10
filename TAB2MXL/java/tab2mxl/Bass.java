@@ -2,30 +2,37 @@ package tab2mxl;
 // test
 public class Bass extends StringInstrument
 {
-	private char type; //number of strings
-	private String s1, s2, s3, s4, s5;
+	//private char type; //number of strings
+	//private String this.getStr1(), this.getStr2(), this.getStr3(), this.getStr4(), this.getStr5();
 	private Bass()
 	{
+		super();
 	}
 	
 	private Bass(String s1, String s2, String s3, String s4)
 	{	
-		this.type = '4';
-		this.s1 = s1;
-		this.s2 = s2;
-		this.s3 = s3;
-		this.s4 = s4;
+		super(s1, s2, s3, s4);
+	//	this.type = '4';
+	//	this.this.getStr1() = this.getStr1();
+	//	this.this.getStr2() = this.getStr2();
+	//	this.this.getStr3() = this.getStr3();
+	//	this.this.getStr4() = this.getStr4();
 	}
 	
 	private Bass(String s1, String s2, String s3, String s4, String s5)
 	{
-		this.s5 = s5;
-		this.type = '5';
+		super(s1, s2, s3, s4, s5);	
+	//	this.this.getStr1() = this.getStr1();
+	//	this.this.getStr2() = this.getStr2();
+	//	this.this.getStr3() = this.getStr3();
+	//	this.this.getStr4() = this.getStr4();
+	//	this.this.getStr5() = this.getStr5();
+	//	this.type = '5';
 	}
 	
 	public static Bass getInstance(String s1, String s2, String s3, String s4)
 	{
-		return new Bass(s1, s2, s3, s4);	
+		return new Bass(s1, s2, s3, s4);
 	}
 	
 	public static Bass getInstance(String s1, String s2, String s3, String s4, String s5)
@@ -35,83 +42,23 @@ public class Bass extends StringInstrument
 	
 	public void printTab()
 	{		         
-		for (int i = 2 ; s1.charAt(i) != '|' ; i++)
+		for (int i = 2 ; this.getStr1().charAt(i) != '|' ; i++)
 		{
-			if (Character.isDigit(s1.charAt(i)))
-				System.out.println("String = 1 Fret = " + s1.charAt(i) + " Note: " + Notes.bassNotes("note1",Character.getNumericValue(s1.charAt(i))));
+			if (Character.isDigit(this.getStr1().charAt(i)))
+				System.out.println("String = 1 Fret = " + this.getStr1().charAt(i) + " Note: " + Notes.bassNotes("String1",Character.getNumericValue(this.getStr1().charAt(i))));
 			
-			if (Character.isDigit(s2.charAt(i)))
-				System.out.println("String = 2 Fret = " + s2.charAt(i) + " Note: " + Notes.bassNotes("note2",Character.getNumericValue(s2.charAt(i))));
+			if (Character.isDigit(this.getStr2().charAt(i)))
+				System.out.println("String = 2 Fret = " + this.getStr2().charAt(i) + " Note: " + Notes.bassNotes("String2",Character.getNumericValue(this.getStr2().charAt(i))));
 			
-			if (Character.isDigit(s3.charAt(i)))
-				System.out.println("String = 3 Fret = " + s3.charAt(i) + " Note: " + Notes.bassNotes("note3",Character.getNumericValue(s3.charAt(i))));
+			if (Character.isDigit(this.getStr3().charAt(i)))
+				System.out.println("String = 3 Fret = " + this.getStr3().charAt(i) + " Note: " + Notes.bassNotes("String3",Character.getNumericValue(this.getStr3().charAt(i))));
 			
-			if (Character.isDigit(s4.charAt(i)))
-				System.out.println("String = 4 Fret = " + s4.charAt(i) + " Note: " + Notes.bassNotes("note4",Character.getNumericValue(s4.charAt(i))));
+			if (Character.isDigit(this.getStr4().charAt(i)))
+				System.out.println("String = 4 Fret = " + this.getStr4().charAt(i) + " Note: " + Notes.bassNotes("String4",Character.getNumericValue(this.getStr4().charAt(i))));
 			
-			if (s5 != null && Character.isDigit(s5.charAt(i)))
-				System.out.println("String = 5 Fret = " + s5.charAt(i) + " Note: " + Notes.bassNotes("note5",Character.getNumericValue(s5.charAt(i))));
+			if (this.getStr5() != null && Character.isDigit(this.getStr5().charAt(i)))
+				System.out.println("String = 4 Fret = " + this.getStr5().charAt(i) + " Note: " + Notes.bassNotes("String5",Character.getNumericValue(this.getStr5().charAt(i))));
 		}
 	}
 		
-
-	public char getType() 
-	{
-		return type;
-	}
-
-	public void setType(char type) 
-	{
-		this.type = type;
-	}
-
-	public String getS1() {
-		return s1;
-	}
-
-	public void setS1(String s1) 
-	{
-		this.s1 = s1;
-	}
-
-	public String getS2() 
-	{
-		return s2;
-	}
-
-	public void setS2(String s2) 
-	{
-		this.s2 = s2;
-	}
-
-	public String getS3() 
-	{
-		return s3;
-	}
-
-	public void setS3(String s3) 
-	{
-		this.s3 = s3;
-	}
-
-	public String getS4() 
-	{
-		return s4;
-	}
-
-	public void setS4(String s4) 
-	{
-		this.s4 = s4;
-	}
-
-	public String getS5() 
-	{
-		return s5;
-	}
-
-	public void setS5(String s5) 
-	{
-		this.s5 = s5;
-	}
-	
 }
