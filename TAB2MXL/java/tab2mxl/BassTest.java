@@ -3,6 +3,7 @@ package tab2mxl;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,11 @@ class BassTest {
     	System.out.println("JUnit testing has started.");
     }
 	
+    @AfterEach
+	void update() {
+		System.out.println("JUnit test case completed.");
+	}
+    
 	@AfterAll
 	static void cleanUp() {
 		System.out.println("JUnit testing completed.");
