@@ -119,7 +119,7 @@ public class Functioncallfile {
 	//============================================
 	public void transale() {
 		boolean em = win.textArea.getText().isEmpty();
-		if (em==false) {
+		if (em!=false) {
 			System.out.println("Empty text area");
 		}
 		else {
