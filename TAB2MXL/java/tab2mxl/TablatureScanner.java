@@ -2,20 +2,21 @@ package tab2mxl;
 import java.io.File;  
 import java.io.FileNotFoundException; 
 import java.util.Scanner; 
-public class TablatureScanner extends Functioncallfile
+public class TablatureScanner 
 {
-
+	String texta;
+	window win;
   public TablatureScanner(window win) {
-		super(win);
+		this.win =win;
 		// TODO Auto-generated constructor stub
 	}
 
-public void main(String[] args) 
+public void detect(String text)
   {
     try 
     {
-      File myObj = new File(filename);
-      Scanner myReader = new Scanner(myObj);
+//      File myObj = new File(filename);
+      Scanner myReader = new Scanner(text);
       String s1, s2, s3, s4, s5;
       while (myReader.hasNextLine()) 
       {
@@ -59,7 +60,7 @@ public void main(String[] args)
       }
         
       myReader.close();
-    } catch (FileNotFoundException e) 
+    } catch (Exception e) 
     {
       System.out.println("An error occurred.");
       e.printStackTrace();
