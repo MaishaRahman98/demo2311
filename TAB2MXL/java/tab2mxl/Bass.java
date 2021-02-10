@@ -6,12 +6,10 @@ public class Bass extends StringInstrument
 	private String s1, s2, s3, s4, s5;
 	private Bass()
 	{
-		super();
 	}
 	
 	private Bass(String s1, String s2, String s3, String s4)
 	{	
-		super();
 		this.type = '4';
 		this.s1 = s1;
 		this.s2 = s2;
@@ -21,7 +19,6 @@ public class Bass extends StringInstrument
 	
 	private Bass(String s1, String s2, String s3, String s4, String s5)
 	{
-		super();
 		this.s5 = s5;
 		this.type = '5';
 	}
@@ -53,7 +50,7 @@ public class Bass extends StringInstrument
 				System.out.println("String = 4 Fret = " + s4.charAt(i) + " Note: " + Notes.bassNotes("note4",Character.getNumericValue(s4.charAt(i))));
 			
 			if (s5 != null && Character.isDigit(s5.charAt(i)))
-				System.out.println("String = 4 Fret = " + s5.charAt(i) + " Note: " + Notes.bassNotes("note5",Character.getNumericValue(s5.charAt(i))));
+				System.out.println("String = 5 Fret = " + s5.charAt(i) + " Note: " + Notes.bassNotes("note5",Character.getNumericValue(s5.charAt(i))));
 		}
 	}
 		

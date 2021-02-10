@@ -36,12 +36,12 @@ public class TablatureScanner
             			if (data.startsWith("B|"))
             			{
             				s5 = data;
-            				StringInstrument.getBassFiveString(s1, s2, s3, s4, s5);
+            				StringInstrument.getBass(s1, s2, s3, s4, s5);
             				break;
             			}
             			else
             			{
-            				StringInstrument.getBassFourString(s1, s2, s3, s4);
+            				StringInstrument.getBass(s1, s2, s3, s4,"");
             				break;
             			}
             		}
