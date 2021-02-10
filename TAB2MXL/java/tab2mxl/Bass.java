@@ -46,7 +46,7 @@ public class Bass extends StringInstrument
 		{
 			if (Character.isDigit(this.getStr1().charAt(i)))
 				System.out.println("String = 1 Fret = " + this.getStr1().charAt(i) + " Note: " + Notes.bassNotes("note1",Character.getNumericValue(this.getStr1().charAt(i))));
-			
+				
 			if (Character.isDigit(this.getStr2().charAt(i)))
 				System.out.println("String = 2 Fret = " + this.getStr2().charAt(i) + " Note: " + Notes.bassNotes("note2",Character.getNumericValue(this.getStr2().charAt(i))));
 			
