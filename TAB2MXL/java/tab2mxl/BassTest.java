@@ -37,12 +37,14 @@ class BassTest {
 	
 	@Test
 	void testType4() {
+		//tests that the type of bass is 4 string bass if 4 strings are passed to getInstance for Bass class
 		char expected4 = '4';
 		char actual4 = b4.getType();
 		assertEquals(expected4, actual4, "The type should be 4 because there are 4 arguments being passed to getInstance.");
 	}
 	@Test
 	void testType5() {
+		//tests that the type of bass is 5 string bass if 5 strings are passed to getInstance for Bass class
 		char expected5 = '5';
 		char actual5 = b5.getType();
 		assertEquals(expected5, actual5, "The type should be 5 because there are 5 arguments being passed to getInstance.");
