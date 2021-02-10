@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PipedInputStream;
+import java.io.PrintStream;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -111,7 +112,9 @@ public class window implements ActionListener{
 		
 		textArea = new JTextArea();
 		
-		
+		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+		System.setOut(printStream);
+		System.setErr(printStream);
 		
 		
 		textArea.setBorder(null);

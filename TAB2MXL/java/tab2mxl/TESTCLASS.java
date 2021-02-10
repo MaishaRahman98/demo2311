@@ -28,13 +28,13 @@ class TESTCLASS {
 	void testType4() {
 		char expected4 = '4';
 		char actual4 = b4.getType();
-		assertEquals(expected4, actual4, "The type should be 4 because there are 4 arguments being passed to getInstance.");
+		assertEquals(expected4, actual4, "The type should be 4.");
 	}
 	@Test
 	void testType5() {
 		char expected5 = '5';
 		char actual5 = b5.getType();
-		assertEquals(expected5, actual5, "The type should be 5 because there are 5 arguments being passed to getInstance.");
+		assertEquals(expected5, actual5, "The type should be 5 .");
 	}
 	@Test
 	void testString1() {
