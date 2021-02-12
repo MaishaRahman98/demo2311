@@ -61,7 +61,7 @@ public class TablatureScanner
       e.printStackTrace();
     }
     System.out.println("return 0");
-   
+  
     
     //guitar scanner
     
@@ -120,21 +120,25 @@ public class TablatureScanner
         }
     
       }
+      }
         
       myReader1.close();
    
       }
-    }
-    catch (FileNotFoundException b) 
+    
+     catch (FileNotFoundException e) 
     {
       System.out.println("An error occurred.");
-      b.printStackTrace();
+      e.printStackTrace();
     }
+    
     System.out.println("return 0");
    
     
-}
-}
+
+  }
+  }
+
 
 
 
