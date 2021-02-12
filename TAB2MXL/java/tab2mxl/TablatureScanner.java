@@ -54,12 +54,85 @@ public class TablatureScanner
       }
         
       myReader.close();
+   
     } catch (FileNotFoundException e) 
     {
       System.out.println("An error occurred.");
       e.printStackTrace();
     }
     System.out.println("return 0");
+   
+    
+    //guitar scanner
+    
+    try 
+    {
+      File guitarReader= new File("guitarTablature.txt");
+      Scanner myReader1 = new Scanner(guitarReader);
+      String s1, s2, s3, s4, s5, s6, s7;
+      while (myReader1.hasNextLine()) 
+      {
+        String line = myReader1.nextLine();
+        while (line.startsWith("E|"))
+        {
+        	s1 = line;
+        	line = myReader1.nextLine();
+        	while (line.startsWith("B|"))
+        	{
+        		s2 = line;
+        		line = myReader1.nextLine();
+            	while (line.startsWith("G|"))
+            	{
+            		s3 = line;
+            		line = myReader1.nextLine();
+            		while (line.startsWith("D|"))
+            		{
+            			
+            		    s4 = line;
+            			line = myReader1.nextLine();
+                		while (line.startsWith("A|"))
+                		{
+            			s5 = line;
+            			line = myReader1.nextLine();
+            		    while(line.startsWith("|D")) {
+            						s6 = line;
+            			
+            			if (myReader1.hasNextLine())
+            			line = myReader1.nextLine();
+            			
+            			if (line.startsWith("B|"))
+            			{
+            				s7 = line;
+            				StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6, s7);
+            				break;
+            			}
+            			else
+            			{
+            				StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6);
+            				break;
+            			}
+            		    }
+            		}
+            		
+            	}
+        		
+        	}
+        }
+    
+      }
+        
+      myReader1.close();
+   
+      }
+    }
+    catch (FileNotFoundException b) 
+    {
+      System.out.println("An error occurred.");
+      b.printStackTrace();
+    }
+    System.out.println("return 0");
+   
+    
 }
 }
 
