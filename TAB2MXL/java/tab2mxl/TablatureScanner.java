@@ -65,22 +65,3 @@ public class TablatureScanner
     System.out.println("return 0");
 }
 }
-
-
-
-/*
-if (bool && data.startsWith("E|"))
-{
-	System.out.println("Guitar");
-	bool=false;
-}
-else if (bool && data.startsWith("G|"))
-{
-	System.out.println("Bass");
-	bool=false;
-}
-else if (bool && data.startsWith("C |"))
-{
-	System.out.println("Drums");
-	bool=false;
-*/

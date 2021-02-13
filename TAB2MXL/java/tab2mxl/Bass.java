@@ -1,6 +1,6 @@
 package tab2mxl;
 
-public class Bass 
+public class Bass extends StringInstrument
 {
 	private char type; //number of strings
 	private String s1, s2, s3, s4, s5;
