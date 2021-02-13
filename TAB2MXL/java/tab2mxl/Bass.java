@@ -11,20 +11,22 @@ public class Bass extends StringInstrument
 	final String[] note5 = {"B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"};
 	
 	//stuff to be used to print in xml format
-	String[] n1, n2, n3, n4, n5;
-	char f1, f2, f3, f4, f5;
+//	String[] n1, n2, n3, n4, n5;
+//	char f1, f2, f3, f4, f5;
 	
 	private Bass()
 	{
-		this.type = ' ';
-		this.s1 = "";
-		this.s2 = "";
-		this.s3 = "";
-		this.s4 = "";
+		super();
+//		this.type = ' ';
+//		this.s1 = "";
+//		this.s2 = "";
+//		this.s3 = "";
+//		this.s4 = "";
 	}
 	
 	private Bass(String s1, String s2, String s3, String s4)
 	{
+		//4 string bass
 		this.type = '4';
 		this.s1 = s1;
 		this.s2 = s2;
@@ -34,9 +36,11 @@ public class Bass extends StringInstrument
 	
 	private Bass(String s1, String s2, String s3, String s4, String s5)
 	{
-		this(s1, s2, s3, s4);
-		this.s5 = s5;
-		this.type = '5';
+		super(s1, s2, s3, s4, s5);
+		//5 string bass
+//		this(s1, s2, s3, s4);
+//		this.s5 = s5;
+//		this.type = '5';
 	}
 	
 	public static Bass getInstance(String s1, String s2, String s3, String s4)
@@ -51,6 +55,8 @@ public class Bass extends StringInstrument
 	
 	public void printTab()
 	{		         
+		String n = "";
+		char f = 0;
 		//XML declarations:
 		System.out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		System.out.println("<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">");
@@ -60,6 +66,8 @@ public class Bass extends StringInstrument
 			if (Character.isDigit(s1.charAt(i))) {
 				//Prints out info about the note in string 1:
 				System.out.println("String = 1 Fret = " + s1.charAt(i) + " Note: " + note1[Character.getNumericValue(s1.charAt(i))]);
+				f = s1.charAt(i);
+				n = note1[Character.getNumericValue(s1.charAt(i))];
 				//Coding to print out the note in string 1 in xml format:
 				System.out.println("<note>");
 				System.out.println("\t<pitch>");
@@ -152,6 +160,22 @@ public class Bass extends StringInstrument
 			System.out.println("\t\t</notations>");
 			System.out.println("\t</note>");
 			*/
+
+//			if (Character.isDigit(this.getStr1().charAt(i)))
+//				System.out.println("String = 1 Fret = " + this.getStr1().charAt(i) + " Note: " + Notes.guitarNotes("note1",Character.getNumericValue(this.getStr1().charAt(i))));
+//			
+//			if (Character.isDigit(this.getStr2().charAt(i)))
+//				System.out.println("String = 2 Fret = " + this.getStr2().charAt(i) + " Note: " + Notes.guitarNotes("note2",Character.getNumericValue(this.getStr2().charAt(i))));
+//			
+//			if (Character.isDigit(this.getStr3().charAt(i)))
+//				System.out.println("String = 3 Fret = " + this.getStr3().charAt(i) + " Note: " + Notes.guitarNotes("note3",Character.getNumericValue(this.getStr3().charAt(i))));
+//			
+//			if (Character.isDigit(this.getStr4().charAt(i)))
+//				System.out.println("String = 4 Fret = " + this.getStr4().charAt(i) + " Note: " + Notes.guitarNotes("note4",Character.getNumericValue(this.getStr4().charAt(i))));
+//			
+//			if (this.getStr5() != null && Character.isDigit(this.getStr5().charAt(i)))
+//				System.out.println("String = 4 Fret = " + this.getStr5().charAt(i) + " Note: " + Notes.guitarNotes("note5",Character.getNumericValue(this.getStr5().charAt(i))));
+
 		}
 	}
 		
