@@ -83,7 +83,6 @@ public class StringInstrument {
 		//XML declarations:
 		System.out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		System.out.println("<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">");
-		if (this.getType() >= 6) {
 		for (int i = 2 ; this.getStr1().charAt(i) != '|' ; i++)
 		{
 			if (Character.isDigit(this.getStr1().charAt(i))) {
@@ -129,7 +128,6 @@ public class StringInstrument {
 			System.out.println("\t</note>");
 		}
 		}		
-	}
 	public String getStr1() {
 		return str1;
 	}
