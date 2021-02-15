@@ -4,9 +4,15 @@ import java.io.FileNotFoundException;
 import java.util.Scanner; 
 public class TablatureScanner 
 {
+		String texta;
+		window win;
+	  public TablatureScanner(window win) {
+			this.win =win;
+			// TODO Auto-generated constructor stub
+		}
 
-  public static void main(String[] args) 
-  {
+	  public void detect(String text)
+	  {
     try 
     {
       File myObj = new File("bassTablature.txt");
