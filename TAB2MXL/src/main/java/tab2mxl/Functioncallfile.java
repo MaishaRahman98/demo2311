@@ -13,6 +13,10 @@ public class Functioncallfile {
 	String fileaddress;
 	Font arial, comicSansMS, timesNewRoman;
 	String fontname="Arial";
+	String text;
+	//==============================================
+	TablatureScanner ts = new TablatureScanner(win);
+	//==============================================
 	public Functioncallfile(window win) {
 		this.win = win;
 		
@@ -113,4 +117,18 @@ public class Functioncallfile {
 			break;
 		}
 	}
+	//============================================
+	public void transale() {
+		boolean em = win.textArea.getText().isEmpty();
+		if (em!=false) {
+			System.out.println("Empty text area");
+		}
+		else {
+//			win.textArea.getText().printTab();
+			text = win.textArea.getText();
+			win.textArea.setText(null);
+			ts.detect(text);
+		}
+	}
+	//============================================
 }
