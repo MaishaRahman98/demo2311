@@ -221,21 +221,8 @@ public class StringInstrument {
 				
 			}
 			
-//			//Coding to print out the note in string x in xml format:
-//			System.out.println("<note>");
-//			System.out.println("\t<pitch>");
-//			System.out.println("\t\t<step>" +  note + "</step>");
-//			System.out.println("\t\t</pitch>");
-//			System.out.println("\t<notations>");
-//			System.out.println("\t\t<technical>");
-//			System.out.println("\t\t\t<string>" + string + "</string>");
-//			System.out.println("\t\t\t<fret>" + fret + "</fret>");
-//			System.out.println("\t\t\t</technical>");
-//			System.out.println("\t\t</notations>");
-//			System.out.println("\t</note>");
-			
 		}
-		}		
+	}		
 	public String getStr1() {
 		return str1;
 	}

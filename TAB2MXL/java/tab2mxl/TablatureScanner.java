@@ -37,9 +37,6 @@ public class TablatureScanner
             			if (data.startsWith("B|"))
             			{
             				s5 = data;
-            				//bass = Bass.getInstance(s1, s2, s3, s4, s5);
-            				//bass.printTab();
-            				//bass.printToXML();
             				bass = StringInstrument.getBass(s1, s2, s3, s4, s5);
             				bass.printToXML(s1, s2, s3, s4, s5, null, null);
             				//bass.printTab();
@@ -47,9 +44,6 @@ public class TablatureScanner
             			}
             			else
             			{
-            				//bass = Bass.getInstance(s1, s2, s3, s4);
-            				//bass.printTab();
-            				//bass.printToXML();
             				bass = StringInstrument.getBass(s1, s2, s3, s4);
             				bass.printToXML(s1, s2, s3, s4, null, null, null);
             				//bass.printTab();
