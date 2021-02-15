@@ -81,7 +81,7 @@ public class StringInstrument {
 		String note = "";
 		String string = "";
 		char fret = 0;
-		int cc = 1;
+		int cc = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
 		
 		//XML declarations:
@@ -91,14 +91,11 @@ public class StringInstrument {
 		{
 			
 			for (String j: allStrings) {
-				
+				cc++;
 			if (j != null && Character.isDigit(j.charAt(i))) {
 				//System.out.println("String = 1 Fret = " + this.getStr1().charAt(i) + " Note: " + Notes.guitarNotes("note1",Character.getNumericValue(this.getStr1().charAt(i))));
 				fret = j.charAt(i);
-				note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(j.charAt(i)));
-				//string = cc;
-				
-				//helpxml(note, string, fret);
+				note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
 				
 				//Coding to print out the note in string 1 in xml format:
 				System.out.println("<note>");
@@ -112,11 +109,11 @@ public class StringInstrument {
 				System.out.println("\t\t\t</technical>");
 				System.out.println("\t\t</notations>");
 				System.out.println("\t</note>");
-				cc++;
+				//cc++;
 			}
 			
 			}
-			cc = 1;
+			cc = 0;
 			
 		}
 	}		
