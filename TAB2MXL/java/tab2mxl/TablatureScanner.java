@@ -37,16 +37,22 @@ public class TablatureScanner
             			if (data.startsWith("B|"))
             			{
             				s5 = data;
-            				bass = Bass.getInstance(s1, s2, s3, s4, s5);
+            				//bass = Bass.getInstance(s1, s2, s3, s4, s5);
             				//bass.printTab();
-            				bass.printToXML();
+            				//bass.printToXML();
+            				bass = StringInstrument.getBass(s1, s2, s3, s4, s5);
+            				bass.printToXML(s1, s2, s3, s4, s5, null, null);
+            				//bass.printTab();
             				break;
             			}
             			else
             			{
-            				bass = Bass.getInstance(s1, s2, s3, s4);
+            				//bass = Bass.getInstance(s1, s2, s3, s4);
             				//bass.printTab();
-            				bass.printToXML();
+            				//bass.printToXML();
+            				bass = StringInstrument.getBass(s1, s2, s3, s4);
+            				bass.printToXML(s1, s2, s3, s4, null, null, null);
+            				//bass.printTab();
             				break;
             			}
             		}
@@ -74,6 +80,7 @@ public class TablatureScanner
       File guitarReader= new File("guitarTablature.txt");
       Scanner myReader1 = new Scanner(guitarReader);
       String s1, s2, s3, s4, s5, s6, s7;
+      Guitar guitar;
       while (myReader1.hasNextLine()) 
       {
         String line = myReader1.nextLine();
@@ -107,12 +114,16 @@ public class TablatureScanner
             			if (line.startsWith("B|"))
             			{
             				s7 = line;
-            				StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6, s7);
+            				guitar = StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6, s7);
+            				//guitar.printTab();
+            				guitar.printToXML(s1, s2, s3, s4, s5, s6, s7);
             				break;
             			}
             			else
             			{
-            				StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6);
+            				guitar = StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6);
+            				//guitar.printTab();
+            				guitar.printToXML(s1, s2, s3, s4, s5, s6, null);
             				break;
             			}
             		    }
