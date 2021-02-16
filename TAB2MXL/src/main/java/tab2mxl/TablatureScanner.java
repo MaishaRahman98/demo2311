@@ -45,14 +45,12 @@ public class TablatureScanner
             				s5 = data;
             				bass = StringInstrument.getBass(s1, s2, s3, s4, s5);
             				bass.printToXML(s1, s2, s3, s4, s5, null, null);
-            				//bass.printTab();
             				break;
             			}
             			else
             			{
             				bass = StringInstrument.getBass(s1, s2, s3, s4);
             				bass.printToXML(s1, s2, s3, s4, null, null, null);
-            				//bass.printTab();
             				break;
             			}
             		}
