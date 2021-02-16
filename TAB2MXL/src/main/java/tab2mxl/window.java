@@ -312,4 +312,3 @@ public class window implements ActionListener{
 		}
 	}
 }
-
