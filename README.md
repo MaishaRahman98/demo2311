@@ -3,7 +3,6 @@ TAB2XML is designed to translate guitar, bass, and drum tablature to a MusicXML 
 ## Instructions on how to run TAB2XML program:
 
 ### Steps 
-**1.** Download the TAB2MXL zip file from master branch on github. <br />
 **1.** Import the TAB2MXL program into Eclipse: <br />
 - If you do not have Eclipse installed, please install the latest version of it <br />
    Refer to: https://www.eclipse.org/downloads/packages/installer
@@ -16,15 +15,15 @@ TAB2XML is designed to translate guitar, bass, and drum tablature to a MusicXML 
       -  4. Keep clicking *Next* and finally *Finish*.
       -  5. You now have a copy of the project.
   
- **3.** In Eclipse, open *Gradle Tasks window* 
+ **2.** In Eclipse, open *Gradle Tasks window* 
  - Go to *Window→ Show View → Other*.... Then Select *Gradle Tasks*.
- **4.**  In *Gradle Tasks*, under *application* folder, double click on *run*.
+ **3.**  In *Gradle Tasks*, under *application* folder, double click on *run*.
  
- **5.** A window will pop-up. This is the user interface for the TAB2XML application.
+ **4.** A window will pop-up. This is the user interface for the TAB2XML application.
  
- **6.** TAB2XML application is now running.
+ **5.** TAB2XML application is now running.
  
- **7.** Open your tablature then click on translate to see it in MusicXML format, you can also save the file.
+ **6.** Open your tablature then click on translate to see it in MusicXML format, you can also save the file.
 
 ### Features
 - Compatible with Windows, MacOS and linux, using Eclipse. 
