@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
  
 public class loadingScreen {
+	// test
     JFrame frame;
     JLabel image=new JLabel(new ImageIcon("music.png"));
     JLabel text=new JLabel("MUSIC XML CONVERTER");
