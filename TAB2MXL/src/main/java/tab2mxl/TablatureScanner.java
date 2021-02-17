@@ -15,9 +15,9 @@ public class TablatureScanner
 	  {
     try 
     {
-      File myObj = new File("bassTablature.txt");
+      File myObj = new File("text");
       Scanner myReader = new Scanner(myObj);
-      String s1, s2, s3, s4, s5;
+      String s1, s2, s3, s4, s5, s6, s7;
       Bass bass;
       while (myReader.hasNextLine()) 
       {
@@ -75,7 +75,7 @@ public class TablatureScanner
     
     try 
     {
-      File guitarReader= new File("guitarTablature.txt");
+      File guitarReader= new File("text");
       Scanner myReader1 = new Scanner(guitarReader);
       String s1, s2, s3, s4, s5, s6, s7;
       Guitar guitar;

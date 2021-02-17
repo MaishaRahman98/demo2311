@@ -47,7 +47,49 @@ public class Notes {
 		}
 	}
 	public static String guitarNotes(String stringNum, int fret) {
-		return "";
-	}
+		if(stringNum.equals("String1") || stringNum.equals("String6") ) {
+			return mainNotes[fret-12];
+			}
+		else if(stringNum.equals("String2") || stringNum.equals("String7")) {
+			fret+=9;
+			if(fret < 12) {
+			return mainNotes[fret]; 
+			}
+			else {
+			return mainNotes[fret-12];
+			}
+		}
+		else if(stringNum.equals("String3")) {
+			fret+=3;
+			if(fret < 12) {
+			return mainNotes[fret]; 
+			}
+			else {
+			return mainNotes[fret-12];
+			}
+		}
+		else if(stringNum.equals("String4")) {
+			fret+=11;
+			if(fret < 12) {
+			return mainNotes[fret]; 
+			}
+			else {
+			return mainNotes[fret-12];
+			}
+		}
+		else if(stringNum.equals("String5")) {
+			fret+=5;
+			if(fret < 12) {
+			return mainNotes[fret]; 
+			}
+			else {
+			return mainNotes[fret-12];
+			}
+		}
+		else { 
+			return mainNotes[fret];
+		}
+		
 
+	}
 }
