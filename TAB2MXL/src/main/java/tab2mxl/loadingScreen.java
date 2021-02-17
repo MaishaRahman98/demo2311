@@ -4,17 +4,18 @@ import java.awt.*;
 import javax.swing.*;
  
 public class loadingScreen {
+	// push
     JFrame frame;
-    JLabel image=new JLabel(new ImageIcon("music.png"));
-    JLabel text=new JLabel("MUSIC XML CONVERTER");
+    JLabel background=new JLabel(new ImageIcon("music.png"));
+    JLabel title=new JLabel("MUSIC XML CONVERTER");
     JProgressBar progressBar=new JProgressBar();
     JLabel message=new JLabel();
     loadingScreen()
     {
         createScreen();
-        addText();
+        showTitle();
         addProgressBar();
-        addMessage();
+        showLoading();
         runningPBar();
     }
     public void createScreen(){
@@ -23,23 +24,23 @@ public class loadingScreen {
         frame.setUndecorated(true);
         frame.setSize(600,400);
         frame.setLocationRelativeTo(null);
-        frame.setContentPane(image);
+        frame.setContentPane(background);
         frame.setVisible(true);
  
     }
-    public void addText()
+    public void showTitle()
     {
-        text.setFont(new Font("arial",Font.BOLD,30));
-        text.setBounds(115,220,600,40);
-        text.setForeground(Color.BLACK);
-        frame.add(text);
+        title.setFont(new Font("arial",Font.BOLD,30));
+        title.setBounds(115,220,600,40);
+        title.setForeground(Color.BLACK);
+        frame.add(title);
     }
-    public void addMessage()
+    public void showLoading()
     {
-        message.setBounds(200,320,200,40);//Setting the size and location of the label
-        message.setForeground(Color.black);//Setting foreground Color
-        message.setFont(new Font("arial",Font.BOLD,15));//Setting font properties
-        frame.add(message);//adding label to the frame
+        message.setBounds(200,320,400,40);
+        message.setForeground(Color.black);
+        message.setFont(new Font("arial",Font.BOLD,15));
+        frame.add(message);
     }
     public void addProgressBar(){
         progressBar.setBounds(100,280,400,30);
@@ -51,14 +52,21 @@ public class loadingScreen {
         frame.add(progressBar);
     }
     public void runningPBar(){
-        int i=0;//Creating an integer variable and intializing it to 0
+        int i=0;
  
         while( i<=100)
         {
             try{
-                Thread.sleep(50);//Pausing execution for 50 milliseconds
-                progressBar.setValue(i);//Setting value of Progress Bar
-                message.setText("The Application is loading... "+Integer.toString(i)+"%");//Setting text of the message JLabel
+                Thread.sleep(50);
+                progressBar.setValue(i);
+                if (i<25)
+                	message.setText("The Application is loading... ");
+                else if (i>25 && i <50)
+                	message.setText("Music files loading... ");
+                else if (i>50 && i <75)
+                	message.setText("Basss, Guitars, Drums loading up... ");
+                else if (i>75 && i <100)
+                	message.setText("Opening application soon... ");
                 i++;
                 if(i==100)
                     frame.dispose();
