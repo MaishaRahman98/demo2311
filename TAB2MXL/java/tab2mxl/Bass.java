@@ -2,11 +2,13 @@ package tab2mxl;
 
 import java.awt.TextArea;
 
+
 // test
 public class Bass extends StringInstrument
 {
 	public TextArea textAreaUI;
 	public static TextArea staticTxtArea;
+	window win1 = new window();
 	//private char type; //number of strings
 	//private String this.getStr1(), this.getStr2(), this.getStr3(), this.getStr4(), this.getStr5();
 	private Bass()
@@ -51,7 +53,7 @@ public class Bass extends StringInstrument
 		{
 			if (Character.isDigit(this.getStr1().charAt(i)))
 				System.out.println("String = 1 Fret = " + this.getStr1().charAt(i) + " Note: " + Notes.bassNotes("note1",Character.getNumericValue(this.getStr1().charAt(i))));
-				
+
 			if (Character.isDigit(this.getStr2().charAt(i)))
 				System.out.println("String = 2 Fret = " + this.getStr2().charAt(i) + " Note: " + Notes.bassNotes("note2",Character.getNumericValue(this.getStr2().charAt(i))));
 			
