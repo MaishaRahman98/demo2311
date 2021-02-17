@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.PipedInputStream;
+import java.io.PrintStream;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -29,6 +31,7 @@ import javax.swing.JMenu;
 import java.awt.Component;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class window implements ActionListener{
 
@@ -42,10 +45,23 @@ public class window implements ActionListener{
 	public JMenuItem mntmNewMenuItemwarp;
 	Functioncallfile file = new Functioncallfile(this);
 	Functioncallfile format = new Functioncallfile(this);
+	
+	private PipedInputStream pipein = new PipedInputStream();
+	private PipedInputStream pipein2 = new PipedInputStream();
+	private Thread reader;
+	private Thread reader2;
+	boolean quit;
+	
+	
+	//==========================================================
+	StringInstrument stringin = new StringInstrument();
+//	Bass bassin = new Bass();
+	//==========================================================
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		new loadingScreen();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -96,8 +112,11 @@ public class window implements ActionListener{
 		scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		
 		textArea = new JTextArea();
-		
-		
+
+		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+
+		System.setOut(printStream);
+		System.setErr(printStream);
 		
 		
 		textArea.setBorder(null);
@@ -122,16 +141,30 @@ public class window implements ActionListener{
 					.addGap(0))
 		);
 		panel.setLayout(gl_panel);
+		
+		JButton btnNewButton_1 = new JButton("translate");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				file.transale();
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(btnNewButton_1, 0, 0, Short.MAX_VALUE)
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 90, Short.MAX_VALUE))
+					.addGap(9)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnNewButton_1)
+					.addContainerGap(298, Short.MAX_VALUE))
 				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
 		);
 		
@@ -280,6 +313,3 @@ public class window implements ActionListener{
 		}
 	}
 }
-
-
-
