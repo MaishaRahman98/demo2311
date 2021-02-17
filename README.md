@@ -5,9 +5,8 @@ TAB2XML is designed to translate guitar, bass, and drum tablature to a MusicXML 
 ### Steps 
 **1.** Download the TAB2MXL zip file from master branch on github. <br />
 **2.** Import the TAB2MXL program into Eclipse <br />
-- If you do not have Eclipse installed, please install the latest version of it.
-
-        Refer to: https://www.eclipse.org/downloads/packages/installer
+- If you do not have Eclipse installed, please install the latest version of it <br />
+   Refer to: https://www.eclipse.org/downloads/packages/installer
 - If you have Eclipse installed already, make sure it is the latest version.
 - Import as a Gradle project :
   - i. In the Eclipse File menu, choose Import, then under Gradle folder, choose *Existing Gradle Project* and click *Next*.
