@@ -26,5 +26,5 @@ Compatible with Windows, MacOS and linux, using Eclipse.
 Supports Bass, Guitar, and Drums tablatures. 
 
 Guides:
-A complete User Manual is available for download. It is available on the peerScholar website or by this link.
+A complete User Manual is available for download. It is available on the peerScholar website or by this link: https://docs.google.com/document/d/11qnYmFJCw-nILIEpQRodOPCwSoYVgEUgQ-sIqxTE7V4/edit?usp=sharing
 
