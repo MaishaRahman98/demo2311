@@ -28,3 +28,4 @@ Supports Bass, Guitar, and Drums tablatures.
 Guides:
 A complete User Manual is available for download. It is available on the peerScholar website or by this link: https://docs.google.com/document/d/11qnYmFJCw-nILIEpQRodOPCwSoYVgEUgQ-sIqxTE7V4/edit?usp=sharing
 
+Video: https://drive.google.com/file/d/1c4JlS4_fNZwZbxbgbil7v3g6THoWITOt/view?usp=sharing
