@@ -37,10 +37,10 @@ public class loadingScreen {
     }
     public void addMessage()
     {
-        message.setBounds(200,320,200,40);//Setting the size and location of the label
-        message.setForeground(Color.black);//Setting foreground Color
-        message.setFont(new Font("arial",Font.BOLD,15));//Setting font properties
-        frame.add(message);//adding label to the frame
+        message.setBounds(200,320,200,40);
+        message.setForeground(Color.black);
+        message.setFont(new Font("arial",Font.BOLD,15));
+        frame.add(message);
     }
     public void addProgressBar(){
         progressBar.setBounds(100,280,400,30);
@@ -52,14 +52,14 @@ public class loadingScreen {
         frame.add(progressBar);
     }
     public void runningPBar(){
-        int i=0;//Creating an integer variable and intializing it to 0
+        int i=0;
  
         while( i<=100)
         {
             try{
-                Thread.sleep(50);//Pausing execution for 50 milliseconds
-                progressBar.setValue(i);//Setting value of Progress Bar
-                message.setText("The Application is loading... "+Integer.toString(i)+"%");//Setting text of the message JLabel
+                Thread.sleep(50);
+                progressBar.setValue(i);
+                message.setText("The Application is loading... "+Integer.toString(i)+"%");
                 i++;
                 if(i==100)
                     frame.dispose();
