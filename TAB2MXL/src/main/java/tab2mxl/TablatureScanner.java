@@ -3,7 +3,7 @@ package tab2mxl;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
+//updated
 public class TablatureScanner {
 	String texta;
 	window win;
