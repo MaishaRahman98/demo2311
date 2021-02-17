@@ -1,8 +1,9 @@
 TAB2XML is designed to translate guitar, bass, and drum tablature to a MusicXML file. 
 
-## Instructions on how to run TAB2XML program:
+## Instructions on how to run Music XML Converter program:
 
 ### Steps 
+**Note:** The name of the java file for the Music XML Converter is called TAB2MXL. <br />
 **1.** Import the TAB2MXL program into Eclipse: <br />
 - If you do not have Eclipse installed, please install the latest version of it <br />
    Refer to: https://www.eclipse.org/downloads/packages/installer
