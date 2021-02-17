@@ -5,9 +5,9 @@ Instructions on how to run TAB2XML program:
 ### Steps 
 1- Download the TAB2MXL zip file from master branch on github. <br />
 2- Import the TAB2MXL program into Eclipse <br />
-___a. If you do not have Eclipse installed, please install the latest version of it.
-_____<br />
-_____Refer to: https://www.eclipse.org/downloads/packages/installer
+___ a. If you do not have Eclipse installed, please install the latest version of it.
+_____ <br />
+_____ Refer to: https://www.eclipse.org/downloads/packages/installer
 If you have Eclipse installed already, make sure it is the latest version.
 Import as a Gradle project :
 In the Eclipse File menu, choose Import, then under Gradle folder, choose Existing Gradle Project and click Next.
