@@ -4,9 +4,15 @@ import java.io.FileNotFoundException;
 import java.util.Scanner; 
 public class TablatureScanner 
 {
+		String texta;
+		window win;
+	  public TablatureScanner(window win) {
+			this.win =win;
 
-  public static void main(String[] args) 
-  {
+		}
+
+	  public void detect(String text)
+	  {
     try 
     {
       File myObj = new File("bassTablature.txt");
@@ -39,14 +45,12 @@ public class TablatureScanner
             				s5 = data;
             				bass = StringInstrument.getBass(s1, s2, s3, s4, s5);
             				bass.printToXML(s1, s2, s3, s4, s5, null, null);
-            				//bass.printTab();
             				break;
             			}
             			else
             			{
             				bass = StringInstrument.getBass(s1, s2, s3, s4);
             				bass.printToXML(s1, s2, s3, s4, null, null, null);
-            				//bass.printTab();
             				break;
             			}
             		}
@@ -150,21 +154,4 @@ public class TablatureScanner
 
 
 
-
-/*
-if (bool && data.startsWith("E|"))
-{
-	System.out.println("Guitar");
-	bool=false;
-}
-else if (bool && data.startsWith("G|"))
-{
-	System.out.println("Bass");
-	bool=false;
-}
-else if (bool && data.startsWith("C |"))
-{
-	System.out.println("Drums");
-	bool=false;
-*/
 
