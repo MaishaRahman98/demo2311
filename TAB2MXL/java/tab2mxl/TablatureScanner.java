@@ -100,15 +100,16 @@ public class TablatureScanner
             			if (myReader1.hasNextLine())
             			line = myReader1.nextLine();
             			
-            			if (line.startsWith("B|"))
+            			if (line.startsWith("E|"))
             			{
-            				s7 = line;
-            				StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6, s7);
+            				s6 = line;
+            				StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6);
             				break;
             			}
             			else
             			{
-            				StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6);
+            				s7 = line;
+            				StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6, s7);
             				break;
             			}
             		    }
