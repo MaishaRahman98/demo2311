@@ -86,60 +86,23 @@ public class TablatureScanner {
 
 	// guitar scanner
 	public static void callGuitarClass(String text) {
-		
 		Scanner myReader1 = new Scanner(text);
 		String s1, s2, s3, s4, s5, s6, s7;
 		Guitar guitar;
-		while (myReader1.hasNextLine()) {
-			String line = myReader1.nextLine();
-			while (line.startsWith("E|")) {
-				s1 = line;
-				line = myReader1.nextLine();
-				while (line.startsWith("B|")) {
-					s2 = line;
-					line = myReader1.nextLine();
-					while (line.startsWith("G|")) {
-						s3 = line;
-						line = myReader1.nextLine();
-						while (line.startsWith("D|")) {
-
-							s4 = line;
-							line = myReader1.nextLine();
-							while (line.startsWith("A|")) {
-								s5 = line;
-								line = myReader1.nextLine();
-								while (line.startsWith("|D")) {
-									s6 = line;
-
-									if (myReader1.hasNextLine())
-										line = myReader1.nextLine();
-
-									if (line.startsWith("B|")) {
-										s7 = line;
-										guitar = StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6, s7);
-										guitar.printTab();
-//										guitar.printToXML(s1, s2, s3, s4, s5, s6, s7);
-										break;
-									} 
-									else {
-										System.out.println("test");
-										guitar = StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6);
-										guitar.printTab();
-										
-//										guitar.printToXML(s1, s2, s3, s4, s5, s6, null);
-										break;
-									}
-								}
-							}
-
-						}
-
-					}
-				}
-
-			}
-		}
-
+		int i = 0;
+//		while (myReader1.hasNextLine()) {
+//			String line = myReader1.nextLine();
+//			
+//			if (line.charAt(0) == ' ') {
+//				if (i < 6) {
+//					i = 0;
+//				}
+//			}
+//			else if ((line.charAt(1) == '|' && line.endsWith("|"))) {
+//				System.out.println(i+1);
+//			}
+//		}
+		System.out.println("not applicable yet");
 		myReader1.close();
 
 	}
