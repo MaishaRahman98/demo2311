@@ -27,7 +27,7 @@ Music XML Converter is designed to translate guitar, bass, and drum tablature to
  **5.** Music XML Converter application is now running.
  
  **6.** Open your tablature then click on translate to see it in MusicXML format, you can also save the file.
-
+ 
 ### Features
 - Compatible with Windows, MacOS and linux, using Eclipse. 
 - Supports Bass, Guitar, and Drums tablatures. 
