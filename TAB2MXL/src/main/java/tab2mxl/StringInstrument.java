@@ -93,6 +93,7 @@ public class StringInstrument {
 			for (String j: allStrings) {
 				cc++;
 			if (j != null && Character.isDigit(j.charAt(i))) {
+
 				fret = j.charAt(i);
 				note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
 				
@@ -108,6 +109,7 @@ public class StringInstrument {
 				System.out.println("\t\t\t</technical>");
 				System.out.println("\t\t</notations>");
 				System.out.println("\t</note>");
+
 			}
 			
 			}
