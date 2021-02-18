@@ -11,8 +11,8 @@ public class Main {
 	/**
 	 * @param args
 	 */
-	public static void Main() {
 
+	public static void Main() {
 
 		// TODO Auto-generated method stub
 		System.out.println("Tabula rasa");
@@ -68,7 +68,6 @@ public class Main {
 
 		System.out.println("Maisha's personal branch change v3");
 		System.out.println("Maisha's personal branch change v4");
-
 
 	}
 }
