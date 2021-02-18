@@ -11,8 +11,8 @@ public class Main {
 	/**
 	 * @param args
 	 */
-	public static void Main() {
 
+	public static void Main() {
 
 		// TODO Auto-generated method stub
 		System.out.println("Tabula rasa");
