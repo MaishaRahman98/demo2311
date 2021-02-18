@@ -102,6 +102,7 @@ public class TablatureScanner {
 //				System.out.println(i+1);
 //			}
 //		}
+		// not applicable message
 		System.out.println("not applicable yet");
 		myReader1.close();
 
