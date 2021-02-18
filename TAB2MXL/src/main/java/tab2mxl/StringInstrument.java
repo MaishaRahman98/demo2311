@@ -95,7 +95,11 @@ public class StringInstrument {
 			if (j != null && Character.isDigit(j.charAt(i))) {
 
 				fret = j.charAt(i);
+				if (str5 == null && str6 == null && str7 == null) {
 				note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
+				} else {
+					note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
+				}
 				
 				//Coding to print out the note in string 1 in xml format:
 				System.out.println("<note>");
