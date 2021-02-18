@@ -108,7 +108,7 @@ public class TablatureScanner {
 							while (line.startsWith("A|")) {
 								s5 = line;
 								line = myReader1.nextLine();
-								while (line.startsWith("|D")) {
+								while (line.startsWith("E|")) {
 									s6 = line;
 
 									if (myReader1.hasNextLine())
