@@ -85,9 +85,9 @@ public class TablatureScanner {
 	}
 
 	// guitar scanner
-	public static void callGuitarClass(String text) {
+	public static void callGuitarClass(String text1) {
 		
-		Scanner myReader1 = new Scanner(text);
+		Scanner myReader1 = new Scanner(text1);
 		String s1, s2, s3, s4, s5, s6, s7;
 		Guitar guitar;
 		while (myReader1.hasNextLine()) {
