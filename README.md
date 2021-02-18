@@ -19,6 +19,7 @@ Music XML Converter is designed to translate guitar, bass, and drum tablature to
   
  **2.** In Eclipse, open *Gradle Tasks window* 
  - Go to *Window→ Show View → Other*.... Then Select *Gradle Tasks*.
+ 
  **3.**  In *Gradle Tasks*, under *application* folder, double click on *run*.
  
  **4.** A window will pop-up. This is the user interface for the Music XML Converter application.
