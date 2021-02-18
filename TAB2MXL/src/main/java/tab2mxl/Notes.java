@@ -48,7 +48,7 @@ public class Notes {
 	}
 	public static String guitarNotes(String stringNum, int fret) {
 		if(stringNum.equals("String1") || stringNum.equals("String6") ) {
-			return mainNotes[fret-12];
+			return mainNotes[fret];
 			}
 		else if(stringNum.equals("String2") || stringNum.equals("String7")) {
 			fret+=9;

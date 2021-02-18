@@ -1,6 +1,7 @@
 package tab2mxl;
 
 import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -16,7 +17,8 @@ public class TablatureScanner {
 	public void detect(String text) {
 		int count = 0;
 		Scanner myReader = new Scanner(text);
-		while (myReader.hasNextLine()) {
+		
+		while (myReader.hasNextLine() ) {
 			String s = myReader.nextLine();
 			if (s.charAt(0) == ' ') {
 				if (count < 4) {
@@ -85,9 +87,9 @@ public class TablatureScanner {
 	}
 
 	// guitar scanner
-	public static void callGuitarClass(String text1) {
+	public static void callGuitarClass(String text) {
 		
-		Scanner myReader1 = new Scanner(text1);
+		Scanner myReader1 = new Scanner(text);
 		String s1, s2, s3, s4, s5, s6, s7;
 		Guitar guitar;
 		while (myReader1.hasNextLine()) {
