@@ -32,16 +32,16 @@ public class TablatureScanner {
 			}
 		}
 		if (count == 4 || count == 5) {
-			TablatureScanner.callBassClass(text);
+			TablatureScanner.callBassClass(text,count);
 		}
 		if (count == 6 || count == 7) {
-			TablatureScanner.callGuitarClass(text);
+			TablatureScanner.callGuitarClass(text,count);
 		}
 
 		myReader.close();
 	}
 
-	public static void callBassClass(String text) {
+	public static void callBassClass(String text,int count) {
 		Scanner myReader = new Scanner(text);
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "";
 		Bass bass;
@@ -54,17 +54,17 @@ public class TablatureScanner {
 				if (listOfStrings.isEmpty()) {
 					listOfStrings.clear();
 				}
-				else if (listOfStrings.size() == 4 || listOfStrings.size() == 5) {
+				else if (listOfStrings.size() == count || listOfStrings.size() == count) {
 					s1 = (listOfStrings).get(0);
 					s2 = (listOfStrings).get(1);
 					s3 = (listOfStrings).get(2);
 					s4 = (listOfStrings).get(3);
 					
-					if(listOfStrings.size() == 4) {
+					if(listOfStrings.size() == count) {
 						bass = StringInstrument.getBass(s1,s2,s3,s4);
 						bass.printToXML(s1, s2, s3, s4, null, null, null);
 					}
-					else if(listOfStrings.size() == 5) {
+					else if(listOfStrings.size() == count) {
 						s5 = (listOfStrings).get(4);
 						bass = StringInstrument.getBass(s1,s2,s3,s4,s5);
 						bass.printToXML(s1, s2, s3, s4, s5, null, null);
@@ -79,7 +79,7 @@ public class TablatureScanner {
 	}
 
 	// guitar scanner
-	public static void callGuitarClass(String text) {
+	public static void callGuitarClass(String text,int count) {
 		Scanner myReader1 = new Scanner(text);
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
 		ArrayList<String> listOfStrings = new ArrayList<String>();
@@ -91,7 +91,7 @@ public class TablatureScanner {
 				if (listOfStrings.isEmpty()) {
 					listOfStrings.clear();
 				}
-				else if (listOfStrings.size() == 6 || listOfStrings.size() == 7) {
+				else if (listOfStrings.size() == count || listOfStrings.size() == 7) {
 					s1 = (listOfStrings).get(0);
 					s2 = (listOfStrings).get(1);
 					s3 = (listOfStrings).get(2);
@@ -99,11 +99,11 @@ public class TablatureScanner {
 					s5 = (listOfStrings).get(4);
 					s6 = (listOfStrings).get(5);
 					
-					if(listOfStrings.size() == 6) {
+					if(listOfStrings.size() == count) {
 						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6);
 						guitar.printToXML(s1, s2, s3, s4, s5, s6, null);
 					}
-					else if(listOfStrings.size() == 7) {
+					else if(listOfStrings.size() == count) {
 						s7 = (listOfStrings).get(6);
 						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6,s7);
 						guitar.printToXML(s1, s2, s3, s4, s5, s6, s7);
