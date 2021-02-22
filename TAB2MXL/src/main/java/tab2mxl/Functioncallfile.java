@@ -1,5 +1,6 @@
 package tab2mxl;
 
+import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Font;
 import java.io.BufferedReader;
@@ -11,8 +12,8 @@ public class Functioncallfile {
 	window win;
 	String filename;
 	String fileaddress;
-	Font arial, comicSansMS, timesNewRoman;
-	String fontname="Arial";
+	Font arial, comicSansMS, timesNewRoman,mono;
+	String fontname="Monospaced";
 	String text;
 	//==============================================
 	TablatureScanner ts = new TablatureScanner(win);
@@ -99,8 +100,12 @@ public class Functioncallfile {
 	
 	public void font(int fontSize) {
 		arial = new Font("Arial", Font.PLAIN, fontSize);
-		comicSansMS = new Font("Comic Sans Ms", Font.PLAIN, fontSize);
-		timesNewRoman = new Font("Time New Roman", Font.PLAIN, fontSize);
+		comicSansMS = new Font("Comic Sans MS", Font.PLAIN, fontSize);
+		timesNewRoman = new Font("Times New Roman", Font.PLAIN, fontSize);
+		mono = new Font("Monospaced",Font.PLAIN, fontSize);
+		
+//		MONOSPACED = new Font("MONOSPACED",Font.PLAIN,fontSize);
+//		win.textArea.setFont(Font.MONOSPACED);
 		setfont(fontname);
 	}
 	public void setfont(String font) {
@@ -114,6 +119,9 @@ public class Functioncallfile {
 			break;
 		case "Time New Roman":
 			win.textArea.setFont(timesNewRoman);
+			break;
+		case "Courier New":
+			win.textArea.setFont(mono);
 			break;
 		}
 	}
@@ -130,5 +138,31 @@ public class Functioncallfile {
 			ts.detect(text);
 		}
 	}
-	//============================================
+	//============================================blow is color
+	public void changecolor(String color) {
+		switch(color) {
+		case"White":
+			win.frame.getContentPane().setBackground(Color.white);
+			win.textArea.setBackground(Color.white);
+			win.frame.getJMenuBar().setBackground(Color.white);
+			win.textArea.setForeground(Color.black);
+			break;
+		case"Black":
+			win.frame.getContentPane().setBackground(Color.black);
+			win.textArea.setBackground(Color.black);
+			win.frame.getJMenuBar().setBackground(Color.gray);
+			win.textArea.setForeground(Color.white);
+			break;
+		case"Pink":
+			win.frame.getContentPane().setBackground(Color.pink);
+			win.textArea.setBackground(Color.pink);
+			win.textArea.setForeground(Color.black);
+			break;
+		case"Blue":
+			win.frame.getContentPane().setBackground(new Color(28,186,186));
+			win.textArea.setBackground(new Color(28,186,186));
+			win.textArea.setForeground(Color.white);
+			break;
+		}
+	}
 }

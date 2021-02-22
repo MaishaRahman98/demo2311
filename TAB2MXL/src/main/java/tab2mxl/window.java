@@ -1,5 +1,5 @@
 package tab2mxl;
-//updated
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -10,6 +10,7 @@ import javax.swing.JFileChooser;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,8 @@ import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
+
 import javax.swing.UIManager;
 import javax.swing.JScrollBar;
 import javax.swing.JPanel;
@@ -32,6 +35,7 @@ import java.awt.Component;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.BorderLayout;
 
 public class window implements ActionListener{
 
@@ -61,7 +65,6 @@ public class window implements ActionListener{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		new loadingScreen();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -79,17 +82,55 @@ public class window implements ActionListener{
 	 */
 	public window() {
 		initialize();
-		format.fontname = "Arial";
-		format.font(16);
+//		beforeinitialize();
+//		format.fontname = "Arial";
+//		format.font(16);
+		file.changecolor("White");
+		frame.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
+//	private void beforeinitialize() {
+//		
+//		frame = new JFrame();
+//		frame.setBackground(Color.BLACK);
+//		frame.setBounds(100, 100, 590, 428);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		
+//		JPanel panel = new JPanel();
+//		frame.getContentPane().add(panel, BorderLayout.CENTER);
+//		panel.setLayout(null);
+//		
+//		JButton btnNewButton_2 = new JButton("New button");
+//		btnNewButton_2.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				
+//				initialize();
+//				close();
+//				
+//			}
+//		});
+//		btnNewButton_2.setBounds(229, 172, 93, 23);
+//		panel.add(btnNewButton_2);
+//		
+//	}
+	/////////////////////////////////////////////////////////
+//	public void close() {
+//		WindowEvent closeWindow = new WindowEvent(this.frame, WindowEvent.WINDOW_CLOSING);
+//		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+//	}
+	/////////////////////////////////////////////////////////
 	private void initialize() {
+		format.fontname = "Monospaced";
+		format.font(16);
+//		JFrame frame = new JFrame();
 		frame = new JFrame();
+		frame.setBackground(SystemColor.activeCaption);
 		frame.setBounds(100, 100, 590, 428);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
 		
 		JButton btnNewButton = new JButton("Choose a file");
 //		btnNewButton.addActionListener(new ActionListener() {
@@ -112,6 +153,7 @@ public class window implements ActionListener{
 		scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		
 		textArea = new JTextArea();
+		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
 
 		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
 
@@ -124,8 +166,7 @@ public class window implements ActionListener{
 		textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		scrollPane_1.setViewportView(textArea);
 		
-		format.fontname = "Arial";
-		format.font(16);
+
 		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -172,6 +213,9 @@ public class window implements ActionListener{
 		frame.getContentPane().setLayout(groupLayout);
 		
 		JMenuBar menuBar = new JMenuBar();
+		menuBar.setForeground(UIManager.getColor("Button.background"));
+		menuBar.setBorderPainted(false);
+		menuBar.setBackground(Color.GRAY);
 		frame.setJMenuBar(menuBar);
 		
 		JMenu menu1 = new JMenu("File");
@@ -227,16 +271,20 @@ public class window implements ActionListener{
 		mntmNewMenuItem_Arial.addActionListener(this);
 		mntmNewMenuItem_Arial.setActionCommand("Arial");
 		
-		JMenuItem mntmNewMenuItem_Comic_Sans_Ms = new JMenuItem("Comic Sans Ms");
+		JMenuItem mntmNewMenuItem_Comic_Sans_Ms = new JMenuItem("Comic Sans MS");
 		mnNewMenufont.add(mntmNewMenuItem_Comic_Sans_Ms);
 		mntmNewMenuItem_Comic_Sans_Ms.addActionListener(this);
-		mntmNewMenuItem_Comic_Sans_Ms.setActionCommand("Comic Sans Ms");
+		mntmNewMenuItem_Comic_Sans_Ms.setActionCommand("Comic Sans MS");
 		
-		JMenuItem mntmNewMenuItem_Time_New_Roman = new JMenuItem("Time New Roman");
-		mntmNewMenuItem_Time_New_Roman.setAutoscrolls(true);
+		JMenuItem mntmNewMenuItem_Time_New_Roman = new JMenuItem("Times New Roman");
 		mnNewMenufont.add(mntmNewMenuItem_Time_New_Roman);
 		mntmNewMenuItem_Time_New_Roman.addActionListener(this);
-		mntmNewMenuItem_Time_New_Roman.setActionCommand("Time New Roman");
+		mntmNewMenuItem_Time_New_Roman.setActionCommand("Times New Roman");
+		
+		JMenuItem mntmNewMenuItem_MONOSPACED = new JMenuItem("MONOSPACED");
+		mnNewMenufont.add(mntmNewMenuItem_MONOSPACED);
+		mntmNewMenuItem_MONOSPACED.addActionListener(this);
+		mntmNewMenuItem_MONOSPACED.setActionCommand("MONOSPACED");
 		
 		JMenu mnNewMenufontsize = new JMenu("Font Size");
 		mnNewMenu_Format.add(mnNewMenufontsize);
@@ -279,6 +327,26 @@ public class window implements ActionListener{
 		JMenu mnNewMenu_2 = new JMenu("Color");
 		mnNewMenu_2.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		menuBar.add(mnNewMenu_2);
+		
+		JMenuItem icolor = new JMenuItem("White");
+		mnNewMenu_2.add(icolor);
+		icolor.addActionListener(this);
+		icolor.setActionCommand("White");
+		
+		JMenuItem icolor2 = new JMenuItem("Black");
+		mnNewMenu_2.add(icolor2);
+		icolor2.addActionListener(this);
+		icolor2.setActionCommand("Black");
+		
+		JMenuItem icolor3 = new JMenuItem("Pink");
+		mnNewMenu_2.add(icolor3);
+		icolor3.addActionListener(this);
+		icolor3.setActionCommand("Pink");
+		
+		JMenuItem icolor4 = new JMenuItem("Blue");
+		mnNewMenu_2.add(icolor4);
+		icolor4.addActionListener(this);
+		icolor4.setActionCommand("Blue");
 //		scrollPane = new JScrollPane(textArea1, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 //		frame.getContentPane().add(scrollPane);
 //		textAreanum1 = new JTextArea();
@@ -306,10 +374,18 @@ public class window implements ActionListener{
 			case "size20": file.font(20);break;
 			case "size24": file.font(24);break;
 			case "size28": file.font(28);break;
-			case "Arial": file.setfont(command);break;
-			case "Comic Sans Ms": file.setfont(command);break;
-			case "Time New Roman": file.setfont(command);break;
+			case "Arial": format.setfont(command);break;
+			case "Comic Sans MS": format.setfont(command);break;
+			case "Times New Roman": format.setfont(command);break;
 			case "Word Wrap": file.wrap();break;
+			case "White": file.changecolor(command);break;
+			case "Black": file.changecolor(command);break;
+			case "Pink": file.changecolor(command);break;
+			case "Blue": file.changecolor(command);break;
+			case "MONOSPACED": format.setfont(command);break;
 		}
 	}
 }
+
+
+
