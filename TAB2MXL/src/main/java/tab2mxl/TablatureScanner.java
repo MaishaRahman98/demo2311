@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class TablatureScanner {
 	String texta;
 	window win;
+	
 
 	public TablatureScanner(window win) {
 		this.win = win;
