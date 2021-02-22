@@ -27,11 +27,10 @@ public class TablatureScanner {
 					break;
 				}
 			} 
-			else if (s.charAt(1) == '|' && s.endsWith("|")) {
+			else if (s.contains("|") && s.contains("-")) {
 				count += 1;
 			}
 		}
-		System.out.println(count);
 		if (count == 4 || count == 5) {
 			TablatureScanner.callBassClass(text);
 		}
@@ -50,7 +49,8 @@ public class TablatureScanner {
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
 			
-			if (line.charAt(0) == ' ') {
+			if ((line.contains("|") && line.contains("-"))) {
+				listOfStrings.add(line);
 				if (listOfStrings.isEmpty()) {
 					listOfStrings.clear();
 				}
@@ -71,12 +71,6 @@ public class TablatureScanner {
 					}
 					listOfStrings.clear();
 				}
-				else {
-					System.out.println("pass");
-				}
-			}
-			else if ((line.charAt(1) == '|')) {
-				listOfStrings.add(line);
 			}
 		}
 
@@ -92,8 +86,8 @@ public class TablatureScanner {
 		Guitar guitar;
 		while (myReader1.hasNextLine()) {
 			String line = myReader1.nextLine();
-			
-			if (line.charAt(0) == ' ') {
+			if (line.contains("|") && line.contains("-")) {
+				listOfStrings.add(line);
 				if (listOfStrings.isEmpty()) {
 					listOfStrings.clear();
 				}
@@ -116,14 +110,9 @@ public class TablatureScanner {
 					}
 					listOfStrings.clear();
 				}
-				else {
-					System.out.println("pass");
-				}
-			}
-			else if ((line.charAt(1) == '|' && line.endsWith("|"))) {
-				listOfStrings.add(line);
 			}
 		}
+		
 		myReader1.close();
 
 	}
