@@ -1,5 +1,5 @@
 package tab2mxl;
-
+//updated
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -61,6 +61,7 @@ public class window implements ActionListener{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		new loadingScreen();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -312,5 +313,3 @@ public class window implements ActionListener{
 		}
 	}
 }
-
-
