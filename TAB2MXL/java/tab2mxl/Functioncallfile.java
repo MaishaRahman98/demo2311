@@ -77,7 +77,7 @@ public class Functioncallfile {
 	public void exit() {
 		System.exit(0);
 	}
-//====================================================================================format below
+//=====================================================================format below
 	public void wrap() {
 		if (win.wrap_on == false) {
 			win.wrap_on=true;
