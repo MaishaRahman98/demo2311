@@ -90,6 +90,6 @@ public class Notes {
 			return mainNotes[fret];
 		}
 		
-
 	}
+
 }
