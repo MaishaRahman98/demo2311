@@ -72,7 +72,7 @@ public class Functioncallfile {
 			win.frame.setTitle(filename);
 		}
 		try {
-			FileWriter newfile1  = new FileWriter(fileaddress+filename);
+			FileWriter newfile1  = new FileWriter(fileaddress+filename+".txt");
 			newfile1.write(win.textArea.getText());
 			newfile1.close();
 		}catch(Exception e) {
@@ -114,13 +114,13 @@ public class Functioncallfile {
 		case "Arial":
 			win.textArea.setFont(arial);
 			break;
-		case "Comic Sans Ms":
+		case "Comic Sans MS":
 			win.textArea.setFont(comicSansMS);
 			break;
-		case "Time New Roman":
+		case "Times New Roman":
 			win.textArea.setFont(timesNewRoman);
 			break;
-		case "Courier New":
+		case "MONOSPACED":
 			win.textArea.setFont(mono);
 			break;
 		}
