@@ -61,14 +61,22 @@ public class Functioncallfile {
 	public void saveas() {
 		FileDialog savefd = new FileDialog(win.frame,"Save As", FileDialog.SAVE);
 		savefd.setVisible(true);
+		//
+		filename = savefd.getFile();
+		String name = filename.toString();
+		win.frame.setTitle(filename);
+		savefd.setFile(name);
+		//
 		if(savefd.getFile()!=null) {
 			filename = savefd.getName();
 			fileaddress = savefd.getDirectory();
 			win.frame.setTitle(filename);
 		}
 		try {
-			FileWriter newfile1  = new FileWriter(fileaddress+filename);
+			FileWriter newfile1  = new FileWriter(fileaddress+worini+".txt");
+//			FileWriter newfile1  = new FileWriter(fileaddress+filename);
 			newfile1.write(win.textArea.getText());
+			win.frame.setTitle(name);
 			newfile1.close();
 		}catch(Exception e) {
 			System.out.println("Save file isn't success");
