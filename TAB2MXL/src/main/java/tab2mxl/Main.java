@@ -13,12 +13,6 @@ public class Main {
 	 */
 	public static void Main() {
 
-<<<<<<< HEAD
-
-		// tester
-=======
-		//hey
-		// TODO Auto-generated method stub
 		System.out.println("Tabula rasa");
 		System.out.println("Tabula rasa v4");
 		System.out.println("Maisha's personal branch change");
@@ -72,7 +66,6 @@ public class Main {
 
 		System.out.println("Maisha's personal branch change v3");
 		System.out.println("Maisha's personal branch change v4");
->>>>>>> branch 'Dev1' of https://github.com/MaishaRahman98/demo2311
 
 	}
 }
