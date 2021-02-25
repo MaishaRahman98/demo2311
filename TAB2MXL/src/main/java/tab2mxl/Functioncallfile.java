@@ -12,8 +12,8 @@ public class Functioncallfile {
 	window win;
 	String filename;
 	String fileaddress;
-	Font arial, comicSansMS, timesNewRoman,mono;
-	String fontname="Monospaced";
+	Font arial, comicSansMS, timesNewRoman,Monospaced;
+	String fontname="MONOSPACED";
 	String text;
 	//==============================================
 	TablatureScanner ts = new TablatureScanner(win);
@@ -66,14 +66,21 @@ public class Functioncallfile {
 	public void saveas() {
 		FileDialog savefd = new FileDialog(win.frame,"Save As", FileDialog.SAVE);
 		savefd.setVisible(true);
+		filename = savefd.getFile();
+		String name = filename.toString();
+//		setTitle("JavaEdit: " + name);   // reset frame title
+		win.frame.setTitle(filename);
+		savefd.setFile(name);
 		if(savefd.getFile()!=null) {
 			filename = savefd.getName();
 			fileaddress = savefd.getDirectory();
 			win.frame.setTitle(filename);
 		}
 		try {
-			FileWriter newfile1  = new FileWriter(fileaddress+filename+".txt");
+			FileWriter newfile1  = new FileWriter(fileaddress+""+name+".txt");
+//			saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
 			newfile1.write(win.textArea.getText());
+			win.frame.setTitle(name);
 			newfile1.close();
 		}catch(Exception e) {
 			System.out.println("Save file isn't success");
@@ -102,7 +109,7 @@ public class Functioncallfile {
 		arial = new Font("Arial", Font.PLAIN, fontSize);
 		comicSansMS = new Font("Comic Sans MS", Font.PLAIN, fontSize);
 		timesNewRoman = new Font("Times New Roman", Font.PLAIN, fontSize);
-		mono = new Font("Monospaced",Font.PLAIN, fontSize);
+		Monospaced = new Font("Monospaced",Font.PLAIN, fontSize);
 		
 //		MONOSPACED = new Font("MONOSPACED",Font.PLAIN,fontSize);
 //		win.textArea.setFont(Font.MONOSPACED);
@@ -121,7 +128,7 @@ public class Functioncallfile {
 			win.textArea.setFont(timesNewRoman);
 			break;
 		case "MONOSPACED":
-			win.textArea.setFont(mono);
+			win.textArea.setFont(Monospaced);
 			break;
 		}
 	}
