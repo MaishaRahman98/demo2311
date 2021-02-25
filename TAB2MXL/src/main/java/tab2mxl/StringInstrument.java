@@ -1,5 +1,8 @@
 package tab2mxl;
 
+import org.xembly.Directives;
+import org.xembly.Xembler;
+
 public class StringInstrument {
 	private String str1;
 	private String str2;
@@ -83,10 +86,125 @@ public class StringInstrument {
 		char fret = 0;
 		int cc = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
+		String name;
 		
-		//XML declarations:
-		System.out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-		System.out.println("<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">");
+		if (str6 == null && str7 == null) {
+			name = "Bass";
+		}else {
+			name = "Guitar";
+		}
+		
+		//Creating the xml with Xembly:
+		Directives xmlOutput = new Directives();
+		//XML header declarations:
+		xmlOutput
+                .add("score-partwise")
+                .attr("version", "3.0")
+                .add("part-list")
+                .add("score-part")
+                .attr("id", "P1")
+                .add("part-name")
+                .set(name) //Part name is either Bass or Guitar (for now), depends on the number of strings
+                .up()
+                .up()
+                .up()
+                .add("part")
+                .attr("id", "P1")
+		//attributes and staff details:
+		        .add("attributes")
+		        .add("divisions") //still no idea what divisions does?
+		        .set("4") //the denominator in notes in terms of quarter notes. A duration of 4 will be one quarter note? A duration of 1 will be an 16th?
+		        .up()
+		        .add("time")
+		        .add("beats").set(4) 
+		        .up()
+		        .add("beat-type").set(4)
+		        .up()
+		        .up()
+		        .add("clef")
+		        .add("sign").set("TAB") //to indicate it is a tab
+		        .up()
+		        .add("line").set(5) //sets tab to line 5
+		        .up()
+		        .up()
+		        .add("staff-details")
+		        .add("staff-lines").set(6)
+		        .up()
+		        .add("staff-tuning")
+		        .attr("line", "1")
+		        .add("tuning-step").set("E")
+		        .up()
+		        .add("tuning-octave").set(2)
+		        .up()
+		        .up()
+		        .add("staff-tuning")
+		        .attr("line", "2")
+		        .add("tuning-step").set("A")
+		        .up()
+		        .add("tuning-octave").set(2)
+		        .up()
+		        .up()
+		        .add("staff-tuning")
+		        .attr("line", "3")
+		        .add("tuning-step").set("D")
+		        .up()
+		        .add("tuning-octave").set(3)
+		        .up()
+		        .up()
+		        .add("staff-tuning")
+		        .attr("line", "4")
+		        .add("tuning-step").set("G")
+		        .up()
+		        .add("tuning-octave").set(3)
+		        .up()
+		        .up()
+		        .add("staff-tuning")
+		        .attr("line", "5")
+		        .add("tuning-step").set("B")
+		        .up()
+		        .add("tuning-octave").set(3)
+		        .up()
+		        .up()
+		        .add("staff-tuning")
+		        .attr("line", "6")
+		        .add("tuning-step").set("E")
+		        .up()
+		        .add("tuning-octave").set(4)
+		        .up()
+		        .up()
+		        .up()
+		        .up();
+        
+        
+//		//XML header declarations:
+//		System.out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+//		System.out.println("<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">");
+//		System.out.println("<score-partwise version=\"3.1\">");
+//		System.out.println("\t<part-list>");
+//		System.out.println("\t\t<score-part id=\"P1\">");
+//		System.out.println("\t\t\t<part-name>Classical Guitar</part-name>");
+//		System.out.println("\t\t\t</score-part>");
+//		System.out.println("\t\t</part-list>");
+//		System.out.println("\t<part id=\"P1\">");
+//		System.out.println("\t\t<measure number=\"1\">");
+//		System.out.println("\t\t\t<attributes>");
+//		System.out.println("\t\t\t\t<divisions>2</divisions>");
+//		System.out.println("\t\t\t\t<key>");
+//		System.out.println("\t\t\t\t\t<fifths>0</fifths>");
+//		System.out.println("\t\t\t\t\t</key>");
+//		System.out.println("\t\t\t\t<time>");
+//		System.out.println("\t\t\t\t\t<beats>4</beats>"); 
+//		System.out.println("\t\t\t\t\t<beat-type>4</beat-type>"); 
+//		System.out.println("\t\t\t\t\t</time>");
+//		System.out.println("\t\t\t\t<clef>");
+//		System.out.println("\t\t\t\t\t<sign>TAB</sign>");
+//		System.out.println("\t\t\t\t\t<line>5</line>");
+//		System.out.println("\t\t\t\t\t</clef>");
+//		System.out.println("\t\t\t\t<staff-details>");
+//		System.out.println("\t\t\t\t\t<staff-lines>6</staff-lines>");
+//		System.out.println("\t\t\t\t\t<staff-tuning line=\"1\">");
+		
+		//Notes section:
 		for (int i = 2 ; str1.charAt(i) != '|' ; i++)
 		{
 			
@@ -101,18 +219,30 @@ public class StringInstrument {
 					note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
 				}
 				
-				//Coding to print out the note in string 1 in xml format:
-				System.out.println("<note>");
-				System.out.println("\t<pitch>");
-				System.out.println("\t\t<step>" +  note + "</step>");
-				System.out.println("\t\t</pitch>");
-				System.out.println("\t<notations>");
-				System.out.println("\t\t<technical>");
-				System.out.println("\t\t\t<string>" + cc + "</string>");
-				System.out.println("\t\t\t<fret>" + fret + "</fret>");
-				System.out.println("\t\t\t</technical>");
-				System.out.println("\t\t</notations>");
-				System.out.println("\t</note>");
+				xmlOutput
+                		.add("note")
+						.add("pitch")
+		                .add("step").set(note)
+		                .up()
+						.add("string").set(cc)
+		                .up()
+		                .add("fret").set(fret)
+		                .up()
+		                .up()
+		                .up();
+				
+//				//Coding to print out the note in string 1 in xml format:
+//				System.out.println("<note>");
+//				System.out.println("\t<pitch>");
+//				System.out.println("\t\t<step>" +  note + "</step>");
+//				System.out.println("\t\t</pitch>");
+//				System.out.println("\t<notations>");
+//				System.out.println("\t\t<technical>");
+//				System.out.println("\t\t\t<string>" + cc + "</string>");
+//				System.out.println("\t\t\t<fret>" + fret + "</fret>");
+//				System.out.println("\t\t\t</technical>");
+//				System.out.println("\t\t</notations>");
+//				System.out.println("\t</note>");
 
 			}
 			
@@ -120,6 +250,18 @@ public class StringInstrument {
 			cc = 0;
 			
 		}
+		//System.out.println("</score-partwise>");
+		xmlOutput.up();
+        String xml = null;
+        try {
+            xml = new Xembler(
+            		xmlOutput
+            ).xml();
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+        //return xml;
+        System.out.println(xml);
 	}		
 	public String getStr1() {
 		return str1;
