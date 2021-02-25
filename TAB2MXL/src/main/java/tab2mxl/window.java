@@ -253,7 +253,7 @@ public class window implements ActionListener{
 		mnNewMenu.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		menuBar.add(mnNewMenu);
 		
-		JMenu mnNewMenu_Format = new JMenu("Fromat");
+		JMenu mnNewMenu_Format = new JMenu("Format");
 		mnNewMenu_Format.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		menuBar.add(mnNewMenu_Format);
 //===========================================================================
