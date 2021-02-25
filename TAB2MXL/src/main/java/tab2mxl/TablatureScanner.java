@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class TablatureScanner {
 	String text;
 	window win;
+	public static int n = 1;
 
 	public TablatureScanner(String text) {
 		this.text = text;

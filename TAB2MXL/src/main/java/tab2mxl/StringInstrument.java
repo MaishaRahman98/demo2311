@@ -12,6 +12,9 @@ public class StringInstrument {
 	private String str6;
 	private String str7;
 	private char type; //number of strings
+	public static int mCount = 0;
+	public static int c = 0;
+	public static int d;
 	
 	public StringInstrument() {
 		this.type = ' ';
@@ -80,7 +83,7 @@ public class StringInstrument {
 		
 	}
 	//Prints bass or guitar tab in xml format:
-	public static String printToXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
+	public String printToXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
 		String note = "";
 		String string = "";
 		String output = "";
@@ -90,7 +93,9 @@ public class StringInstrument {
 		String name;
 		int octave = 0;
 		String xml = "";
-		int mCount = 0;
+		//c ;
+		//c = num + 1;
+		
 		
 		if (str6 == null && str7 == null) {
 			name = "Bass";
@@ -100,7 +105,7 @@ public class StringInstrument {
 		
 		//Creating the xml with Xembly:
 		Directives xmlOutput = new Directives();
-		if (mCount==0) {
+		if (c != 0) {
 		//XML header declarations:
 		xmlOutput
                 .add("score-partwise")
@@ -115,6 +120,10 @@ public class StringInstrument {
                 .up()
                 .add("part")
                 .attr("id", "P1")
+        //measure number:
+//        xmlOutput
+				.add("measure")
+				.attr("number", 1)
 		//attributes and staff details:
 		        .add("attributes")
 		        .add("divisions") //still no idea what divisions does?
@@ -180,11 +189,12 @@ public class StringInstrument {
 		        .up()
 		        .up();
 		}
-        //mCount++;
 		//Notes section:
 		for (int i = 2 ; str1.charAt(i) != '|' ; i++)
 		{
-			
+			if (str1.charAt(i) != '|') {
+				c++;
+			}
 			for (String j: allStrings) {
 				cc++;
 			if (j != null && Character.isDigit(j.charAt(i))) {
@@ -198,9 +208,7 @@ public class StringInstrument {
 					octave = Notes.guitarOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
 				}
 				
-				xmlOutput
-						.add("measure")
-						.attr("number", mCount);
+				
 				xmlOutput
                 		.add("note")
 						.add("pitch")
@@ -223,17 +231,20 @@ public class StringInstrument {
 			
 			}
 			cc = 0;
-			mCount++;
+			
 		}
-		//System.out.println("</score-partwise>");
+		
+		//mCount++;
+		//c++;
 		xmlOutput.up();
         try {
             xml = new Xembler(
             		xmlOutput
             ).xml();
         } catch (Exception e) {
-            System.out.println("There is an error with creating the xml output.");
+            xml = "There is an error with creating the xml output.";
         }
+
         return xml;
         //System.out.println(xml);
 
