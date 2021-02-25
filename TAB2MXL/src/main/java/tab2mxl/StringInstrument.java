@@ -87,6 +87,7 @@ public class StringInstrument {
 		int cc = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
 		String name;
+		int octave = 0;
 		
 		if (str6 == null && str7 == null) {
 			name = "Bass";
@@ -214,9 +215,11 @@ public class StringInstrument {
 
 				fret = j.charAt(i);
 				if (str6 == null && str7 == null) {
-				note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
+					note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
+					octave = Notes.bassOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
 				} else {
 					note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
+					octave = Notes.guitarOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
 				}
 				
 				xmlOutput
@@ -224,9 +227,15 @@ public class StringInstrument {
 						.add("pitch")
 		                .add("step").set(note)
 		                .up()
+                        .add("octave").set(octave)
+                        .up()
+                        .up()
+                        .add("notations")
+                        .add("technical")
 						.add("string").set(cc)
 		                .up()
 		                .add("fret").set(fret)
+		                .up()
 		                .up()
 		                .up()
 		                .up();
