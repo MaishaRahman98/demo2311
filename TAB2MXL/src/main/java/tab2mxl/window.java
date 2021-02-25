@@ -186,7 +186,8 @@ public class window implements ActionListener{
 		JButton btnNewButton_1 = new JButton("translate");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				file.transale();
+				file.translate();
+				//
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());

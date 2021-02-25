@@ -80,14 +80,16 @@ public class StringInstrument {
 		
 	}
 	//Prints bass or guitar tab in xml format:
-	public void printToXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
+	public String printToXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
 		String note = "";
 		String string = "";
+		String output = "";
 		char fret = 0;
 		int cc = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
 		String name;
 		int octave = 0;
+		String xml = "";
 		
 		if (str6 == null && str7 == null) {
 			name = "Bass";
@@ -261,16 +263,16 @@ public class StringInstrument {
 		}
 		//System.out.println("</score-partwise>");
 		xmlOutput.up();
-        String xml = null;
         try {
             xml = new Xembler(
             		xmlOutput
             ).xml();
         } catch (Exception e) {
-            System.out.println("error");
+            System.out.println("There is an error with creating the xml output.");
         }
-        //return xml;
-        System.out.println(xml);
+        return xml;
+        //System.out.println(xml);
+
 	}		
 	public String getStr1() {
 		return str1;
