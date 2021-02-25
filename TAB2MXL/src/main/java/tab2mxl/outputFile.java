@@ -25,10 +25,7 @@ public class outputFile {
 			myWriter.close();
 			System.out.println("file made");
 			return myObj.getName();
-//			Scanner scan = new Scanner(myObj);
-//			while (scan.hasNextLine()) {
-//				System.out.println(scan.nextLine());
-//			}
+
 		} catch (IOException e) {
 			System.out.println("An error occurred.");
 			e.printStackTrace();
