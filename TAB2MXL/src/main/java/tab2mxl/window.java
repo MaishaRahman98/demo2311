@@ -131,6 +131,7 @@ public class window implements ActionListener{
 		frame.setBounds(100, 100, 590, 428);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		frame.getContentPane().setBackground(Color.BLACK);
 		
 		JButton btnNewButton = new JButton("Choose a file");
 //		btnNewButton.addActionListener(new ActionListener() {

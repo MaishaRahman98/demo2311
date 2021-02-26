@@ -65,7 +65,6 @@ public class TablatureScanner {
 					s2 = (listOfStrings).get(1);
 					s3 = (listOfStrings).get(2);
 					s4 = (listOfStrings).get(3);
-					
 					if(listOfStrings.size() == count) {
 						bass = StringInstrument.getBass(s1,s2,s3,s4);
 						out.append((bass.printToXML(s1, s2, s3, s4, null, null, null)));
@@ -104,7 +103,6 @@ public class TablatureScanner {
 					s4 = (listOfStrings).get(3);
 					s5 = (listOfStrings).get(4);
 					s6 = (listOfStrings).get(5);
-					
 					if(listOfStrings.size() == count) {
 						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6);
 						out.append(guitar.printToXML(s1, s2, s3, s4, s5, s6, null));
