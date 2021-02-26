@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class Functioncallfile {
 
@@ -133,7 +134,7 @@ public class Functioncallfile {
 		}
 	}
 	//============================================
-	public void transale() {
+	public void translate() {
 		boolean em = win.textArea.getText().isEmpty();
 		if (em!=false) {
 			System.out.println("Empty text area");
@@ -142,7 +143,21 @@ public class Functioncallfile {
 //			win.textArea.getText().printTab();
 			text = win.textArea.getText();
 			win.textArea.setText(null);
-			ts.detect(text);
+			musicFile.createFile(text);
+			BufferedReader firstbf;
+			try {
+				firstbf = new BufferedReader(new FileReader(musicFile.createFile(text)));
+				win.textArea.setText("");
+				String newtext = null;
+				while ((newtext = firstbf.readLine())!=null) {
+					win.textArea.append(newtext+"\n");
+				}
+				firstbf.close();
+			}  catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
 		}
 	}
 	//============================================blow is color
