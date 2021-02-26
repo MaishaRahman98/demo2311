@@ -1,5 +1,7 @@
 package tab2mxl;
 
+import java.util.ArrayList;
+
 public class StringInstrument {
 	private String str1;
 	private String str2;
@@ -8,6 +10,7 @@ public class StringInstrument {
 	private String str5;
 	private String str6;
 	private String str7;
+	int measureCount = 0;
 	private char type; //number of strings
 	
 	public StringInstrument() {
@@ -81,6 +84,9 @@ public class StringInstrument {
 		String note = "";
 		String string = "";
 		String output = "";
+		int spaceCount = 0;
+		ArrayList<String> legatoOutput = new ArrayList<>();
+		boolean legatoCheck = false;
 		char fret = 0;
 		int cc = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
@@ -88,30 +94,48 @@ public class StringInstrument {
 		//XML declarations:
 		output+="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 		output+="<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n";
-		for (int i = 2 ; str1.charAt(i) != '|' ; i++)
+		for (int i = 1 ; i <str1.length() ; i++)
 		{
-			
+			if((i+1)!= str1.length()  && str1.charAt(i)=='|' && str1.charAt(i+1) == '-') {
+				measureCount++;
+				output+="<measure number=\""+measureCount+"\">";
+			}
 			for (String j: allStrings) {
 				cc++;
-			if (j != null && Character.isDigit(j.charAt(i))) {
-			
-				fret = j.charAt(i);
-				note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-				
-				//Coding to print out the note in string 1 in xml format:
-				output+="<note>\n";
-				output+="\t<pitch>\n";
-				output+="\t\t<step>" +  note + "</step>\n";
-				output+="\t\t</pitch>\n";
-				output+="\t<notations>\n";
-				output+="\t\t<technical>\n";
-				output+="\t\t\t<string>" + cc + "</string>\n";
-				output+="\t\t\t<fret>" + fret + "</fret>\n";
-				output+="\t\t\t</technical>\n";
-				output+="\t\t</notations>\n";
-				output+="\t</note>\n";
+				if (j != null && j.charAt(i)!= '|' && Character.isDigit(j.charAt(i))) {
+					fret = j.charAt(i);
+					note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
 
+				}
+				else if (j != null && Character.toLowerCase(j.charAt(i))=='p' ||j != null && Character.toLowerCase(j.charAt(i))=='h') {
+					legatoCheck = true;
+					legatoOutput = Measure.legatos(j.substring(i-2,i+2));
+				}
+//				else if (j != null && Character.isDigit(j.charAt(i)) || j.charAt(i)!='|') {
+//					
+//				}
+				
+			//Coding to print out the note in string 1 in xml format:
+			output+="<note>\n";
+			output+="\t<pitch>\n";
+			output+="\t\t<step>" +  note + "</step>\n";
+			output+="\t\t</pitch>\n";
+//			output+="<duration>"++"</duration>";
+			output+="\t<notations>\n";
+			output+="\t\t<technical>\n";
+			if (legatoCheck) {
+				output+="<"+legatoOutput.get(0)+" number=\"1\" type=\"start\">"+legatoOutput.get(1)+"</"+legatoOutput.get(0)+">";
 			}
+			output+="\t\t\t<string>" + cc + "</string>\n";
+			output+="\t\t\t<fret>" + fret + "</fret>\n";
+			output+="\t\t\t</technical>\n";
+			output+="\t\t</notations>\n";
+			output+="\t</note>\n";
+			if (legatoCheck) {
+				output+="<"+legatoOutput.get(0)+" number=\"1\" type=\"stop\"/>";
+				legatoCheck = false;
+			}
+			
 			
 			}
 			cc = 0;
