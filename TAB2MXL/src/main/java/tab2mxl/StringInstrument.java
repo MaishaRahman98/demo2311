@@ -102,6 +102,12 @@ public class StringInstrument {
 		}else {
 			name = "Guitar";
 		}
+		for (int i = 2 ; str1.charAt(i) != '|' ; i++)
+		{
+			if (str1.charAt(i) != '|') {
+				c++;
+			}
+		}
 		
 		//Creating the xml with Xembly:
 		Directives xmlOutput = new Directives();
@@ -123,7 +129,7 @@ public class StringInstrument {
         //measure number:
 //        xmlOutput
 				.add("measure")
-				.attr("number", 1)
+				.attr("number", c + 1)
 		//attributes and staff details:
 		        .add("attributes")
 		        .add("divisions") //still no idea what divisions does?
@@ -216,6 +222,10 @@ public class StringInstrument {
 		                .up()
                         .add("octave").set(octave)
                         .up()
+                        .up()
+                        .add("duration").set(1) //default is 1, will change later
+                        .up()
+                        .add("type").set("eighth") // default is eighth, will change later
                         .up()
                         .add("notations")
                         .add("technical")
