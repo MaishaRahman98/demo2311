@@ -17,7 +17,7 @@ public class Functioncallfile {
 	String fontname="MONOSPACED";
 	String text;
 	//==============================================
-	TablatureScanner ts = new TablatureScanner(win);
+	outputFile musicFile = new outputFile(win);
 	//==============================================
 	public Functioncallfile(window win) {
 		this.win = win;
