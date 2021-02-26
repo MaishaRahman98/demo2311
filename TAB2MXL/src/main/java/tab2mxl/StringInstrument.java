@@ -77,42 +77,39 @@ public class StringInstrument {
 		
 	}
 	//Prints bass or guitar tab in xml format:
-	public void printToXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
+	public String printToXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
 		String note = "";
 		String string = "";
+		String output = "";
 		char fret = 0;
 		int cc = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
 		
 		//XML declarations:
-		System.out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-		System.out.println("<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">");
+		output+="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+		output+="<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n";
 		for (int i = 2 ; str1.charAt(i) != '|' ; i++)
 		{
 			
 			for (String j: allStrings) {
 				cc++;
 			if (j != null && Character.isDigit(j.charAt(i))) {
-
+			
 				fret = j.charAt(i);
-				if (str6 == null && str7 == null) {
 				note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-				} else {
-					note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-				}
 				
 				//Coding to print out the note in string 1 in xml format:
-				System.out.println("<note>");
-				System.out.println("\t<pitch>");
-				System.out.println("\t\t<step>" +  note + "</step>");
-				System.out.println("\t\t</pitch>");
-				System.out.println("\t<notations>");
-				System.out.println("\t\t<technical>");
-				System.out.println("\t\t\t<string>" + cc + "</string>");
-				System.out.println("\t\t\t<fret>" + fret + "</fret>");
-				System.out.println("\t\t\t</technical>");
-				System.out.println("\t\t</notations>");
-				System.out.println("\t</note>");
+				output+="<note>\n";
+				output+="\t<pitch>\n";
+				output+="\t\t<step>" +  note + "</step>\n";
+				output+="\t\t</pitch>\n";
+				output+="\t<notations>\n";
+				output+="\t\t<technical>\n";
+				output+="\t\t\t<string>" + cc + "</string>\n";
+				output+="\t\t\t<fret>" + fret + "</fret>\n";
+				output+="\t\t\t</technical>\n";
+				output+="\t\t</notations>\n";
+				output+="\t</note>\n";
 
 			}
 			
@@ -120,6 +117,7 @@ public class StringInstrument {
 			cc = 0;
 			
 		}
+		return output;
 	}		
 	public String getStr1() {
 		return str1;
