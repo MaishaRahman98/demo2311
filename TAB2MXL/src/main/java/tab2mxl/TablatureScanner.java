@@ -89,6 +89,7 @@ public class TablatureScanner extends StringInstrument {
 		StringBuilder out = new StringBuilder();
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
 		ArrayList<String> listOfStrings = new ArrayList<String>();
+		out.append(xmlHeader(count));
 		Guitar guitar;
 		while (myReader1.hasNextLine()) {
 			String line = myReader1.nextLine();
