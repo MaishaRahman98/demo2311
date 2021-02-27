@@ -4,10 +4,6 @@ import org.xembly.Directives;
 import org.xembly.Xembler;
 import java.util.ArrayList;
 
-import org.xembly.Directives;
-import org.xembly.Xembler;
-import java.util.ArrayList;
-
 public class StringInstrument {
 	private String str1;
 	private String str2;
@@ -88,11 +84,45 @@ public class StringInstrument {
 
 		
 	}
-	//Helper methods
+	public static String xmlHeader(int c) {
+		String h = "";
+		StringBuilder head = new StringBuilder();
+		if (c == 4 || c == 5) {
+			head.append("Bass Guitar");
+		}else {
+			head.append("Guitar");
+		}
+		Directives xmlHeader = new Directives();
+		//XML header declarations:
+		xmlHeader
+                //.add("!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\"")
+                .add("score-partwise")
+                .attr("version", "3.1")
+                .add("part-list")
+                .add("score-part")
+                .attr("id", "P1")
+                .add("part-name").set(head) //Part name is either Bass or Guitar (for now), depends on the number of strings
+                .up()
+                .up()
+                .up()
+                .add("part")
+                .attr("id", "P1")
+				.up();
+		try {
+            h = new Xembler(
+            		xmlHeader
+            ).xml();
+        } catch (Exception e) {
+            h = "There is an error with creating the xml output." + e.toString();
+        }
 	
-	
+        return h;
+		
+       // return head.toString();	
+	}
 	//Prints bass or guitar tab in xml format:
 	public String printToXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
+		StringBuilder body = new StringBuilder();
 		String note = "";
 		String string = "";
 		String output = "";
@@ -100,42 +130,15 @@ public class StringInstrument {
 		ArrayList<String> legatoOutput = new ArrayList<>();
 		boolean legatoCheck = false;
 		char fret = 0;
-		int cc = 0;
+		int stringNum = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
 		String name;
 		int octave = 0;
 		String xml = "";
-<<<<<<< HEAD
+		int counter = 0;
 
-=======
-
->>>>>>> refs/remotes/origin/Maisha_Branch
-		if (str6 == null && str7 == null) {
-			name = "Bass Guitar";
-		}else {
-			name = "Guitar";
-		}
 		
-		//Creating the xml with Xembly:
-		Directives xmlOutput = new Directives();
-		//XML header declarations:
-<<<<<<< HEAD
-		if (c == 0){
-		xmlOutput
-                //.add("!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\"")
-                .add("score-partwise")
-                .attr("version", "3.1")
-                .add("part-list")
-                .add("score-part")
-                .attr("id", "P1")
-                .add("part-name").set(name) //Part name is either Bass or Guitar (for now), depends on the number of strings
-                .up()
-                .up()
-                .up()
-                .add("part")
-                .attr("id", "P1");
-		}
-		c++;
+		
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
 			if((i+1)!= str1.length()  && str1.charAt(i)=='|' && str1.charAt(i+1) == '-') {
@@ -143,521 +146,52 @@ public class StringInstrument {
 			}
 		}
 		
-			for (int k = 0; k < measureCount; k++) {
-				//measure number:
-//		        xmlOutput
-//						.add("measure")
-//						.attr("number", k + 1);
-		        if (k == 0) {
-		        	//attributes and staff details:
-		   		 	xmlOutput
-			   		 	.add("measure")
-						.attr("number", k + 1)
-		   		        .add("attributes")
-		   		        .add("divisions") .set("4") 
-		   		        .up()
-		   		        .add("time")
-		   		        .add("beats").set(4) 
-		   		        .up()
-		   		        .add("beat-type").set(4)
-		   		        .up()
-		   		        .up()
-		   		        .add("clef")
-		   		        .add("sign").set("TAB") //this is a tablature
-		   		        .up()
-		   		        .add("line").set(5) 
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-details")
-		   		        .add("staff-lines").set(6)
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "1")
-		   		        .add("tuning-step").set("E")
-		   		        .up()
-		   		        .add("tuning-octave").set(2)
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "2")
-		   		        .add("tuning-step").set("A")
-		   		        .up()
-		   		        .add("tuning-octave").set(2)
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "3")
-		   		        .add("tuning-step").set("D")
-		   		        .up()
-		   		        .add("tuning-octave").set(3)
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "4")
-		   		        .add("tuning-step").set("G")
-		   		        .up()
-		   		        .add("tuning-octave").set(3)
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "5")
-		   		        .add("tuning-step").set("B")
-		   		        .up()
-		   		        .add("tuning-octave").set(3)
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "6")
-		   		        .add("tuning-step").set("E")
-		   		        .up()
-		   		        .add("tuning-octave").set(4)
-		   		        .up()
-		   		        .up()
-		   		        .up()
-		   		        .up();
-		   		//Must put code for displaying notes here:
-//			        for (int i = 1 ; i <str1.length() ; i++)
-			        for (int i = 2 ; str1.charAt(i) != '|' ; i++)
-					{
-				        for (String j: allStrings) {
-							cc++;
-							
-							if (j != null && Character.isDigit(j.charAt(i))) {
-		
-								fret = j.charAt(i);
-								if (str6 == null && str7 == null) {
-									note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-									octave = Notes.bassOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-								}else {
-									note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-									octave = Notes.guitarOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-								}
-								xmlOutput
-		                		.add("note")
-								.add("pitch")
-				                .add("step").set(note)
-				                .up()
-		                        .add("octave").set(octave)
-		                        .up()
-		                        .up()
-		                        .add("duration").set(2) //default is 2, will change later
-		                        .up()
-		                        .add("type").set("quarter") // default is quarter, will change later
-		                        .up()
-		                        .add("notations")
-		                        .add("technical")
-								.add("string").set(cc)
-				                .up()
-				                .add("fret").set(fret)
-				                .up()
-				                .up()
-				                .up()
-				                .up();
-							}
-		//					else if (j != null && Character.toLowerCase(j.charAt(i))=='p' || j != null && Character.toLowerCase(j.charAt(i))=='h') {
-		//						legatoCheck = true;
-		//						legatoOutput = Measure.legatos(j.substring(i-2,i+2));
-		//						if (str6 == null && str7 == null) {
-		//							note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//							octave = Notes.bassOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//						} else {
-		//							note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//							octave = Notes.guitarOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//						}
-		//					}
-							
-				        }
-						cc = 0;
+		for (int k = 0; k < measureCount; k++) {
+        
+	        for (int i = 2 ; str1.charAt(i) != '|' ; i++)
+			{
+	        	counter++;
+	        	for (String j: allStrings) {
+		        	stringNum++;
+					
+					if (j != null && Character.isDigit(j.charAt(i))) {
+
+						fret = j.charAt(i);
+						if (str6 == null && str7 == null) {
+							note = Notes.bassNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+							octave = Notes.bassOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+						}else {
+							note = Notes.guitarNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+							octave = Notes.guitarOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+						}
+						body.append("<note>\n");
+						body.append("\t<pitch>\n");
+						body.append("\t\t<step>" +  note + "</step>\n");
+						body.append("\t\t</pitch>\n");
+						body.append("\t<notations>\n");
+						body.append("\t\t<technical>\n");
+						body.append("\t\t\t<string>" + string + "</string>\n");
+						body.append("\t\t\t<fret>" + fret + "</fret>\n");
+						body.append("\t\t\t</technical>\n");
+						body.append("\t\t</notations>\n");
+						body.append("\t</note>\n");
 						
-					}
-		        }else {
-		        	xmlOutput
-		        	.add("measure")
-					.attr("number", k + 1);
-		        
-				    //Must put code for displaying notes here:
-//			        for (int i = 1 ; i <str1.length() ; i++)
-			        for (int i = 2 ; str1.charAt(i) != '|' ; i++)
-					{
-				        for (String j: allStrings) {
-							cc++;
-							
-							if (j != null && Character.isDigit(j.charAt(i))) {
-		
-								fret = j.charAt(i);
-								if (str6 == null && str7 == null) {
-									note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-									octave = Notes.bassOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-								}else {
-									note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-									octave = Notes.guitarOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-								}
-								xmlOutput
-		                		.add("note")
-								.add("pitch")
-				                .add("step").set(note)
-				                .up()
-		                        .add("octave").set(octave)
-		                        .up()
-		                        .up()
-		                        .add("duration").set(2) //default is 2, will change later
-		                        .up()
-		                        .add("type").set("quarter") // default is quarter, will change later
-		                        .up()
-		                        .add("notations")
-		                        .add("technical")
-								.add("string").set(cc)
-				                .up()
-				                .add("fret").set(fret)
-				                .up()
-				                .up()
-				                .up()
-				                .up();
-							}
-		//					else if (j != null && Character.toLowerCase(j.charAt(i))=='p' || j != null && Character.toLowerCase(j.charAt(i))=='h') {
-		//						legatoCheck = true;
-		//						legatoOutput = Measure.legatos(j.substring(i-2,i+2));
-		//						if (str6 == null && str7 == null) {
-		//							note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//							octave = Notes.bassOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//						} else {
-		//							note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//							octave = Notes.guitarOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//						}
-		//					}
-							
-				        }
-						cc = 0;
-						spaceCount++;
-					}
-			        //mCount += measureCount;
-//			        xmlOutput
-//					.add("barline")
-//					.attr("location", "right")
-//					.add("bar-style").set("light-heavy")
-//					.up()
-//					.up()
-//					.up();
-		    }
-	
-//			//Coding to print out the note in string x in xml format:
-//			output+="<note>\n";
-//			output+="\t<pitch>\n";
-//			output+="\t\t<step>" +  note + "</step>\n";
-//			output+="\t\t</pitch>\n";
-////			output+="<duration>"++"</duration>";
-//			output+="\t<notations>\n";
-//			output+="\t\t<technical>\n";
-//			if (legatoCheck) {
-//				output+="<"+legatoOutput.get(0)+" number=\"1\" type=\"start\">"+legatoOutput.get(1)+"</"+legatoOutput.get(0)+">";
-//			}
-//			output+="\t\t\t<string>" + cc + "</string>\n";
-//			output+="\t\t\t<fret>" + fret + "</fret>\n";
-//			output+="\t\t\t</technical>\n";
-//			output+="\t\t</notations>\n";
-//			output+="\t</note>\n";
-//			if (legatoCheck) {
-//				output+="<"+legatoOutput.get(0)+" number=\"1\" type=\"stop\"/>";
-//				legatoCheck = false;
-//			}
 			
-			
-//			}
-//			cc = 0;
-//			
-//		}
-		if(spaceCount != 0) {
-		xmlOutput
-			.add("barline")
-			.attr("location", "right")
-			.add("bar-style").set("light-heavy")
-			.up()
-			.up()
-			.up()
-			.up();
-		}
-        try {
-            xml = new Xembler(
-            		xmlOutput
-            ).xml();
-        } catch (Exception e) {
-            xml = "There is an error with creating the xml output." + e.toString();
-        }
-//		}
-		}
-        return xml;
-        //System.out.println(xml);
-
-	}		
-=======
-		xmlOutput
-                //.add("!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\"")
-                .add("score-partwise")
-                .attr("version", "3.1")
-                .add("part-list")
-                .add("score-part")
-                .attr("id", "P1")
-                .add("part-name").set(name) //Part name is either Bass or Guitar (for now), depends on the number of strings
-                .up()
-                .up()
-                .up()
-                .add("part")
-                .attr("id", "P1");
-
-		for (int i = 1 ; i <str1.length() ; i++)
-		{
-			if((i+1)!= str1.length()  && str1.charAt(i)=='|' && str1.charAt(i+1) == '-') {
-				measureCount++;
+                	
+		        }
+					
+				stringNum = 0;
+				
+			}
+	        mCount += measureCount;
 			}
 		}
-		
-			for (int k = 0; k < measureCount; k++) {
-				//measure number:
-//		        xmlOutput
-//						.add("measure")
-//						.attr("number", k + 1);
-		        if (k == 0) {
-		        	//attributes and staff details:
-		   		 	xmlOutput
-			   		 	.add("measure")
-						.attr("number", k + 1)
-		   		        .add("attributes")
-		   		        .add("divisions") .set("4") 
-		   		        .up()
-		   		        .add("time")
-		   		        .add("beats").set(4) 
-		   		        .up()
-		   		        .add("beat-type").set(4)
-		   		        .up()
-		   		        .up()
-		   		        .add("clef")
-		   		        .add("sign").set("TAB") //this is a tablature
-		   		        .up()
-		   		        .add("line").set(5) 
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-details")
-		   		        .add("staff-lines").set(6)
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "1")
-		   		        .add("tuning-step").set("E")
-		   		        .up()
-		   		        .add("tuning-octave").set(2)
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "2")
-		   		        .add("tuning-step").set("A")
-		   		        .up()
-		   		        .add("tuning-octave").set(2)
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "3")
-		   		        .add("tuning-step").set("D")
-		   		        .up()
-		   		        .add("tuning-octave").set(3)
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "4")
-		   		        .add("tuning-step").set("G")
-		   		        .up()
-		   		        .add("tuning-octave").set(3)
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "5")
-		   		        .add("tuning-step").set("B")
-		   		        .up()
-		   		        .add("tuning-octave").set(3)
-		   		        .up()
-		   		        .up()
-		   		        .add("staff-tuning")
-		   		        .attr("line", "6")
-		   		        .add("tuning-step").set("E")
-		   		        .up()
-		   		        .add("tuning-octave").set(4)
-		   		        .up()
-		   		        .up()
-		   		        .up()
-		   		        .up();
-		   		//Must put code for displaying notes here:
-//			        for (int i = 1 ; i <str1.length() ; i++)
-			        for (int i = 2 ; str1.charAt(i) != '|' ; i++)
-					{
-				        for (String j: allStrings) {
-							cc++;
-							
-							if (j != null && Character.isDigit(j.charAt(i))) {
-		
-								fret = j.charAt(i);
-								if (str6 == null && str7 == null) {
-									note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-									octave = Notes.bassOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-								}else {
-									note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-									octave = Notes.guitarOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-								}
-								xmlOutput
-		                		.add("note")
-								.add("pitch")
-				                .add("step").set(note)
-				                .up()
-		                        .add("octave").set(octave)
-		                        .up()
-		                        .up()
-		                        .add("duration").set(2) //default is 2, will change later
-		                        .up()
-		                        .add("type").set("quarter") // default is quarter, will change later
-		                        .up()
-		                        .add("notations")
-		                        .add("technical")
-								.add("string").set(cc)
-				                .up()
-				                .add("fret").set(fret)
-				                .up()
-				                .up()
-				                .up()
-				                .up();
-							}
-		//					else if (j != null && Character.toLowerCase(j.charAt(i))=='p' || j != null && Character.toLowerCase(j.charAt(i))=='h') {
-		//						legatoCheck = true;
-		//						legatoOutput = Measure.legatos(j.substring(i-2,i+2));
-		//						if (str6 == null && str7 == null) {
-		//							note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//							octave = Notes.bassOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//						} else {
-		//							note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//							octave = Notes.guitarOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//						}
-		//					}
-							
-				        }
-						cc = 0;
-						
-					}
-		        }else {
-		        	xmlOutput
-		        	.add("measure")
-					.attr("number", k + 1);
-		        
-				    //Must put code for displaying notes here:
-//			        for (int i = 1 ; i <str1.length() ; i++)
-			        for (int i = 2 ; str1.charAt(i) != '|' ; i++)
-					{
-				        for (String j: allStrings) {
-							cc++;
-							
-							if (j != null && Character.isDigit(j.charAt(i))) {
-		
-								fret = j.charAt(i);
-								if (str6 == null && str7 == null) {
-									note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-									octave = Notes.bassOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-								}else {
-									note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-									octave = Notes.guitarOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-								}
-								xmlOutput
-		                		.add("note")
-								.add("pitch")
-				                .add("step").set(note)
-				                .up()
-		                        .add("octave").set(octave)
-		                        .up()
-		                        .up()
-		                        .add("duration").set(2) //default is 2, will change later
-		                        .up()
-		                        .add("type").set("quarter") // default is quarter, will change later
-		                        .up()
-		                        .add("notations")
-		                        .add("technical")
-								.add("string").set(cc)
-				                .up()
-				                .add("fret").set(fret)
-				                .up()
-				                .up()
-				                .up()
-				                .up();
-							}
-		//					else if (j != null && Character.toLowerCase(j.charAt(i))=='p' || j != null && Character.toLowerCase(j.charAt(i))=='h') {
-		//						legatoCheck = true;
-		//						legatoOutput = Measure.legatos(j.substring(i-2,i+2));
-		//						if (str6 == null && str7 == null) {
-		//							note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//							octave = Notes.bassOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//						} else {
-		//							note = Notes.guitarNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//							octave = Notes.guitarOctave("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
-		//						}
-		//					}
-							
-				        }
-						cc = 0;
-						spaceCount++;
-					}
-			        //mCount += measureCount;
-//			        xmlOutput
-//					.add("barline")
-//					.attr("location", "right")
-//					.add("bar-style").set("light-heavy")
-//					.up()
-//					.up()
-//					.up();
-		    }
-	
-//			//Coding to print out the note in string x in xml format:
-//			output+="<note>\n";
-//			output+="\t<pitch>\n";
-//			output+="\t\t<step>" +  note + "</step>\n";
-//			output+="\t\t</pitch>\n";
-////			output+="<duration>"++"</duration>";
-//			output+="\t<notations>\n";
-//			output+="\t\t<technical>\n";
-//			if (legatoCheck) {
-//				output+="<"+legatoOutput.get(0)+" number=\"1\" type=\"start\">"+legatoOutput.get(1)+"</"+legatoOutput.get(0)+">";
-//			}
-//			output+="\t\t\t<string>" + cc + "</string>\n";
-//			output+="\t\t\t<fret>" + fret + "</fret>\n";
-//			output+="\t\t\t</technical>\n";
-//			output+="\t\t</notations>\n";
-//			output+="\t</note>\n";
-//			if (legatoCheck) {
-//				output+="<"+legatoOutput.get(0)+" number=\"1\" type=\"stop\"/>";
-//				legatoCheck = false;
-//			}
-			
-			
-//			}
-//			cc = 0;
-//			
-//		}
-		if(spaceCount != 0) {
-		xmlOutput
-			.add("barline")
-			.attr("location", "right")
-			.add("bar-style").set("light-heavy")
-			.up()
-			.up()
-			.up()
-			.up();
-		}
-        try {
-            xml = new Xembler(
-            		xmlOutput
-            ).xml();
-        } catch (Exception e) {
-            xml = "There is an error with creating the xml output." + e.toString();
-        }
-//		}
-		}
-        return xml;
-        //System.out.println(xml);
+		return body.toString();	
 
-	}		
->>>>>>> refs/remotes/origin/Maisha_Branch
+	}	
+
+	
+	//Getters and Setters:
 	public String getStr1() {
 		return str1;
 	}
@@ -709,3 +243,6 @@ public class StringInstrument {
 	
 	
 }
+	
+	
+

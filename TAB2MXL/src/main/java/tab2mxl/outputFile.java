@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class outputFile {
+public class outputFile extends StringInstrument {
 	window win;
 	String xml = "";
 	TablatureScanner ts = new TablatureScanner(xml);
@@ -15,12 +15,14 @@ public class outputFile {
 		this.win = win;
 
 	}
+	
 
 	public String createFile(String text) {
 		xml = ts.detect(text);
 		try {
 			File myObj = new File("newfile.txt");
 			FileWriter myWriter = new FileWriter("newfile.txt");
+			//myWriter.write(xmlHeader(c));
 			myWriter.write(xml);
 			myWriter.close();
 			System.out.println("file made");

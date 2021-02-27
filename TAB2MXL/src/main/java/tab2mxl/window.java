@@ -387,11 +387,4 @@ public class window implements ActionListener{
 			case "MONOSPACED": format.setfont(command);break;
 		}
 	}
-<<<<<<< HEAD
 }
-=======
-}
-
-
-
->>>>>>> refs/remotes/origin/Maisha_Branch
