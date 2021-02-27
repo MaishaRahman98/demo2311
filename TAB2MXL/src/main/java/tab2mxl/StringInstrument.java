@@ -5,13 +5,13 @@ import org.xembly.Xembler;
 import java.util.ArrayList;
 
 public class StringInstrument {
-	private String str1;
-	private String str2;
-	private String str3;
-	private String str4;
-	private String str5;
-	private String str6;
-	private String str7;
+	private static String str1;
+	private static String str2;
+	private static String str3;
+	private static String str4;
+	private static String str5;
+	private static String str6;
+	private static String str7;
 	int measureCount = 0;
 	private char type; //number of strings
 	public static int mCount = 0;
@@ -84,44 +84,149 @@ public class StringInstrument {
 
 		
 	}
-	public String xmlHeader(int c) {
-		String h = "";
-		String name;
+	public static String xmlHeader(int c) {
+		String instrument = "";
+		StringBuilder head = new StringBuilder();
 		if (c == 4 || c == 5) {
-			name = "Bass Guitar";
+			instrument = "Bass Guitar";
 		}else {
-			name = "Guitar";
+			instrument = "Guitar";
 		}
 		
-		//Creating the xml with Xembly:
-		Directives xmlHeader = new Directives();
-		//XML header declarations:
-		xmlHeader
-                //.add("!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\"")
-                .add("score-partwise")
-                .attr("version", "3.1")
-                .add("part-list")
-                .add("score-part")
-                .attr("id", "P1")
-                .add("part-name").set(name) //Part name is either Bass or Guitar (for now), depends on the number of strings
-                .up()
-                .up()
-                .up()
-                .add("part")
-                .attr("id", "P1")
-				.up();
-		try {
-            h = new Xembler(
-            		xmlHeader
-            ).xml();
-        } catch (Exception e) {
-            h = "There is an error with creating the xml output." + e.toString();
-        }
-	
-        return h;
+                head.append("<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n");
+                head.append("<score-partwise version = 3.1>");
+               
+                head.append(" <part-list>\n");
+                head.append("  <score-part id = \"P1\">\n");
+                head.append("   <part-name>" + instrument + "</part-name>\n");
+                head.append("  </score-part>\n");
+                head.append(" </part-list>\n");
+                head.append(" <part id = \"P1\">\n");
+                head.append("  <measure number=\"1\">\n");
+                head.append("       <attributes>\n");
+                head.append("            <divisions>4</divisions>>\n");
+                head.append("            <time>\n");
+                head.append("                <beats>4</beats>\n");
+                head.append("                <beat-type>4</beat-type>\n");
+                head.append("            <time>\n");
+                head.append("            <clef>\n");
+                head.append("               <sign>TAB</sign>\n");
+                head.append("               <line>1</line>\n");
+                head.append("            <clef>\n");
+                head.append("            <staff-details>\n");
+                
+                if (c == 4) {
+                head.append("                <staff-line>" + c + "</staff-lines>\n");
+                head.append("                <staff-tuning line = \"1\">\n");
+                head.append("                    <tuning-step>" + str1 + "</tuning-step>\n");
+                head.append("                    <tuning-octave> 1 </tuning-octave>\n");
+                head.append("                </staff-tuning>\n");
+                head.append("                <staff-tuning line = \"2\">\n");
+                head.append("                   <tuning-step>" + str2 + "</tuning-step>\\n");
+                head.append("                    <tuning-octave> 1 </tuning-octave>\n");
+                head.append("                </staff-tuning>\n");
+                head.append("                <staff-tuning line = \"3\">\n");
+                head.append("                   <tunning-step>" + str3 + "</tuning-step>\\n");
+                head.append("                    <tunning-octave> 2 </tuning-octave>\n");
+                head.append("                </staff-tuning>\n");
+                head.append("                <staff-tuning line = \"4\">\n");
+                head.append("                   <tuning-step>" + str4 + "</tuning-step>\\n");
+                head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+     
+                
+                }
+                
+                if (c == 5) {
+                    head.append("                <staff-line>" + c + "</staff-lines>\n");
+                    head.append("                <staff-tuning line = \"1\">\n");
+                    head.append("                    <tuning-step>" + str1 + "</tuning-step>\n");
+                    head.append("                    <tuning-octave> 1 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"2\">\n");
+                    head.append("                   <tuning-step>" + str2 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 1 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"3\">\n");
+                    head.append("                   <tuning-step>" + str3 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"4\">\n");
+                    head.append("                   <tuning-step>" + str4 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"5\">\n");
+                    head.append("                   <tuning-step>" + str5 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    
+                    }
+                if (c == 6) {
+                    head.append("                <staff-line>" + c + "</staff-lines>\n");
+                    head.append("                <staff-tuning line = \"1\">\n");
+                    head.append("                    <tuning-step>" + str1 + "</tuning-step>\n");
+                    head.append("                    <tuning-octave> 1 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"2\">\n");
+                    head.append("                   <tuning-step>" + str2 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 1 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"3\">\n");
+                    head.append("                   <tuning-step>" + str3 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"4\">\n");
+                    head.append("                   <tuning-step>" + str4 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"5\">\n");
+                    head.append("                   <tuning-step>" + str5 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"6\">\n");
+                    head.append("                   <tuning-step>" + str6 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    }
+                if (c == 7) {
+                    head.append("                <staff-line>" + c + "</staff-lines>\n");
+                    head.append("                <staff-tuning line = \"1\">\n");
+                    head.append("                    <tuning-step>" + str1 + "</tuning-step>\n");
+                    head.append("                    <tuning-octave> 1 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"2\">\n");
+                    head.append("                   <tuning-step>" + str2 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 1 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"3\">\n");
+                    head.append("                   <tuning-step>" + str3 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"4\">\n");
+                    head.append("                   <tuning-step>" + str4 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"5\">\n");
+                    head.append("                   <tuning-step>" + str5 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"6\">\n");
+                    head.append("                   <tuning-step>" + str6 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    head.append("                </staff-tuning>\n");
+                    head.append("                <staff-tuning line = \"7\">\n");
+                    head.append("                   <tuning-step>" + str7 + "</tuning-step>\\n");
+                    head.append("                    <tuning-octave> 2 </tuning-octave>\n");
+                    }          
+                
+        head.append("                </staff-tuning>\n");
+        head.append("                </staff-tuning line = " + c + ">\n");
+        head.append("            </staff-details>\n");
+        head.append("         </attributes>\n");
+                
+   
+        return head.toString();	
 	}
 	//Prints bass or guitar tab in xml format:
 	public String printToXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
+		StringBuilder body = new StringBuilder();
 		String note = "";
 		String string = "";
 		String output = "";
@@ -136,30 +241,6 @@ public class StringInstrument {
 		String xml = "";
 		int counter = 0;
 
-		if (str6 == null && str7 == null) {
-			name = "Bass Guitar";
-		}else {
-			name = "Guitar";
-		}
-		
-		//Creating the xml with Xembly:
-		Directives xmlOutput = new Directives();
-		//XML header declarations:
-//		xmlOutput
-//                //.add("!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\"")
-//                .add("score-partwise")
-//                .attr("version", "3.1")
-//                .add("part-list")
-//                .add("score-part")
-//                .attr("id", "P1")
-//                .add("part-name").set(name) //Part name is either Bass or Guitar (for now), depends on the number of strings
-//                .up()
-//                .up()
-//                .up();
-//                .add("part")
-//                .attr("id", "P1");
-		
-		//Get number of measures:
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
 			if((i+1)!= str1.length()  && str1.charAt(i)=='|' && str1.charAt(i+1) == '-') {
@@ -168,79 +249,7 @@ public class StringInstrument {
 		}
 		
 		for (int k = 0; k < measureCount; k++) {
-			//measure number:
-	        xmlOutput
-					.add("measure")
-					.attr("number", mCount);
-//	        if (mCount == 0) {
-//	        	//attributes and staff details:
-//	   		 	xmlOutput
-//	   		        .add("attributes")
-//	   		        .add("divisions") .set("4") 
-//	   		        .up()
-//	   		        .add("time")
-//	   		        .add("beats").set(4) 
-//	   		        .up()
-//	   		        .add("beat-type").set(4)
-//	   		        .up()
-//	   		        .up()
-//	   		        .add("clef")
-//	   		        .add("sign").set("TAB") //this is a tablature
-//	   		        .up()
-//	   		        .add("line").set(5) 
-//	   		        .up()
-//	   		        .up()
-//	   		        .add("staff-details")
-//	   		        .add("staff-lines").set(6)
-//	   		        .up()
-//	   		        .add("staff-tuning")
-//	   		        .attr("line", "1")
-//	   		        .add("tuning-step").set("E")
-//	   		        .up()
-//	   		        .add("tuning-octave").set(2)
-//	   		        .up()
-//	   		        .up()
-//	   		        .add("staff-tuning")
-//	   		        .attr("line", "2")
-//	   		        .add("tuning-step").set("A")
-//	   		        .up()
-//	   		        .add("tuning-octave").set(2)
-//	   		        .up()
-//	   		        .up()
-//	   		        .add("staff-tuning")
-//	   		        .attr("line", "3")
-//	   		        .add("tuning-step").set("D")
-//	   		        .up()
-//	   		        .add("tuning-octave").set(3)
-//	   		        .up()
-//	   		        .up()
-//	   		        .add("staff-tuning")
-//	   		        .attr("line", "4")
-//	   		        .add("tuning-step").set("G")
-//	   		        .up()
-//	   		        .add("tuning-octave").set(3)
-//	   		        .up()
-//	   		        .up()
-//	   		        .add("staff-tuning")
-//	   		        .attr("line", "5")
-//	   		        .add("tuning-step").set("B")
-//	   		        .up()
-//	   		        .add("tuning-octave").set(3)
-//	   		        .up()
-//	   		        .up()
-//	   		        .add("staff-tuning")
-//	   		        .attr("line", "6")
-//	   		        .add("tuning-step").set("E")
-//	   		        .up()
-//	   		        .add("tuning-octave").set(4)
-//	   		        .up()
-//	   		        .up()
-//	   		        .up()
-//	   		        .up();
-//	        }
-        
-		    //Must put code for displaying notes here:
-//			for (int i = 1 ; i <str1.length() ; i++)
+
 	        for (int i = 2 ; str1.charAt(i) != '|' ; i++)
 			{
 	        	counter++;
@@ -257,61 +266,41 @@ public class StringInstrument {
 							note = Notes.guitarNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 							octave = Notes.guitarOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 						}
-						xmlOutput
-                		.add("note")
-						.add("pitch")
-		                .add("step").set(note)
-		                .up()
-                        .add("octave").set(octave)
-                        .up()
-                        .up()
-                        .add("duration").set(2) //default is 2, will change later
-                        .up()
-                        .add("type").set("quarter") // default is quarter, will change later
-                        .up()
-                        .add("notations")
-                        .add("technical")
-						.add("string").set(stringNum)
-		                .up()
-		                .add("fret").set(fret)
-		                .up()
-		                .up()
-		                .up()
-		                .up();
-					}
-//					else if (j != null && Character.toLowerCase(j.charAt(i))=='p' || j != null && Character.toLowerCase(j.charAt(i))=='h') {
-//						legatoCheck = true;
-//						legatoOutput = Measure.legatos(j.substring(i-2,i+2));
-//		
-//					}
-					
-		        }
-				stringNum = 0;
-				
+						body.append("<note>\n");
+						body.append(" <pitch>\n");
+						body.append("  <step>" +  note + "</step>\n");
+						body.append("  <octave>" +  octave + "</octave>\n");
+						body.append("  </pitch>\n");
+						body.append(" <notations>\n");
+						body.append("  <technical>\n");
+						body.append("   <string>" + stringNum + "</string>\n");
+						body.append("   <fret>" + fret + "</fret>\n");
+						body.append("   </technical>\n");
+						body.append("  </notations>\n");
+						body.append(" </note>\n");            	
+		        }	
 			}
-
-//		if(counter != 0) {
-			xmlOutput
-				.add("barline")
-				.attr("location", "right")
-				.add("bar-style").set("light-heavy")
-				.up()
-				.up()
-				.up()
-				.up();
-//		}
-        try {
-            xml = new Xembler(
-            		xmlOutput
-            ).xml();
-        } catch (Exception e) {
-            xml = "There is an error with creating the xml body output." + e.toString();
-        }
+	        stringNum = 0;
+	        mCount += measureCount;
+			}
 		}
-        return xml;
+		return body.toString();	
 
 	}	
 	//End of printToXML method
+	
+	
+	public static String endHeading() {
+		//Ender:
+		StringBuilder end = new StringBuilder();
+		end.append("  <barline location=\"right\">\n");
+		end.append("   <bar-style>light-heavy</bar-style>\n");
+		end.append("   </barline>\n");
+		end.append("  </measure>\n");
+		end.append(" </part>\n");
+		end.append("</score-partwise>\n");
+		return end.toString();
+	}
 	
 	//Getters and Setters:
 	public String getStr1() {

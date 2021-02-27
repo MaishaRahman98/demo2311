@@ -1,1 +1,522 @@
-Bass GuitarThere is an error with creating the xml body output.org.xembly.ImpossibleModificationException: directive #1: UPThere is an error with creating the xml body output.org.xembly.ImpossibleModificationException: directive #1: UPThere is an error with creating the xml body output.org.xembly.ImpossibleModificationException: directive #1: UP
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 3.1 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<score-partwise version = 3.1> <part-list>
+  <score-part id = "P1">
+   <part-name>Bass Guitar</part-name>
+  </score-part>
+ </part-list>
+ <part id = "P1">
+  <measure number="1">
+       <attributes>
+            <divisions>4</divisions>>
+            <time>
+                <beats>4</beats>
+                <beat-type>4</beat-type>
+            <time>
+            <clef>
+               <sign>TAB</sign>
+               <line>1</line>
+            <clef>
+            <staff-details>
+                <staff-line>4</staff-lines>
+                <staff-tuning line = "1">
+                    <tuning-step>G|-----------------------------------|</tuning-step>
+                    <tuning-octave> 1 </tuning-octave>
+                </staff-tuning>
+                <staff-tuning line = "2">
+                   <tuning-step>D|-----------------------------------|</tuning-step>\n                    <tuning-octave> 1 </tuning-octave>
+                </staff-tuning>
+                <staff-tuning line = "3">
+                   <tunning-step>A|-----------------------------------|</tuning-step>\n                    <tunning-octave> 2 </tuning-octave>
+                </staff-tuning>
+                <staff-tuning line = "4">
+                   <tuning-step>E|-3-3-3-3-3-3-3-3-3-5-5-5-5-5-5-5-5-|</tuning-step>\n                    <tuning-octave> 2 </tuning-octave>
+                </staff-tuning>
+                </staff-tuning line = 4>
+            </staff-details>
+         </attributes>
+<note>
+ <pitch>
+  <step>E</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>E</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>2</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>E</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>D</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>C</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>8</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>B</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>E</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>E</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>2</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>E</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>D</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>C</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>8</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>B</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>E</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>E</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>2</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>E</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>D</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>C</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>8</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>D</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>3</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>C</step>
+  <octave>2</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>8</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>B</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>7</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>3</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>3</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>3</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>3</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>3</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>3</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>3</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>3</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>G</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>3</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>A</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>A</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>A</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>A</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>A</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>A</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>A</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+<note>
+ <pitch>
+  <step>A</step>
+  <octave>1</octave>
+  </pitch>
+ <notations>
+  <technical>
+   <string>4</string>
+   <fret>5</fret>
+   </technical>
+  </notations>
+ </note>
+  <barline location="right">
+   <bar-style>light-heavy</bar-style>
+   </barline>
+  </measure>
+ </part>
+</score-partwise>

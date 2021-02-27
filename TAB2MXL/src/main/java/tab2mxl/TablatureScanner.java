@@ -11,7 +11,7 @@ import org.xembly.Directives;
 import org.xembly.Xembler;
 
 
-public class TablatureScanner {
+public class TablatureScanner extends StringInstrument {
 	String text;
 	window win;
 	static String header;
@@ -53,17 +53,17 @@ public class TablatureScanner {
 		return output;
 	}
 
-	public static String xmlHeader(int c) {
-		String h = "";
-		StringBuilder head = new StringBuilder();
-		if (c == 4 || c == 5) {
-			head.append("Bass Guitar");
-		}else {
-			head.append("Guitar");
-		}
-		
-        return head.toString();
-	}
+//	public static String xmlHeader(int c) {
+//		String h = "";
+//		StringBuilder head = new StringBuilder();
+//		if (c == 4 || c == 5) {
+//			head.append("Bass Guitar");
+//		}else {
+//			head.append("Guitar");
+//		}
+//		
+//        return head.toString();
+//	}
 	
 	public static String callBassClass(String text,int count){
 		Scanner myReader = new Scanner(text);
@@ -71,7 +71,7 @@ public class TablatureScanner {
 		StringBuilder out = new StringBuilder();
 		Bass bass;
 		ArrayList<String> listOfStrings = new ArrayList<String>();
-		out.append(header);
+		out.append(xmlHeader(count));
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
 			
@@ -99,6 +99,7 @@ public class TablatureScanner {
 				}
 			}
 		}
+		out.append(endHeading());
 		myReader.close();
 		return out.toString();
 	}
@@ -109,6 +110,7 @@ public class TablatureScanner {
 		StringBuilder out = new StringBuilder();
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
 		ArrayList<String> listOfStrings = new ArrayList<String>();
+		out.append(xmlHeader(count));
 		Guitar guitar;
 		while (myReader1.hasNextLine()) {
 			String line = myReader1.nextLine();
@@ -137,7 +139,7 @@ public class TablatureScanner {
 				}
 			}
 		}
-		
+		out.append(endHeading());
 		myReader1.close();
 		return out.toString();
 
