@@ -3,19 +3,27 @@ package tab2mxl;
 import java.io.File;
 
 import java.io.FileNotFoundException;
+<<<<<<< HEAD
+=======
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+>>>>>>> refs/remotes/origin/Maisha_Branch
 import java.util.Scanner;
 
-public class TablatureScanner {
-	String texta;
-	window win;
 
-	public TablatureScanner(window win) {
-		this.win = win;
+public class TablatureScanner {
+	String text;
+	window win;
+	public static int n = 1;
+
+	public TablatureScanner(String text) {
+		this.text = text;
 
 	}
-
-	public void detect(String text) {
+	public String detect(String text){
 		int count = 0;
+		String output = "";
 		Scanner myReader = new Scanner(text);
 		
 		while (myReader.hasNextLine() ) {
@@ -28,26 +36,32 @@ public class TablatureScanner {
 					break;
 				}
 			} 
-			else if (s.charAt(1) == '|' && s.endsWith("|")) {
+			else if (s.contains("|") && s.contains("-")) {
 				count += 1;
 			}
 		}
-		System.out.println(count);
 		if (count == 4 || count == 5) {
-			TablatureScanner.callBassClass(text);
-		}
+			output = TablatureScanner.callBassClass(text,count);
+			}
 		if (count == 6 || count == 7) {
-			TablatureScanner.callGuitarClass(text);
+			output = TablatureScanner.callGuitarClass(text,count);
 		}
 
 		myReader.close();
+		return output;
 	}
 
-	public static void callBassClass(String text) {
+	public static String callBassClass(String text,int count){
 		Scanner myReader = new Scanner(text);
+<<<<<<< HEAD
 		String s1, s2, s3, s4, s5;
+=======
+		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "";
+		StringBuilder out = new StringBuilder();
+>>>>>>> refs/remotes/origin/Maisha_Branch
 		Bass bass;
 		while (myReader.hasNextLine()) {
+<<<<<<< HEAD
 			String data = myReader.nextLine();
 			while (data.startsWith("G|")) {
 				s1 = data;
@@ -75,25 +89,63 @@ public class TablatureScanner {
 							}
 						}
 
+=======
+			String line = myReader.nextLine();
+			
+			if ((line.contains("|") && line.contains("-"))) {
+				listOfStrings.add(line);
+				if (listOfStrings.isEmpty()) {
+					listOfStrings.clear();
+				}
+				else if (listOfStrings.size() == count || listOfStrings.size() == count) {
+					s1 = (listOfStrings).get(0);
+					s2 = (listOfStrings).get(1);
+					s3 = (listOfStrings).get(2);
+					s4 = (listOfStrings).get(3);
+					if(listOfStrings.size() == count) {
+						bass = StringInstrument.getBass(s1,s2,s3,s4);
+						out.append((bass.printToXML(s1, s2, s3, s4, null, null, null)));
+>>>>>>> refs/remotes/origin/Maisha_Branch
 					}
+<<<<<<< HEAD
 
 				}
 			}
 
+=======
+					else if(listOfStrings.size() == count) {
+						s5 = (listOfStrings).get(4);
+						bass = StringInstrument.getBass(s1,s2,s3,s4,s5);
+						out.append(bass.printToXML(s1, s2, s3, s4, s5, null, null));
+					}
+					listOfStrings.clear();
+				}
+			}
+>>>>>>> refs/remotes/origin/Maisha_Branch
 		}
-
 		myReader.close();
-
+		return out.toString();
 	}
 
 	// guitar scanner
+<<<<<<< HEAD
 	public static void callGuitarClass(String text) {
 		
+=======
+	public static String callGuitarClass(String text,int count){
+>>>>>>> refs/remotes/origin/Maisha_Branch
 		Scanner myReader1 = new Scanner(text);
+<<<<<<< HEAD
 		String s1, s2, s3, s4, s5, s6, s7;
+=======
+		StringBuilder out = new StringBuilder();
+		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
+		ArrayList<String> listOfStrings = new ArrayList<String>();
+>>>>>>> refs/remotes/origin/Maisha_Branch
 		Guitar guitar;
 		while (myReader1.hasNextLine()) {
 			String line = myReader1.nextLine();
+<<<<<<< HEAD
 			while (line.startsWith("E|")) {
 				s1 = line;
 				line = myReader1.nextLine();
@@ -136,13 +188,47 @@ public class TablatureScanner {
 
 						}
 
-					}
+=======
+			if (line.contains("|") && line.contains("-")) {
+				listOfStrings.add(line);
+				if (listOfStrings.isEmpty()) {
+					listOfStrings.clear();
 				}
+				else if (listOfStrings.size() == count || listOfStrings.size() == 7) {
+					s1 = (listOfStrings).get(0);
+					s2 = (listOfStrings).get(1);
+					s3 = (listOfStrings).get(2);
+					s4 = (listOfStrings).get(3);
+					s5 = (listOfStrings).get(4);
+					s6 = (listOfStrings).get(5);
+					if(listOfStrings.size() == count) {
+						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6);
+						out.append(guitar.printToXML(s1, s2, s3, s4, s5, s6, null));
+>>>>>>> refs/remotes/origin/Maisha_Branch
+					}
+<<<<<<< HEAD
+=======
+					else if(listOfStrings.size() == count) {
+						s7 = (listOfStrings).get(6);
+						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6,s7);
+						out.append(guitar.printToXML(s1, s2, s3, s4, s5, s6, s7));
+					}
+					listOfStrings.clear();
+>>>>>>> refs/remotes/origin/Maisha_Branch
+				}
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/Maisha_Branch
 			}
 		}
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> refs/remotes/origin/Maisha_Branch
 		myReader1.close();
+		return out.toString();
 
 	}
 
