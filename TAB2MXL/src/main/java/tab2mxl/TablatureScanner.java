@@ -7,10 +7,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import org.xembly.Directives;
+import org.xembly.Xembler;
+
 
 public class TablatureScanner {
 	String text;
 	window win;
+	static String header;
 	public static int n = 1;
 
 	public TablatureScanner(String text) {
@@ -20,6 +24,7 @@ public class TablatureScanner {
 	public String detect(String text){
 		int count = 0;
 		String output = "";
+		String o = "";
 		Scanner myReader = new Scanner(text);
 		while (myReader.hasNextLine()) {
 			String s = myReader.nextLine();
@@ -37,21 +42,36 @@ public class TablatureScanner {
 		}
 		if (count == 4 || count == 5) {
 			output = TablatureScanner.callBassClass(text,count);
+			header = TablatureScanner.xmlHeader(count);
 			}
 		if (count == 6 || count == 7) {
 			output = TablatureScanner.callGuitarClass(text,count);
+			
 		}
 
 		myReader.close();
 		return output;
 	}
 
+	public static String xmlHeader(int c) {
+		String h = "";
+		StringBuilder head = new StringBuilder();
+		if (c == 4 || c == 5) {
+			head.append("Bass Guitar");
+		}else {
+			head.append("Guitar");
+		}
+		
+        return head.toString();
+	}
+	
 	public static String callBassClass(String text,int count){
 		Scanner myReader = new Scanner(text);
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "";
 		StringBuilder out = new StringBuilder();
 		Bass bass;
 		ArrayList<String> listOfStrings = new ArrayList<String>();
+		out.append(header);
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
 			
@@ -67,6 +87,7 @@ public class TablatureScanner {
 					s4 = (listOfStrings).get(3);
 					if(listOfStrings.size() == count) {
 						bass = StringInstrument.getBass(s1,s2,s3,s4);
+						//out.append(bass.xmlHeader(count));
 						out.append((bass.printToXML(s1, s2, s3, s4, null, null, null)));
 					}
 					else if(listOfStrings.size() == count) {

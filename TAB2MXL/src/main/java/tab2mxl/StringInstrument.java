@@ -84,10 +84,10 @@ public class StringInstrument {
 
 		
 	}
-	public String xmlHeader(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
+	public String xmlHeader(int c) {
 		String h = "";
 		String name;
-		if (str6 == null && str7 == null) {
+		if (c == 4 || c == 5) {
 			name = "Bass Guitar";
 		}else {
 			name = "Guitar";
@@ -108,7 +108,8 @@ public class StringInstrument {
                 .up()
                 .up()
                 .add("part")
-                .attr("id", "P1");
+                .attr("id", "P1")
+				.up();
 		try {
             h = new Xembler(
             		xmlHeader
@@ -144,19 +145,19 @@ public class StringInstrument {
 		//Creating the xml with Xembly:
 		Directives xmlOutput = new Directives();
 		//XML header declarations:
-		xmlOutput
-                //.add("!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\"")
-                .add("score-partwise")
-                .attr("version", "3.1")
-                .add("part-list")
-                .add("score-part")
-                .attr("id", "P1")
-                .add("part-name").set(name) //Part name is either Bass or Guitar (for now), depends on the number of strings
-                .up()
-                .up()
-                .up()
-                .add("part")
-                .attr("id", "P1");
+//		xmlOutput
+//                //.add("!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\"")
+//                .add("score-partwise")
+//                .attr("version", "3.1")
+//                .add("part-list")
+//                .add("score-part")
+//                .attr("id", "P1")
+//                .add("part-name").set(name) //Part name is either Bass or Guitar (for now), depends on the number of strings
+//                .up()
+//                .up()
+//                .up();
+//                .add("part")
+//                .attr("id", "P1");
 		
 		//Get number of measures:
 		for (int i = 1 ; i <str1.length() ; i++)
@@ -170,73 +171,73 @@ public class StringInstrument {
 			//measure number:
 	        xmlOutput
 					.add("measure")
-					.attr("number", k + 1);
-	        if (k == 0) {
-	        	//attributes and staff details:
-	   		 	xmlOutput
-	   		        .add("attributes")
-	   		        .add("divisions") .set("4") 
-	   		        .up()
-	   		        .add("time")
-	   		        .add("beats").set(4) 
-	   		        .up()
-	   		        .add("beat-type").set(4)
-	   		        .up()
-	   		        .up()
-	   		        .add("clef")
-	   		        .add("sign").set("TAB") //this is a tablature
-	   		        .up()
-	   		        .add("line").set(5) 
-	   		        .up()
-	   		        .up()
-	   		        .add("staff-details")
-	   		        .add("staff-lines").set(6)
-	   		        .up()
-	   		        .add("staff-tuning")
-	   		        .attr("line", "1")
-	   		        .add("tuning-step").set("E")
-	   		        .up()
-	   		        .add("tuning-octave").set(2)
-	   		        .up()
-	   		        .up()
-	   		        .add("staff-tuning")
-	   		        .attr("line", "2")
-	   		        .add("tuning-step").set("A")
-	   		        .up()
-	   		        .add("tuning-octave").set(2)
-	   		        .up()
-	   		        .up()
-	   		        .add("staff-tuning")
-	   		        .attr("line", "3")
-	   		        .add("tuning-step").set("D")
-	   		        .up()
-	   		        .add("tuning-octave").set(3)
-	   		        .up()
-	   		        .up()
-	   		        .add("staff-tuning")
-	   		        .attr("line", "4")
-	   		        .add("tuning-step").set("G")
-	   		        .up()
-	   		        .add("tuning-octave").set(3)
-	   		        .up()
-	   		        .up()
-	   		        .add("staff-tuning")
-	   		        .attr("line", "5")
-	   		        .add("tuning-step").set("B")
-	   		        .up()
-	   		        .add("tuning-octave").set(3)
-	   		        .up()
-	   		        .up()
-	   		        .add("staff-tuning")
-	   		        .attr("line", "6")
-	   		        .add("tuning-step").set("E")
-	   		        .up()
-	   		        .add("tuning-octave").set(4)
-	   		        .up()
-	   		        .up()
-	   		        .up()
-	   		        .up();
-	        }
+					.attr("number", mCount);
+//	        if (mCount == 0) {
+//	        	//attributes and staff details:
+//	   		 	xmlOutput
+//	   		        .add("attributes")
+//	   		        .add("divisions") .set("4") 
+//	   		        .up()
+//	   		        .add("time")
+//	   		        .add("beats").set(4) 
+//	   		        .up()
+//	   		        .add("beat-type").set(4)
+//	   		        .up()
+//	   		        .up()
+//	   		        .add("clef")
+//	   		        .add("sign").set("TAB") //this is a tablature
+//	   		        .up()
+//	   		        .add("line").set(5) 
+//	   		        .up()
+//	   		        .up()
+//	   		        .add("staff-details")
+//	   		        .add("staff-lines").set(6)
+//	   		        .up()
+//	   		        .add("staff-tuning")
+//	   		        .attr("line", "1")
+//	   		        .add("tuning-step").set("E")
+//	   		        .up()
+//	   		        .add("tuning-octave").set(2)
+//	   		        .up()
+//	   		        .up()
+//	   		        .add("staff-tuning")
+//	   		        .attr("line", "2")
+//	   		        .add("tuning-step").set("A")
+//	   		        .up()
+//	   		        .add("tuning-octave").set(2)
+//	   		        .up()
+//	   		        .up()
+//	   		        .add("staff-tuning")
+//	   		        .attr("line", "3")
+//	   		        .add("tuning-step").set("D")
+//	   		        .up()
+//	   		        .add("tuning-octave").set(3)
+//	   		        .up()
+//	   		        .up()
+//	   		        .add("staff-tuning")
+//	   		        .attr("line", "4")
+//	   		        .add("tuning-step").set("G")
+//	   		        .up()
+//	   		        .add("tuning-octave").set(3)
+//	   		        .up()
+//	   		        .up()
+//	   		        .add("staff-tuning")
+//	   		        .attr("line", "5")
+//	   		        .add("tuning-step").set("B")
+//	   		        .up()
+//	   		        .add("tuning-octave").set(3)
+//	   		        .up()
+//	   		        .up()
+//	   		        .add("staff-tuning")
+//	   		        .attr("line", "6")
+//	   		        .add("tuning-step").set("E")
+//	   		        .up()
+//	   		        .add("tuning-octave").set(4)
+//	   		        .up()
+//	   		        .up()
+//	   		        .up()
+//	   		        .up();
+//	        }
         
 		    //Must put code for displaying notes here:
 //			for (int i = 1 ; i <str1.length() ; i++)
@@ -289,7 +290,7 @@ public class StringInstrument {
 				
 			}
 
-		if(counter != 0) {
+//		if(counter != 0) {
 			xmlOutput
 				.add("barline")
 				.attr("location", "right")
@@ -298,13 +299,13 @@ public class StringInstrument {
 				.up()
 				.up()
 				.up();
-		}
+//		}
         try {
             xml = new Xembler(
             		xmlOutput
             ).xml();
         } catch (Exception e) {
-            xml = "There is an error with creating the xml output." + e.toString();
+            xml = "There is an error with creating the xml body output." + e.toString();
         }
 		}
         return xml;
