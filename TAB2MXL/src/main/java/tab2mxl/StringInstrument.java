@@ -15,7 +15,7 @@ public class StringInstrument {
 	int measureCount = 0;
 	private char type; //number of strings
 	public static int mCount = 0;
-	public static int c = 0;
+	public int c = 0;
 	public static int d;
 	
 	public StringInstrument() {
@@ -110,7 +110,7 @@ public class StringInstrument {
 		
 		//Creating the xml with Xembly:
 				Directives xmlOutput = new Directives();
-//				if (c != 0) {
+				if (c == 0) {
 				//XML header declarations:
 				xmlOutput
 		                //.add("!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\"")
@@ -125,23 +125,18 @@ public class StringInstrument {
 		                .up()
 		                .add("part")
 		                .attr("id", "P1");
+				}
 		
-//		for (int i = 2 ; str1.charAt(i) != '|' ; i++)
-//		//XML declarations:
-//		output+="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
-//		output+="<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n";
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
 			if((i+1)!= str1.length()  && str1.charAt(i)=='|' && str1.charAt(i+1) == '-') {
 				measureCount++;
-				//output+="<measure number=\""+measureCount+"\">";
 			}
 		}
 		
-		
-//		for (int i = 2 ; str1.charAt(i) != '|' ; i++)
-//		{
+	
 			for (int k = 0; k < measureCount; k++) {
+				c++;
 //				//measure number:
 		        xmlOutput
 						.add("measure")
@@ -299,9 +294,9 @@ public class StringInstrument {
 		                        .add("octave").set(octave)
 		                        .up()
 		                        .up()
-		                        .add("duration").set(2) //default is 1, will change later
+		                        .add("duration").set(2) //default is 2, will change later
 		                        .up()
-		                        .add("type").set("quarter") // default is eighth, will change later
+		                        .add("type").set("quarter") // default is quarter, will change later
 		                        .up()
 		                        .add("notations")
 		                        .add("technical")
@@ -329,6 +324,7 @@ public class StringInstrument {
 						cc = 0;
 						spaceCount++;
 					}
+			        //mCount += measureCount;
 //			        xmlOutput
 //					.add("barline")
 //					.attr("location", "right")
@@ -379,7 +375,7 @@ public class StringInstrument {
             		xmlOutput
             ).xml();
         } catch (Exception e) {
-            xml = "There is an error with creating the xml output.";
+            xml = "There is an error with creating the xml output." + e.toString();
         }
 		}
         return xml;
