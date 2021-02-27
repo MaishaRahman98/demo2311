@@ -84,6 +84,9 @@ public class StringInstrument {
 
 		
 	}
+	//Helper methods
+	
+	
 	//Prints bass or guitar tab in xml format:
 	public String printToXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
 		String note = "";
@@ -98,10 +101,7 @@ public class StringInstrument {
 		String name;
 		int octave = 0;
 		String xml = "";
-		//c ;
-		//c = num + 1;
-		
-		
+
 		if (str6 == null && str7 == null) {
 			name = "Bass Guitar";
 		}else {
@@ -109,24 +109,22 @@ public class StringInstrument {
 		}
 		
 		//Creating the xml with Xembly:
-				Directives xmlOutput = new Directives();
-				if (c == 0) {
-				//XML header declarations:
-				xmlOutput
-		                //.add("!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\"")
-		                .add("score-partwise")
-		                .attr("version", "3.1")
-		                .add("part-list")
-		                .add("score-part")
-		                .attr("id", "P1")
-		                .add("part-name").set(name) //Part name is either Bass or Guitar (for now), depends on the number of strings
-		                .up()
-		                .up()
-		                .up()
-		                .add("part")
-		                .attr("id", "P1");
-				}
-		
+		Directives xmlOutput = new Directives();
+		//XML header declarations:
+		xmlOutput
+                //.add("!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\"")
+                .add("score-partwise")
+                .attr("version", "3.1")
+                .add("part-list")
+                .add("score-part")
+                .attr("id", "P1")
+                .add("part-name").set(name) //Part name is either Bass or Guitar (for now), depends on the number of strings
+                .up()
+                .up()
+                .up()
+                .add("part")
+                .attr("id", "P1");
+
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
 			if((i+1)!= str1.length()  && str1.charAt(i)=='|' && str1.charAt(i+1) == '-') {
@@ -134,21 +132,18 @@ public class StringInstrument {
 			}
 		}
 		
-	
 			for (int k = 0; k < measureCount; k++) {
-				c++;
-//				//measure number:
-		        xmlOutput
-						.add("measure")
-						.attr("number", k + 1);
+				//measure number:
+//		        xmlOutput
+//						.add("measure")
+//						.attr("number", k + 1);
 		        if (k == 0) {
 		        	//attributes and staff details:
 		   		 	xmlOutput
-//			   		 	.add("measure")
-//						.attr("number", k + 1)
+			   		 	.add("measure")
+						.attr("number", k + 1)
 		   		        .add("attributes")
-		   		        .add("divisions") //still no idea what divisions does?
-		   		        .set("4") //the denominator in notes in terms of quarter notes. A duration of 4 will be one quarter note? A duration of 1 will be an 16th?
+		   		        .add("divisions") .set("4") 
 		   		        .up()
 		   		        .add("time")
 		   		        .add("beats").set(4) 
@@ -157,9 +152,9 @@ public class StringInstrument {
 		   		        .up()
 		   		        .up()
 		   		        .add("clef")
-		   		        .add("sign").set("TAB") //to indicate it is a tab
+		   		        .add("sign").set("TAB") //this is a tablature
 		   		        .up()
-		   		        .add("line").set(5) //sets tab to line 5
+		   		        .add("line").set(5) 
 		   		        .up()
 		   		        .up()
 		   		        .add("staff-details")
@@ -234,9 +229,9 @@ public class StringInstrument {
 		                        .add("octave").set(octave)
 		                        .up()
 		                        .up()
-		                        .add("duration").set(2) //default is 1, will change later
+		                        .add("duration").set(2) //default is 2, will change later
 		                        .up()
-		                        .add("type").set("quarter") // default is eighth, will change later
+		                        .add("type").set("quarter") // default is quarter, will change later
 		                        .up()
 		                        .add("notations")
 		                        .add("technical")
@@ -265,9 +260,9 @@ public class StringInstrument {
 						
 					}
 		        }else {
-//		        	xmlOutput
-//		        	.add("measure")
-//					.attr("number", k + 1);
+		        	xmlOutput
+		        	.add("measure")
+					.attr("number", k + 1);
 		        
 				    //Must put code for displaying notes here:
 //			        for (int i = 1 ; i <str1.length() ; i++)
@@ -377,6 +372,7 @@ public class StringInstrument {
         } catch (Exception e) {
             xml = "There is an error with creating the xml output." + e.toString();
         }
+//		}
 		}
         return xml;
         //System.out.println(xml);
