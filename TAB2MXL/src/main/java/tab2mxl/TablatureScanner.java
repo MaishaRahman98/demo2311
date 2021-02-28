@@ -146,6 +146,7 @@ public class TablatureScanner extends StringInstrument {
 				}
 			}
 		}
+		setTemp(mCount);
 		out.append(endHeading());
 		myReader1.close();
 		return out.toString();
