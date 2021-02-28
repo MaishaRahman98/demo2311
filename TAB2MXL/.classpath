@@ -8,5 +8,10 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="lib" path="C:/Users/redga/.gradle/caches/modules-2/files-2.1/com.jcabi.incubator/xembly/0.25.0/875654194aafc0cdb3e223f3e8a1d422e18daca8/xembly-0.25.0.jar" sourcepath="C:/Users/redga/.gradle/caches/modules-2/files-2.1/com.jcabi.incubator/xembly/0.25.0/e5f11999a86dbd068f2a97b4c7767b89d233b542/xembly-0.25.0-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>
