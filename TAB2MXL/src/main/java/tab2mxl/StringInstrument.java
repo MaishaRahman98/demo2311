@@ -250,9 +250,9 @@ public class StringInstrument {
 		
 		for (int k = 0; k < measureCount; k++) {
 			
-//			if (k >= 1) {
-				body.append("  <measure number=\"" + mCount + "\">\n");
-//			}
+			if (k >= 1) {
+				body.append("  <measure number=\"" + (k+1) + "\">\n");
+			}
 	        for (int i = 2 ; str1.charAt(i) != '|' ; i++)
 			{
 	        	counter++;
