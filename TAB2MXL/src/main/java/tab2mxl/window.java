@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -34,6 +35,7 @@ import javax.swing.JMenu;
 import java.awt.Component;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.BorderLayout;
 
@@ -128,7 +130,7 @@ public class window implements ActionListener{
 //		JFrame frame = new JFrame();
 		frame = new JFrame();
 		frame.setBackground(SystemColor.activeCaption);
-		frame.setBounds(100, 100, 590, 428);
+		frame.setBounds(100, 100, 901, 662);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		
@@ -142,10 +144,18 @@ public class window implements ActionListener{
 		btnNewButton.setHorizontalAlignment(SwingConstants.TRAILING);
 		btnNewButton.setAutoscrolls(true);
 		btnNewButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+
+		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+		System.setOut(printStream);
+		System.setErr(printStream);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "JPanel title", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBorder(BorderFactory.createEmptyBorder());
+		JButton btnNewButton_1 = new JButton("translate");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				file.translate();
+			}
+		});
+		Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(null);
@@ -154,63 +164,41 @@ public class window implements ActionListener{
 		
 		textArea = new JTextArea();
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
-
-		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
-
-		System.setOut(printStream);
-		System.setErr(printStream);
 		
-		
-		textArea.setBorder(null);
-		textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-		textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		scrollPane_1.setViewportView(textArea);
-		
-
-		
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
-					.addGap(0))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
-					.addGap(0))
-		);
-		panel.setLayout(gl_panel);
-		
-		JButton btnNewButton_1 = new JButton("translate");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				file.translate();
-			}
-		});
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(btnNewButton_1, 0, 0, Short.MAX_VALUE)
-						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 90, Short.MAX_VALUE))
-					.addGap(9)
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_1)
-					.addContainerGap(298, Short.MAX_VALUE))
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
-		);
-		
-
-		frame.getContentPane().setLayout(groupLayout);
+//				PrintStream printStream1 = new PrintStream(new CustomOutputStream(textArea));
+				
+				
+				textArea.setBorder(null);
+				textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+				textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
+				scrollPane_1.setViewportView(textArea);
+				
+				JLabel lblNewLabel = new JLabel("");
+				lblNewLabel.setIcon(new ImageIcon(img));
+				GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+				groupLayout.setHorizontalGroup(
+					groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(198)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
+							.addGap(70))
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 885, Short.MAX_VALUE)
+				);
+				groupLayout.setVerticalGroup(
+					groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(btnNewButton_1))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(55)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+							.addGap(64))
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 602, Short.MAX_VALUE)
+				);
+				frame.getContentPane().setLayout(groupLayout);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setForeground(UIManager.getColor("Button.background"));
