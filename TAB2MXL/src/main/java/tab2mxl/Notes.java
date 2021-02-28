@@ -51,7 +51,7 @@ public class Notes {
 			return mainNotes[fret];
 			}
 		else if(stringNum.equals("String2") || stringNum.equals("String7")) {
-			fret+=9;
+			fret+=7;
 			if(fret < 12) {
 			return mainNotes[fret]; 
 			}
@@ -60,7 +60,7 @@ public class Notes {
 			}
 		}
 		else if(stringNum.equals("String3")) {
-			fret+=3;
+			fret+=2;
 			if(fret < 12) {
 			return mainNotes[fret]; 
 			}
@@ -69,7 +69,7 @@ public class Notes {
 			}
 		}
 		else if(stringNum.equals("String4")) {
-			fret+=11;
+			fret+=10;
 			if(fret < 12) {
 			return mainNotes[fret]; 
 			}

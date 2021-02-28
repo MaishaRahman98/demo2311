@@ -251,7 +251,7 @@ public class StringInstrument {
 		
 		for (int k = 0; k < measureCount; k++) {
 			
-			if (mCount != temp) {
+			if (mCount != temp && mCount != 1) {
 				body.append("  </measure>\n");
 				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
 			}
