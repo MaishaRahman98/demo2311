@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 3.1 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<<<<<<< HEAD
 <score-partwise version="3.1">
  <part-list>
   <score-part id="P1">
@@ -648,3 +649,449 @@
   </measure>
  </part>
 </score-partwise>
+=======
+<note>
+	<pitch>
+		<step>E</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>E</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>2</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>E</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>D</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>C</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>8</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>B</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 3.1 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<note>
+	<pitch>
+		<step>E</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>E</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>2</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>E</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>D</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>C</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>8</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>B</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>E</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>E</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>2</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>E</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>D</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>C</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>8</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>D</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>3</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>C</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>8</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>B</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>7</fret>
+			</technical>
+		</notations>
+	</note>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 3.1 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>3</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>3</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>3</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>3</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>3</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>3</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>3</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>3</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>G</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>3</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>A</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>A</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>A</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>A</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>A</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>A</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>A</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+<note>
+	<pitch>
+		<step>A</step>
+		</pitch>
+	<notations>
+		<technical>
+			<string>4</string>
+			<fret>5</fret>
+			</technical>
+		</notations>
+	</note>
+>>>>>>> refs/remotes/origin/newshawn

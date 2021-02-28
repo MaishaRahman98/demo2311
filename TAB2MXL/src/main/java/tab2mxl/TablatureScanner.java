@@ -49,6 +49,9 @@ public class TablatureScanner extends StringInstrument {
 			output = TablatureScanner.callGuitarClass(text,count);
 			
 		}
+		else {
+			errorMessage.ouputMessage("input error");
+		}
 
 		myReader.close();
 		return output;
