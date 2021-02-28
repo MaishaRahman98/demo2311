@@ -16,6 +16,7 @@ public class TablatureScanner extends StringInstrument {
 	window win;
 	static String header;
 	public static int n = 1;
+	int co = 0;
 
 	public TablatureScanner(String text) {
 		this.text = text;
@@ -42,7 +43,7 @@ public class TablatureScanner extends StringInstrument {
 		}
 		if (count == 4 || count == 5) {
 			output = TablatureScanner.callBassClass(text,count);
-			header = TablatureScanner.xmlHeader(count);
+			//header = TablatureScanner.xmlHeader(count);
 			}
 		if (count == 6 || count == 7) {
 			output = TablatureScanner.callGuitarClass(text,count);
@@ -71,10 +72,15 @@ public class TablatureScanner extends StringInstrument {
 		StringBuilder out = new StringBuilder();
 		Bass bass;
 		ArrayList<String> listOfStrings = new ArrayList<String>();
+		int counter = 0;
 		out.append(xmlHeader(count));
+		
+//		while (myReader.hasNextLine()) {
+//			  counter++;
+//			  myReader.nextLine();
+//			}
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
-			
 			if ((line.contains("|") && line.contains("-"))) {
 				listOfStrings.add(line);
 				if (listOfStrings.isEmpty()) {
@@ -99,6 +105,7 @@ public class TablatureScanner extends StringInstrument {
 				}
 			}
 		}
+		setTemp(mCount);
 		out.append(endHeading());
 		myReader.close();
 		return out.toString();
