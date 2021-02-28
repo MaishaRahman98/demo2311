@@ -165,7 +165,7 @@ public class window implements ActionListener{
 				file.translate();
 			}
 		});
-		Image img = new ImageIcon(this.getClass().getResource("background.jpeg")).getImage();
+		Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(null);
