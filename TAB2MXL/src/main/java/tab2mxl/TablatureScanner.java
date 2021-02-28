@@ -7,10 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import org.xembly.Directives;
-import org.xembly.Xembler;
-
-
 public class TablatureScanner extends StringInstrument {
 	String text;
 	window win;

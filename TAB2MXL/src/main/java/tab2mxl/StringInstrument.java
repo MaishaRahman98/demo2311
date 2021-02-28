@@ -1,7 +1,5 @@
 package tab2mxl;
 
-import org.xembly.Directives;
-import org.xembly.Xembler;
 import java.util.ArrayList;
 
 public class StringInstrument {
