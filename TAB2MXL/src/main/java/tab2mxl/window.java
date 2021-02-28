@@ -133,7 +133,7 @@ public class window implements ActionListener{
 		frame.setVisible(true);
 		frame.getContentPane().setBackground(Color.BLACK);
 		
-		JButton btnNewButton = new JButton("Choose a file");
+		JButton btnNewButton = new JButton("Choose...");
 //		btnNewButton.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
 				btnNewButton.addActionListener(this);
@@ -184,7 +184,7 @@ public class window implements ActionListener{
 		);
 		panel.setLayout(gl_panel);
 		
-		JButton btnNewButton_1 = new JButton("translate");
+		JButton btnNewButton_1 = new JButton("Translate");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				file.translate();
@@ -255,11 +255,11 @@ public class window implements ActionListener{
 		mnNewMenu.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		menuBar.add(mnNewMenu);
 		
-		JMenu mnNewMenu_Format = new JMenu("Fromat");
+		JMenu mnNewMenu_Format = new JMenu("Format");
 		mnNewMenu_Format.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		menuBar.add(mnNewMenu_Format);
 //===========================================================================
-		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
+		mntmNewMenuItemwarp = new JMenuItem("Word Wrap: Off");
 		mnNewMenu_Format.add(mntmNewMenuItemwarp);
 //		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
 		mntmNewMenuItemwarp.addActionListener(this);
