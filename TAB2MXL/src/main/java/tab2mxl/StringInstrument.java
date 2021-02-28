@@ -13,6 +13,7 @@ public class StringInstrument {
 	private static String str6;
 	private static String str7;
 	int measureCount = 0;
+	static int temp = 0;
 	private char type; //number of strings
 	public static int mCount = 0;
 	public int c = 0;
@@ -228,18 +229,18 @@ public class StringInstrument {
 	public String printToXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
-		String string = "";
-		String output = "";
-		int spaceCount = 0;
-		ArrayList<String> legatoOutput = new ArrayList<>();
-		boolean legatoCheck = false;
+//		String string = "";
+//		String output = "";
+//		int spaceCount = 0;
+//		ArrayList<String> legatoOutput = new ArrayList<>();
+//		boolean legatoCheck = false;
 		char fret = 0;
 		int stringNum = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
-		String name;
+//		String name;
 		int octave = 0;
-		String xml = "";
-		int counter = 0;
+//		String xml = "";
+//		int counter = 0;
 
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
@@ -250,12 +251,13 @@ public class StringInstrument {
 		
 		for (int k = 0; k < measureCount; k++) {
 			
-//			if (k >= 1) {
-				body.append("  <measure number=\"" + mCount + "\">\n");
-//			}
+			if (mCount != temp) {
+				body.append("  </measure>\n");
+				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
+			}
 	        for (int i = 2 ; str1.charAt(i) != '|' ; i++)
 			{
-	        	counter++;
+//	        	counter++;
 	        	for (String j: allStrings) {
 		        	stringNum++;
 					
@@ -360,6 +362,9 @@ public class StringInstrument {
 		this.type = type;
 	}
 	
+	public static void setTemp(int i) {
+		temp = i;
+	}
 	
 }
 	
