@@ -49,7 +49,7 @@ public class TablatureScanner extends StringInstrument {
 			output = TablatureScanner.callGuitarClass(text,count);
 			
 		}
-
+		
 		myReader.close();
 		return output;
 	}
