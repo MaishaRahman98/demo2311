@@ -172,7 +172,7 @@ public class Functioncallfile {
 		case"Black":
 			win.frame.getContentPane().setBackground(Color.black);
 			win.textArea.setBackground(Color.black);
-			win.frame.getJMenuBar().setBackground(Color.gray);
+			win.frame.getJMenuBar().setBackground(Color.darkGray);
 			win.textArea.setForeground(Color.white);
 			break;
 		case"Pink":
