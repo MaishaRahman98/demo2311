@@ -165,7 +165,7 @@ public class window implements ActionListener{
 				file.translate();
 			}
 		});
-		Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
+
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(null);
@@ -207,8 +207,9 @@ public class window implements ActionListener{
 				textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 				scrollPane_1.setViewportView(textArea);
 				
-				JLabel lblNewLabel = new JLabel("");
-				lblNewLabel.setIcon(new ImageIcon(img));
+//				Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
+//				JLabel lblNewLabel = new JLabel("");
+//				lblNewLabel.setIcon(new ImageIcon(img));
 				
 				JButton btnNewButton_2 = new JButton("SaveAs");
 				btnNewButton_2.addActionListener(this);
@@ -236,7 +237,7 @@ public class window implements ActionListener{
 							.addGap(198)
 							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
 							.addGap(70))
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 885, Short.MAX_VALUE)
+//						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 885, Short.MAX_VALUE)
 				);
 				groupLayout.setVerticalGroup(
 					groupLayout.createParallelGroup(Alignment.LEADING)
@@ -252,7 +253,7 @@ public class window implements ActionListener{
 							.addGap(55)
 							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
 							.addGap(64))
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 602, Short.MAX_VALUE)
+//						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 602, Short.MAX_VALUE)
 				);
 				frame.getContentPane().setLayout(groupLayout);
 		
