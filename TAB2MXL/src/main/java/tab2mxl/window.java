@@ -69,18 +69,31 @@ public class window implements ActionListener{
 	/**
 	 * Launch the application.
 	 */
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					window window = new window();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					window window = new window();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+        new loadingScreen();
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    window window = new window();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
 	/**
 	 * Create the application.
@@ -132,21 +145,22 @@ public class window implements ActionListener{
 		format.font(16);
 //		JFrame frame = new JFrame();
 		frame = new JFrame();
+		frame.getContentPane().setForeground(new Color(75, 0, 130));
 		frame.setBackground(SystemColor.activeCaption);
 		frame.setBounds(100, 100, 1136, 662);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 //===================================================================================================cannot use window builder		
-		try {
-			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-		}catch(Exception e){
-			
-		}
+//		try {
+//			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+//		}catch(Exception e){
+//			
+//		}
 //===================================================================================================cannot use window builder			
 		JButton btnNewButton = new JButton("Open");
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.PINK);
-		btnNewButton.setFont(new Font("ËÎÌו", Font.BOLD, 14));
+		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
 //		btnNewButton.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
 				btnNewButton.addActionListener(this);
@@ -159,13 +173,13 @@ public class window implements ActionListener{
 		JButton btnNewButton_1 = new JButton("Translate");
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setForeground(Color.ORANGE);
-		btnNewButton_1.setFont(new Font("ËÎÌו", Font.BOLD, 14));
+		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				file.translate();
 			}
 		});
-		Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
+
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBorder(null);
@@ -176,20 +190,20 @@ public class window implements ActionListener{
 		scrollPane_1.getVerticalScrollBar().setBackground(Color.gray);
 		scrollPane_1.getHorizontalScrollBar().setBackground(Color.gray);
 //===================================================================================================cannot use window builder	
-		scrollPane_1.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
-		    @Override
-		    protected void configureScrollBarColors() {
-//		        this.thumbColor = Color.DARK_GRAY;
-		        this.thumbColor = Color.black;
-		    }
-		});
-		scrollPane_1.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
-		    @Override
-		    protected void configureScrollBarColors() {
-//		        this.thumbColor = Color.DARK_GRAY;
-		    	this.thumbColor = Color.black;
-		    }
-		});
+//		scrollPane_1.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+//		    @Override
+//		    protected void configureScrollBarColors() {
+////		        this.thumbColor = Color.DARK_GRAY;
+//		        this.thumbColor = Color.black;
+//		    }
+//		});
+//		scrollPane_1.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+//		    @Override
+//		    protected void configureScrollBarColors() {
+////		        this.thumbColor = Color.DARK_GRAY;
+//		    	this.thumbColor = Color.black;
+//		    }
+//		});
 //===================================================================================================cannot use window builder	
 		textArea = new JTextArea();
 		textArea.setForeground(Color.WHITE);
@@ -207,8 +221,12 @@ public class window implements ActionListener{
 				textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 				scrollPane_1.setViewportView(textArea);
 				
+//				Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
+//				JLabel lblNewLabel = new JLabel(new ImageIcon("background.jpeg"));
+//				frame.setContentPane(lblNewLabel);
 				JLabel lblNewLabel = new JLabel("");
-				lblNewLabel.setIcon(new ImageIcon(img));
+				lblNewLabel.setForeground(Color.ORANGE);
+				lblNewLabel.setBackground(Color.ORANGE);
 				
 				JButton btnNewButton_2 = new JButton("SaveAs");
 				btnNewButton_2.addActionListener(this);
@@ -218,7 +236,7 @@ public class window implements ActionListener{
 //					}
 //				});
 				btnNewButton_2.setBackground(Color.BLACK);
-				btnNewButton_2.setFont(new Font("ËÎÌו", Font.BOLD, 14));
+				btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD, 14));
 				btnNewButton_2.setForeground(new Color(0, 191, 255));
 				GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 				groupLayout.setHorizontalGroup(
@@ -272,6 +290,7 @@ public class window implements ActionListener{
 		menuBar.add(menu1);
 		
 		iNew = new JMenuItem("New");
+		iNew.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		iNew.setForeground(Color.WHITE);
 		iNew.setBorder(null);
 		iNew.setBackground(Color.DARK_GRAY);
@@ -279,6 +298,7 @@ public class window implements ActionListener{
 		iNew.setActionCommand("New");
 		
 		iOpen = new JMenuItem("Open");
+		iOpen.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		iOpen.setForeground(Color.WHITE);
 		iOpen.setBorder(null);
 		iOpen.setBackground(Color.DARK_GRAY);
@@ -287,6 +307,7 @@ public class window implements ActionListener{
 		
 		
 		iSave = new JMenuItem("Save");
+		iSave.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		iSave.setForeground(Color.WHITE);
 		iSave.setBorder(null);
 		iSave.setBackground(Color.DARK_GRAY);
@@ -294,6 +315,7 @@ public class window implements ActionListener{
 		iSave.setActionCommand("Save");
 		
 		iSaveAs = new JMenuItem("SaveAs");
+		iSaveAs.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		iSaveAs.setForeground(Color.WHITE);
 		iSaveAs.setBorder(null);
 		iSaveAs.setBackground(Color.DARK_GRAY);
@@ -301,6 +323,7 @@ public class window implements ActionListener{
 		iSaveAs.setActionCommand("SaveAs");
 		
 		iExit = new JMenuItem("Exit");
+		iExit.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		iExit.setForeground(Color.WHITE);
 		iExit.setBorder(null);
 		iExit.setBackground(Color.DARK_GRAY);
@@ -329,6 +352,7 @@ public class window implements ActionListener{
 		menuBar.add(mnNewMenu_Format);
 //===========================================================================
 		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
+		mntmNewMenuItemwarp.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItemwarp.setForeground(Color.WHITE);
 		mntmNewMenuItemwarp.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItemwarp.setBorder(null);
@@ -338,12 +362,14 @@ public class window implements ActionListener{
 		mntmNewMenuItemwarp.setActionCommand("Word Wrap");
 //===========================================================================
 		JMenu mnNewMenufont = new JMenu("Font");
+		mnNewMenufont.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mnNewMenufont.setBackground(Color.DARK_GRAY);
 		mnNewMenufont.setForeground(Color.WHITE);
 		mnNewMenufont.setBorder(null);
 		mnNewMenu_Format.add(mnNewMenufont);
 		
 		JMenuItem mntmNewMenuItem_Arial = new JMenuItem("Arial");
+		mntmNewMenuItem_Arial.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItem_Arial.setForeground(Color.WHITE);
 		mntmNewMenuItem_Arial.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItem_Arial.setBorder(null);
@@ -352,6 +378,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_Arial.setActionCommand("Arial");
 		
 		JMenuItem mntmNewMenuItem_Comic_Sans_Ms = new JMenuItem("Comic Sans MS");
+		mntmNewMenuItem_Comic_Sans_Ms.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItem_Comic_Sans_Ms.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItem_Comic_Sans_Ms.setForeground(Color.WHITE);
 		mntmNewMenuItem_Comic_Sans_Ms.setBorder(null);
@@ -360,6 +387,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_Comic_Sans_Ms.setActionCommand("Comic Sans MS");
 		
 		JMenuItem mntmNewMenuItem_Time_New_Roman = new JMenuItem("Times New Roman");
+		mntmNewMenuItem_Time_New_Roman.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItem_Time_New_Roman.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItem_Time_New_Roman.setForeground(Color.WHITE);
 		mntmNewMenuItem_Time_New_Roman.setBorder(null);
@@ -368,6 +396,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_Time_New_Roman.setActionCommand("Times New Roman");
 		
 		JMenuItem mntmNewMenuItem_MONOSPACED = new JMenuItem("MONOSPACED");
+		mntmNewMenuItem_MONOSPACED.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItem_MONOSPACED.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItem_MONOSPACED.setForeground(Color.WHITE);
 		mntmNewMenuItem_MONOSPACED.setBorder(null);
@@ -376,12 +405,14 @@ public class window implements ActionListener{
 		mntmNewMenuItem_MONOSPACED.setActionCommand("MONOSPACED");
 		
 		JMenu mnNewMenufontsize = new JMenu("Font Size");
+		mnNewMenufontsize.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mnNewMenufontsize.setBorder(null);
 		mnNewMenufontsize.setForeground(Color.WHITE);
 		mnNewMenufontsize.setBackground(Color.DARK_GRAY);
 		mnNewMenu_Format.add(mnNewMenufontsize);
 		
 		JMenuItem mntmNewMenuItem_size4 = new JMenuItem("4");
+		mntmNewMenuItem_size4.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItem_size4.setForeground(Color.WHITE);
 		mntmNewMenuItem_size4.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItem_size4.setBorder(null);
@@ -390,6 +421,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_size4.setActionCommand("size4");
 		
 		JMenuItem mntmNewMenuItem_size8 = new JMenuItem("8");
+		mntmNewMenuItem_size8.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItem_size8.setForeground(Color.WHITE);
 		mntmNewMenuItem_size8.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItem_size8.setBorder(null);
@@ -398,6 +430,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_size8.setActionCommand("size8");
 		
 		JMenuItem mntmNewMenuItem_size12 = new JMenuItem("12");
+		mntmNewMenuItem_size12.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItem_size12.setForeground(Color.WHITE);
 		mntmNewMenuItem_size12.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItem_size12.setBorder(null);
@@ -406,6 +439,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_size12.setActionCommand("size12");
 		
 		JMenuItem mntmNewMenuItem_size16 = new JMenuItem("16");
+		mntmNewMenuItem_size16.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItem_size16.setForeground(Color.WHITE);
 		mntmNewMenuItem_size16.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItem_size16.setBorder(null);
@@ -414,6 +448,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_size16.setActionCommand("size16");
 		
 		JMenuItem mntmNewMenuItem_size20 = new JMenuItem("20");
+		mntmNewMenuItem_size20.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItem_size20.setForeground(Color.WHITE);
 		mntmNewMenuItem_size20.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItem_size20.setBorder(null);
@@ -422,6 +457,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_size20.setActionCommand("size20");
 		
 		JMenuItem mntmNewMenuItem_size24 = new JMenuItem("24");
+		mntmNewMenuItem_size24.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItem_size24.setForeground(Color.WHITE);
 		mntmNewMenuItem_size24.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItem_size24.setBorder(null);
@@ -430,6 +466,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_size24.setActionCommand("size24");
 		
 		JMenuItem mntmNewMenuItem_size28 = new JMenuItem("28");
+		mntmNewMenuItem_size28.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItem_size28.setForeground(Color.WHITE);
 		mntmNewMenuItem_size28.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItem_size28.setBorder(null);
@@ -445,6 +482,7 @@ public class window implements ActionListener{
 		menuBar.add(mnNewMenu_2);
 		
 		JMenuItem icolor = new JMenuItem("White");
+		icolor.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		icolor.setForeground(Color.WHITE);
 		icolor.setBackground(Color.DARK_GRAY);
 		icolor.setBorder(null);
@@ -453,6 +491,7 @@ public class window implements ActionListener{
 		icolor.setActionCommand("White");
 		
 		JMenuItem icolor2 = new JMenuItem("Black");
+		icolor2.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		icolor2.setForeground(Color.WHITE);
 		icolor2.setBackground(Color.DARK_GRAY);
 		icolor2.setBorder(null);
@@ -461,6 +500,7 @@ public class window implements ActionListener{
 		icolor2.setActionCommand("Black");
 		
 		JMenuItem icolor3 = new JMenuItem("Pink");
+		icolor3.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		icolor3.setForeground(Color.WHITE);
 		icolor3.setBackground(Color.DARK_GRAY);
 		icolor3.setBorder(null);
@@ -469,6 +509,7 @@ public class window implements ActionListener{
 		icolor3.setActionCommand("Pink");
 		
 		JMenuItem icolor4 = new JMenuItem("Blue");
+		icolor4.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		icolor4.setForeground(Color.WHITE);
 		icolor4.setBackground(Color.DARK_GRAY);
 		icolor4.setBorder(null);

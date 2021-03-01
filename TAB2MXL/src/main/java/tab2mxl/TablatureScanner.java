@@ -7,10 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import org.xembly.Directives;
-import org.xembly.Xembler;
-
-
 public class TablatureScanner extends StringInstrument {
 	String text;
 	window win;
@@ -49,9 +45,12 @@ public class TablatureScanner extends StringInstrument {
 			output = TablatureScanner.callGuitarClass(text,count);
 			
 		}
-		else {
-			errorMessage.ouputMessage("input error");
-		}
+		else if (count < 4 || count > 7 ) {
+            errorMessage.outputMessage("Tablature is not bass nor guitar");
+        }
+//		else {
+//			errorMessage.outputMessage("input error");
+//		}
 
 		myReader.close();
 		return output;

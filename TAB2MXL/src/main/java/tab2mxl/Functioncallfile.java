@@ -67,10 +67,17 @@ public class Functioncallfile {
 	public void saveas() {
 		FileDialog savefd = new FileDialog(win.frame,"Save As", FileDialog.SAVE);
 		savefd.setVisible(true);
+		String name = savefd.getFile();
 		filename = savefd.getFile();
-		String name = filename.toString();
+//		if (!filename.equals(null)) {
+//			String name = filename.toString();
+//		}
+//		String name = filename.toString();
 //		setTitle("JavaEdit: " + name);   // reset frame title
-		win.frame.setTitle(filename);
+//		win.frame.setTitle(filename);
+		win.frame.setTitle(name);
+//		savefd.setFile(name);
+		
 		savefd.setFile(name);
 		if(savefd.getFile()!=null) {
 			filename = savefd.getName();
@@ -81,6 +88,7 @@ public class Functioncallfile {
 			FileWriter newfile1  = new FileWriter(fileaddress+""+name+".txt");
 //			saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
 			newfile1.write(win.textArea.getText());
+//			win.frame.setTitle(name);
 			win.frame.setTitle(name);
 			newfile1.close();
 		}catch(Exception e) {
@@ -170,7 +178,7 @@ public class Functioncallfile {
 			win.textArea.setForeground(Color.black);
 			break;
 		case"Black":
-			win.frame.getContentPane().setBackground(Color.black);
+			win.frame.getContentPane().setBackground(Color.orange);
 			win.textArea.setBackground(Color.black);
 			win.frame.getJMenuBar().setBackground(Color.darkGray);
 			win.textArea.setForeground(Color.white);
