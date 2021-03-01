@@ -178,7 +178,7 @@ public class Functioncallfile {
 			win.textArea.setForeground(Color.black);
 			break;
 		case"Black":
-			win.frame.getContentPane().setBackground(Color.black);
+			win.frame.getContentPane().setBackground(Color.orange);
 			win.textArea.setBackground(Color.black);
 			win.frame.getJMenuBar().setBackground(Color.darkGray);
 			win.textArea.setForeground(Color.white);

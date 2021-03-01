@@ -132,6 +132,7 @@ public class window implements ActionListener{
 		format.font(16);
 //		JFrame frame = new JFrame();
 		frame = new JFrame();
+		frame.getContentPane().setForeground(new Color(75, 0, 130));
 		frame.setBackground(SystemColor.activeCaption);
 		frame.setBounds(100, 100, 1136, 662);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -208,8 +209,11 @@ public class window implements ActionListener{
 				scrollPane_1.setViewportView(textArea);
 				
 //				Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
-				JLabel lblNewLabel = new JLabel(new ImageIcon("C:\\Users\\Hazalw Li\\git\\demo2311\\TAB2MXL\\img\\background.jpeg"));
-//				JLabel lblNewLabel = new JLabel("");
+//				JLabel lblNewLabel = new JLabel(new ImageIcon("background.jpeg"));
+//				frame.setContentPane(lblNewLabel);
+				JLabel lblNewLabel = new JLabel("");
+				lblNewLabel.setForeground(Color.ORANGE);
+				lblNewLabel.setBackground(Color.ORANGE);
 				
 				JButton btnNewButton_2 = new JButton("SaveAs");
 				btnNewButton_2.addActionListener(this);
