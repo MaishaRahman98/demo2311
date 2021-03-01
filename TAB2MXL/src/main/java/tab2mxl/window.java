@@ -65,17 +65,18 @@ public class window implements ActionListener{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					window window = new window();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+        new loadingScreen();
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    window window = new window();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
 	/**
 	 * Create the application.
