@@ -136,11 +136,6 @@ public class window implements ActionListener{
 		frame.setBounds(100, 100, 1136, 662);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-<<<<<<< HEAD
-		frame.getContentPane().setBackground(Color.BLACK);
-		
-		JButton btnNewButton = new JButton("Choose a file");
-=======
 //===================================================================================================cannot use window builder		
 		try {
 			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
@@ -152,7 +147,6 @@ public class window implements ActionListener{
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.PINK);
 		btnNewButton.setFont(new Font("ËÎÌו", Font.BOLD, 14));
->>>>>>> refs/remotes/origin/newshawn
 //		btnNewButton.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
 				btnNewButton.addActionListener(this);
