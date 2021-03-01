@@ -7,11 +7,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/Maisha_Branch
 public class TablatureScanner extends StringInstrument {
 	String text;
 	window win;
+	static String header;
 	public static int n = 1;
+	int co = 0;
 
 	public TablatureScanner(String text) {
 		this.text = text;
@@ -20,6 +25,7 @@ public class TablatureScanner extends StringInstrument {
 	public String detect(String text){
 		int count = 0;
 		String output = "";
+		String o = "";
 		Scanner myReader = new Scanner(text);
 		while (myReader.hasNextLine()) {
 			String s = myReader.nextLine();
@@ -37,25 +43,51 @@ public class TablatureScanner extends StringInstrument {
 		}
 		if (count == 4 || count == 5) {
 			output = TablatureScanner.callBassClass(text,count);
+			//header = TablatureScanner.xmlHeader(count);
 			}
 		if (count == 6 || count == 7) {
 			output = TablatureScanner.callGuitarClass(text,count);
+			
 		}
+//		else {
+//			errorMessage.outputMessage("input error");
+//		}
 
 		myReader.close();
 		return output;
 	}
 
+//	public static String xmlHeader(int c) {
+//		String h = "";
+//		StringBuilder head = new StringBuilder();
+//		if (c == 4 || c == 5) {
+//			head.append("Bass Guitar");
+//		}else {
+//			head.append("Guitar");
+//		}
+//		
+//        return head.toString();
+//	}
+	
 	public static String callBassClass(String text,int count){
 		Scanner myReader = new Scanner(text);
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "";
 		StringBuilder out = new StringBuilder();
 		Bass bass;
 		ArrayList<String> listOfStrings = new ArrayList<String>();
+<<<<<<< HEAD
 		out.append(xmlHeader(count));
+=======
+		int counter = 0;
+		out.append(xmlHeader(count));
+		
+//		while (myReader.hasNextLine()) {
+//			  counter++;
+//			  myReader.nextLine();
+//			}
+>>>>>>> refs/remotes/origin/Maisha_Branch
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
-			
 			if ((line.contains("|") && line.contains("-"))) {
 				listOfStrings.add(line);
 				if (listOfStrings.isEmpty()) {
@@ -68,6 +100,7 @@ public class TablatureScanner extends StringInstrument {
 					s4 = (listOfStrings).get(3);
 					if(listOfStrings.size() == count) {
 						bass = StringInstrument.getBass(s1,s2,s3,s4);
+						//out.append(bass.xmlHeader(count));
 						out.append((bass.printToXML(s1, s2, s3, s4, null, null, null)));
 					}
 					else if(listOfStrings.size() == count) {
@@ -79,6 +112,8 @@ public class TablatureScanner extends StringInstrument {
 				}
 			}
 		}
+		setTemp(mCount);
+		out.append(endHeading());
 		myReader.close();
 		return out.toString();
 	}
@@ -118,7 +153,8 @@ public class TablatureScanner extends StringInstrument {
 				}
 			}
 		}
-		
+		setTemp(mCount);
+		out.append(endHeading());
 		myReader1.close();
 		return out.toString();
 

@@ -133,6 +133,7 @@ public class window implements ActionListener{
 //		JFrame frame = new JFrame();
 		frame = new JFrame();
 		frame.setBackground(SystemColor.activeCaption);
+<<<<<<< HEAD
 		frame.setBounds(100, 100, 1136, 662);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -147,10 +148,24 @@ public class window implements ActionListener{
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.PINK);
 		btnNewButton.setFont(new Font("ËÎÌו", Font.BOLD, 14));
+=======
+		frame.setBounds(100, 100, 590, 428);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.getContentPane().setBackground(Color.BLACK);
+		
+		JButton btnNewButton = new JButton("Choose");
+>>>>>>> refs/remotes/origin/Maisha_Branch
 //		btnNewButton.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
 				btnNewButton.addActionListener(this);
 				btnNewButton.setActionCommand("Open");
+<<<<<<< HEAD
+=======
+//			}
+//		}); TRAILING
+		btnNewButton.setHorizontalAlignment(SwingConstants.LEADING);
+>>>>>>> refs/remotes/origin/Maisha_Branch
 		btnNewButton.setAutoscrolls(true);
 		btnNewButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 
@@ -256,7 +271,62 @@ public class window implements ActionListener{
 				);
 				frame.getContentPane().setLayout(groupLayout);
 		
+<<<<<<< HEAD
 		UIManager.put("PopupMenu.border", new LineBorder(Color.darkGray));
+=======
+		textArea.setBorder(null);
+		textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+		textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		scrollPane_1.setViewportView(textArea);
+		
+
+		
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+					.addGap(0))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+					.addGap(0))
+		);
+		panel.setLayout(gl_panel);
+		
+		JButton btnNewButton_1 = new JButton("Translate");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				file.translate();
+				//
+			}
+		});
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(btnNewButton_1, 0, 0, Short.MAX_VALUE)
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 90, Short.MAX_VALUE))
+					.addGap(9)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 41, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnNewButton_1)
+					.addContainerGap(298, Short.MAX_VALUE))
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+		);
+		
+
+		frame.getContentPane().setLayout(groupLayout);
+		
+>>>>>>> refs/remotes/origin/Maisha_Branch
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBorder(null);
 		menuBar.setBorderPainted(false);
@@ -322,16 +392,24 @@ public class window implements ActionListener{
 		menuBar.add(mnNewMenu);
 		
 		JMenu mnNewMenu_Format = new JMenu("Format");
+<<<<<<< HEAD
 		mnNewMenu_Format.setBackground(Color.DARK_GRAY);
 		mnNewMenu_Format.setForeground(new Color(153, 50, 204));
 		mnNewMenu_Format.setBorder(null);
 		mnNewMenu_Format.setFont(new Font("Times New Roman", Font.BOLD, 15));
+=======
+		mnNewMenu_Format.setFont(new Font("Times New Roman", Font.BOLD, 12));
+>>>>>>> refs/remotes/origin/Maisha_Branch
 		menuBar.add(mnNewMenu_Format);
 //===========================================================================
+<<<<<<< HEAD
 		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
 		mntmNewMenuItemwarp.setForeground(Color.WHITE);
 		mntmNewMenuItemwarp.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItemwarp.setBorder(null);
+=======
+		mntmNewMenuItemwarp = new JMenuItem("Word Wrap: Off");
+>>>>>>> refs/remotes/origin/Maisha_Branch
 		mnNewMenu_Format.add(mntmNewMenuItemwarp);
 //		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
 		mntmNewMenuItemwarp.addActionListener(this);

@@ -1,6 +1,11 @@
 package tab2mxl;
+<<<<<<< HEAD
 
 import java.util.ArrayList;
+=======
+
+import java.util.ArrayList;
+>>>>>>> refs/remotes/origin/Maisha_Branch
 
 public class StringInstrument {
 	private static String str1;
@@ -249,6 +254,7 @@ public class StringInstrument {
 		
 		for (int k = 0; k < measureCount; k++) {
 
+<<<<<<< HEAD
 			if (mCount != temp && mCount != 1) {
 				body.append("  </measure>\n");
 				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
@@ -311,6 +317,70 @@ public class StringInstrument {
 	}
 	
 	//Getters and Setters:
+=======
+			if (mCount != temp && mCount != 1) {
+				body.append("  </measure>\n");
+				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
+			}
+	        for (int i = 2 ; str1.charAt(i) != '|' ; i++)
+			{
+//	        	counter++;
+	        	for (String j: allStrings) {
+		        	stringNum++;
+					
+					if (j != null && Character.isDigit(j.charAt(i))) {
+
+						fret = j.charAt(i);
+						if (str6 == null && str7 == null) {
+							note = Notes.bassNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+							octave = Notes.bassOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+						}else {
+							note = Notes.guitarNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+							octave = Notes.guitarOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+						}
+						body.append("<note>\n");
+						body.append(" <pitch>\n");
+						body.append("  <step>" +  note + "</step>\n");
+						body.append("  <octave>" +  octave + "</octave>\n");
+						body.append("  </pitch>\n");
+						body.append(" <duration>2</duration>\n");
+						body.append(" <voice>1</voice>\n");
+						body.append(" <type>quarter</type>\n");
+						body.append(" <notations>\n");
+						body.append("  <technical>\n");
+						body.append("   <string>" + stringNum + "</string>\n");
+						body.append("   <fret>" + fret + "</fret>\n");
+						body.append("   </technical>\n");
+						body.append("  </notations>\n");
+						body.append(" </note>\n");            	
+		        }	
+			}
+	        stringNum = 0;
+	        
+			}
+		}
+		mCount += measureCount;
+		measureCount = 0;
+		return body.toString();	
+
+	}	
+	//End of printToXML method
+	
+	
+	public static String endHeading() {
+		//Ender:
+		StringBuilder end = new StringBuilder();
+		end.append("  <barline location=\"right\">\n");
+		end.append("   <bar-style>light-heavy</bar-style>\n");
+		end.append("   </barline>\n");
+		end.append("  </measure>\n");
+		end.append(" </part>\n");
+		end.append("</score-partwise>\n");
+		return end.toString();
+	}
+	
+	//Getters and Setters:
+>>>>>>> refs/remotes/origin/Maisha_Branch
 	public String getStr1() {
 		return str1;
 	}
