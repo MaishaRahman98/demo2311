@@ -241,19 +241,52 @@ public class StringInstrument {
 		char fret = 0;
 		int stringNum = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
+<<<<<<< HEAD
 		String name;
 		int octave = 0;
 		String xml = "";
 		int counter = 0;
+=======
+		
+		//XML declarations:
+		output+="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+		output+="<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n";
+		for (int i = 2 ; str1.charAt(i) != '|' ; i++)
+		{
+			
+			for (String j: allStrings) {
+				cc++;
+			if (j != null && Character.isDigit(j.charAt(i))) {
+			
+				fret = j.charAt(i);
+				note = Notes.bassNotes("String" + String.valueOf(cc) ,Character.getNumericValue(fret));
+				
+				//Coding to print out the note in string 1 in xml format:
+				output+="<note>\n";
+				output+="\t<pitch>\n";
+				output+="\t\t<step>" +  note + "</step>\n";
+				output+="\t\t</pitch>\n";
+				output+="\t<notations>\n";
+				output+="\t\t<technical>\n";
+				output+="\t\t\t<string>" + cc + "</string>\n";
+				output+="\t\t\t<fret>" + fret + "</fret>\n";
+				output+="\t\t\t</technical>\n";
+				output+="\t\t</notations>\n";
+				output+="\t</note>\n";
+>>>>>>> refs/remotes/origin/newshawn
 
+<<<<<<< HEAD
 		
 		
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
 			if((i+1)!= str1.length()  && str1.charAt(i)=='|' && str1.charAt(i+1) == '-') {
 				measureCount++;
+=======
+>>>>>>> refs/remotes/origin/newshawn
 			}
 		}
+<<<<<<< HEAD
 		
 		for (int k = 0; k < measureCount; k++) {
         
@@ -301,6 +334,10 @@ public class StringInstrument {
 
 	
 	//Getters and Setters:
+=======
+		return output;
+	}		
+>>>>>>> refs/remotes/origin/newshawn
 	public String getStr1() {
 		return str1;
 	}
