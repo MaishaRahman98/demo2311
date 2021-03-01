@@ -133,14 +133,14 @@ public class window implements ActionListener{
 		frame.setVisible(true);
 		frame.getContentPane().setBackground(Color.BLACK);
 		
-		JButton btnNewButton = new JButton("Choose...");
+		JButton btnNewButton = new JButton("Choose");
 //		btnNewButton.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
 				btnNewButton.addActionListener(this);
 				btnNewButton.setActionCommand("Open");
 //			}
-//		});
-		btnNewButton.setHorizontalAlignment(SwingConstants.TRAILING);
+//		}); TRAILING
+		btnNewButton.setHorizontalAlignment(SwingConstants.LEADING);
 		btnNewButton.setAutoscrolls(true);
 		btnNewButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		
