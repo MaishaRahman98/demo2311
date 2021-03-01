@@ -137,11 +137,11 @@ public class window implements ActionListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 //===================================================================================================cannot use window builder		
-//		try {
-//			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-//		}catch(Exception e){
-//			
-//		}
+		try {
+			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+		}catch(Exception e){
+			
+		}
 //===================================================================================================cannot use window builder			
 		JButton btnNewButton = new JButton("Open");
 		btnNewButton.setBackground(Color.BLACK);
@@ -176,20 +176,20 @@ public class window implements ActionListener{
 		scrollPane_1.getVerticalScrollBar().setBackground(Color.gray);
 		scrollPane_1.getHorizontalScrollBar().setBackground(Color.gray);
 //===================================================================================================cannot use window builder	
-//		scrollPane_1.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
-//		    @Override
-//		    protected void configureScrollBarColors() {
-////		        this.thumbColor = Color.DARK_GRAY;
-//		        this.thumbColor = Color.black;
-//		    }
-//		});
-//		scrollPane_1.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
-//		    @Override
-//		    protected void configureScrollBarColors() {
-////		        this.thumbColor = Color.DARK_GRAY;
-//		    	this.thumbColor = Color.black;
-//		    }
-//		});
+		scrollPane_1.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+		    @Override
+		    protected void configureScrollBarColors() {
+//		        this.thumbColor = Color.DARK_GRAY;
+		        this.thumbColor = Color.black;
+		    }
+		});
+		scrollPane_1.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+		    @Override
+		    protected void configureScrollBarColors() {
+//		        this.thumbColor = Color.DARK_GRAY;
+		    	this.thumbColor = Color.black;
+		    }
+		});
 //===================================================================================================cannot use window builder	
 		textArea = new JTextArea();
 		textArea.setForeground(Color.WHITE);
