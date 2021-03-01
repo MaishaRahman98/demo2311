@@ -254,7 +254,7 @@ public class StringInstrument {
 				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
 			}
 			//|| str1.charAt(i + 1) != '-'
-	        for (int i = 2 ; str1.charAt(i) != '|' ; i++)
+			for (int i = 2 ; i < str1.lastIndexOf('|') ; i++)
 			{
 //	        	counter++;
 	        	for (String j: allStrings) {
