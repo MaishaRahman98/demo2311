@@ -1,11 +1,9 @@
 package tab2mxl;
-<<<<<<< HEAD
 
 import java.util.ArrayList;
-=======
 
 import java.util.ArrayList;
->>>>>>> refs/remotes/origin/Maisha_Branch
+
 
 public class StringInstrument {
 	private static String str1;
@@ -253,8 +251,6 @@ public class StringInstrument {
 		}
 		
 		for (int k = 0; k < measureCount; k++) {
-
-<<<<<<< HEAD
 			if (mCount != temp && mCount != 1) {
 				body.append("  </measure>\n");
 				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
@@ -317,7 +313,6 @@ public class StringInstrument {
 	}
 	
 	//Getters and Setters:
-=======
 			if (mCount != temp && mCount != 1) {
 				body.append("  </measure>\n");
 				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
@@ -380,7 +375,7 @@ public class StringInstrument {
 	}
 	
 	//Getters and Setters:
->>>>>>> refs/remotes/origin/Maisha_Branch
+
 	public String getStr1() {
 		return str1;
 	}

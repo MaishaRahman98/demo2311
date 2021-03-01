@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> refs/remotes/origin/Maisha_Branch
 public class TablatureScanner extends StringInstrument {
 	String text;
 	window win;
@@ -75,9 +72,9 @@ public class TablatureScanner extends StringInstrument {
 		StringBuilder out = new StringBuilder();
 		Bass bass;
 		ArrayList<String> listOfStrings = new ArrayList<String>();
-<<<<<<< HEAD
+
 		out.append(xmlHeader(count));
-=======
+
 		int counter = 0;
 		out.append(xmlHeader(count));
 		
@@ -85,7 +82,7 @@ public class TablatureScanner extends StringInstrument {
 //			  counter++;
 //			  myReader.nextLine();
 //			}
->>>>>>> refs/remotes/origin/Maisha_Branch
+
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
 			if ((line.contains("|") && line.contains("-"))) {

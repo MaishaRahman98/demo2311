@@ -133,7 +133,7 @@ public class window implements ActionListener{
 //		JFrame frame = new JFrame();
 		frame = new JFrame();
 		frame.setBackground(SystemColor.activeCaption);
-<<<<<<< HEAD
+
 		frame.setBounds(100, 100, 1136, 662);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -148,24 +148,23 @@ public class window implements ActionListener{
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.PINK);
 		btnNewButton.setFont(new Font("ËÎÌו", Font.BOLD, 14));
-=======
-		frame.setBounds(100, 100, 590, 428);
+      frame.setBounds(100, 100, 590, 428);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.getContentPane().setBackground(Color.BLACK);
 		
 		JButton btnNewButton = new JButton("Choose");
->>>>>>> refs/remotes/origin/Maisha_Branch
+
 //		btnNewButton.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
 				btnNewButton.addActionListener(this);
 				btnNewButton.setActionCommand("Open");
-<<<<<<< HEAD
-=======
+
+
 //			}
 //		}); TRAILING
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEADING);
->>>>>>> refs/remotes/origin/Maisha_Branch
+
 		btnNewButton.setAutoscrolls(true);
 		btnNewButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 
@@ -271,9 +270,9 @@ public class window implements ActionListener{
 				);
 				frame.getContentPane().setLayout(groupLayout);
 		
-<<<<<<< HEAD
+
 		UIManager.put("PopupMenu.border", new LineBorder(Color.darkGray));
-=======
+
 		textArea.setBorder(null);
 		textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -325,8 +324,7 @@ public class window implements ActionListener{
 		
 
 		frame.getContentPane().setLayout(groupLayout);
-		
->>>>>>> refs/remotes/origin/Maisha_Branch
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBorder(null);
 		menuBar.setBorderPainted(false);
@@ -392,24 +390,24 @@ public class window implements ActionListener{
 		menuBar.add(mnNewMenu);
 		
 		JMenu mnNewMenu_Format = new JMenu("Format");
-<<<<<<< HEAD
+
 		mnNewMenu_Format.setBackground(Color.DARK_GRAY);
 		mnNewMenu_Format.setForeground(new Color(153, 50, 204));
 		mnNewMenu_Format.setBorder(null);
 		mnNewMenu_Format.setFont(new Font("Times New Roman", Font.BOLD, 15));
-=======
+
 		mnNewMenu_Format.setFont(new Font("Times New Roman", Font.BOLD, 12));
->>>>>>> refs/remotes/origin/Maisha_Branch
+
 		menuBar.add(mnNewMenu_Format);
 //===========================================================================
-<<<<<<< HEAD
+
 		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
 		mntmNewMenuItemwarp.setForeground(Color.WHITE);
 		mntmNewMenuItemwarp.setBackground(Color.DARK_GRAY);
 		mntmNewMenuItemwarp.setBorder(null);
-=======
+
 		mntmNewMenuItemwarp = new JMenuItem("Word Wrap: Off");
->>>>>>> refs/remotes/origin/Maisha_Branch
+
 		mnNewMenu_Format.add(mntmNewMenuItemwarp);
 //		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
 		mntmNewMenuItemwarp.addActionListener(this);
@@ -553,14 +551,7 @@ public class window implements ActionListener{
 		mnNewMenu_2.add(icolor4);
 		icolor4.addActionListener(this);
 		icolor4.setActionCommand("Blue");
-//		scrollPane = new JScrollPane(textArea1, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-//		frame.getContentPane().add(scrollPane);
-//		textAreanum1 = new JTextArea();
-//		textAreanum1.setBounds(1, 1, 110, 24);
-//		frame.getContentPane().add(textAreanum1);
-//		scrollPane = new JScrollPane(textAreanum1, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-//		frame.getContentPane().add(scrollPane);
-		
+
 	}
 
 	@Override
