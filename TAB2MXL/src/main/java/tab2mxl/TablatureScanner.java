@@ -45,6 +45,9 @@ public class TablatureScanner extends StringInstrument {
 			output = TablatureScanner.callGuitarClass(text,count);
 			
 		}
+		else if (count < 4 || count > 7 ) {
+            errorMessage.outputMessage("Tablature is not bass nor guitar");
+        }
 //		else {
 //			errorMessage.outputMessage("input error");
 //		}
