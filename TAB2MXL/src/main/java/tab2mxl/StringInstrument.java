@@ -271,7 +271,13 @@ public class StringInstrument {
 						}
 						body.append("<note>\n");
 						body.append(" <pitch>\n");
-						body.append("  <step>" +  note + "</step>\n");
+						if (note.length() == 1) 
+							body.append("  <step>" +  note + "</step>\n");
+						else
+						{
+							body.append("  <step>" +  note.charAt(0) + "</step>\n");
+							body.append("  <alter>-1</alter>\n");
+						}
 						body.append("  <octave>" +  octave + "</octave>\n");
 						body.append("  </pitch>\n");
 						body.append(" <duration>2</duration>\n");
@@ -290,8 +296,7 @@ public class StringInstrument {
 	        
 			}
 		}
-		mCount += measureCount;
-		measureCount = 0;
+		mCount++;
 		return body.toString();	
 
 	}	
