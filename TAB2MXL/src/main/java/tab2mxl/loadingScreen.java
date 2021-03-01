@@ -6,14 +6,12 @@ import javax.swing.*;
 public class loadingScreen {
 	// push
     JFrame frame;
-    JLabel background=new JLabel(new ImageIcon("music.png"));
-    JLabel title=new JLabel("MUSIC XML CONVERTER");
+    JLabel background=new JLabel(new ImageIcon("MusicXML_logo.gif"));
     JProgressBar progressBar=new JProgressBar();
     JLabel message=new JLabel();
     loadingScreen()
     {
         createScreen();
-        showTitle();
         addProgressBar();
         showLoading();
         runningPBar();
@@ -22,28 +20,22 @@ public class loadingScreen {
         frame=new JFrame();
         frame.getContentPane().setLayout(null);
         frame.setUndecorated(true);
-        frame.setSize(600,400);
+        frame.setSize(400,400);
         frame.setLocationRelativeTo(null);
         frame.setContentPane(background);
+        frame.getContentPane().setBackground(Color.BLACK);
         frame.setVisible(true);
  
     }
-    public void showTitle()
-    {
-        title.setFont(new Font("arial",Font.BOLD,30));
-        title.setBounds(115,220,600,40);
-        title.setForeground(Color.BLACK);
-        frame.add(title);
-    }
     public void showLoading()
     {
-        message.setBounds(200,320,400,40);
-        message.setForeground(Color.black);
+        message.setBounds(100,350,300,40);
+        message.setForeground(Color.WHITE);
         message.setFont(new Font("arial",Font.BOLD,15));
         frame.add(message);
     }
     public void addProgressBar(){
-        progressBar.setBounds(100,280,400,30);
+        progressBar.setBounds(50,300,300,30);
         progressBar.setBorderPainted(true);
         progressBar.setStringPainted(true);
         progressBar.setBackground(Color.WHITE);
@@ -64,7 +56,7 @@ public class loadingScreen {
                 else if (i>25 && i <50)
                 	message.setText("Music files loading... ");
                 else if (i>50 && i <75)
-                	message.setText("Basss, Guitars, Drums loading up... ");
+                	message.setText("Instruments loading... ");
                 else if (i>75 && i <100)
                 	message.setText("Opening application soon... ");
                 i++;

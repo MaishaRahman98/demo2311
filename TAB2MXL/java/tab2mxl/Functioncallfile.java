@@ -113,4 +113,15 @@ public class Functioncallfile {
 			break;
 		}
 	}
+	//============================================
+	public void transale() {
+		boolean em = win.textArea.getText().isEmpty();
+		if (em==false) {
+			System.out.println("Empty text area");
+		}
+		else {
+//			win.textArea.getText().printTab();
+		}
+	}
+	//============================================
 }
