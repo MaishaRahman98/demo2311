@@ -89,11 +89,7 @@ public class Notes {
 		else { 
 			return mainNotes[fret];
 		}	
-
 	}
-
-	}
-
 	public static int bassOctave(String stringNum, int fret) {
 		if(stringNum.equals("String1")) {
 			if(fret < 5)
@@ -233,8 +229,5 @@ public class Notes {
 			return mainNotes[fret-12];
 			}
 		}
-
-	}
-
 	}
 }
