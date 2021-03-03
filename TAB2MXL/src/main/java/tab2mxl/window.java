@@ -132,6 +132,15 @@ public class window implements ActionListener{
 		format.font(16);
 //		JFrame frame = new JFrame();
 		frame = new JFrame();
+//		JFrame f = new JFrame();
+		
+//		try {
+//			frame.getContentPane().add(new overridepiant("sample.jpeg"));
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
 		frame.getContentPane().setForeground(new Color(75, 0, 130));
 		frame.setBackground(SystemColor.activeCaption);
 		frame.setBounds(100, 100, 1136, 662);
@@ -208,12 +217,11 @@ public class window implements ActionListener{
 				textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 				scrollPane_1.setViewportView(textArea);
 				
-//				Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
-//				JLabel lblNewLabel = new JLabel(new ImageIcon("background.jpeg"));
-//				frame.setContentPane(lblNewLabel);
-				JLabel lblNewLabel = new JLabel("");
-				lblNewLabel.setForeground(Color.ORANGE);
-				lblNewLabel.setBackground(Color.ORANGE);
+				Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
+				JLabel lblNewLabel = new JLabel(new ImageIcon(img));
+//				JLabel lblNewLabel = new JLabel("");
+//				lblNewLabel.setForeground(Color.ORANGE);
+//				lblNewLabel.setBackground(Color.ORANGE);
 				
 				JButton btnNewButton_2 = new JButton("SaveAs");
 				btnNewButton_2.addActionListener(this);
@@ -229,34 +237,35 @@ public class window implements ActionListener{
 				groupLayout.setHorizontalGroup(
 					groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(198)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
+							.addGap(70))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(43)
+							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(43)
 							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(43)
 							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(43)
-							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(198)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
-							.addGap(70))
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 885, Short.MAX_VALUE)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 1120, Short.MAX_VALUE)
 				);
 				groupLayout.setVerticalGroup(
 					groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(349)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+							.addGap(55)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+							.addGap(64))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(441)
 							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(55)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-							.addGap(64))
+							.addGap(349)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(395)
+							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
 						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 602, Short.MAX_VALUE)
 				);
 				frame.getContentPane().setLayout(groupLayout);
