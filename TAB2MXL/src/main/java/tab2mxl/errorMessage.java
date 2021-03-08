@@ -12,6 +12,7 @@ public class errorMessage {
         parent.setVisible(true);
     	if (problem.equals("input error")) {
     		JOptionPane.showMessageDialog(parent,"Sorry the program couldn't read the Tablature, please try again.");
+    		parent.setVisible(false);
     	}
 
     }

@@ -85,7 +85,7 @@ public class Functioncallfile {
 			win.frame.setTitle(filename);
 		}
 		try {
-			FileWriter newfile1  = new FileWriter(fileaddress+""+name+".txt");
+			FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicxml");
 //			saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
 			newfile1.write(win.textArea.getText());
 //			win.frame.setTitle(name);
