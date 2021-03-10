@@ -287,7 +287,7 @@ public class StringInstrument {
 										Character.getNumericValue(fret),"guitar");
 							}
 							body.append("<note>\n");
-							if (counter > 1) {
+							if (digit > 1) {
 								body.append("  <chord/>\n");
 							}
 							body.append(" <pitch>\n");
@@ -310,15 +310,17 @@ public class StringInstrument {
 							body.append("  </notations>\n");
 							body.append(" </note>\n");
 
-							stringNum = 0;
+							
 
 						}
 					}
 					digit = 0;
 					counter = 0;
+					stringNum = 0;
 				} else {
 					counter++;
 					digit = 0;
+					stringNum = 0;
 				}
 			}
 		}
