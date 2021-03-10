@@ -16,6 +16,8 @@ public class TablatureScanner extends StringInstrument {
 
 	public TablatureScanner(String text) {
 		this.text = text;
+		this.win = win;
+		this.header = header;
 
 	}
 	public String detect(String text){

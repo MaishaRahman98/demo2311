@@ -4,13 +4,28 @@ import java.util.ArrayList;
 
 public class Measure {
 	public String input;
+	public int duration = 0;
+	public String noteMeasure;
+	public int octaveMeasure;
 	public Measure(String input) {
 		this.input = input;
+		this.duration = duration;
+		this.noteMeasure = noteMeasure;
+		this.octaveMeasure = octaveMeasure;
 	}
 	
 	public static String durationCheck(int spaceCount) {
-		if (spaceCount == 8) {
-			return "";
+		if (spaceCount == 1) {
+			return "Eighth";
+		}
+		else if (spaceCount == 2) {
+			return "Quarter";
+		}
+		else if (spaceCount == 3) {
+			return "Half";
+		}
+		else if (spaceCount == 4) {
+			return "Whole";
 		}
 		return null;
 	}
@@ -40,7 +55,39 @@ public class Measure {
 			output.add(hammerOrPull);
 			return output;
 		}
-		System.out.println(info);
 		return null;
+	}
+	
+	public String getDuration(int amount) {
+		return Measure.durationCheck(amount);
+	}
+	
+	public String getNoteMeasure(String strNum, int fret, String instrumentType ) {
+		if (instrumentType.equals("bass")) {
+			noteMeasure = Notes.bassNotes(strNum, fret);
+			return noteMeasure;
+		}
+		
+		else if (instrumentType.equals("guitar")) {
+			 noteMeasure = Notes.guitarNotes(strNum, fret);
+			 return noteMeasure;
+		}
+		else {
+			return noteMeasure;
+		}
+	}
+	public int getOctaveMeasure(String strNum, int fret, String instrumentType ) {
+		if (instrumentType.equals("bass")) {
+			octaveMeasure = Notes.bassOctave(strNum, fret);
+			return octaveMeasure;
+		}
+		
+		else if (instrumentType.equals("guitar")) {
+			octaveMeasure = Notes.guitarOctave(strNum, fret);
+			 return octaveMeasure;
+		}
+		else {
+			return octaveMeasure;
+		}
 	}
 }
