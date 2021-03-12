@@ -221,12 +221,12 @@ public class window implements ActionListener{
 				textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 				scrollPane_1.setViewportView(textArea);
 				
-//				Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
-//				JLabel lblNewLabel = new JLabel(new ImageIcon("background.jpeg"));
+				Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
+				JLabel lblNewLabel = new JLabel(new ImageIcon("background.jpeg"));
 //				frame.setContentPane(lblNewLabel);
-				JLabel lblNewLabel = new JLabel("");
-				lblNewLabel.setForeground(Color.ORANGE);
-				lblNewLabel.setBackground(Color.ORANGE);
+//				JLabel lblNewLabel = new JLabel("");
+//				lblNewLabel.setForeground(Color.ORANGE);
+//				lblNewLabel.setBackground(Color.ORANGE);
 				
 				JButton btnNewButton_2 = new JButton("SaveAs");
 				btnNewButton_2.addActionListener(this);
