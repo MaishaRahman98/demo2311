@@ -195,4 +195,17 @@ public class Functioncallfile {
 			break;
 		}
 	}
+	public void undo() {
+		try {
+			win.um.undo();
+		} catch (Exception ex) {
+		}
+	}
+		
+	public void redo() {
+		if(win.um.canRedo()) {
+			win.um.redo();
+		}
+		
+	}
 }

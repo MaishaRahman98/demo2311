@@ -22,6 +22,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.text.Document;
+import javax.swing.undo.UndoManager;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
@@ -30,6 +32,8 @@ import javax.swing.UIManager;
 import javax.swing.JScrollBar;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.UndoableEditEvent;
+import javax.swing.event.UndoableEditListener;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
@@ -49,17 +53,27 @@ public class window implements ActionListener{
 	private BufferedImage ori;
 	private JScrollPane scrollPane;
 	private JMenuItem iNew, iOpen,iSave, iSaveAs, iExit;
+	public JMenuItem mntmNewMenuItem_Undo,mntmNewMenuItem_Redo;
 	public JTextArea textArea;
 	boolean wrap_on = false;
 	public JMenuItem mntmNewMenuItemwarp;
 	Functioncallfile file = new Functioncallfile(this);
 	Functioncallfile format = new Functioncallfile(this);
-	
+//	Edit ed = new Edit(this);
+	Shortcut sc = new Shortcut(this);
 	private PipedInputStream pipein = new PipedInputStream();
 	private PipedInputStream pipein2 = new PipedInputStream();
 	private Thread reader;
 	private Thread reader2;
 	boolean quit;
+	UndoManager um = new UndoManager();
+	//=========undo and redo
+//	private Document editorPaneDocument;
+//	protected UndoHandler undoHandler = new UndoHandler();
+//	protected UndoManager undoManager = new UndoManager();
+//	private UndoAction undoAction = null;
+//	private RedoAction redoAction = null;
+	//=========
 	
 	
 	//==========================================================
@@ -122,10 +136,10 @@ public class window implements ActionListener{
 //		
 //	}
 	/////////////////////////////////////////////////////////
-//	public void close() {
-//		WindowEvent closeWindow = new WindowEvent(this.frame, WindowEvent.WINDOW_CLOSING);
-//		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
-//	}
+	public void close() {
+		WindowEvent closeWindow = new WindowEvent(this.frame, WindowEvent.WINDOW_CLOSING);
+		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+	}
 	/////////////////////////////////////////////////////////
 	private void initialize() {
 		format.fontname = "Monospaced";
@@ -202,12 +216,23 @@ public class window implements ActionListener{
 //		});
 //===================================================================================================cannot use window builder	
 		textArea = new JTextArea();
+		textArea.getDocument().addUndoableEditListener(
+				new UndoableEditListener() {
+					public void undoableEditHappened(UndoableEditEvent e) {
+						um.addEdit(e.getEdit());
+					}
+				});
+		
+//		editorPaneDocument=textArea.getDocument();
+//		editorPaneDocument.addUndoableEditListener(undoHandler);
+		
+		textArea.addKeyListener(sc);
 		textArea.setForeground(Color.WHITE);
 		textArea.setBackground(new Color(0, 0, 0));
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
-		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
-		System.setOut(printStream);
-		System.setErr(printStream);
+//		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+//		System.setOut(printStream);
+//		System.setErr(printStream);
 		
 //				PrintStream printStream1 = new PrintStream(new CustomOutputStream(textArea));
 				
@@ -339,6 +364,32 @@ public class window implements ActionListener{
 		mnNewMenu.setBorder(null);
 		mnNewMenu.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		menuBar.add(mnNewMenu);
+		
+		mntmNewMenuItem_Undo = new JMenuItem("Undo");
+		mntmNewMenuItem_Undo.addActionListener(this);
+		mntmNewMenuItem_Undo.setActionCommand("Undo");
+		mntmNewMenuItem_Undo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					um.undo();
+				} catch (Exception ex) {
+				}
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_Undo);
+		
+		mntmNewMenuItem_Redo = new JMenuItem("Redo");
+		mntmNewMenuItem_Undo.addActionListener(this);
+		mntmNewMenuItem_Undo.setActionCommand("Redo");
+		mntmNewMenuItem_Redo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					um.redo();
+				} catch (Exception ex) {
+				}
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_Redo);
 		
 		JMenu mnNewMenu_Format = new JMenu("Format");
 		mnNewMenu_Format.setBackground(Color.DARK_GRAY);
@@ -548,6 +599,8 @@ public class window implements ActionListener{
 			case "Pink": file.changecolor(command);break;
 			case "Blue": file.changecolor(command);break;
 			case "MONOSPACED": format.setfont(command);break;
+//			case "Undo": ed.undo();break;
+//			case "Redo": ed.redo();break;
 		}
 	}
 }
