@@ -238,7 +238,7 @@ public class StringInstrument {
 		String[] allStrings = { str1, str2, str3, str4, str5, str6, str7 };
 //		String name;
 		int octave = 0;
-//		String xml = "";
+		int numMeasureCount = 1;
 		int counter = 0;
 		int digit = 0;
 		String noteType = "";
@@ -275,6 +275,11 @@ public class StringInstrument {
 				if (digit >= 1) {
 					for (int j = 0; j < column.size(); j++) {
 						stringNum++;
+						if (column.contains('|')) {
+							numMeasureCount++;
+							body.append(" <measure number=\""+numMeasureCount+"\">\n");
+						}
+						
 						if (Character.isDigit(column.get(j))) {
 							fret = column.get(j);
 							if (str6 == null && str7 == null) {
@@ -286,6 +291,7 @@ public class StringInstrument {
 								octave = measure.getOctaveMeasure("String" + String.valueOf(stringNum),
 										Character.getNumericValue(fret),"guitar");
 							}
+							
 							body.append("<note>\n");
 							if (digit > 1) {
 								body.append("  <chord/>\n");

@@ -21,10 +21,10 @@ public class Measure {
 		else if (spaceCount == 2) {
 			return "Quarter";
 		}
-		else if (spaceCount == 3) {
+		else if (spaceCount == 4) {
 			return "Half";
 		}
-		else if (spaceCount == 4) {
+		else if (spaceCount == 8) {
 			return "Whole";
 		}
 		return null;
