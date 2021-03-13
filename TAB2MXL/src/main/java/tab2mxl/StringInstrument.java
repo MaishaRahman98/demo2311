@@ -11,7 +11,6 @@ public class StringInstrument {
 	private static String str6;
 	private static String str7;
 	int measureCount = 0;
-	static int temp = 0;
 	private char type; // number of strings
 	public static int mCount = 0;
 	public int c = 0;
@@ -241,6 +240,7 @@ public class StringInstrument {
 		int numMeasureCount = 1;
 		int counter = 0;
 		int digit = 0;
+		ArrayList<ArrayList<Character> > listOfColumns =  new ArrayList<ArrayList<Character>>();
 		String noteType = "";
 
 		for (int i = 1; i < str1.length(); i++) {
@@ -253,7 +253,6 @@ public class StringInstrument {
 
 			// || str1.charAt(i + 1) != '-'
 			for (int i = 2; i < str1.lastIndexOf('|'); i++) {
-				Measure measure = new Measure("");
 				ArrayList<Character> column = new ArrayList<Character>();
 
 				column.add(str1.charAt(i));
@@ -267,69 +266,94 @@ public class StringInstrument {
 				} else if (str5 != null && str6 != null && str7 != null) {
 					column.add(str7.charAt(i));
 				}
-				for (int a = 0; a < column.size(); a++) {
-					if (Character.isDigit(column.get(a))) {
-						digit++;
-					}
-				}
-				if (digit >= 1) {
-					for (int j = 0; j < column.size(); j++) {
-						stringNum++;
-						if (column.contains('|')) {
-							numMeasureCount++;
-							body.append(" <measure number=\""+numMeasureCount+"\">\n");
-						}
-						
-						if (Character.isDigit(column.get(j))) {
-							fret = column.get(j);
-							if (str6 == null && str7 == null) {
-								note = measure.getNoteMeasure("String" + String.valueOf(stringNum),Character.getNumericValue(fret),"bass");
-								octave = measure.getOctaveMeasure("String" + String.valueOf(stringNum),
-										Character.getNumericValue(fret),"bass");
-							} else {
-								note = measure.getNoteMeasure("String" + String.valueOf(stringNum), Character.getNumericValue(fret), "guitar");
-								octave = measure.getOctaveMeasure("String" + String.valueOf(stringNum),
-										Character.getNumericValue(fret),"guitar");
-							}
-							
-							body.append("<note>\n");
-							if (digit > 1) {
-								body.append("  <chord/>\n");
-							}
-							body.append(" <pitch>\n");
-							if (note.length() == 1)
-								body.append("  <step>" + note + "</step>\n");
-							else {
-								body.append("  <step>" + note.charAt(0) + "</step>\n");
-								body.append("  <alter>-1</alter>\n");
-							}
-							body.append("  <octave>" + octave + "</octave>\n");
-							body.append("  </pitch>\n");
-							body.append(" <duration>" + counter + "</duration>\n");
-							body.append(" <voice>1</voice>\n");
-							body.append(" <type>"+measure.getDuration(counter)+"</type>\n");
-							body.append(" <notations>\n");
-							body.append("  <technical>\n");
-							body.append("   <string>" + stringNum + "</string>\n");
-							body.append("   <fret>" + fret + "</fret>\n");
-							body.append("   </technical>\n");
-							body.append("  </notations>\n");
-							body.append(" </note>\n");
-
-							
-
-						}
-					}
-					digit = 0;
-					counter = 0;
-					stringNum = 0;
-				} else {
-					counter++;
-					digit = 0;
-					stringNum = 0;
-				}
+				listOfColumns.add(column);
 			}
 		}
+		for (int i = 0; i < listOfColumns.size(); i++) {
+			Measure measure = new Measure("");
+			if ( mCount != 1) {
+				body.append("  </measure>\n");
+				body.append("  <measure number=\"" + (mCount+ 1) + "\">\n");
+			}
+			for (int a = 0; a < listOfColumns.get(i).size(); a++) {
+				if (Character.isDigit(listOfColumns.get(i).get(a))) {
+					digit++;
+				}
+			}
+			if (digit >= 1) {
+				for (int j = 0; j < listOfColumns.get(i).size(); j++) {
+					stringNum++;
+					if (listOfColumns.get(i).contains('|')) {
+						numMeasureCount++;
+						body.append(" <measure number=\""+numMeasureCount+"\">\n");
+					}
+					
+					if (Character.isDigit(listOfColumns.get(i).get(j))) {
+						int origini = i;
+						fret = listOfColumns.get(i).get(j);
+						if (str6 == null && str7 == null) {
+							note = measure.getNoteMeasure("String" + String.valueOf(stringNum),Character.getNumericValue(fret),"bass");
+							octave = measure.getOctaveMeasure("String" + String.valueOf(stringNum),
+									Character.getNumericValue(fret),"bass");
+						} else {
+							note = measure.getNoteMeasure("String" + String.valueOf(stringNum), Character.getNumericValue(fret), "guitar");
+							octave = measure.getOctaveMeasure("String" + String.valueOf(stringNum),
+									Character.getNumericValue(fret),"guitar");
+						}
+						
+						body.append("<note>\n");
+						if (digit > 1) {
+							body.append("  <chord/>\n");
+						}
+						body.append(" <pitch>\n");
+						if (note.length() == 1)
+							body.append("  <step>" + note + "</step>\n");
+						else {
+							body.append("  <step>" + note.charAt(0) + "</step>\n");
+							body.append("  <alter>-1</alter>\n");
+						}
+						body.append("  <octave>" + octave + "</octave>\n");
+						body.append("  </pitch>\n");
+//						i++;
+//						boolean end = false;
+//						counter = -1;
+//						while (end!=true) {
+//							int numCheck = 0;
+//							for (int a = 0; a < listOfColumns.get(i).size(); a++) {
+//								if(listOfColumns.get(i).get(a).equals('-')) {
+//									numCheck++;
+//								}
+//							}
+//							if(numCheck < listOfColumns.get(i).size()) {
+//								end = true;
+//							}
+//							i++;
+//							counter++;
+//						}
+						i = origini;
+						body.append(" <duration>" + counter + "</duration>\n");
+						body.append(" <voice>1</voice>\n");
+						body.append(" <type>"+measure.getDuration(counter)+"</type>\n");
+						body.append(" <notations>\n");
+						body.append("  <technical>\n");
+						body.append("   <string>" + stringNum + "</string>\n");
+						body.append("   <fret>" + fret + "</fret>\n");
+						body.append("   </technical>\n");
+						body.append("  </notations>\n");
+						body.append(" </note>\n");
+
+						
+
+					}
+				}
+				digit = 0;
+				stringNum = 0;
+			} else {
+				digit = 0;
+				stringNum = 0;
+			}
+		}
+		mCount++;
 		return body.toString();
 
 	}
@@ -413,8 +437,5 @@ public class StringInstrument {
 		this.type = type;
 	}
 
-	public static void setTemp(int i) {
-		temp = i;
-	}
 
 }
