@@ -230,4 +230,10 @@ public class Notes {
 			}
 		}
 	}
+	public static String drumNotes(String stringNum, int fret) {
+		return "";
+	}
+	public static int drumOctave(String stringNum, int fret) {
+		return 0;
+	}
 }
