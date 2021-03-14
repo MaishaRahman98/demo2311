@@ -37,7 +37,7 @@ public class TablatureScanner extends StringInstrument {
 			else if (s.contains("|") && s.contains("-")) {
 				count += 1;
 			}
-			else if (s.contains("C")) {
+			else if (s.contains("x") || s.contains("X")) {
 				check = 1;
 			}
 			
