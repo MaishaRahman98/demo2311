@@ -271,7 +271,7 @@ public class StringInstrument {
 		}
 		for (int i = 0; i < listOfColumns.size(); i++) {
 			Measure measure = new Measure("");
-			if ( mCount != 1) {
+			if (mCount != 1) {
 				body.append("  </measure>\n");
 				body.append("  <measure number=\"" + (mCount+ 1) + "\">\n");
 			}
