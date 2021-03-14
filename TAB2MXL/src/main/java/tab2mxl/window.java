@@ -82,7 +82,7 @@ public class window implements ActionListener{
 //		});
 //	}
 	public static void main(String[] args) {
-        new loadingScreen();
+      //  new loadingScreen();
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {

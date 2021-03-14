@@ -15,7 +15,7 @@ public class Measure {
 	}
 	
 	public static String durationCheck(int spaceCount) {
-		if (spaceCount == 1) {
+		if (spaceCount == 1 || spaceCount == 0) {
 			return "Eighth";
 		}
 		else if (spaceCount == 2) {
