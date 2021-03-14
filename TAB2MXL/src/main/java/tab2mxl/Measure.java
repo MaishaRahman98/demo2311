@@ -27,7 +27,7 @@ public class Measure {
 		else if (spaceCount == 8) {
 			return "Whole";
 		}
-		return null;
+		return "Quarter";
 	}
 	
 	public static ArrayList<String> legatos(String text) {

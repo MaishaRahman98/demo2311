@@ -105,6 +105,9 @@ public class StringInstrument {
 		head.append(" <measure number=\"1\">\n");
 		head.append("       <attributes>\n");
 		head.append("            <divisions>4</divisions>\n");
+		head.append("            <key>\n");
+		head.append("                <fifths>0</fifths>\n");
+		head.append("                </key>\n");
 		head.append("            <time>\n");
 		head.append("                <beats>4</beats>\n");
 		head.append("                <beat-type>4</beat-type>\n");
@@ -261,8 +264,11 @@ public class StringInstrument {
 			if (str5 != null && str6 == null && str7 == null) {
 				column.add(str5.charAt(i));
 			} else if (str5 != null && str6 != null && str7 == null) {
+				column.add(str5.charAt(i));
 				column.add(str6.charAt(i));
 			} else if (str5 != null && str6 != null && str7 != null) {
+				column.add(str5.charAt(i));
+				column.add(str6.charAt(i));
 				column.add(str7.charAt(i));
 			}
 			listOfColumns.add(column);
@@ -281,7 +287,7 @@ public class StringInstrument {
 			if (listOfColumns.get(i).contains('|')) {
 				mCount++;
 				body.append("  </measure>\n");
-				body.append(" <measure number=\"" + mCount + "\">\n");
+				body.append(" <measure number=\"" + (mCount + 1) + "\">\n");
 			}
 			for (int a = 0; a < listOfColumns.get(i).size(); a++) {
 				if (Character.isDigit(listOfColumns.get(i).get(a))) {
