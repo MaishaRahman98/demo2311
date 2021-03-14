@@ -177,28 +177,32 @@ public class TablatureScanner extends StringInstrument {
 		ArrayList<String> listOfStrings = new ArrayList<String>();
 		Drum drum;
 		out.append(Drum.xmlDrumHeader(count));
+		//out.append(count + "\n");
 		while (myReader1.hasNextLine()) {
+			//out.append("HELLO\n");
 			String line = myReader1.nextLine();
 			if (line.contains("|") && line.contains("-")) {
 				listOfStrings.add(line);
 				if (listOfStrings.isEmpty()) {
 					listOfStrings.clear();
 				}
-				else if (listOfStrings.size() == count || listOfStrings.size() == 7) {
+			
+				else if (listOfStrings.size() == count) {
 					s1 = (listOfStrings).get(0);
 					s2 = (listOfStrings).get(1);
 					s3 = (listOfStrings).get(2);
 					s4 = (listOfStrings).get(3);
 					s5 = (listOfStrings).get(4);
 					
-					if(listOfStrings.size() == count) {
+					if(listOfStrings.size() == 5) {
 						drum = Drum.getDrum(s1,s2,s3,s4,s5);
-						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null));
 					}
-					else if(listOfStrings.size() == count) {
+					else if(listOfStrings.size() == 6) {
 						s6 = (listOfStrings).get(5);
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
-						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
+						//out.append("HI\n");
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6));
 					}
 //					else if(listOfStrings.size() == count) {
 //						s7 = (listOfStrings).get(6);

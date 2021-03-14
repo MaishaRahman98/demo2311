@@ -154,9 +154,10 @@ public class Drum {
 	
 	
 	//Will edit this part
-	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
+	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
+		String instrument = "";
 //		String string = "";
 //		String output = "";
 //		int spaceCount = 0;
@@ -184,36 +185,44 @@ public class Drum {
 				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
 			}
 			//|| str1.charAt(i + 1) != '-'
-			for (int i = 2 ; i < str1.lastIndexOf('|') ; i++)
+			for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|') ; i++)
 			{
 //	        	counter++;
 	        	for (String j: allStrings) {
 		        	stringNum++;
-					
-					if (j != null && Character.isDigit(j.charAt(i))) {
+		        	
+		        	//&& Character.isDigit(j.charAt(i))
+					// && (j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o')
+					if (j != null) {
 
 						fret = j.charAt(i);
-						
+						//Nabaa needs to implement drumNotes and drumOctave methods in Notes class
 						note = Notes.drumNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 						octave = Notes.drumOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 						
+						instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
+						
 						body.append("<note>\n");
 						body.append(" <unpitched>\n");
-						if (note.length() == 1) 
+						if (note.length() == 1) { 
 							body.append("  <display-step>" +  note + "</display-step>\n");
-						else
-						{
-							body.append("  <display-step>" +  note.charAt(0) + "</display-step>\n");
-	
 						}
-						body.append("  <display-octave>" +  octave + "</display-octave>\n");
+//						else
+//						{
+//							body.append("  <display-step>" +  note.charAt(0) + "</display-step>\n");
+//	
+//						}
+						body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
 						body.append("  </unpitched>\n");
-						body.append(" <duration>2</duration>\n"); //will need to fix duration later
+						body.append(" <duration>2</duration>\n"); //will need to implement duration later
+						body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
 						body.append(" <voice>1</voice>\n");
-						body.append(" <type>eighth</type>\n"); //will need to fix type later
+						body.append(" <type>eighth</type>\n"); //will need to implement type later
 						body.append(" <stem>up</stem>\n");
-						body.append(" <notehead>x</notehead>\n");
-						body.append(" <beam number=\"1\">begin</beam>\n");
+						if (j.contains("C") || j.contains("H") || j.contains("R")) {
+							body.append(" <notehead>x</notehead>\n"); //only cymbal lines have x
+						}
+						body.append(" <beam number=\"1\">continue</beam>\n");
 						body.append(" </note>\n");            	
 		        }	
 			}
@@ -222,6 +231,9 @@ public class Drum {
 			}
 		}
 		mCount++;
+		//return "BYE\n";
+		//String ret = body.toString();
+		//body.append("BYE\n");
 		return body.toString();	
 
 	}	

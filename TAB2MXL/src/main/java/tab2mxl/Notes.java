@@ -231,9 +231,19 @@ public class Notes {
 		}
 	}
 	public static String drumNotes(String stringNum, int fret) {
+		if(stringNum.equals("String1")) {
+			
+		}
 		return "";
 	}
 	public static int drumOctave(String stringNum, int fret) {
 		return 0;
+	}
+	public static String drumInstrument(String stringNum, char fret) {
+		if(stringNum.equals("String1") && fret == 'C') {
+			return "P1-150";
+		}
+		return "";
+		
 	}
 }
