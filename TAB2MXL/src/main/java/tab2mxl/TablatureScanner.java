@@ -36,29 +36,31 @@ public class TablatureScanner extends StringInstrument {
 			} 
 			else if (s.contains("|") && s.contains("-")) {
 				count += 1;
+			
+				//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
+				if (s.contains("x") || s.contains("X")) {
+					check = true;
+				}
 			}
-			//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
-			else if (s.contains("x") || s.contains("X")) {
-				check = true;
-			}
+			
+		}
+		//detects if it is bass
+		if (check == false && (count == 4 || count == 5)) {
+			output = TablatureScanner.callBassClass(text,count);
+		}
+		//detects if it is guitar
+		else if (check == false && (count == 6 || count == 7)) {
+			output = TablatureScanner.callGuitarClass(text,count);
 			
 		}
 		//detects if it is drum
-		if (check == true) {
+		else if (check == true && (count == 6 || count == 7)) {
 			output = TablatureScanner.callDrumClass(text, count);
-		}
-		else if (count == 4 || count == 5) {
-			output = TablatureScanner.callBassClass(text,count);
-			//header = TablatureScanner.xmlHeader(count);
-			}
-		
-		else if (count == 6 || count == 7) {
-			output = TablatureScanner.callGuitarClass(text,count);
-			
 		}
 		else if (count < 4 || count > 7 ) {
             errorMessage.outputMessage("input error");
         }
+		
 //		else {
 //			errorMessage.outputMessage("input error");
 //		}
