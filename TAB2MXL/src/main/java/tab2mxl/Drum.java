@@ -24,12 +24,16 @@ public class Drum {
 		this.str6 = "";
 		this.str7 = "";
 	}
-	private Drum(String s1, String s2, String s3, String s4, String s5, String s6) {
+	private Drum(String s1, String s2, String s3, String s4, String s5) {
 		this.str1 = s1;
 		this.str2 = s2;
 		this.str3 = s3;
 		this.str4 = s4;	
-		this.str5 = s5;
+		this.str5 = s5;	
+		this.strNum = '5';
+	}
+	private Drum(String s1, String s2, String s3, String s4, String s5, String s6) {
+		this(s1, s2, s3, s4, s5);
 		this.str6 = s6;	
 		this.strNum = '6';
 	}
@@ -37,10 +41,10 @@ public class Drum {
 		
 		return new Drum(s1, s2, s3, s4, s5, s6);
 	}
-//	public static Drum getInstance(String s1, String s2, String s3, String s4, String s5, String s6, String s7) {
-//		
-//		return new Drum(s1, s2, s3, s4, s5, s6, s7);
-//	}
+	public static Drum getInstance(String s1, String s2, String s3, String s4, String s5) {
+		
+		return new Drum(s1, s2, s3, s4, s5);
+	}
 	
 	public static String xmlDrumHeader(int c) {
 		String instrument = "";
@@ -239,9 +243,9 @@ public class Drum {
 		drumSix = Drum.getInstance(str1,str2,str3,str4,str5, str6);
 		return drumSix;
 	}
-//	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
-//		Drum drumSix;
-//		drumSix = Drum.getInstance(str1,str2,str3,str4,str5, str6, str7);
-//		return drumSix;
-//	}
+	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5) {
+		Drum drumFive;
+		drumFive = Drum.getInstance(str1,str2,str3,str4,str5);
+		return drumFive;
+	}
 }

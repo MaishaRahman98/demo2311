@@ -190,8 +190,13 @@ public class TablatureScanner extends StringInstrument {
 					s3 = (listOfStrings).get(2);
 					s4 = (listOfStrings).get(3);
 					s5 = (listOfStrings).get(4);
-					s6 = (listOfStrings).get(5);
+					
 					if(listOfStrings.size() == count) {
+						drum = Drum.getDrum(s1,s2,s3,s4,s5);
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
+					}
+					else if(listOfStrings.size() == count) {
+						s6 = (listOfStrings).get(5);
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
 					}
