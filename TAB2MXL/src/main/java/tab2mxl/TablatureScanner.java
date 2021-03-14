@@ -23,7 +23,7 @@ public class TablatureScanner extends StringInstrument {
 		String output = "";
 		String o = "";
 		Scanner myReader = new Scanner(text);
-		int check = 0;
+		boolean check = false;
 		while (myReader.hasNextLine()) {
 			String s = myReader.nextLine();
 			if (s.charAt(0) == ' ') {
@@ -37,20 +37,22 @@ public class TablatureScanner extends StringInstrument {
 			else if (s.contains("|") && s.contains("-")) {
 				count += 1;
 			}
+			//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
 			else if (s.contains("x") || s.contains("X")) {
-				check = 1;
+				check = true;
 			}
 			
 		}
-		if (count == 4 || count == 5) {
+		//detects if it is drum
+		if (check == true) {
+			output = TablatureScanner.callDrumClass(text, count);
+		}
+		else if (count == 4 || count == 5) {
 			output = TablatureScanner.callBassClass(text,count);
 			//header = TablatureScanner.xmlHeader(count);
 			}
-		//detects if it is drum
-		if (check == 1 && count == 6) {
-			output = TablatureScanner.callDrumClass(text, count);
-		}
-		if (count == 6 || count == 7) {
+		
+		else if (count == 6 || count == 7) {
 			output = TablatureScanner.callGuitarClass(text,count);
 			
 		}
@@ -60,6 +62,7 @@ public class TablatureScanner extends StringInstrument {
 //		else {
 //			errorMessage.outputMessage("input error");
 //		}
+		
 
 		myReader.close();
 		return output;
