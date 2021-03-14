@@ -15,7 +15,7 @@ public class Measure {
 	}
 	
 	public static String durationCheck(int spaceCount) {
-		if (spaceCount == 1) {
+		if (spaceCount == 1 || spaceCount == 0) {
 			return "Eighth";
 		}
 		else if (spaceCount == 2) {
@@ -27,10 +27,10 @@ public class Measure {
 		else if (spaceCount == 8) {
 			return "Whole";
 		}
-		return null;
+		return "Quarter";
 	}
 	
-	public static ArrayList<String> legatos(String text) {
+	public ArrayList<String> legatos(String text) {
 		String info = "";
 		String hammerOrPull = "";
 		ArrayList<String> output = new ArrayList<>();

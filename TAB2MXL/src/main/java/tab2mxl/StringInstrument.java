@@ -105,6 +105,9 @@ public class StringInstrument {
 		head.append(" <measure number=\"1\">\n");
 		head.append("       <attributes>\n");
 		head.append("            <divisions>4</divisions>\n");
+		head.append("            <key>\n");
+		head.append("                <fifths>0</fifths>\n");
+		head.append("                </key>\n");
 		head.append("            <time>\n");
 		head.append("                <beats>4</beats>\n");
 		head.append("                <beat-type>4</beat-type>\n");
@@ -227,12 +230,14 @@ public class StringInstrument {
 			String str7) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
+		boolean chord = false;
+		boolean DD = false; //double digit
 //		String string = "";
 //		String output = "";
 //		int spaceCount = 0;
 //		ArrayList<String> legatoOutput = new ArrayList<>();
 //		boolean legatoCheck = false;
-		char fret = 0;
+		int fret = 0;
 		int stringNum = 0;
 		String[] allStrings = { str1, str2, str3, str4, str5, str6, str7 };
 //		String name;
@@ -242,38 +247,47 @@ public class StringInstrument {
 		int digit = 0;
 		ArrayList<ArrayList<Character> > listOfColumns =  new ArrayList<ArrayList<Character>>();
 		String noteType = "";
+		int x = 0,y = 0;
 
 		for (int i = 1; i < str1.length(); i++) {
 			if ((i + 1) != str1.length() && str1.charAt(i) == '|' && str1.charAt(i + 1) == '-') {
 				measureCount++;
 			}
 		}
-
-		for (int k = 0; k < measureCount; k++) {
-
-			// || str1.charAt(i + 1) != '-'
-			for (int i = 2; i < str1.lastIndexOf('|'); i++) {
-				ArrayList<Character> column = new ArrayList<Character>();
-
-				column.add(str1.charAt(i));
-				column.add(str2.charAt(i));
-				column.add(str3.charAt(i));
-				column.add(str4.charAt(i));
-				if (str5 != null && str6 == null && str7 == null) {
-					column.add(str5.charAt(i));
-				} else if (str5 != null && str6 != null && str7 == null) {
-					column.add(str6.charAt(i));
-				} else if (str5 != null && str6 != null && str7 != null) {
-					column.add(str7.charAt(i));
-				}
-				listOfColumns.add(column);
+		
+		for (int i = 2; i < str1.lastIndexOf('|'); i++) {
+			ArrayList<Character> column = new ArrayList<Character>();
+			column.add(str1.charAt(i));
+			column.add(str2.charAt(i));
+			column.add(str3.charAt(i));
+			column.add(str4.charAt(i));
+			if (str5 != null && str6 == null && str7 == null) {
+				column.add(str5.charAt(i));
+			} else if (str5 != null && str6 != null && str7 == null) {
+				column.add(str5.charAt(i));
+				column.add(str6.charAt(i));
+			} else if (str5 != null && str6 != null && str7 != null) {
+				column.add(str5.charAt(i));
+				column.add(str6.charAt(i));
+				column.add(str7.charAt(i));
 			}
+			listOfColumns.add(column);
 		}
+		
+
+		//for (int k = 0; k < measureCount; k++) {
+
+			if (mCount != 0) {
+				body.append("  </measure>\n");
+				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
+			}
+		
 		for (int i = 0; i < listOfColumns.size(); i++) {
 			Measure measure = new Measure("");
-			if (mCount != 1) {
+			if (listOfColumns.get(i).contains('|')) {
+				mCount++;
 				body.append("  </measure>\n");
-				body.append("  <measure number=\"" + (mCount+ 1) + "\">\n");
+				body.append(" <measure number=\"" + (mCount + 1) + "\">\n");
 			}
 			for (int a = 0; a < listOfColumns.get(i).size(); a++) {
 				if (Character.isDigit(listOfColumns.get(i).get(a))) {
@@ -283,27 +297,35 @@ public class StringInstrument {
 			if (digit >= 1) {
 				for (int j = 0; j < listOfColumns.get(i).size(); j++) {
 					stringNum++;
-					if (listOfColumns.get(i).contains('|')) {
-						numMeasureCount++;
-						body.append(" <measure number=\""+numMeasureCount+"\">\n");
-					}
 					
 					if (Character.isDigit(listOfColumns.get(i).get(j))) {
 						int origini = i;
-						fret = listOfColumns.get(i).get(j);
+						
+						if (i != listOfColumns.size() - 1) 
+							if (Character.isDigit(listOfColumns.get(i + 1).get(j))) {
+								 x = (Character.getNumericValue(listOfColumns.get(i).get(j)));
+								 y = (Character.getNumericValue(listOfColumns.get(i+1).get(j)));
+								fret = x * 10 + y;
+							}
+							else if(Character.isDigit(listOfColumns.get(i - 1).get(j)))
+								break;
+							else 
+								fret = Character.getNumericValue(listOfColumns.get(i).get(j));
+						
 						if (str6 == null && str7 == null) {
-							note = measure.getNoteMeasure("String" + String.valueOf(stringNum),Character.getNumericValue(fret),"bass");
-							octave = measure.getOctaveMeasure("String" + String.valueOf(stringNum),
-									Character.getNumericValue(fret),"bass");
+							note = measure.getNoteMeasure("String" + String.valueOf(stringNum),fret,"bass");
+							octave = measure.getOctaveMeasure("String" + String.valueOf(stringNum), fret,"bass");
 						} else {
-							note = measure.getNoteMeasure("String" + String.valueOf(stringNum), Character.getNumericValue(fret), "guitar");
-							octave = measure.getOctaveMeasure("String" + String.valueOf(stringNum),
-									Character.getNumericValue(fret),"guitar");
+							note = measure.getNoteMeasure("String" + String.valueOf(stringNum), fret, "guitar");
+							octave = measure.getOctaveMeasure("String" + String.valueOf(stringNum), fret,"guitar");
 						}
 						
 						body.append("<note>\n");
-						if (digit > 1) {
+						if (digit > 1 && chord) {
 							body.append("  <chord/>\n");
+						}
+						if (digit > 1) {
+							chord = true;
 						}
 						body.append(" <pitch>\n");
 						if (note.length() == 1)
@@ -314,26 +336,49 @@ public class StringInstrument {
 						}
 						body.append("  <octave>" + octave + "</octave>\n");
 						body.append("  </pitch>\n");
-//						i++;
-//						boolean end = false;
-//						counter = -1;
-//						while (end!=true) {
-//							int numCheck = 0;
-//							for (int a = 0; a < listOfColumns.get(i).size(); a++) {
-//								if(listOfColumns.get(i).get(a).equals('-')) {
-//									numCheck++;
-//								}
-//							}
-//							if(numCheck < listOfColumns.get(i).size()) {
-//								end = true;
-//							}
+
+//						boolean chord = false;
+//						while (true) {
 //							i++;
+//							if (i == listOfColumns.size())
+//								break;
+//							for (int a = 0; a < listOfColumns.get(i).size(); a++) {
+//								if (Character.isDigit(listOfColumns.get(i).get(a)))
+//								{
+//										bool = false;
+//										break;
+//								}
+//							}		
 //							counter++;
 //						}
+						
 						i = origini;
-						body.append(" <duration>" + counter + "</duration>\n");
+						counter = -1;
+						boolean bool = true;
+						while (bool){
+							i++;
+							if (i == listOfColumns.size())
+								break;
+							for (int a = 0; a < listOfColumns.get(i).size(); a++) {
+								if (Character.isDigit(listOfColumns.get(i).get(a)))
+								{
+										bool = false;
+										break;
+								}
+							}		
+							counter++;
+						}
+						counter++;
+						i = origini;
+						// checks if the value has a legato of pull off or hammer on
+						if (listOfColumns.get(i).get(j).equals('p') || listOfColumns.get(i).get(j).equals('h')) {
+							ArrayList<String> legatoValue = new ArrayList<String>();
+							String text = Character.toString(listOfColumns.get(i).get(j));
+							legatoValue = measure.legatos(text);
+						}
+						body.append(" <duration>" + (counter + 1) + "</duration>\n");
 						body.append(" <voice>1</voice>\n");
-						body.append(" <type>"+measure.getDuration(counter)+"</type>\n");
+						body.append(" <type>"+measure.getDuration(counter + 1)+"</type>\n");
 						body.append(" <notations>\n");
 						body.append("  <technical>\n");
 						body.append("   <string>" + stringNum + "</string>\n");
@@ -351,11 +396,11 @@ public class StringInstrument {
 			} else {
 				digit = 0;
 				stringNum = 0;
+				chord = false;
 			}
 		}
 		mCount++;
 		return body.toString();
-
 	}
 
 	// End of printToXML method

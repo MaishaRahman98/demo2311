@@ -7,86 +7,68 @@ public class Notes {
 	public static String bassNotes(String stringNum, int fret) {
 		if(stringNum.equals("String1")) {
 			fret+= 3;
-			if(fret < 12) {
-			return mainNotes[fret]; 
-			}
-			else {
-			return mainNotes[fret-12];
+				while (fret > 12)
+					fret = fret - 12;
+			return mainNotes[fret];
 			
-			}
 		}
 		else if(stringNum.equals("String2")) {
 			fret+=10;
-			if(fret < 12) {
-			return mainNotes[fret]; 
-			}
-			else {
-			return mainNotes[fret-12];
-			}
+			while (fret > 12)
+				fret = fret - 12;
+		return mainNotes[fret];
 		}
 		else if(stringNum.equals("String3")) {
 			fret+=5;
-			if(fret < 12) {
-			return mainNotes[fret]; 
-			}
-			else {
-			return mainNotes[fret-12];
-			}
+			while (fret > 12)
+				fret = fret - 12;
+		return mainNotes[fret];
 		}
 		else if(stringNum.equals("String4")) {
+			while (fret > 12)
+				fret = fret - 12;
 			return mainNotes[fret]; 
 		}
 		else {
 			fret+=7;
-			if(fret < 12) {
-			return mainNotes[fret]; 
-			}
-			else {
-			return mainNotes[fret-12];
-			}
+			while (fret > 12)
+				fret = fret - 12;
+		return mainNotes[fret];
 		}
 	}
 	public static String guitarNotes(String stringNum, int fret) {
 		if(stringNum.equals("String1") || stringNum.equals("String6") ) {
-			return mainNotes[fret];
+			while (fret > 12)
+				fret = fret - 12;
+		return mainNotes[fret];
 			}
 		else if(stringNum.equals("String2") || stringNum.equals("String7")) {
 			fret+=7;
-			if(fret < 12) {
-			return mainNotes[fret]; 
-			}
-			else {
-			return mainNotes[fret-12];
-			}
+			while (fret > 12)
+				fret = fret - 12;
+		return mainNotes[fret];
 		}
 		else if(stringNum.equals("String3")) {
 			fret+=2;
-			if(fret < 12) {
-			return mainNotes[fret]; 
-			}
-			else {
-			return mainNotes[fret-12];
-			}
+			while (fret > 12)
+				fret = fret - 12;
+		return mainNotes[fret];
 		}
 		else if(stringNum.equals("String4")) {
 			fret+=10;
-			if(fret < 12) {
-			return mainNotes[fret]; 
-			}
-			else {
-			return mainNotes[fret-12];
-			}
+			while (fret > 12)
+				fret = fret - 12;
+		return mainNotes[fret];
 		}
 		else if(stringNum.equals("String5")) {
 			fret+=5;
-			if(fret < 12) {
-			return mainNotes[fret]; 
-			}
-			else {
-			return mainNotes[fret-12];
-			}
+			while (fret > 12)
+				fret = fret - 12;
+		return mainNotes[fret];
 		}
 		else { 
+			while (fret > 12)
+				fret = fret - 12;
 			return mainNotes[fret];
 		}	
 	}
