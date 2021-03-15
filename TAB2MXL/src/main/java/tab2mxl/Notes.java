@@ -4,7 +4,7 @@ public class Notes {
 	
 	final static String[] mainNotes = {"E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"};
 	
-	public static String bassNotes(String stringNum, int fret) {
+	public static String drumNotes(String stringNum, int fret) {
 		if(stringNum.equals("String1")) {
 			fret+= 3;
 			if(fret < 12) {
