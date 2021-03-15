@@ -12,18 +12,18 @@ repositories {
 dependencies {
     // Use JUnit test framework
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-<<<<<<< HEAD
+
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     //Xembly for xml
 
     implementation 'com.jcabi.incubator:xembly:0.25.0'
-=======
+
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     //testCompile "org.testfx:testfx-core:4.0.16-alpha"
     //testCompile "org.testfx:testfx-junit5:4.0.16-alpha"
     //testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
   
->>>>>>> refs/remotes/origin/Maisha_Branch
+
 }
 
 test {

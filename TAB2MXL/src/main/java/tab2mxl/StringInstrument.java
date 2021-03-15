@@ -10,7 +10,6 @@ public class StringInstrument {
 	private static String str5;
 	private static String str6;
 	private static String str7;
-	private static String str8;
 	int measureCount = 0;
 	static int temp = 0;
 	private char type; //number of strings
@@ -27,7 +26,6 @@ public class StringInstrument {
 		this.str5 = "";
 		this.str6 = "";
 		this.str7 = "";
-		this.str8 = "";
 	}
 	public StringInstrument(String str1, String str2, String str3, String str4) {
 		this.str1 = str1;
@@ -54,13 +52,6 @@ public class StringInstrument {
 		this.str7 = str7;	
 		this.type = '7';
 	}
-	
-	public StringInstrument(String str1, String str2, String str3, String str4, String str5, String str6, String str7, String str8) {
-		this(str1, str2, str3, str4, str5, str6, str7);
-		this.str7 = str8;	
-		this.type = '8';
-	}
-
 
 	public static Bass getBass(String str1, String str2, String str3, String str4) {
 		Bass bassFour;
@@ -92,42 +83,6 @@ public class StringInstrument {
 
 		
 	}
-	
-	public static Drum getDrum(String str1, String str2, String str3, String str4) {
-		Drum drumFour;
-		drumFour = Drum.getInstance(str1,str2,str3,str4);
-		return drumFour;
-
-	}
-	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5) {
-		Drum drumFive;
-		drumFive = Drum.getInstance(str1,str2,str3,str4,str5);
-		return drumFive;
-	}
-	
-	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6) {
-		Drum drumSix;
-		drumSix = Drum.getInstance(str1,str2,str3,str4,str5, str6);
-		return drumSix;
-
-		
-	}
-	
-	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
-		Drum drumSeven;
-		drumSeven = Drum.getInstance(str1,str2,str3,str4,str5, str6, str7);
-		return drumSeven;
-
-		
-	}
-	
-	public static Drum getGDrum(String str1, String str2, String str3, String str4, String str5, String str6, String str7, String str8) {
-		Drum drumEight;
-		drumEight = Drum.getInstance(str1,str2,str3,str4,str5, str6, str7);
-		return drumEight;
-
-	}
-	
 	public static String xmlHeader(int c) {
 		String instrument = "";
 		StringBuilder head = new StringBuilder();
@@ -312,7 +267,7 @@ public class StringInstrument {
 
 						fret = j.charAt(i);
 						if (str6 == null && str7 == null) {
-							note = Notes.drumNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+							note = Notes.bassNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 							octave = Notes.bassOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 						}else {
 							note = Notes.guitarNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
@@ -406,12 +361,6 @@ public class StringInstrument {
 	}
 	public void setStr7(String str7) {
 		this.str7 = str7;
-	}
-	public String getStr8() {
-		return str8;
-	}
-	public void setStr8(String str8) {
-		this.str8 = str8;
 	}
 	public char getType() {
 		return type;

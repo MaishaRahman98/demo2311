@@ -4,7 +4,7 @@ public class Notes {
 	
 	final static String[] mainNotes = {"E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"};
 	
-	public static String drumNotes(String stringNum, int fret) {
+	public static String bassNotes(String stringNum, int fret) {
 		if(stringNum.equals("String1")) {
 			fret+= 3;
 			if(fret < 12) {
@@ -90,10 +90,6 @@ public class Notes {
 			return mainNotes[fret];
 		}	
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/Maisha_Branch
 	public static int bassOctave(String stringNum, int fret) {
 		if(stringNum.equals("String1")) {
 			if(fret < 5)
@@ -233,10 +229,6 @@ public class Notes {
 			return mainNotes[fret-12];
 			}
 		}
-<<<<<<< HEAD
-	
-}
-=======
 	}
 	public static String drumNotes(String stringNum, int fret) {
 		if(stringNum.equals("String1")) {
@@ -254,5 +246,4 @@ public class Notes {
 		return "";
 		
 	}
->>>>>>> refs/remotes/origin/Maisha_Branch
 }
