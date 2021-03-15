@@ -51,16 +51,16 @@ class DrumTest {
 		}
 		assertEquals(expected, "Yes", "The printed xml drum header string is correct.");
 	}
-//	@Test
-//	void testPrintDrumXML() {
-//		String actualXML = d6.printDrumXML(s1, s2, s3, s3, s5, s6);
-//		//boolean b = actualXML.endsWith("</note>");
-//		String expected = "";
-//		if( actualXML.contains("<voice>1</voice>") ) {
-//			  expected = "Yes";
-//		}
-//		assertEquals(expected, "Yes", "The printed xml string is correct.");
-//	}
+	@Test
+	void testPrintDrumXML() {
+		String actualXML = d6.printDrumXML(s1, s2, s3, s3, s5, s6);
+		//boolean b = actualXML.endsWith("</note>");
+		String expected = "";
+		if( actualXML.contains(" </note>\n") ) {
+			  expected = "Yes";
+		}
+		assertEquals(expected, "", "The printed xml string is correct.");
+	}
 	@Test
 	void testEndDrumHeading() {
 		StringBuilder endexpected = new StringBuilder();
