@@ -150,13 +150,16 @@ public class StringInstrument {
                 head.append(" <measure number=\"1\">\n");
                 head.append("       <attributes>\n");
                 head.append("            <divisions>4</divisions>\n");
+                head.append("            <key>\n");
+                head.append("                <fifths>0</fifths>\n");
+                head.append("                </key>\n");
                 head.append("            <time>\n");
                 head.append("                <beats>4</beats>\n");
                 head.append("                <beat-type>4</beat-type>\n");
                 head.append("            </time>\n");
                 head.append("            <clef>\n");
                 head.append("               <sign>TAB</sign>\n");
-                head.append("               <line>1</line>\n");
+                head.append("               <line>5</line>\n");
                 head.append("            </clef>\n");
                 head.append("            <staff-details>\n");
                 

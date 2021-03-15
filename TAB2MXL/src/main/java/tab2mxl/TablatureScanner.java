@@ -24,6 +24,7 @@ public class TablatureScanner extends StringInstrument {
 		String output = "";
 		String o = "";
 		Scanner myReader = new Scanner(text);
+		boolean check = false;
 		while (myReader.hasNextLine()) {
 			String s = myReader.nextLine();
 			if (s.charAt(0) == ' ') {
@@ -36,19 +37,35 @@ public class TablatureScanner extends StringInstrument {
 			} 
 			else if (s.contains("|") && s.contains("-")) {
 				count += 1;
+			
+				//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
+				if (s.contains("x") || s.contains("X")) {
+					check = true;
+				}
 			}
+			
 		}
-		if (count == 4 || count == 5) {
+		//detects if it is bass
+		if (check == false && (count == 4 || count == 5)) {
 			output = TablatureScanner.callBassClass(text,count);
-			//header = TablatureScanner.xmlHeader(count);
-			}
-		if (count == 6 || count == 7) {
+		}
+		//detects if it is guitar
+		else if (check == false && (count == 6 || count == 7)) {
 			output = TablatureScanner.callGuitarClass(text,count);
 			
 		}
+		//detects if it is drum
+		else if (check == true && (count == 6 || count == 7)) {
+			output = TablatureScanner.callDrumClass(text, count);
+		}
+		else if (count < 4 || count > 7 ) {
+            errorMessage.outputMessage("input error");
+        }
+		
 //		else {
 //			errorMessage.outputMessage("input error");
 //		}
+		
 
 		myReader.close();
 		return output;
@@ -66,6 +83,7 @@ public class TablatureScanner extends StringInstrument {
 //        return head.toString();
 //	}
 	
+	//Bass scanner
 	public static String callBassClass(String text,int count){
 		Scanner myReader = new Scanner(text);
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "";
@@ -155,6 +173,55 @@ public class TablatureScanner extends StringInstrument {
 		myReader1.close();
 		return out.toString();
 
+	}
+	//drum scanner
+	public static String callDrumClass(String text,int count){
+		Scanner myReader1 = new Scanner(text);
+		StringBuilder out = new StringBuilder();
+		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
+		ArrayList<String> listOfStrings = new ArrayList<String>();
+		Drum drum;
+		out.append(Drum.xmlDrumHeader(count));
+		//out.append(count + "\n");
+		while (myReader1.hasNextLine()) {
+			//out.append("HELLO\n");
+			String line = myReader1.nextLine();
+			if (line.contains("|") && line.contains("-")) {
+				listOfStrings.add(line);
+				if (listOfStrings.isEmpty()) {
+					listOfStrings.clear();
+				}
+			
+				else if (listOfStrings.size() == count) {
+					s1 = (listOfStrings).get(0);
+					s2 = (listOfStrings).get(1);
+					s3 = (listOfStrings).get(2);
+					s4 = (listOfStrings).get(3);
+					s5 = (listOfStrings).get(4);
+					
+					if(listOfStrings.size() == 5) {
+						drum = Drum.getDrum(s1,s2,s3,s4,s5);
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null));
+					}
+					else if(listOfStrings.size() == 6) {
+						s6 = (listOfStrings).get(5);
+						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
+						//out.append("HI\n");
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6));
+					}
+//					else if(listOfStrings.size() == count) {
+//						s7 = (listOfStrings).get(6);
+//						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6,s7);
+//						out.append(drum.printToXML(s1, s2, s3, s4, s5, s6, s7));
+//					}
+					listOfStrings.clear();
+				}
+			}
+		}
+		setTemp(mCount);
+		out.append(Drum.endDrumHeading());
+		myReader1.close();
+		return out.toString();
 	}
 
 }

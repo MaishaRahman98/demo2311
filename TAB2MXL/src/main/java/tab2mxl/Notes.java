@@ -90,7 +90,10 @@ public class Notes {
 			return mainNotes[fret];
 		}	
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/Maisha_Branch
 	public static int bassOctave(String stringNum, int fret) {
 		if(stringNum.equals("String1")) {
 			if(fret < 5)
@@ -230,6 +233,26 @@ public class Notes {
 			return mainNotes[fret-12];
 			}
 		}
+<<<<<<< HEAD
 	
 }
+=======
+	}
+	public static String drumNotes(String stringNum, int fret) {
+		if(stringNum.equals("String1")) {
+			
+		}
+		return "";
+	}
+	public static int drumOctave(String stringNum, int fret) {
+		return 0;
+	}
+	public static String drumInstrument(String stringNum, char fret) {
+		if(stringNum.equals("String1") && fret == 'C') {
+			return "P1-150";
+		}
+		return "";
+		
+	}
+>>>>>>> refs/remotes/origin/Maisha_Branch
 }
