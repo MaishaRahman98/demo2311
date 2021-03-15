@@ -49,7 +49,7 @@ public class Drum {
 	public static String xmlDrumHeader(int c) {
 		String instrument = "";
 		StringBuilder head = new StringBuilder();
-		if (c == 6 || c == 7) {
+		if (c == 6 || c == 5) {
 			instrument = "Drumset";
 		}
 		head.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
