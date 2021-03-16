@@ -173,7 +173,8 @@ public class Drum {
 //		String xml = "";
 		int counter = 0;
 		ArrayList<ArrayList<Character> > listOfColumns =  new ArrayList<ArrayList<Character>>();
-
+		int digit = 0;
+		
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
 			if((i+1)!= str1.length()  && str1.charAt(i)=='|' && str1.charAt(i+1) == '-') {
@@ -200,66 +201,120 @@ public class Drum {
 			listOfColumns.add(column);
 		}
 		
-		for (int k = 0; k < measureCount; k++) {
+//		for (int k = 0; k < measureCount; k++) {
 
-			if (mCount != temp && mCount != 1) {
+//			if (mCount != temp && mCount != 1) {
+			if (mCount != 0) {
 				body.append("  </measure>\n");
-				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
+//				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
+				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
 			}
 			//|| str1.charAt(i + 1) != '-'
-			for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|') ; i++)
-			{
-				Measure measure = new Measure("");
-//	        	counter++;
-	        	for (String j: allStrings) {
-		        	stringNum++;
-		        	
-		        	//&& Character.isDigit(j.charAt(i))
-					// && (j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o')
-					if (j != null) {
-						if(j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o') {
-							fret = j.charAt(i);
-						}
-						//Nabaa needs to implement drumNotes and drumOctave methods in Notes class
-						note = Notes.drumNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
-						octave = Notes.drumOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
-						
-						instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
-						
-						body.append("<note>\n");
-						body.append(" <unpitched>\n");
-						if (note.length() == 1) { 
-							body.append("  <display-step>" +  note + "</display-step>\n");
-						}
-//						else
-//						{
-//							body.append("  <display-step>" +  note.charAt(0) + "</display-step>\n");
-//	
+//			for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|') ; i++)
+//			{
+//				Measure measure = new Measure("");
+////	        	counter++;
+//	        	for (String j: allStrings) {
+//		        	stringNum++;
+//		        	
+//		        	//&& Character.isDigit(j.charAt(i))
+//					// && (j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o')
+//					if (j != null) {
+////						if(j.charAt(i) == '-') {
+////							counter++;
+////						}
+//						else if(j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o') {
+//							fret = j.charAt(i);
+//							//counter = 0; //reset counter
 //						}
-						body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
-						body.append("  </unpitched>\n");
-						body.append(" <duration>" + (counter + 1) + "</duration>\n"); //will need to implement duration later
-						body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
-						body.append(" <voice>1</voice>\n");
-						body.append(" <type>" + measure.getDuration(counter + 1) + "</type>\n"); //will need to implement type later
-						body.append(" <stem>up</stem>\n");
-						if (j.contains("x") || j.contains("X")) {
-							body.append(" <notehead>x</notehead>\n"); //only cymbal lines (C, H, R) have x
-						}
-						body.append(" <beam number=\"1\">continue</beam>\n");
-						body.append(" </note>\n");            	
-		        }	
-			}
-	        stringNum = 0;
-	        
+						
+			for (int i = 0; i < listOfColumns.size(); i++) {
+				Measure measure = new Measure("");
+				if (listOfColumns.get(i).contains('|')) {
+					mCount++;
+					body.append("  </measure>\n");
+					body.append(" <measure number=\"" + (mCount + 1) + "\">\n");
+				}
+				for (int a = 0; a < listOfColumns.get(i).size(); a++) {
+					if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o') {
+						digit++;
+					}
+				}
+				
+				if (digit >= 1) {
+					for (int j = 0; j < listOfColumns.get(i).size(); j++) {
+					
+						stringNum++;
+						if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X' || listOfColumns.get(i).get(j) == 'o') {
+							int origini = i;
+							fret = listOfColumns.get(i).get(j);
+						
+							//Nabaa needs to implement drumNotes and drumOctave methods in Notes class
+							note = Notes.drumNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+							octave = Notes.drumOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+							
+							instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
+							
+							body.append("<note>\n");
+							body.append(" <unpitched>\n");
+							if (note.length() == 1) { 
+								body.append("  <display-step>" +  note + "</display-step>\n");
+							}
+//							else
+//							{
+//								body.append("  <display-step>" +  note.charAt(0) + "</display-step>\n");
+//		
+//							}
+							body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
+							body.append("  </unpitched>\n");
+						
+							i = origini;
+							counter = -1;
+							boolean bool = true;
+							while (bool){
+								i++;
+								if (i == listOfColumns.size())
+									break;
+								for (int a = 0; a < listOfColumns.get(i).size(); a++) {
+									if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o')
+									{
+											bool = false;
+											break;
+									}
+								}		
+								counter++;
+							}
+							counter++;
+							i = origini;
+							
+							body.append(" <duration>" + (counter + 1) + "</duration>\n"); //will need to edit duration later
+							body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
+							body.append(" <voice>1</voice>\n");
+							body.append(" <type>" + measure.getDuration(counter + 1) + "</type>\n"); //will need to edit type later
+							body.append(" <stem>up</stem>\n");
+							if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X') {
+								body.append(" <notehead>x</notehead>\n"); //only cymbal lines (C, H, R) have x
+							}
+							body.append(" <beam number=\"1\">continue</beam>\n"); //need to implement this later
+							body.append(" </note>\n");            	
+						}	
+					}
+					digit = 0;
+					stringNum = 0;
+			} else {
+				digit = 0;
+				stringNum = 0;
 			}
 		}
+		//} for (int k = 0; k < measureCount; k++) {
 		mCount++;
+	
 		//return "BYE\n";
 		//String ret = body.toString();
 		//body.append("BYE\n");
 		return body.toString();	
-
+		//}
+	
 	}	
 	
 	public static String endDrumHeading() {
