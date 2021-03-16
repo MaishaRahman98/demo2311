@@ -11,6 +11,8 @@ public class StringInstrument {
 	private static String str6;
 	private static String str7;
 	int measureCount = 0;
+	int hammerCount = 0;
+	int pullOffCount = 0;
 	private char type; // number of strings
 	public static int mCount = 0;
 	public int c = 0;
@@ -235,8 +237,11 @@ public class StringInstrument {
 //		String string = "";
 //		String output = "";
 //		int spaceCount = 0;
-//		ArrayList<String> legatoOutput = new ArrayList<>();
-//		boolean legatoCheck = false;
+		ArrayList<String> legatoValue = new ArrayList<String>();
+		boolean legatoCheck = false;
+		String legatoFret = "";
+		String legatoType = "";
+		String legatoFullName = "";
 		int fret = 0;
 		int stringNum = 0;
 		String[] allStrings = { str1, str2, str3, str4, str5, str6, str7 };
@@ -294,6 +299,7 @@ public class StringInstrument {
 					digit++;
 				}
 			}
+			
 			if (digit >= 1) {
 				for (int j = 0; j < listOfColumns.get(i).size(); j++) {
 					stringNum++;
@@ -370,17 +376,46 @@ public class StringInstrument {
 						}
 						counter++;
 						i = origini;
-						// checks if the value has a legato of pull off or hammer on
-						if (listOfColumns.get(i).get(j).equals('p') || listOfColumns.get(i).get(j).equals('h')) {
-							ArrayList<String> legatoValue = new ArrayList<String>();
-							String text = Character.toString(listOfColumns.get(i).get(j));
-							legatoValue = measure.legatos(text);
+						if (i+2 < listOfColumns.size()) {
+							if (Character.toLowerCase(listOfColumns.get(i+2).get(j)) == 'p' || Character.toLowerCase(listOfColumns.get(i+2).get(j)) == 'h' || Character.toLowerCase(listOfColumns.get(i+1).get(j)) == 'p' || Character.toLowerCase(listOfColumns.get(i+1).get(j)) == 'h') {
+								String text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j))+Character.toString(listOfColumns.get(i+3).get(j))+Character.toString(listOfColumns.get(i+4).get(j));
+								legatoCheck = true;
+								legatoValue = measure.legatos(text);
+							}
 						}
 						body.append(" <duration>" + (counter + 1) + "</duration>\n");
 						body.append(" <voice>1</voice>\n");
 						body.append(" <type>"+measure.getDuration(counter + 1)+"</type>\n");
 						body.append(" <notations>\n");
 						body.append("  <technical>\n");
+						if (legatoCheck == true) {
+							legatoType = legatoValue.get(1);
+							legatoFullName = legatoValue.get(0);
+							if (legatoValue.get(1) == "H") {
+								hammerCount++;
+								body.append("   <"+legatoValue.get(1)+" number=\""+hammerCount+"\" type=\"start\">"+legatoValue.get(0)+"</"+legatoValue.get(1)+">\n");
+							}
+							if (legatoValue.get(1) == "P") {
+								pullOffCount++;
+								body.append("   <"+legatoValue.get(1)+" number=\""+pullOffCount+"\" type=\"start\">"+legatoValue.get(0)+"</"+legatoValue.get(1)+">\n");
+							}
+							legatoCheck = false;
+							legatoFret = legatoValue.get(2);
+						}
+						
+						if (legatoType == "H" || legatoType == "P" ) {
+							if(Integer.valueOf(legatoFret) == fret) {
+								if (legatoType == "H") {
+									body.append("  <"+legatoFullName+" number="+hammerCount+" type=\"stop\"/>\n");
+								}
+								if (legatoType == "P") {
+									body.append("  <"+legatoFullName+" number="+pullOffCount+" type=\"stop\"/>\n");
+								}
+								legatoType = "";
+								legatoFullName = "";
+								legatoFret = "";	
+							}
+						}
 						body.append("   <string>" + stringNum + "</string>\n");
 						body.append("   <fret>" + fret + "</fret>\n");
 						body.append("   </technical>\n");
