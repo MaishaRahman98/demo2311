@@ -1,6 +1,8 @@
 package tab2mxl;
 
-public class Drum extends StringInstrument {
+import java.util.ArrayList;
+
+public class Drum {
 	
 	private static String str1;
 	private static String str2;
@@ -32,7 +34,6 @@ public class Drum extends StringInstrument {
 		this.str5 = s5;	
 		this.strNum = '5';
 	}
-	
 	private Drum(String s1, String s2, String s3, String s4, String s5, String s6) {
 		this(s1, s2, s3, s4, s5);
 		this.str6 = s6;	
@@ -47,11 +48,10 @@ public class Drum extends StringInstrument {
 		return new Drum(s1, s2, s3, s4, s5);
 	}
 	
-	
 	public static String xmlDrumHeader(int c) {
 		String instrument = "";
 		StringBuilder head = new StringBuilder();
-		if (c == 6 || c == 7) {
+		if (c == 6 || c == 5) {
 			instrument = "Drumset";
 		}
 		head.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
@@ -155,24 +155,22 @@ public class Drum extends StringInstrument {
 	}
 	
 	
-	//Will edit this part
+	
 	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
 		String instrument = "";
-//		String string = "";
-//		String output = "";
-//		int spaceCount = 0;
-//		ArrayList<String> legatoOutput = new ArrayList<>();
-//		boolean legatoCheck = false;
+
 		char fret = 0;
 		int stringNum = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
-//		String name;
-		int octave = 0;
-//		String xml = "";
-//		int counter = 0;
 
+		int octave = 0;
+
+		int counter = 0;
+		ArrayList<ArrayList<Character> > listOfColumns =  new ArrayList<ArrayList<Character>>();
+		int digit = 0;
+		
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
 			if((i+1)!= str1.length()  && str1.charAt(i)=='|' && str1.charAt(i+1) == '-') {
@@ -180,67 +178,113 @@ public class Drum extends StringInstrument {
 			}
 		}
 		
-		for (int k = 0; k < measureCount; k++) {
+		for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|'); i++) {
+			ArrayList<Character> column = new ArrayList<Character>();
+			column.add(str1.charAt(i));
+			column.add(str2.charAt(i));
+			column.add(str3.charAt(i));
+			column.add(str4.charAt(i));
+			if (str5 != null && str6 == null && str7 == null) {
+				column.add(str5.charAt(i));
+			} else if (str5 != null && str6 != null && str7 == null) {
+				column.add(str5.charAt(i));
+				column.add(str6.charAt(i));
+			} else if (str5 != null && str6 != null && str7 != null) {
+				column.add(str5.charAt(i));
+				column.add(str6.charAt(i));
+				column.add(str7.charAt(i));
+			}
+			listOfColumns.add(column);
+		}
+		
 
-			if (mCount != temp && mCount != 1) {
+			if (mCount != 0) {
 				body.append("  </measure>\n");
-				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
+
+				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
 			}
-			
-			//|| str1.charAt(i + 1) != '-'
-			for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|') ; i++)
-			{
-//	        	counter++;
-	        	for (String j: allStrings) {
-		        	stringNum++;
-		        	
-		        	//&& Character.isDigit(j.charAt(i))
-					// && (j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o')
-					if (j != null) {
-						if(j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o') {
-							fret = j.charAt(i);
-						}
-						//Nabaa needs to implement drumNotes and drumOctave methods in Notes class
-						note = Notes.drumNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
-						octave = Notes.drumOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+
 						
-						instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
+			for (int i = 0; i < listOfColumns.size(); i++) {
+				Measure measure = new Measure("");
+				if (listOfColumns.get(i).contains('|')) {
+					mCount++;
+					body.append("  </measure>\n");
+					body.append(" <measure number=\"" + (mCount + 1) + "\">\n");
+				}
+				for (int a = 0; a < listOfColumns.get(i).size(); a++) {
+					if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o') {
+						digit++;
+					}
+				}
+				
+				if (digit >= 1) {
+					for (int j = 0; j < listOfColumns.get(i).size(); j++) {
+					
+						stringNum++;
+						if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X' || listOfColumns.get(i).get(j) == 'o') {
+							int origini = i;
+							fret = listOfColumns.get(i).get(j);
 						
-						body.append("<note>\n");
-						body.append(" <unpitched>\n");
-						if (note.length() == 1) { 
-							body.append("  <display-step>" +  note + "</display-step>\n");
-						}
-//						else
-//						{
-//							body.append("  <display-step>" +  note.charAt(0) + "</display-step>\n");
-//	
-//						}
-						
+							//Nabaa needs to implement drumNotes and drumOctave methods in Notes class
+							note = Notes.drumNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+							octave = Notes.drumOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+							
+							instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
+							
+							body.append("<note>\n");
+							body.append(" <unpitched>\n");
+							if (note.length() == 1) { 
+								body.append("  <display-step>" +  note + "</display-step>\n");
+							}
 						body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
-						body.append("  </unpitched>\n");
-						body.append(" <duration>2</duration>\n"); //will need to implement duration later
-						body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
-						body.append(" <voice>1</voice>\n");
-						body.append(" <type>eighth</type>\n"); //will need to implement type later
-						body.append(" <stem>up</stem>\n");
-						if (j.contains("C") || j.contains("H") || j.contains("R")) {
-							body.append(" <notehead>x</notehead>\n"); //only cymbal lines have x
-						}
-						body.append(" <beam number=\"1\">continue</beam>\n");
-						body.append(" </note>\n");            	
-		        }	
-			}
-	        stringNum = 0;
-	        
+							body.append("  </unpitched>\n");
+						
+							i = origini;
+							counter = -1;
+							boolean bool = true;
+							while (bool){
+								i++;
+								if (i == listOfColumns.size())
+									break;
+								for (int a = 0; a < listOfColumns.get(i).size(); a++) {
+									if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o')
+									{
+											bool = false;
+											break;
+									}
+								}		
+								counter++;
+							}
+							counter++;
+							i = origini;
+							
+							body.append(" <duration>" + (counter + 1) + "</duration>\n"); //will need to edit duration later
+							body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
+							body.append(" <voice>1</voice>\n");
+							body.append(" <type>" + measure.getDuration(counter + 1) + "</type>\n"); //will need to edit type later
+							body.append(" <stem>up</stem>\n");
+							if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X') {
+								body.append(" <notehead>x</notehead>\n"); //only cymbal lines (C, H, R) have x
+							}
+							body.append(" <beam number=\"1\">continue</beam>\n"); //need to implement this later
+							body.append(" </note>\n");            	
+						}	
+					}
+					digit = 0;
+					stringNum = 0;
+			} else {
+				digit = 0;
+				stringNum = 0;
 			}
 		}
+		
 		mCount++;
-		//return "BYE\n";
-		//String ret = body.toString();
-		//body.append("BYE\n");
+	
+		
 		return body.toString();	
-
+		
+	
 	}	
 	
 	public static String endDrumHeading() {
@@ -254,7 +298,6 @@ public class Drum extends StringInstrument {
 		end.append("</score-partwise>\n");
 		return end.toString();
 	}
-	
 	
 	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6) {
 		Drum drumSix;

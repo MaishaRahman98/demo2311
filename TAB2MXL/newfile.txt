@@ -98,6 +98,599 @@
  <unpitched>
   <display-octave>6</display-octave>
   </unpitched>
+ <duration>3</duration>
+  <instrument id="P1-150"/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>3</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+<<<<<<< HEAD
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>B</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+=======
+ <duration>3</duration>
+  <instrument id="P1-I43"/>
+>>>>>>> refs/remotes/origin/Maisha_Branch
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>4</display-octave>
+  </unpitched>
+<<<<<<< HEAD
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>E</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>E</display-step>
+  <display-octave>6</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+=======
+ <duration>3</duration>
+  <instrument id="P1-I43"/>
+>>>>>>> refs/remotes/origin/Maisha_Branch
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>B</display-step>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>3</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+<<<<<<< HEAD
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>D</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>A</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>E</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>E</display-step>
+  <display-octave>6</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+=======
+ <duration>3</duration>
+  <instrument id="P1-I43"/>
+>>>>>>> refs/remotes/origin/Maisha_Branch
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>3</duration>
+  <instrument id="P1-I43"/>
+ <voice>1</voice>
+<<<<<<< HEAD
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>B</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+=======
+ <type>Quarter</type>
+>>>>>>> refs/remotes/origin/Maisha_Branch
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>3</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>3</duration>
+  <instrument id="P1-I43"/>
+ <voice>1</voice>
+<<<<<<< HEAD
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>6</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+=======
+ <type>Quarter</type>
+>>>>>>> refs/remotes/origin/Maisha_Branch
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>3</duration>
+  <instrument id="P1-I43"/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>3</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>B</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>4</duration>
+  <instrument id="P1-I43"/>
+ <voice>1</voice>
+ <type>Half</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+  </measure>
+ <measure number="2">
+<note>
+ <unpitched>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>6</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>D</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>A</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>E</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>E</display-step>
+  <display-octave>6</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>B</display-step>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>8</duration>
+  <instrument id="P1-150"/>
+ <voice>1</voice>
+ <type>Whole</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>8</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+<<<<<<< HEAD
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>D</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>A</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>E</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>E</display-step>
+  <display-octave>6</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>B</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>6</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>B</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>2</duration>
+  <instrument id=""/>
+ <voice>1</voice>
+ <type>eighth</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-octave>6</display-octave>
+  </unpitched>
  <duration>2</duration>
   <instrument id=""/>
  <voice>1</voice>
@@ -728,579 +1321,6 @@
  </note>
 <note>
  <unpitched>
-  <display-step>E</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>E</display-step>
-  <display-octave>6</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>B</display-step>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>D</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>A</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>E</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>E</display-step>
-  <display-octave>6</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>B</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>6</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>B</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>6</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>D</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>A</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>E</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>E</display-step>
-  <display-octave>6</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>B</display-step>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>D</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>A</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>E</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>E</display-step>
-  <display-octave>6</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>B</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>6</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>B</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>6</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>5</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-step>B</display-step>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>4</display-octave>
-  </unpitched>
- <duration>2</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>eighth</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
   <display-octave>4</display-octave>
   </unpitched>
  <duration>2</duration>
@@ -2486,6 +2506,9 @@
   <instrument id=""/>
  <voice>1</voice>
  <type>eighth</type>
+=======
+ <type>Whole</type>
+>>>>>>> refs/remotes/origin/Maisha_Branch
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>

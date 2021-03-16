@@ -151,7 +151,7 @@ public class Functioncallfile {
 //			win.textArea.getText().printTab();
 			text = win.textArea.getText();
 			win.textArea.setText(null);
-			musicFile.createFile(text);
+			//musicFile.createFile(text);
 			BufferedReader firstbf;
 			try {
 				firstbf = new BufferedReader(new FileReader(musicFile.createFile(text)));

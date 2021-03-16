@@ -262,8 +262,14 @@ public class Notes {
 		}
 	}
 	public static String drumInstrument(String stringNum, char fret) {
-		if(stringNum.equals("String1") && fret == 'C') {
-			return "P1-150";
+		if(stringNum.equals("String1") && fret == 'x') {
+			return "P1-150";//Crash Cymbal 1
+		}
+		if(stringNum.equals("String2") && fret == 'x') {
+			return "P1-I43"; //closed hi-hat
+		}
+		else if (stringNum.equals("String2") && fret == 'X') {
+			return "P1-I47"; //open hi-hat
 		}
 		return "";
 		
