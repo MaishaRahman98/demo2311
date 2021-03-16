@@ -1,6 +1,6 @@
 package tab2mxl;
 
-public class Drum {
+public class Drum extends StringInstrument {
 	
 	private static String str1;
 	private static String str2;
@@ -32,6 +32,7 @@ public class Drum {
 		this.str5 = s5;	
 		this.strNum = '5';
 	}
+	
 	private Drum(String s1, String s2, String s3, String s4, String s5, String s6) {
 		this(s1, s2, s3, s4, s5);
 		this.str6 = s6;	
@@ -45,6 +46,7 @@ public class Drum {
 		
 		return new Drum(s1, s2, s3, s4, s5);
 	}
+	
 	
 	public static String xmlDrumHeader(int c) {
 		String instrument = "";
@@ -184,6 +186,7 @@ public class Drum {
 				body.append("  </measure>\n");
 				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
 			}
+			
 			//|| str1.charAt(i + 1) != '-'
 			for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|') ; i++)
 			{
@@ -213,6 +216,7 @@ public class Drum {
 //							body.append("  <display-step>" +  note.charAt(0) + "</display-step>\n");
 //	
 //						}
+						
 						body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
 						body.append("  </unpitched>\n");
 						body.append(" <duration>2</duration>\n"); //will need to implement duration later
@@ -250,6 +254,7 @@ public class Drum {
 		end.append("</score-partwise>\n");
 		return end.toString();
 	}
+	
 	
 	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6) {
 		Drum drumSix;

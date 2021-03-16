@@ -83,13 +83,31 @@ public class StringInstrument {
 
 		
 	}
+	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5) {
+		Drum drumFive;
+		drumFive =  Drum.getInstance(str1,str2,str3,str4,str5);
+		return drumFive;
+
+		
+	}
+	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6) {
+		Drum drumSix;
+		drumSix = Drum.getInstance(str1,str2,str3,str4,str5, str6);
+		return drumSix;
+
+		
+	}
+	
 	public static String xmlHeader(int c) {
 		String instrument = "";
 		StringBuilder head = new StringBuilder();
-		if (c == 4 || c == 5) {
+		if (str1.charAt(1)=='G') {
 			instrument = "Bass Guitar";
-		}else {
+		}else if (str1.charAt(1)=='E'){
 			instrument = "Guitar";
+		}
+		else {
+			instrument = "Drum";
 		}
 		
 				head.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
@@ -266,13 +284,15 @@ public class StringInstrument {
 					if (j != null && Character.isDigit(j.charAt(i))) {
 
 						fret = j.charAt(i);
-						if (str6 == null && str7 == null) {
+						if ((str6 == null && str7 == null) && (str1.charAt(1)=='G')) {
 							note = Notes.bassNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 							octave = Notes.bassOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
-						}else {
+						}
+						else if ((str1.charAt(1)=='E') && (str6 != null || str7 != null)) {
 							note = Notes.guitarNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 							octave = Notes.guitarOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 						}
+						
 						body.append("<note>\n");
 						body.append(" <pitch>\n");
 						if (note.length() == 1) 
