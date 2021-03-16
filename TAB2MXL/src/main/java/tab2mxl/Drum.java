@@ -1,5 +1,7 @@
 package tab2mxl;
 
+import java.util.ArrayList;
+
 public class Drum {
 	
 	private static String str1;
@@ -169,13 +171,33 @@ public class Drum {
 //		String name;
 		int octave = 0;
 //		String xml = "";
-//		int counter = 0;
+		int counter = 0;
+		ArrayList<ArrayList<Character> > listOfColumns =  new ArrayList<ArrayList<Character>>();
 
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
 			if((i+1)!= str1.length()  && str1.charAt(i)=='|' && str1.charAt(i+1) == '-') {
 				measureCount++;
 			}
+		}
+		
+		for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|'); i++) {
+			ArrayList<Character> column = new ArrayList<Character>();
+			column.add(str1.charAt(i));
+			column.add(str2.charAt(i));
+			column.add(str3.charAt(i));
+			column.add(str4.charAt(i));
+			if (str5 != null && str6 == null && str7 == null) {
+				column.add(str5.charAt(i));
+			} else if (str5 != null && str6 != null && str7 == null) {
+				column.add(str5.charAt(i));
+				column.add(str6.charAt(i));
+			} else if (str5 != null && str6 != null && str7 != null) {
+				column.add(str5.charAt(i));
+				column.add(str6.charAt(i));
+				column.add(str7.charAt(i));
+			}
+			listOfColumns.add(column);
 		}
 		
 		for (int k = 0; k < measureCount; k++) {
@@ -187,6 +209,7 @@ public class Drum {
 			//|| str1.charAt(i + 1) != '-'
 			for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|') ; i++)
 			{
+				Measure measure = new Measure("");
 //	        	counter++;
 	        	for (String j: allStrings) {
 		        	stringNum++;
@@ -215,13 +238,13 @@ public class Drum {
 //						}
 						body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
 						body.append("  </unpitched>\n");
-						body.append(" <duration>2</duration>\n"); //will need to implement duration later
+						body.append(" <duration>" + (counter + 1) + "</duration>\n"); //will need to implement duration later
 						body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
 						body.append(" <voice>1</voice>\n");
-						body.append(" <type>eighth</type>\n"); //will need to implement type later
+						body.append(" <type>" + measure.getDuration(counter + 1) + "</type>\n"); //will need to implement type later
 						body.append(" <stem>up</stem>\n");
-						if (j.contains("C") || j.contains("H") || j.contains("R")) {
-							body.append(" <notehead>x</notehead>\n"); //only cymbal lines have x
+						if (j.contains("x") || j.contains("X")) {
+							body.append(" <notehead>x</notehead>\n"); //only cymbal lines (C, H, R) have x
 						}
 						body.append(" <beam number=\"1\">continue</beam>\n");
 						body.append(" </note>\n");            	
