@@ -515,7 +515,7 @@ public class StringInstrument {
 		this.type = type;
 	}
 
-	// reset global
+	// 
 	public void resetGlobal() {
 		this.measureCount = 0;
 		this.hammerCount = 0;
