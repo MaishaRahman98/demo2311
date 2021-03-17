@@ -155,18 +155,22 @@ public class Drum {
 	}
 	
 	
-	
+	//Will edit this part
 	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
 		String instrument = "";
-
+//		String string = "";
+//		String output = "";
+//		int spaceCount = 0;
+//		ArrayList<String> legatoOutput = new ArrayList<>();
+//		boolean legatoCheck = false;
 		char fret = 0;
 		int stringNum = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
-
+//		String name;
 		int octave = 0;
-
+//		String xml = "";
 		int counter = 0;
 		ArrayList<ArrayList<Character> > listOfColumns =  new ArrayList<ArrayList<Character>>();
 		int digit = 0;
@@ -197,13 +201,32 @@ public class Drum {
 			listOfColumns.add(column);
 		}
 		
+//		for (int k = 0; k < measureCount; k++) {
 
+//			if (mCount != temp && mCount != 1) {
 			if (mCount != 0) {
 				body.append("  </measure>\n");
-
+//				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
 				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
 			}
-
+			//|| str1.charAt(i + 1) != '-'
+//			for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|') ; i++)
+//			{
+//				Measure measure = new Measure("");
+////	        	counter++;
+//	        	for (String j: allStrings) {
+//		        	stringNum++;
+//		        	
+//		        	//&& Character.isDigit(j.charAt(i))
+//					// && (j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o')
+//					if (j != null) {
+////						if(j.charAt(i) == '-') {
+////							counter++;
+////						}
+//						else if(j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o') {
+//							fret = j.charAt(i);
+//							//counter = 0; //reset counter
+//						}
 						
 			for (int i = 0; i < listOfColumns.size(); i++) {
 				Measure measure = new Measure("");
@@ -237,7 +260,12 @@ public class Drum {
 							if (note.length() == 1) { 
 								body.append("  <display-step>" +  note + "</display-step>\n");
 							}
-						body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
+							else
+							{
+								body.append("  <display-step>" +  note.charAt(0) + "</display-step>\n");
+		
+							}
+							body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
 							body.append("  </unpitched>\n");
 						
 							i = origini;
@@ -278,12 +306,14 @@ public class Drum {
 				stringNum = 0;
 			}
 		}
-		
+		//} for (int k = 0; k < measureCount; k++) {
 		mCount++;
 	
-		
+		//return "BYE\n";
+		//String ret = body.toString();
+		//body.append("BYE\n");
 		return body.toString();	
-		
+		//}
 	
 	}	
 	

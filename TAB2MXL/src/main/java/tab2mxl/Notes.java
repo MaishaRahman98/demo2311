@@ -261,13 +261,17 @@ public class Notes {
 				return 3;
 		}
 	}
+	
+	
 	public static String drumInstrument(String stringNum, char fret) {
 		if(stringNum.equals("String1") && fret == 'x') {
 			return "P1-150";//Crash Cymbal 1
-		}
+			}
+		
 		if (stringNum.equals("String1") && fret == 'x') {
 			return "P1-160"; //Crash Cymbal 2
 		}
+		
 		if(stringNum.equals("String2") && fret == 'x') {
 			return "P1-I43"; //closed hi-hat
 		}
@@ -292,7 +296,7 @@ public class Notes {
 	 return "";
 		
 		
-		
+	
 		
 	}
 }
