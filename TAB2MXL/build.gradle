@@ -17,7 +17,6 @@ dependencies {
     //testCompile "org.testfx:testfx-junit5:4.0.16-alpha"
     //testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
     implementation'com.jtattoo:JTattoo:1.6.13'
-  
 }
 
 test {
@@ -40,6 +39,13 @@ jacocoTestReport {
 javafx {
     version = "15"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+jacoco {
+    toolVersion = "0.8.6"
+    reportsDirectory = file("$buildDir/customJacocoReportDir")
+}
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
 }
 
 run {
