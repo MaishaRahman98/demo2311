@@ -86,6 +86,7 @@ public class Functioncallfile {
 		}
 		try {
 			FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicxml");
+			//FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicXML");
 //			saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
 			newfile1.write(win.textArea.getText());
 //			win.frame.setTitle(name);
@@ -152,6 +153,7 @@ public class Functioncallfile {
 			text = win.textArea.getText();
 			win.textArea.setText(null);
 			//musicFile.createFile(text);
+
 			BufferedReader firstbf;
 			try {
 				firstbf = new BufferedReader(new FileReader(musicFile.createFile(text)));

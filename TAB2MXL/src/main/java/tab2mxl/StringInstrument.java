@@ -11,6 +11,7 @@ public class StringInstrument {
 	private static String str6;
 	private static String str7;
 	int measureCount = 0;
+	static int temp = 0;
 	int hammerCount = 0;
 	int pullOffCount = 0;
 	private char type; // number of strings
@@ -116,7 +117,7 @@ public class StringInstrument {
 		head.append("            </time>\n");
 		head.append("            <clef>\n");
 		head.append("               <sign>TAB</sign>\n");
-		head.append("               <line>1</line>\n");
+		head.append("               <line>5</line>\n");
 		head.append("            </clef>\n");
 		head.append("            <staff-details>\n");
 
@@ -513,7 +514,10 @@ public class StringInstrument {
 	public void setType(char type) {
 		this.type = type;
 	}
-
+	
+	public static void setTemp(int i) {
+		temp = i;
+	}
 	// 
 	public void resetGlobal() {
 		this.measureCount = 0;

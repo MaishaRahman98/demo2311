@@ -44,9 +44,10 @@ public class TablatureScanner extends StringInstrument {
 				}
 
 			}
-			else if (s.equals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")) {
-				
-			}
+//			else if (s.equals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")) {
+//				//add stuff here later
+//			}
+
 		}
 		if (check == false && (count == 4 || count == 5)) {
 			output = TablatureScanner.callBassClass(text,count);
@@ -234,7 +235,7 @@ public class TablatureScanner extends StringInstrument {
 				}
 			}
 		}
-		//setTemp(mCount);
+		setTemp(mCount);
 		out.append(Drum.endDrumHeading());
 		myReader1.close();
 		return out.toString();
