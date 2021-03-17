@@ -239,7 +239,7 @@ public class StringInstrument {
 //		int spaceCount = 0;
 		ArrayList<String> legatoValue = new ArrayList<String>();
 		boolean legatoCheck = false;
-		String legatoFret = "";
+		int legatoFret = 0;
 		String legatoType = "";
 		String legatoFullName = "";
 		int fret = 0;
@@ -391,29 +391,29 @@ public class StringInstrument {
 						if (legatoCheck == true) {
 							legatoType = legatoValue.get(1);
 							legatoFullName = legatoValue.get(0);
+							legatoFret = Integer.parseInt(legatoValue.get(2));
 							if (legatoValue.get(1) == "H") {
 								hammerCount++;
-								body.append("   <"+legatoValue.get(1)+" number=\""+hammerCount+"\" type=\"start\">"+legatoValue.get(0)+"</"+legatoValue.get(1)+">\n");
+								body.append("   <"+legatoFullName+" number=\""+hammerCount+"\" type=\"start\">"+legatoType+"</"+legatoFullName+">\n");
 							}
 							if (legatoValue.get(1) == "P") {
 								pullOffCount++;
-								body.append("   <"+legatoValue.get(1)+" number=\""+pullOffCount+"\" type=\"start\">"+legatoValue.get(0)+"</"+legatoValue.get(1)+">\n");
+								body.append("   <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"start\">"+legatoType+"</"+legatoFullName+">\n");
 							}
 							legatoCheck = false;
-							legatoFret = legatoValue.get(2);
 						}
 						
 						if (legatoType == "H" || legatoType == "P" ) {
-							if(Integer.valueOf(legatoFret) == fret) {
+							if(legatoFret == fret) {
 								if (legatoType == "H") {
-									body.append("  <"+legatoFullName+" number="+hammerCount+" type=\"stop\"/>\n");
+									body.append("  <"+legatoFullName+" number=\""+hammerCount+"\" type=\"stop\"/>\n");
 								}
 								if (legatoType == "P") {
-									body.append("  <"+legatoFullName+" number="+pullOffCount+" type=\"stop\"/>\n");
+									body.append("  <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"stop\"/>\n");
 								}
 								legatoType = "";
 								legatoFullName = "";
-								legatoFret = "";	
+								legatoFret = 0;	
 							}
 						}
 						body.append("   <string>" + stringNum + "</string>\n");
