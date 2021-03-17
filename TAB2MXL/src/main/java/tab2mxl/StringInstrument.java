@@ -403,18 +403,16 @@ public class StringInstrument {
 							legatoCheck = false;
 						}
 						
-						if (legatoType == "H" || legatoType == "P" ) {
-							if(legatoFret == fret) {
-								if (legatoType == "H") {
-									body.append("  <"+legatoFullName+" number=\""+hammerCount+"\" type=\"stop\"/>\n");
-								}
-								if (legatoType == "P") {
-									body.append("  <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"stop\"/>\n");
-								}
-								legatoType = "";
-								legatoFullName = "";
-								legatoFret = 0;	
+						if(legatoFret == fret) {
+							if (legatoType == "H") {
+								body.append("  <"+legatoFullName+" number=\""+hammerCount+"\" type=\"stop\"/>\n");
 							}
+							if (legatoType == "P") {
+								body.append("  <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"stop\"/>\n");
+							}
+							legatoType = "";
+							legatoFullName = "";
+							legatoFret = 0;	
 						}
 						body.append("   <string>" + stringNum + "</string>\n");
 						body.append("   <fret>" + fret + "</fret>\n");
@@ -517,7 +515,7 @@ public class StringInstrument {
 		this.type = type;
 	}
 
-	// reset
+	// reset global
 	public void resetGlobal() {
 		this.measureCount = 0;
 		this.hammerCount = 0;
