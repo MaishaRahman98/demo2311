@@ -21,6 +21,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.Document;
 import javax.swing.undo.UndoManager;
@@ -83,6 +84,7 @@ public class window implements ActionListener{
 	/**
 	 * Launch the application.
 	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -160,12 +162,13 @@ public class window implements ActionListener{
 		frame.setBounds(100, 100, 1136, 662);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+//		UIManager.put("TextField.caretForeground", new ColorUIResource(Color.PINK));
 //===================================================================================================cannot use window builder		
-//		try {
-//			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-//		}catch(Exception e){
-//			
-//		}
+		try {
+			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+		}catch(Exception e){
+			
+		}
 //===================================================================================================cannot use window builder			
 		JButton btnNewButton = new JButton("Open");
 		btnNewButton.setBackground(Color.BLACK);
@@ -230,6 +233,7 @@ public class window implements ActionListener{
 		textArea.setForeground(Color.WHITE);
 		textArea.setBackground(new Color(0, 0, 0));
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		textArea.setCaretColor(Color.pink);
 //		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
 //		System.setOut(printStream);
 //		System.setErr(printStream);
