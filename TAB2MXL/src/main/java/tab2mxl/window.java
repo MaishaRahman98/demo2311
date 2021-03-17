@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.undo.UndoManager;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
@@ -49,6 +50,7 @@ public class window implements ActionListener{
 	private BufferedImage ori;
 	private JScrollPane scrollPane;
 	private JMenuItem iNew, iOpen,iSave, iSaveAs, iExit;
+	public JMenuItem mntmNewMenuItem_Undo,mntmNewMenuItem_Redo; //for undo, redo
 	public JTextArea textArea;
 	boolean wrap_on = false;
 	public JMenuItem mntmNewMenuItemwarp;
@@ -60,6 +62,7 @@ public class window implements ActionListener{
 	private Thread reader;
 	private Thread reader2;
 	boolean quit;
+	UndoManager um = new UndoManager(); //=========undo and redo
 	
 	
 	//==========================================================
@@ -343,6 +346,32 @@ public class window implements ActionListener{
 		mnNewMenu.setBorder(null);
 		mnNewMenu.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		menuBar.add(mnNewMenu);
+		
+		mntmNewMenuItem_Undo = new JMenuItem("Undo");
+		mntmNewMenuItem_Undo.addActionListener(this);
+		mntmNewMenuItem_Undo.setActionCommand("Undo");
+		mntmNewMenuItem_Undo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					um.undo();
+				} catch (Exception ex) {
+				}
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_Undo);
+		
+		mntmNewMenuItem_Redo = new JMenuItem("Redo");
+		mntmNewMenuItem_Undo.addActionListener(this);
+		mntmNewMenuItem_Undo.setActionCommand("Redo");
+		mntmNewMenuItem_Redo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					um.redo();
+				} catch (Exception ex) {
+				}
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_Redo);
 		
 		JMenu mnNewMenu_Format = new JMenu("Format");
 		mnNewMenu_Format.setBackground(Color.DARK_GRAY);
