@@ -260,11 +260,11 @@ public class Drum {
 							if (note.length() == 1) { 
 								body.append("  <display-step>" +  note + "</display-step>\n");
 							}
-//							else
-//							{
-//								body.append("  <display-step>" +  note.charAt(0) + "</display-step>\n");
-//		
-//							}
+							else
+							{
+								body.append("  <display-step>" +  note.charAt(0) + "</display-step>\n");
+		
+							}
 							body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
 							body.append("  </unpitched>\n");
 						

@@ -94,9 +94,12 @@
         <line>2</line>
         </clef>
        </attributes>
+  </measure>
+  <measure number="3">
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>D</display-step>
+  <display-octave>6</display-octave>
   </unpitched>
  <duration>3</duration>
   <instrument id="P1-150"/>
@@ -108,10 +111,11 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>E</display-step>
+  <display-octave>4</display-octave>
   </unpitched>
  <duration>3</duration>
-  <instrument id=""/>
+  <instrument id="P1-I36"/>
  <voice>1</voice>
  <type>Quarter</type>
  <stem>up</stem>
@@ -119,19 +123,8 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
-  </unpitched>
- <duration>3</duration>
-  <instrument id="P1-I43"/>
- <voice>1</voice>
- <type>Quarter</type>
- <stem>up</stem>
- <notehead>x</notehead>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>A</display-step>
+  <display-octave>5</display-octave>
   </unpitched>
  <duration>3</duration>
   <instrument id="P1-I43"/>
@@ -143,18 +136,8 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
-  </unpitched>
- <duration>3</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>Quarter</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>A</display-step>
+  <display-octave>5</display-octave>
   </unpitched>
  <duration>3</duration>
   <instrument id="P1-I43"/>
@@ -166,7 +149,20 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>G</display-step>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>3</duration>
+  <instrument id="P1-I39"/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>A</display-step>
+  <display-octave>5</display-octave>
   </unpitched>
  <duration>3</duration>
   <instrument id="P1-I43"/>
@@ -178,18 +174,8 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
-  </unpitched>
- <duration>3</duration>
-  <instrument id=""/>
- <voice>1</voice>
- <type>Quarter</type>
- <stem>up</stem>
- <beam number="1">continue</beam>
- </note>
-<note>
- <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>A</display-step>
+  <display-octave>5</display-octave>
   </unpitched>
  <duration>3</duration>
   <instrument id="P1-I43"/>
@@ -201,7 +187,20 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>E</display-step>
+  <display-octave>4</display-octave>
+  </unpitched>
+ <duration>3</duration>
+  <instrument id="P1-I36"/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>A</display-step>
+  <display-octave>5</display-octave>
   </unpitched>
  <duration>3</duration>
   <instrument id="P1-I43"/>
@@ -213,10 +212,24 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>A</display-step>
+  <display-octave>5</display-octave>
   </unpitched>
  <duration>3</duration>
-  <instrument id=""/>
+  <instrument id="P1-I43"/>
+ <voice>1</voice>
+ <type>Quarter</type>
+ <stem>up</stem>
+ <notehead>x</notehead>
+ <beam number="1">continue</beam>
+ </note>
+<note>
+ <unpitched>
+  <display-step>G</display-step>
+  <display-octave>5</display-octave>
+  </unpitched>
+ <duration>3</duration>
+  <instrument id="P1-I39"/>
  <voice>1</voice>
  <type>Quarter</type>
  <stem>up</stem>
@@ -224,7 +237,8 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>A</display-step>
+  <display-octave>5</display-octave>
   </unpitched>
  <duration>4</duration>
   <instrument id="P1-I43"/>
@@ -235,13 +249,14 @@
  <beam number="1">continue</beam>
  </note>
   </measure>
- <measure number="2">
+ <measure number="4">
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>G</display-step>
+  <display-octave>5</display-octave>
   </unpitched>
  <duration>2</duration>
-  <instrument id=""/>
+  <instrument id="P1-I39"/>
  <voice>1</voice>
  <type>Quarter</type>
  <stem>up</stem>
@@ -249,10 +264,11 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>E</display-step>
+  <display-octave>4</display-octave>
   </unpitched>
  <duration>2</duration>
-  <instrument id=""/>
+  <instrument id="P1-I36"/>
  <voice>1</voice>
  <type>Quarter</type>
  <stem>up</stem>
@@ -260,10 +276,11 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>G</display-step>
+  <display-octave>5</display-octave>
   </unpitched>
  <duration>2</duration>
-  <instrument id=""/>
+  <instrument id="P1-I39"/>
  <voice>1</voice>
  <type>Quarter</type>
  <stem>up</stem>
@@ -271,10 +288,11 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>G</display-step>
+  <display-octave>5</display-octave>
   </unpitched>
  <duration>2</duration>
-  <instrument id=""/>
+  <instrument id="P1-I39"/>
  <voice>1</voice>
  <type>Quarter</type>
  <stem>up</stem>
@@ -282,10 +300,11 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>G</display-step>
+  <display-octave>5</display-octave>
   </unpitched>
  <duration>2</duration>
-  <instrument id=""/>
+  <instrument id="P1-I39"/>
  <voice>1</voice>
  <type>Quarter</type>
  <stem>up</stem>
@@ -293,10 +312,11 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>D</display-step>
+  <display-octave>4</display-octave>
   </unpitched>
  <duration>2</duration>
-  <instrument id=""/>
+  <instrument id="P1-I49"/>
  <voice>1</voice>
  <type>Quarter</type>
  <stem>up</stem>
@@ -304,10 +324,11 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>D</display-step>
+  <display-octave>4</display-octave>
   </unpitched>
  <duration>2</duration>
-  <instrument id=""/>
+  <instrument id="P1-I49"/>
  <voice>1</voice>
  <type>Quarter</type>
  <stem>up</stem>
@@ -315,10 +336,11 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>A</display-step>
+  <display-octave>4</display-octave>
   </unpitched>
  <duration>2</duration>
-  <instrument id=""/>
+  <instrument id="P1-I48"/>
  <voice>1</voice>
  <type>Quarter</type>
  <stem>up</stem>
@@ -326,10 +348,11 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>A</display-step>
+  <display-octave>4</display-octave>
   </unpitched>
  <duration>2</duration>
-  <instrument id=""/>
+  <instrument id="P1-I48"/>
  <voice>1</voice>
  <type>Quarter</type>
  <stem>up</stem>
@@ -337,7 +360,8 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>D</display-step>
+  <display-octave>6</display-octave>
   </unpitched>
  <duration>8</duration>
   <instrument id="P1-150"/>
@@ -349,10 +373,11 @@
  </note>
 <note>
  <unpitched>
-  <display-octave>0</display-octave>
+  <display-step>E</display-step>
+  <display-octave>4</display-octave>
   </unpitched>
  <duration>8</duration>
-  <instrument id=""/>
+  <instrument id="P1-I36"/>
  <voice>1</voice>
  <type>Whole</type>
  <stem>up</stem>
