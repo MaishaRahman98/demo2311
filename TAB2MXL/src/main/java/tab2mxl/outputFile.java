@@ -24,7 +24,6 @@ public class outputFile {
 			myWriter.write(xml);
 			myWriter.close();
 			ts.resetGlobal();
-			System.out.println("file made");
 			return myObj.getName();
 
 		} catch (IOException e) {

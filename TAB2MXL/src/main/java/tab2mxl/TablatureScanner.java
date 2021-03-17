@@ -38,6 +38,9 @@ public class TablatureScanner extends StringInstrument {
 			else if (s.contains("|") && s.contains("-")) {
 				count += 1;
 			}
+//			else if (s.equals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")) {
+//				
+//			}
 		}
 		if (count == 4 || count == 5) {
 			output = TablatureScanner.callBassClass(text,count);
