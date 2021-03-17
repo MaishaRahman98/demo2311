@@ -17,15 +17,15 @@ public class Measure {
 
 	public static String durationCheck(int spaceCount) {
 		if (spaceCount == 1 || spaceCount == 0) {
-			return "Eighth";
+			return "eighth";
 		} else if (spaceCount == 2) {
-			return "Quarter";
+			return "quarter";
 		} else if (spaceCount == 4) {
-			return "Half";
+			return "half";
 		} else if (spaceCount == 8) {
-			return "Whole";
+			return "whole";
 		}
-		return "Quarter";
+		return "quarter";
 	}
 
 	public ArrayList<String> legatos(String text) {

@@ -388,34 +388,33 @@ public class StringInstrument {
 						body.append(" <type>"+measure.getDuration(counter + 1)+"</type>\n");
 						body.append(" <notations>\n");
 						body.append("  <technical>\n");
+						body.append("   <string>" + stringNum + "</string>\n");
+						body.append("   <fret>" + fret + "</fret>\n");
 						if (legatoCheck == true) {
 							legatoType = legatoValue.get(1);
 							legatoFullName = legatoValue.get(0);
 							legatoFret = Integer.parseInt(legatoValue.get(2));
 							if (legatoValue.get(1) == "H") {
 								hammerCount++;
-								body.append("   <"+legatoFullName+" number=\""+hammerCount+"\" type=\"start\">"+legatoType+"</"+legatoFullName+">\n");
+								body.append("      <"+legatoFullName+" number=\""+hammerCount+"\" type=\"start\">"+legatoType+"</"+legatoFullName+">\n");
 							}
 							if (legatoValue.get(1) == "P") {
 								pullOffCount++;
-								body.append("   <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"start\">"+legatoType+"</"+legatoFullName+">\n");
+								body.append("      <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"start\">"+legatoType+"</"+legatoFullName+">\n");
 							}
 							legatoCheck = false;
 						}
-						
 						if(legatoFret == fret) {
 							if (legatoType == "H") {
-								body.append("  <"+legatoFullName+" number=\""+hammerCount+"\" type=\"stop\"/>\n");
+								body.append("      <"+legatoFullName+" number=\""+hammerCount+"\" type=\"stop\"/>\n");
 							}
 							if (legatoType == "P") {
-								body.append("  <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"stop\"/>\n");
+								body.append("      <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"stop\"/>\n");
 							}
 							legatoType = "";
 							legatoFullName = "";
 							legatoFret = 0;	
 						}
-						body.append("   <string>" + stringNum + "</string>\n");
-						body.append("   <fret>" + fret + "</fret>\n");
 						body.append("   </technical>\n");
 						body.append("  </notations>\n");
 						body.append(" </note>\n");
