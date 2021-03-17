@@ -277,9 +277,17 @@ public class Notes {
 	   if(stringNum.equals("String3") && fret == 'o') {
 			return "P1-I39"; //snare
 		}
-	   else if(stringNum.equals("String4") && fret == 'o') {
-			return "P1-I43"; //closed hi-hat
+	
+	   if(stringNum.equals("String4") && fret == 'o') {
+			return "P1-I49"; // high mid-tom
 		}
+	   if(stringNum.equals("String5") && fret == 'o') {
+			return "P1-I48"; //low-mid tom
+		}
+	   else if(stringNum.equals("String6") && fret == 'o') {
+			return "P1-I36"; //Bass Drum 
+		}
+	   
 	   
 	 return "";
 		
