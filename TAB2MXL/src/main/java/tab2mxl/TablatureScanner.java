@@ -16,6 +16,8 @@ public class TablatureScanner extends StringInstrument {
 
 	public TablatureScanner(String text) {
 		this.text = text;
+		this.win = win;
+		this.header = header;
 
 	}
 	public String detect(String text){
@@ -36,35 +38,35 @@ public class TablatureScanner extends StringInstrument {
 			} 
 			else if (s.contains("|") && s.contains("-")) {
 				count += 1;
-			
 				//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
 				if (s.contains("x") || s.contains("X")) {
 					check = true;
 				}
+
 			}
-			
+			else if (s.equals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")) {
+				
+			}
 		}
-		//detects if it is bass
 		if (check == false && (count == 4 || count == 5)) {
 			output = TablatureScanner.callBassClass(text,count);
-		}
-		//detects if it is guitar
+			//header = TablatureScanner.xmlHeader(count);
+			}
 		else if (check == false && (count == 6 || count == 7)) {
 			output = TablatureScanner.callGuitarClass(text,count);
 			
 		}
 		//detects if it is drum
-		else if (check == true && (count == 6 || count == 7)) {
+		else if (check == true && (count == 5 || count == 6)) {
 			output = TablatureScanner.callDrumClass(text, count);
 		}
+
 		else if (count < 4 || count > 7 ) {
-            errorMessage.outputMessage("input error");
+            errorMessage.outputMessage("wrong Instrument");
         }
-		
 //		else {
 //			errorMessage.outputMessage("input error");
 //		}
-		
 
 		myReader.close();
 		return output;
@@ -82,7 +84,6 @@ public class TablatureScanner extends StringInstrument {
 //        return head.toString();
 //	}
 	
-	//Bass scanner
 	public static String callBassClass(String text,int count){
 		Scanner myReader = new Scanner(text);
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "";
@@ -108,6 +109,13 @@ public class TablatureScanner extends StringInstrument {
 					s2 = (listOfStrings).get(1);
 					s3 = (listOfStrings).get(2);
 					s4 = (listOfStrings).get(3);
+					// fixes no letters in front
+					if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|') {
+						s1 = "G"+s1;
+						s2 = "D"+s2;
+						s3 = "A"+s3;
+						s4 = "E"+s4;
+					}
 					if(listOfStrings.size() == count) {
 						bass = StringInstrument.getBass(s1,s2,s3,s4);
 						//out.append(bass.xmlHeader(count));
@@ -115,6 +123,9 @@ public class TablatureScanner extends StringInstrument {
 					}
 					else if(listOfStrings.size() == count) {
 						s5 = (listOfStrings).get(4);
+						if (s5.charAt(5)=='|') {
+							s5 = "B"+s5;
+						}
 						bass = StringInstrument.getBass(s1,s2,s3,s4,s5);
 						out.append(bass.printToXML(s1, s2, s3, s4, s5, null, null));
 					}
@@ -122,7 +133,6 @@ public class TablatureScanner extends StringInstrument {
 				}
 			}
 		}
-		setTemp(mCount);
 		out.append(endHeading());
 		myReader.close();
 		return out.toString();
@@ -143,6 +153,7 @@ public class TablatureScanner extends StringInstrument {
 				if (listOfStrings.isEmpty()) {
 					listOfStrings.clear();
 				}
+				// test
 				else if (listOfStrings.size() == count || listOfStrings.size() == 7) {
 					s1 = (listOfStrings).get(0);
 					s2 = (listOfStrings).get(1);
@@ -150,12 +161,23 @@ public class TablatureScanner extends StringInstrument {
 					s4 = (listOfStrings).get(3);
 					s5 = (listOfStrings).get(4);
 					s6 = (listOfStrings).get(5);
+					if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|' && s5.charAt(0)=='|' && s6.charAt(0)=='|') {
+						s1 = "E"+s1;
+						s2 = "B"+s2;
+						s3 = "G"+s3;
+						s4 = "D"+s4;
+						s5 = "A"+s5;
+						s6 = "D"+s6;
+					}
 					if(listOfStrings.size() == count) {
 						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6);
 						out.append(guitar.printToXML(s1, s2, s3, s4, s5, s6, null));
 					}
 					else if(listOfStrings.size() == count) {
 						s7 = (listOfStrings).get(6);
+						if (s7.charAt(5)=='|') {
+							s7 = "B"+s7;
+						}
 						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6,s7);
 						out.append(guitar.printToXML(s1, s2, s3, s4, s5, s6, s7));
 					}
@@ -163,7 +185,6 @@ public class TablatureScanner extends StringInstrument {
 				}
 			}
 		}
-		setTemp(mCount);
 		out.append(endHeading());
 		myReader1.close();
 		return out.toString();
@@ -213,7 +234,7 @@ public class TablatureScanner extends StringInstrument {
 				}
 			}
 		}
-		setTemp(mCount);
+		//setTemp(mCount);
 		out.append(Drum.endDrumHeading());
 		myReader1.close();
 		return out.toString();

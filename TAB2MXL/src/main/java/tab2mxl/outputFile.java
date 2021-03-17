@@ -23,7 +23,8 @@ public class outputFile {
 			FileWriter myWriter = new FileWriter("newfile.txt");
 			myWriter.write(xml);
 			myWriter.close();
-			System.out.println("file made");
+			//System.out.println("file made");
+			ts.resetGlobal();
 			return myObj.getName();
 
 		} catch (IOException e) {
