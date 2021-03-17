@@ -94,8 +94,6 @@
         <line>2</line>
         </clef>
        </attributes>
-  </measure>
-  <measure number="3">
 <note>
  <unpitched>
   <display-step>D</display-step>
@@ -104,7 +102,7 @@
  <duration>3</duration>
   <instrument id="P1-150"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <notehead>x</notehead>
  <beam number="1">continue</beam>
@@ -117,7 +115,7 @@
  <duration>3</duration>
   <instrument id="P1-I36"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -129,7 +127,7 @@
  <duration>3</duration>
   <instrument id="P1-I43"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <notehead>x</notehead>
  <beam number="1">continue</beam>
@@ -142,7 +140,7 @@
  <duration>3</duration>
   <instrument id="P1-I43"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <notehead>x</notehead>
  <beam number="1">continue</beam>
@@ -155,7 +153,7 @@
  <duration>3</duration>
   <instrument id="P1-I39"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -167,7 +165,7 @@
  <duration>3</duration>
   <instrument id="P1-I43"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <notehead>x</notehead>
  <beam number="1">continue</beam>
@@ -180,7 +178,7 @@
  <duration>3</duration>
   <instrument id="P1-I43"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <notehead>x</notehead>
  <beam number="1">continue</beam>
@@ -193,7 +191,7 @@
  <duration>3</duration>
   <instrument id="P1-I36"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -205,7 +203,7 @@
  <duration>3</duration>
   <instrument id="P1-I43"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <notehead>x</notehead>
  <beam number="1">continue</beam>
@@ -218,7 +216,7 @@
  <duration>3</duration>
   <instrument id="P1-I43"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <notehead>x</notehead>
  <beam number="1">continue</beam>
@@ -231,7 +229,7 @@
  <duration>3</duration>
   <instrument id="P1-I39"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -243,13 +241,13 @@
  <duration>4</duration>
   <instrument id="P1-I43"/>
  <voice>1</voice>
- <type>Half</type>
+ <type>half</type>
  <stem>up</stem>
  <notehead>x</notehead>
  <beam number="1">continue</beam>
  </note>
   </measure>
- <measure number="4">
+ <measure number="2">
 <note>
  <unpitched>
   <display-step>G</display-step>
@@ -258,7 +256,7 @@
  <duration>2</duration>
   <instrument id="P1-I39"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -270,7 +268,7 @@
  <duration>2</duration>
   <instrument id="P1-I36"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -282,7 +280,7 @@
  <duration>2</duration>
   <instrument id="P1-I39"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -294,7 +292,7 @@
  <duration>2</duration>
   <instrument id="P1-I39"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -306,7 +304,7 @@
  <duration>2</duration>
   <instrument id="P1-I39"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -318,7 +316,7 @@
  <duration>2</duration>
   <instrument id="P1-I49"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -330,7 +328,7 @@
  <duration>2</duration>
   <instrument id="P1-I49"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -342,7 +340,7 @@
  <duration>2</duration>
   <instrument id="P1-I48"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -354,7 +352,7 @@
  <duration>2</duration>
   <instrument id="P1-I48"/>
  <voice>1</voice>
- <type>Quarter</type>
+ <type>quarter</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>
@@ -366,7 +364,7 @@
  <duration>8</duration>
   <instrument id="P1-150"/>
  <voice>1</voice>
- <type>Whole</type>
+ <type>whole</type>
  <stem>up</stem>
  <notehead>x</notehead>
  <beam number="1">continue</beam>
@@ -379,7 +377,7 @@
  <duration>8</duration>
   <instrument id="P1-I36"/>
  <voice>1</voice>
- <type>Whole</type>
+ <type>whole</type>
  <stem>up</stem>
  <beam number="1">continue</beam>
  </note>

@@ -351,7 +351,7 @@ public class window implements ActionListener{
 		mnNewMenu_Format.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		menuBar.add(mnNewMenu_Format);
 //===========================================================================
-		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
+		mntmNewMenuItemwarp = new JMenuItem("Word Wrap: Off");
 		mntmNewMenuItemwarp.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItemwarp.setForeground(Color.WHITE);
 		mntmNewMenuItemwarp.setBackground(Color.DARK_GRAY);
