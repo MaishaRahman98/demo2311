@@ -98,6 +98,7 @@ public class TablatureScanner extends StringInstrument {
 					s2 = (listOfStrings).get(1);
 					s3 = (listOfStrings).get(2);
 					s4 = (listOfStrings).get(3);
+					// fixes no letters in front
 					if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|') {
 						s1 = "G"+s1;
 						s2 = "D"+s2;
