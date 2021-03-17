@@ -517,5 +517,14 @@ public class StringInstrument {
 		this.type = type;
 	}
 
+	public void resetGlobal() {
+		this.measureCount = 0;
+		this.hammerCount = 0;
+		this.pullOffCount = 0;
+		this.type = ' ';
+		this.mCount = 0;
+		this.c = 0;
+		this.d = 0;
+	}
 
 }
