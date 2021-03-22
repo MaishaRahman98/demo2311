@@ -207,24 +207,24 @@ public class Functioncallfile {
 	public void changecolor(String color) {
 		switch(color) {
 		case"White":
-			win.frame.getContentPane().setBackground(Color.white);
+//			win.frame.getContentPane().setBackground(Color.white);
 			win.textArea.setBackground(Color.white);
 			win.frame.getJMenuBar().setBackground(Color.white);
 			win.textArea.setForeground(Color.black);
 			break;
 		case"Black":
-			win.frame.getContentPane().setBackground(Color.orange);
+//			win.frame.getContentPane().setBackground(Color.orange);
 			win.textArea.setBackground(Color.black);
 			win.frame.getJMenuBar().setBackground(Color.darkGray);
 			win.textArea.setForeground(Color.white);
 			break;
 		case"Pink":
-			win.frame.getContentPane().setBackground(Color.pink);
+//			win.frame.getContentPane().setBackground(Color.pink);
 			win.textArea.setBackground(Color.pink);
 			win.textArea.setForeground(Color.black);
 			break;
 		case"Blue":
-			win.frame.getContentPane().setBackground(new Color(28,186,186));
+//			win.frame.getContentPane().setBackground(new Color(28,186,186));
 			win.textArea.setBackground(new Color(28,186,186));
 			win.textArea.setForeground(Color.white);
 			break;

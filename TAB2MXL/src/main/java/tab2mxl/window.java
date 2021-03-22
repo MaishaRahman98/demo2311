@@ -166,11 +166,11 @@ public class window implements ActionListener{
 		frame.setVisible(true);
 //		UIManager.put("TextField.caretForeground", new ColorUIResource(Color.PINK));
 //===================================================================================================cannot use window builder		
-//		try {
-//			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-//		}catch(Exception e){
-//			
-//		}
+		try {
+			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+		}catch(Exception e){
+			
+		}
 //===================================================================================================cannot use window builder			
 		JButton btnNewButton = new JButton("Open");
 		btnNewButton.setBackground(Color.BLACK);
@@ -248,7 +248,7 @@ public class window implements ActionListener{
 				textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 				scrollPane_1.setViewportView(textArea);
 				
-				Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
+				Image img = new ImageIcon(this.getClass().getResource("/Wallpaper Music Equalizer Wallpaper 1080p HD Upload at January 29.jpg")).getImage();
 				JLabel lblNewLabel = new JLabel(new ImageIcon(img));
 //				JLabel lblNewLabel = new JLabel("");
 //				lblNewLabel.setForeground(Color.ORANGE);
@@ -268,15 +268,14 @@ public class window implements ActionListener{
 				groupLayout.setHorizontalGroup(
 					groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(198)
+							.addGap(43)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+							.addGap(39)
 							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
 							.addGap(70))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(43)
 							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(43)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(43)
 							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
@@ -285,15 +284,15 @@ public class window implements ActionListener{
 				groupLayout.setVerticalGroup(
 					groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(349)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(55)
 							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
 							.addGap(64))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(441)
 							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(349)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(395)
 							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
