@@ -11,23 +11,48 @@ import java.io.IOException;
 public class Functioncallfile {
 
 	window win;
+	newwindow newwin;
 	String filename;
 	String fileaddress;
 	Font arial, comicSansMS, timesNewRoman,Monospaced;
 	String fontname="MONOSPACED";
 	String text;
+	Showtheerror yeah = new Showtheerror();
 	//==============================================
 	outputFile musicFile = new outputFile(win);
 	//==============================================
+	public boolean de = false;
 	public Functioncallfile(window win) {
 		this.win = win;
 		
 	}
+	
+	public Functioncallfile(newwindow newwindow) {
+		// TODO Auto-generated constructor stub
+		this.newwin = newwindow;
+	}
+
 	public void newfile() {
-		win.textArea.setText("");
-		win.frame.setTitle("New");
-		filename = null;
-		fileaddress = null;
+//		win.textArea.setText("");
+//		win.frame.setTitle("New");
+//		filename = null;
+//		fileaddress = null;
+		String have = win.textArea.getText();
+//		if(have.isEmpty()) {
+			win.textArea.setText("");
+			win.frame.setTitle("New");
+			filename = null;
+			fileaddress = null;
+//		}
+//		else {
+			
+//			newwindow y= new newwindow();
+//			y.frame123.setVisible(true);
+//			win.ooo.showConfirmDialog(this.win.ooo, have);
+//
+//			
+//		}
+		
 	}
 	public void open() {
 		FileDialog fileopen = new FileDialog(win.frame, "Open a txt file", FileDialog.LOAD);
@@ -143,9 +168,19 @@ public class Functioncallfile {
 	}
 	//============================================
 	public void translate() {
+		String textext = win.textArea.getText();
 		boolean em = win.textArea.getText().isEmpty();
 		if (em!=false) {
-			System.out.println("Empty text area");
+			String output = "Empty text area";
+			yeah.outputMessage(output);
+//			System.out.println("Empty text area");
+		}
+		else if(textext.contains("<?xml version")) {
+//			if(win.textArea.getText().matches("(.*)<?xml version(.*)")) {
+//			win.btnNewButton_1.setEnabled(false);
+			String output = "Already";
+			yeah.outputMessage(output);
+//			}
 		}
 		else {
 //			win.textArea.getText().printTab();
@@ -165,7 +200,7 @@ public class Functioncallfile {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	
+
 		}
 	}
 	//============================================blow is color
