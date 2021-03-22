@@ -84,176 +84,15 @@ public class StringInstrument {
 		return guitarSeven;
 
 	}
-<<<<<<< HEAD
-	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5) {
-		Drum drumFive;
-		drumFive =  Drum.getInstance(str1,str2,str3,str4,str5);
-		return drumFive;
 
-		
-	}
-	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6) {
-		Drum drumSix;
-		drumSix = Drum.getInstance(str1,str2,str3,str4,str5, str6);
-		return drumSix;
-
-		
-	}
-	
-=======
-
->>>>>>> refs/remotes/origin/Maisha_Branch
 	public static String xmlHeader(int c) {
 		String instrument = "";
 		StringBuilder head = new StringBuilder();
-		if (str1.charAt(1)=='G') {
+		if (c == 4 || c == 5) {
 			instrument = "Bass Guitar";
-<<<<<<< HEAD
-		}else if (str1.charAt(1)=='E'){
-=======
 		} else {
->>>>>>> refs/remotes/origin/Maisha_Branch
 			instrument = "Guitar";
 		}
-<<<<<<< HEAD
-		else {
-			instrument = "Drum";
-		}
-		
-				head.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-                head.append("<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n");
-                head.append("<score-partwise version=\"3.1\">\n");
-               
-                head.append(" <part-list>\n");
-                head.append("  <score-part id=\"P1\">\n");
-                head.append("   <part-name>" + instrument + "</part-name>\n");
-                head.append("  </score-part>\n");
-                head.append(" </part-list>\n");
-                head.append(" <part id=\"P1\">\n");
-                head.append(" <measure number=\"1\">\n");
-                head.append("       <attributes>\n");
-                head.append("            <divisions>4</divisions>\n");
-                head.append("            <key>\n");
-                head.append("                <fifths>0</fifths>\n");
-                head.append("                </key>\n");
-                head.append("            <time>\n");
-                head.append("                <beats>4</beats>\n");
-                head.append("                <beat-type>4</beat-type>\n");
-                head.append("            </time>\n");
-                head.append("            <clef>\n");
-                head.append("               <sign>TAB</sign>\n");
-                head.append("               <line>5</line>\n");
-                head.append("            </clef>\n");
-                head.append("            <staff-details>\n");
-                
-                if (c == 4) {
-                head.append("                <staff-lines>" + c + "</staff-lines>\n");
-                head.append("                <staff-tuning line=\"1\">\n");
-                head.append("                    <tuning-step>" + "E" + "</tuning-step>\n");
-                head.append("                    <tuning-octave>1</tuning-octave>\n");
-                head.append("                </staff-tuning>\n");
-                head.append("                <staff-tuning line=\"2\">\n");
-                head.append("                   <tuning-step>" + "A" + "</tuning-step>\n");
-                head.append("                    <tuning-octave>1</tuning-octave>\n");
-                head.append("                </staff-tuning>\n");
-                head.append("                <staff-tuning line=\"3\">\n");
-                head.append("                   <tuning-step>" + "D" + "</tuning-step>\n");
-                head.append("                    <tuning-octave>2</tuning-octave>\n");
-                head.append("                </staff-tuning>\n");
-                head.append("                <staff-tuning line=\"4\">\n");
-                head.append("                   <tuning-step>" + "G" + "</tuning-step>\n");
-                head.append("                    <tuning-octave>2</tuning-octave>\n");
-     
-                
-                }
-                
-                if (c == 5) {
-                    head.append("                <staff-lines>" + c + "</staff-lines>\n");
-                    head.append("                <staff-tuning line=\"1\">\n");
-                    head.append("                    <tuning-step>" + "B" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>0</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"2\">\n");
-                    head.append("                   <tuning-step>" + "E" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>1</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"3\">\n");
-                    head.append("                   <tuning-step>" + "A" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>1</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"4\">\n");
-                    head.append("                   <tuning-step>" + "D" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>2</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"5\">\n");
-                    head.append("                   <tuning-step>" + "G" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>2</tuning-octave>\n");
-                    
-                    }
-                if (c == 6) {
-                    head.append("                <staff-lines>" + c + "</staff-lines>\n");
-                    head.append("                <staff-tuning line=\"1\">\n");
-                    head.append("                    <tuning-step>" + "E" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>2</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"2\">\n");
-                    head.append("                   <tuning-step>" + "A" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>2</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"3\">\n");
-                    head.append("                   <tuning-step>" + "D" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>3</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"4\">\n");
-                    head.append("                   <tuning-step>" + "G" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>3</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"5\">\n");
-                    head.append("                   <tuning-step>" + "B" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>3</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"6\">\n");
-                    head.append("                   <tuning-step>" + "E" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>4</tuning-octave>\n");
-                    }
-                if (c == 7) {
-                	head.append("                <staff-lines>" + c + "</staff-lines>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"7\">\n");
-                    head.append("                   <tuning-step>" + "B" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave> 1 </tuning-octave>\n");
-                    head.append("                <staff-tuning line=\"1\">\n");
-                    head.append("                    <tuning-step>" + "E" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>2</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"2\">\n");
-                    head.append("                   <tuning-step>" + "A" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>2</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"3\">\n");
-                    head.append("                   <tuning-step>" + "D" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>3</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"4\">\n");
-                    head.append("                   <tuning-step>" + "G" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>3</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"5\">\n");
-                    head.append("                   <tuning-step>" + "B" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>3</tuning-octave>\n");
-                    head.append("                </staff-tuning>\n");
-                    head.append("                <staff-tuning line=\"6\">\n");
-                    head.append("                   <tuning-step>" + "E" + "</tuning-step>\n");
-                    head.append("                    <tuning-octave>4</tuning-octave>\n");
-                    }          
-                
-                
-                head.append("                </staff-tuning>\n");
-                head.append("            </staff-details>\n");
-                head.append("         </attributes>\n");
-                         
-        return head.toString();	
-=======
 
 		head.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 		head.append(
@@ -387,7 +226,6 @@ public class StringInstrument {
 		head.append("         </attributes>\n");
 
 		return head.toString();
->>>>>>> refs/remotes/origin/Maisha_Branch
 	}
 
 	// Prints bass or guitar tab in xml format:
@@ -443,16 +281,6 @@ public class StringInstrument {
 		}
 		
 
-<<<<<<< HEAD
-						fret = j.charAt(i);
-						if ((str6 == null && str7 == null) && (str1.charAt(1)=='G')) {
-							note = Notes.bassNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
-							octave = Notes.bassOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
-						}
-						else if ((str1.charAt(1)=='E') && (str6 != null || str7 != null)) {
-							note = Notes.guitarNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
-							octave = Notes.guitarOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
-=======
 		//for (int k = 0; k < measureCount; k++) {
 
 			if (mCount != 0) {
@@ -497,7 +325,6 @@ public class StringInstrument {
 						} else {
 							note = measure.getNoteMeasure("String" + String.valueOf(stringNum), fret, "guitar");
 							octave = measure.getOctaveMeasure("String" + String.valueOf(stringNum), fret,"guitar");
->>>>>>> refs/remotes/origin/Maisha_Branch
 						}
 						
 						body.append("<note>\n");

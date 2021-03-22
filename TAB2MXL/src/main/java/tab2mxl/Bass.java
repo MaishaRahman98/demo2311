@@ -53,5 +53,4 @@ public class Bass extends StringInstrument
 		}
 	}
 	
-	
 }

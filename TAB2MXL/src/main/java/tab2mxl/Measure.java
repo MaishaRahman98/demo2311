@@ -3,6 +3,7 @@ package tab2mxl;
 import java.util.ArrayList;
 
 public class Measure {
+	
 	public String input;
 	public int duration = 0;
 	public String noteMeasure;
@@ -17,15 +18,15 @@ public class Measure {
 
 	public static String durationCheck(int spaceCount) {
 		if (spaceCount == 1 || spaceCount == 0) {
-			return "eighth";
+			return "Eighth";
 		} else if (spaceCount == 2) {
-			return "quarter";
+			return "Quarter";
 		} else if (spaceCount == 4) {
-			return "half";
+			return "Half";
 		} else if (spaceCount == 8) {
-			return "whole";
+			return "Whole";
 		}
-		return "quarter";
+		return "Quarter";
 	}
 
 	public ArrayList<String> legatos(String text) {
@@ -36,17 +37,17 @@ public class Measure {
 		for (int i = 0; i < text.length(); i++) {
 			if (Character.toString(Character.toLowerCase(text.charAt(i))).equals("p")) {
 				hammerOrPull = "P";
-				if (i + 1 != text.length() && Character.isDigit(text.charAt(i+1))) {
+				if (i + 1 != text.length()) {
 					fret += text.charAt(i + 1);
-					if (i + 2 != text.length() && text.charAt(i + 2) != '-' && Character.isDigit(text.charAt(i+2))) {
+					if (i + 2 != text.length() && text.charAt(i + 2) != '-') {
 						fret += text.charAt(i + 2);
 					}
 				}
 			} else if (Character.toString(Character.toLowerCase(text.charAt(i))).equals("h")) {
 				hammerOrPull = "H";
-				if (i + 1 != text.length() && Character.isDigit(text.charAt(i+1))) {
+				if (i + 1 != text.length()) {
 					fret += text.charAt(i + 1);
-					if (i + 2 != text.length() && text.charAt(i + 2) != '-' && Character.isDigit(text.charAt(i+2))) {
+					if (i + 2 != text.length() && text.charAt(i + 2) != '-') {
 						fret += text.charAt(i + 2);
 					}
 				}
@@ -56,12 +57,14 @@ public class Measure {
 			output.add("hammer-on");
 			output.add(hammerOrPull);
 			output.add(fret);
+			return output;
 		} else if (hammerOrPull.equals("P")) {
 			output.add("pull-off");
 			output.add(hammerOrPull);
 			output.add(fret);
+			return output;
 		}
-		return output;
+		return null;
 	}
 
 	public String getDuration(int amount) {
