@@ -25,7 +25,8 @@ public class outputFile extends StringInstrument {
 			
 			myWriter.write(xml);
 			myWriter.close();
-			System.out.println("file made");
+			//System.out.println("file made");
+			ts.resetGlobal();
 			return myObj.getName();
 
 		} catch (IOException e) {

@@ -21,7 +21,10 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.basic.BasicScrollBarUI;
+import javax.swing.text.Document;
+import javax.swing.undo.UndoManager;
 import javax.swing.JTextArea;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
@@ -30,6 +33,8 @@ import javax.swing.UIManager;
 import javax.swing.JScrollBar;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.UndoableEditEvent;
+import javax.swing.event.UndoableEditListener;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
@@ -49,17 +54,28 @@ public class window implements ActionListener{
 	private BufferedImage ori;
 	private JScrollPane scrollPane;
 	private JMenuItem iNew, iOpen,iSave, iSaveAs, iExit;
+	public JMenuItem mntmNewMenuItem_Undo,mntmNewMenuItem_Redo; //for undo, redo
 	public JTextArea textArea;
 	boolean wrap_on = false;
 	public JMenuItem mntmNewMenuItemwarp;
 	Functioncallfile file = new Functioncallfile(this);
 	Functioncallfile format = new Functioncallfile(this);
-	
+//	Edit ed = new Edit(this);
+	Shortcut sc = new Shortcut(this);
 	private PipedInputStream pipein = new PipedInputStream();
 	private PipedInputStream pipein2 = new PipedInputStream();
 	private Thread reader;
 	private Thread reader2;
 	boolean quit;
+	UndoManager um = new UndoManager(); //=========undo and redo
+	
+	//=========undo and redo
+//	private Document editorPaneDocument;
+//	protected UndoHandler undoHandler = new UndoHandler();
+//	protected UndoManager undoManager = new UndoManager();
+//	private UndoAction undoAction = null;
+//	private RedoAction redoAction = null;
+	//=========
 	
 	
 	//==========================================================
@@ -81,6 +97,7 @@ public class window implements ActionListener{
 //			}
 //		});
 //	}
+
 	public static void main(String[] args) {
         new loadingScreen();
         EventQueue.invokeLater(new Runnable() {
@@ -135,27 +152,37 @@ public class window implements ActionListener{
 //		
 //	}
 	/////////////////////////////////////////////////////////
-//	public void close() {
-//		WindowEvent closeWindow = new WindowEvent(this.frame, WindowEvent.WINDOW_CLOSING);
-//		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
-//	}
+	public void close() {
+		WindowEvent closeWindow = new WindowEvent(this.frame, WindowEvent.WINDOW_CLOSING);
+		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+	}
 	/////////////////////////////////////////////////////////
 	private void initialize() {
 		format.fontname = "Monospaced";
 		format.font(16);
 //		JFrame frame = new JFrame();
 		frame = new JFrame();
+//		JFrame f = new JFrame();
+		
+//		try {
+//			frame.getContentPane().add(new overridepiant("sample.jpeg"));
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
 		frame.getContentPane().setForeground(new Color(75, 0, 130));
 		frame.setBackground(SystemColor.activeCaption);
 		frame.setBounds(100, 100, 1136, 662);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+//		UIManager.put("TextField.caretForeground", new ColorUIResource(Color.PINK));
 //===================================================================================================cannot use window builder		
-//		try {
-//			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-//		}catch(Exception e){
-//			
-//		}
+		try {
+			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+		}catch(Exception e){
+			
+		}
 //===================================================================================================cannot use window builder			
 		JButton btnNewButton = new JButton("Open");
 		btnNewButton.setBackground(Color.BLACK);
@@ -206,12 +233,24 @@ public class window implements ActionListener{
 //		});
 //===================================================================================================cannot use window builder	
 		textArea = new JTextArea();
+		textArea.getDocument().addUndoableEditListener(
+				new UndoableEditListener() {
+					public void undoableEditHappened(UndoableEditEvent e) {
+						um.addEdit(e.getEdit());
+					}
+				});
+		
+//		editorPaneDocument=textArea.getDocument();
+//		editorPaneDocument.addUndoableEditListener(undoHandler);
+		
+		textArea.addKeyListener(sc);
 		textArea.setForeground(Color.WHITE);
 		textArea.setBackground(new Color(0, 0, 0));
 		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
-		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
-		System.setOut(printStream);
-		System.setErr(printStream);
+		textArea.setCaretColor(Color.pink);
+//		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+//		System.setOut(printStream);
+//		System.setErr(printStream);
 		
 //				PrintStream printStream1 = new PrintStream(new CustomOutputStream(textArea));
 				
@@ -222,8 +261,12 @@ public class window implements ActionListener{
 				scrollPane_1.setViewportView(textArea);
 				
 				Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
-				JLabel lblNewLabel = new JLabel(new ImageIcon("background.jpeg"));
-//				frame.setContentPane(lblNewLabel);
+
+//				JLabel lblNewLabel = new JLabel(new ImageIcon("background.jpeg")); //old maisha version
+////				frame.setContentPane(lblNewLabel);
+
+				JLabel lblNewLabel = new JLabel(new ImageIcon(img));
+
 //				JLabel lblNewLabel = new JLabel("");
 //				lblNewLabel.setForeground(Color.ORANGE);
 //				lblNewLabel.setBackground(Color.ORANGE);
@@ -242,34 +285,35 @@ public class window implements ActionListener{
 				groupLayout.setHorizontalGroup(
 					groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(198)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
+							.addGap(70))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(43)
+							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(43)
 							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(43)
 							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(43)
-							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(198)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
-							.addGap(70))
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 885, Short.MAX_VALUE)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 1120, Short.MAX_VALUE)
 				);
 				groupLayout.setVerticalGroup(
 					groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(349)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+							.addGap(55)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+							.addGap(64))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(441)
 							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(55)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-							.addGap(64))
+							.addGap(349)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(395)
+							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
 						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 602, Short.MAX_VALUE)
 				);
 				frame.getContentPane().setLayout(groupLayout);
@@ -344,6 +388,32 @@ public class window implements ActionListener{
 		mnNewMenu.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		menuBar.add(mnNewMenu);
 		
+		mntmNewMenuItem_Undo = new JMenuItem("Undo");
+		mntmNewMenuItem_Undo.addActionListener(this);
+		mntmNewMenuItem_Undo.setActionCommand("Undo");
+		mntmNewMenuItem_Undo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					um.undo();
+				} catch (Exception ex) {
+				}
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_Undo);
+		
+		mntmNewMenuItem_Redo = new JMenuItem("Redo");
+		mntmNewMenuItem_Undo.addActionListener(this);
+		mntmNewMenuItem_Undo.setActionCommand("Redo");
+		mntmNewMenuItem_Redo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					um.redo();
+				} catch (Exception ex) {
+				}
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_Redo);
+		
 		JMenu mnNewMenu_Format = new JMenu("Format");
 		mnNewMenu_Format.setBackground(Color.DARK_GRAY);
 		mnNewMenu_Format.setForeground(new Color(153, 50, 204));
@@ -351,7 +421,7 @@ public class window implements ActionListener{
 		mnNewMenu_Format.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		menuBar.add(mnNewMenu_Format);
 //===========================================================================
-		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
+		mntmNewMenuItemwarp = new JMenuItem("Word Wrap: Off");
 		mntmNewMenuItemwarp.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItemwarp.setForeground(Color.WHITE);
 		mntmNewMenuItemwarp.setBackground(Color.DARK_GRAY);
@@ -552,6 +622,8 @@ public class window implements ActionListener{
 			case "Pink": file.changecolor(command);break;
 			case "Blue": file.changecolor(command);break;
 			case "MONOSPACED": format.setfont(command);break;
+//			case "Undo": ed.undo();break;
+//			case "Redo": ed.redo();break;
 		}
 	}
 }

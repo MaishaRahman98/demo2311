@@ -86,6 +86,8 @@ public class Functioncallfile {
 		}
 		try {
 			FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicxml");
+			//FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicXML");
+			//FileWriter newfile1  = new FileWriter(fileaddress+""+name+".xml");
 //			saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
 			newfile1.write(win.textArea.getText());
 //			win.frame.setTitle(name);
@@ -152,6 +154,7 @@ public class Functioncallfile {
 			text = win.textArea.getText();
 			win.textArea.setText(null);
 			//musicFile.createFile(text);
+
 			BufferedReader firstbf;
 			try {
 				firstbf = new BufferedReader(new FileReader(musicFile.createFile(text)));
@@ -195,4 +198,19 @@ public class Functioncallfile {
 			break;
 		}
 	}
+
+	public void undo() {
+		try {
+			win.um.undo();
+		} catch (Exception ex) {
+		}
+	}
+		
+	public void redo() {
+		if(win.um.canRedo()) {
+			win.um.redo();
+		}
+		
+	}
 }
+
