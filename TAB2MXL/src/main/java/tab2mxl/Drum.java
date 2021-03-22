@@ -155,7 +155,7 @@ public class Drum {
 	}
 	
 	
-	//Will edit this part
+	
 	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
@@ -197,13 +197,15 @@ public class Drum {
 			listOfColumns.add(column);
 		}
 		
+
 	
+
 			if (mCount != 0) {
 				body.append("  </measure>\n");
 
 				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
 			}
-			
+
 
 						
 			for (int i = 0; i < listOfColumns.size(); i++) {
@@ -238,12 +240,7 @@ public class Drum {
 							if (note.length() == 1) { 
 								body.append("  <display-step>" +  note + "</display-step>\n");
 							}
-							else
-							{
-								body.append("  <display-step>" +  note.charAt(0) + "</display-step>\n");
-		
-							}
-							body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
+						body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
 							body.append("  </unpitched>\n");
 						
 							i = origini;
@@ -289,7 +286,7 @@ public class Drum {
 	
 		
 		return body.toString();	
-	
+
 	
 	}	
 	
