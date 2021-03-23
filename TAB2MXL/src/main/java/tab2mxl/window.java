@@ -194,61 +194,8 @@ public class window implements ActionListener{
 				file.translate();
 			}
 		});
-
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBorder(null);
-		scrollPane_1.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-		scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		scrollPane_1.setBorder(null);
-		scrollPane_1.getVerticalScrollBar().setBorder(null);
-		scrollPane_1.getVerticalScrollBar().setBackground(Color.gray);
-		scrollPane_1.getHorizontalScrollBar().setBackground(Color.gray);
-//===================================================================================================cannot use window builder	
-//		scrollPane_1.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
-//		    @Override
-//		    protected void configureScrollBarColors() {
-////		        this.thumbColor = Color.DARK_GRAY;
-//		        this.thumbColor = Color.black;
-//		    }
-//		});
-//		scrollPane_1.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
-//		    @Override
-//		    protected void configureScrollBarColors() {
-////		        this.thumbColor = Color.DARK_GRAY;
-//		    	this.thumbColor = Color.black;
-//		    }
-//		});
-//===================================================================================================cannot use window builder	
-		textArea = new JTextArea();
-		textArea.getDocument().addUndoableEditListener(
-				new UndoableEditListener() {
-					public void undoableEditHappened(UndoableEditEvent e) {
-						um.addEdit(e.getEdit());
-					}
-				});
-		
-//		editorPaneDocument=textArea.getDocument();
-//		editorPaneDocument.addUndoableEditListener(undoHandler);
-		
-		textArea.addKeyListener(sc);
-		textArea.setForeground(Color.WHITE);
-		textArea.setBackground(new Color(0, 0, 0));
-		textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
-		textArea.setCaretColor(Color.pink);
-//		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
-//		System.setOut(printStream);
-//		System.setErr(printStream);
-		
-//				PrintStream printStream1 = new PrintStream(new CustomOutputStream(textArea));
 				
-				
-				textArea.setBorder(null);
-				textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-				textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
-				scrollPane_1.setViewportView(textArea);
-				
-				Image img = new ImageIcon(this.getClass().getResource("/Wallpaper Music Equalizer Wallpaper 1080p HD Upload at January 29.jpg")).getImage();
+				Image img = new ImageIcon(this.getClass().getResource("/789.png")).getImage();
 				JLabel lblNewLabel = new JLabel(new ImageIcon(img));
 //				JLabel lblNewLabel = new JLabel("");
 //				lblNewLabel.setForeground(Color.ORANGE);
@@ -264,39 +211,93 @@ public class window implements ActionListener{
 				btnNewButton_2.setBackground(Color.BLACK);
 				btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD, 14));
 				btnNewButton_2.setForeground(new Color(0, 191, 255));
+				
+						
+						JScrollPane scrollPane_1 = new JScrollPane();
+						scrollPane_1.setBorder(null);
+						scrollPane_1.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+						scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
+						scrollPane_1.setBorder(null);
+						scrollPane_1.getVerticalScrollBar().setBorder(null);
+						scrollPane_1.getVerticalScrollBar().setBackground(Color.gray);
+						scrollPane_1.getHorizontalScrollBar().setBackground(Color.gray);
+						//===================================================================================================cannot use window builder	
+						//		scrollPane_1.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+						//		    @Override
+						//		    protected void configureScrollBarColors() {
+						////		        this.thumbColor = Color.DARK_GRAY;
+						//		        this.thumbColor = Color.black;
+						//		    }
+						//		});
+						//		scrollPane_1.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+						//		    @Override
+						//		    protected void configureScrollBarColors() {
+						////		        this.thumbColor = Color.DARK_GRAY;
+						//		    	this.thumbColor = Color.black;
+						//		    }
+						//		});
+						//===================================================================================================cannot use window builder	
+								textArea = new JTextArea();
+								textArea.getDocument().addUndoableEditListener(
+										new UndoableEditListener() {
+											public void undoableEditHappened(UndoableEditEvent e) {
+												um.addEdit(e.getEdit());
+											}
+										});
+								
+//		editorPaneDocument=textArea.getDocument();
+//		editorPaneDocument.addUndoableEditListener(undoHandler);
+								
+								textArea.addKeyListener(sc);
+								textArea.setForeground(Color.WHITE);
+								textArea.setBackground(new Color(0, 0, 0));
+								textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
+								textArea.setCaretColor(Color.pink);
+								//		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+								//		System.setOut(printStream);
+								//		System.setErr(printStream);
+										
+								//				PrintStream printStream1 = new PrintStream(new CustomOutputStream(textArea));
+												
+												
+												textArea.setBorder(null);
+												textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
+												textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
+												scrollPane_1.setViewportView(textArea);
 				GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 				groupLayout.setHorizontalGroup(
 					groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(43)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-							.addGap(39)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
-							.addGap(70))
+							.addGap(117)
+							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(43)
+							.addGap(329)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
+							.addGap(54))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(117)
 							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(43)
-							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 1120, Short.MAX_VALUE)
+							.addGap(117)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 1120, Short.MAX_VALUE)
 				);
 				groupLayout.setVerticalGroup(
 					groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(349)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+							.addGap(374)
+							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(55)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-							.addGap(64))
+							.addGap(60)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+							.addGap(78))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(441)
+							.addGap(420)
 							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(395)
-							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 602, Short.MAX_VALUE)
+							.addGap(328)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 602, Short.MAX_VALUE)
 				);
 				frame.getContentPane().setLayout(groupLayout);
 		
