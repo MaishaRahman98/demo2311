@@ -15,17 +15,17 @@ public class Measure {
 		this.octaveMeasure = octaveMeasure;
 	}
 
-	public static String durationCheck(int spaceCount) {
-		if (spaceCount == 1 || spaceCount == 0) {
-			return "eighth";
-		} else if (spaceCount == 2) {
-			return "quarter";
-		} else if (spaceCount == 4) {
-			return "half";
-		} else if (spaceCount == 8) {
+	public static String durationCheck(double spaceCount) {
+		 if (spaceCount >= 1.0) {
 			return "whole";
-		}
-		return "quarter";
+		} else if (spaceCount >= 0.5) {
+			return "half";
+		} else if (spaceCount >= 0.25) {
+			return "quarter";
+		} else if (spaceCount >= 0.125) {
+			return "eighth";
+		}else
+			return "16th";
 	}
 
 	public ArrayList<String> legatos(String text) {
@@ -64,7 +64,7 @@ public class Measure {
 		return output;
 	}
 
-	public String getDuration(int amount) {
+	public String getDuration(double amount) {
 		return Measure.durationCheck(amount);
 	}
 
