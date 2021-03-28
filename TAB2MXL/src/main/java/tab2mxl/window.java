@@ -281,18 +281,19 @@ public class window implements ActionListener{
 					public void actionPerformed(ActionEvent e) {
 						String feeback = (String)comboBox.getSelectedItem();
 						textArea.setText(feeback);
+						window.mean(feeback);
 					}
 				});
 				comboBox.setForeground(Color.PINK);
-				comboBox.setBounds(36, 246, 116, 36);
+				comboBox.setBounds(36, 297, 116, 36);
 				frame.getContentPane().add(comboBox);
 				comboBox.addItem("1/4");
 				comboBox.addItem("2/4");
 				comboBox.addItem("3/4");
 				comboBox.addItem("4/4");
 				comboBox.setSelectedItem(null);
-				String feeback = (String)comboBox.getSelectedItem();
-				textArea.setText(feeback);
+//				String feeback = (String)comboBox.getSelectedItem();
+//				textArea.setText(feeback);
 				
 				JButton btnNewButton_3 = new JButton("Edit");
 				btnNewButton_3.setFont(new Font("Times New Roman", Font.BOLD, 14));
