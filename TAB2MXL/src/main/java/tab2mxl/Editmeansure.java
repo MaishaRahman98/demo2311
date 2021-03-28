@@ -1,14 +1,17 @@
 package tab2mxl;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class Editmeansure {
 
@@ -47,6 +50,7 @@ public class Editmeansure {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 338, 219);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -80,7 +84,11 @@ public class Editmeansure {
 		});
 		btnNewButton_1.setBounds(187, 126, 93, 23);
 		frame.getContentPane().add(btnNewButton_1);
+		
+		Image img = new ImageIcon(this.getClass().getResource("/acastro_181016_1777_music_0001.jpg")).getImage();
+		JLabel lblNewLabel = new JLabel(new ImageIcon(img));
+		lblNewLabel.setBounds(0, 0, 332, 190);
+		frame.getContentPane().add(lblNewLabel);
+		
 	}
-	
-
 }
