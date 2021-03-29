@@ -204,11 +204,13 @@ public class Drum {
 //		for (int k = 0; k < measureCount; k++) {
 
 //			if (mCount != temp && mCount != 1) {
-			if (mCount != 0) {
-				body.append("  </measure>\n");
-//				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
-				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
-			}
+			//edit 1:
+//			if (mCount != 0) {
+//				body.append("  </measure>\n");
+////				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
+//				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
+//			}
+			
 			//|| str1.charAt(i + 1) != '-'
 //			for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|') ; i++)
 //			{
@@ -232,8 +234,9 @@ public class Drum {
 				Measure measure = new Measure("");
 				if (listOfColumns.get(i).contains('|')) {
 					mCount++;
-					body.append("  </measure>\n");
-					body.append(" <measure number=\"" + (mCount + 1) + "\">\n");
+					//fixed the spacing:
+					body.append(" </measure>\n");
+					body.append("<measure number=\"" + (mCount + 1) + "\">\n");
 				}
 				for (int a = 0; a < listOfColumns.get(i).size(); a++) {
 					if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o') {
@@ -255,18 +258,18 @@ public class Drum {
 							
 							instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
 							
-							body.append("<note>\n");
-							body.append(" <unpitched>\n");
+							body.append(" <note>\n");
+							body.append("  <unpitched>\n");
 							if (note.length() == 1) { 
-								body.append("  <display-step>" +  note + "</display-step>\n");
+								body.append("   <display-step>" +  note + "</display-step>\n");
 							}
 							else
 							{
-								body.append("  <display-step>" +  note.charAt(0) + "</display-step>\n");
+								body.append("   <display-step>" +  note.charAt(0) + "</display-step>\n");
 		
 							}
-							body.append("  <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
-							body.append("  </unpitched>\n");
+							body.append("   <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
+							body.append("   </unpitched>\n");
 						
 							i = origini;
 							counter = -1;
@@ -287,16 +290,16 @@ public class Drum {
 							counter++;
 							i = origini;
 							
-							body.append(" <duration>" + (counter + 1) + "</duration>\n"); //will need to edit duration later
+							body.append("  <duration>" + (counter + 1) + "</duration>\n"); //will need to edit duration later
 							body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
-							body.append(" <voice>1</voice>\n");
-							body.append(" <type>" + measure.getDuration(counter + 1) + "</type>\n"); //will need to edit type later
-							body.append(" <stem>up</stem>\n");
+							body.append("  <voice>1</voice>\n");
+							body.append("  <type>" + measure.getDuration(counter + 1) + "</type>\n"); //will need to edit type later
+							body.append("  <stem>up</stem>\n");
 							if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X') {
-								body.append(" <notehead>x</notehead>\n"); //only cymbal lines (C, H, R) have x
+								body.append("  <notehead>x</notehead>\n"); //only cymbal lines (C, H, R) have x
 							}
-							body.append(" <beam number=\"1\">continue</beam>\n"); //need to implement this later
-							body.append(" </note>\n");            	
+							body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+							body.append("  </note>\n");            	
 						}	
 					}
 					digit = 0;
@@ -307,8 +310,11 @@ public class Drum {
 			}
 		}
 		//} for (int k = 0; k < measureCount; k++) {
-		mCount++;
-	
+		
+		//edit 2:
+		//mCount++; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
+		mCount = 0; //resets mCount to 0
+		
 		//return "BYE\n";
 		//String ret = body.toString();
 		//body.append("BYE\n");
