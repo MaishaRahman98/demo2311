@@ -250,9 +250,10 @@ public class StringInstrument {
 		int numMeasureCount = 1;
 		int counter = 0;
 		int digit = 0;
-		ArrayList<ArrayList<Character> > listOfColumns =  new ArrayList<ArrayList<Character>>();
+		ArrayList<ArrayList<Character>> listOfColumns =  new ArrayList<ArrayList<Character>>();
 		String noteType = "";
 		int x = 0,y = 0;
+		boolean graceToken = false;
 
 		for (int i = 1; i < str1.length(); i++) {
 			if ((i + 1) != str1.length() && str1.charAt(i) == '|' && str1.charAt(i + 1) == '-') {
@@ -304,6 +305,11 @@ public class StringInstrument {
 				for (int j = 0; j < listOfColumns.get(i).size(); j++) {
 					stringNum++;
 					
+					if (i-1 > 0) {
+						if (listOfColumns.get(i-1).get(j)=='g') {
+						graceToken = true;
+						}
+					}
 					if (Character.isDigit(listOfColumns.get(i).get(j))) {
 						int origini = i;
 						
@@ -327,6 +333,10 @@ public class StringInstrument {
 						}
 						
 						body.append("<note>\n");
+						if (graceToken == true) {
+							body.append(" <grace/> \n");
+							graceToken = false;
+						}
 						if (digit > 1 && chord) {
 							body.append("  <chord/>\n");
 						}
@@ -390,7 +400,7 @@ public class StringInstrument {
 						body.append("  <technical>\n");
 						body.append("   <string>" + stringNum + "</string>\n");
 						body.append("   <fret>" + fret + "</fret>\n");
-						if (legatoCheck == true) {
+						if (legatoCheck == true && graceToken == false) {
 							legatoType = legatoValue.get(1);
 							legatoFullName = legatoValue.get(0);
 							legatoFret = Integer.parseInt(legatoValue.get(2));
@@ -404,7 +414,7 @@ public class StringInstrument {
 							}
 							legatoCheck = false;
 						}
-						if(legatoFret == fret) {
+						if(legatoFret == fret && graceToken == false) {
 							if (legatoType == "H") {
 								body.append("      <"+legatoFullName+" number=\""+hammerCount+"\" type=\"stop\"/>\n");
 							}
