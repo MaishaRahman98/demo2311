@@ -49,8 +49,6 @@
                 </staff-tuning>
             </staff-details>
          </attributes>
-<<<<<<< HEAD
-=======
 <note>
  <pitch>
   <step>A</step>
@@ -1739,7 +1737,6 @@
  <measure number="16">
   </measure>
   <measure number="17">
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
 <note>
  <pitch>
   <step>F</step>
@@ -1776,17 +1773,9 @@
   <step>E</step>
   <octave>2</octave>
   </pitch>
-<<<<<<< HEAD
- <duration>3</duration>
-=======
  <duration>4</duration>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
  <voice>1</voice>
-<<<<<<< HEAD
- <type>quarter</type>
-=======
  <type>16th</type>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
  <notations>
   <technical>
    <string>6</string>
@@ -1796,8 +1785,6 @@
  </note>
 <note>
  <pitch>
-<<<<<<< HEAD
-=======
   <step>F</step>
   <octave>4</octave>
   </pitch>
@@ -2252,10 +2239,7 @@
  </note>
 <note>
  <pitch>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
   <step>B</step>
-<<<<<<< HEAD
-=======
   <alter>-1</alter>
   <octave>4</octave>
   </pitch>
@@ -2274,193 +2258,10 @@
   <chord/>
  <pitch>
   <step>A</step>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
   <octave>2</octave>
   </pitch>
  <duration>2</duration>
  <voice>1</voice>
-<<<<<<< HEAD
- <type>quarter</type>
- <notations>
-  <technical>
-   <string>5</string>
-   <fret>2</fret>
-   </technical>
-  </notations>
- </note>
-<note>
- <pitch>
-  <step>E</step>
-  <octave>3</octave>
-  </pitch>
- <duration>4</duration>
- <voice>1</voice>
- <type>half</type>
- <notations>
-  <technical>
-   <string>4</string>
-   <fret>2</fret>
-   </technical>
-  </notations>
- </note>
-<note>
- <grace/> 
- <pitch>
-  <step>G</step>
-  <octave>3</octave>
-  </pitch>
- <duration>2</duration>
- <voice>1</voice>
- <type>quarter</type>
- <notations>
-  <technical>
-   <string>3</string>
-   <fret>0</fret>
-      <hammer-on number="1" type="start">H</hammer-on>
-   </technical>
-  </notations>
- </note>
-<note>
- <pitch>
-  <step>B</step>
-  <octave>3</octave>
-  </pitch>
- <duration>2</duration>
- <voice>1</voice>
- <type>quarter</type>
- <notations>
-  <technical>
-   <string>2</string>
-   <fret>0</fret>
-   </technical>
-  </notations>
- </note>
-<note>
- <pitch>
-  <step>A</step>
-  <alter>-1</alter>
-  <octave>3</octave>
-  </pitch>
- <duration>2</duration>
- <voice>1</voice>
- <type>quarter</type>
- <notations>
-  <technical>
-   <string>3</string>
-   <fret>1</fret>
-      <hammer-on number="1" type="stop"/>
-   </technical>
-  </notations>
- </note>
-<note>
- <pitch>
-  <step>E</step>
-  <octave>4</octave>
-  </pitch>
- <duration>3</duration>
- <voice>1</voice>
- <type>quarter</type>
- <notations>
-  <technical>
-   <string>1</string>
-   <fret>0</fret>
-   </technical>
-  </notations>
- </note>
-<note>
- <pitch>
-  <step>B</step>
-  <octave>3</octave>
-  </pitch>
- <duration>3</duration>
- <voice>1</voice>
- <type>quarter</type>
- <notations>
-  <technical>
-   <string>2</string>
-   <fret>0</fret>
-   </technical>
-  </notations>
- </note>
-<note>
- <pitch>
-  <step>A</step>
-  <alter>-1</alter>
-  <octave>3</octave>
-  </pitch>
- <duration>5</duration>
- <voice>1</voice>
- <type>quarter</type>
- <notations>
-  <technical>
-   <string>3</string>
-   <fret>1</fret>
-   </technical>
-  </notations>
- </note>
-  </measure>
- <measure number="2">
-<note>
- <pitch>
-  <step>E</step>
-  <octave>4</octave>
-  </pitch>
- <duration>16</duration>
- <voice>1</voice>
- <type>quarter</type>
- <notations>
-  <technical>
-   <string>1</string>
-   <fret>0</fret>
-   </technical>
-  </notations>
- </note>
-<note>
-  <chord/>
- <pitch>
-  <step>B</step>
-  <octave>3</octave>
-  </pitch>
- <duration>16</duration>
- <voice>1</voice>
- <type>quarter</type>
- <notations>
-  <technical>
-   <string>2</string>
-   <fret>0</fret>
-   </technical>
-  </notations>
- </note>
-<note>
-  <chord/>
- <pitch>
-  <step>A</step>
-  <alter>-1</alter>
-  <octave>3</octave>
-  </pitch>
- <duration>16</duration>
- <voice>1</voice>
- <type>quarter</type>
- <notations>
-  <technical>
-   <string>3</string>
-   <fret>1</fret>
-   </technical>
-  </notations>
- </note>
-<note>
-  <chord/>
- <pitch>
-  <step>E</step>
-  <octave>3</octave>
-  </pitch>
- <duration>16</duration>
- <voice>1</voice>
- <type>quarter</type>
- <notations>
-  <technical>
-   <string>4</string>
-=======
  <type>16th</type>
  <notations>
   <technical>
@@ -16440,7 +16241,6 @@
  <notations>
   <technical>
    <string>2</string>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
    <fret>2</fret>
    </technical>
   </notations>
@@ -16448,8 +16248,6 @@
 <note>
   <chord/>
  <pitch>
-<<<<<<< HEAD
-=======
   <step>A</step>
   <octave>2</octave>
   </pitch>
@@ -16528,26 +16326,16 @@
  </note>
 <note>
  <pitch>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
   <step>B</step>
+  <alter>-1</alter>
   <octave>2</octave>
   </pitch>
-<<<<<<< HEAD
- <duration>16</duration>
-=======
  <duration>4</duration>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
  <voice>1</voice>
-<<<<<<< HEAD
- <type>quarter</type>
-=======
  <type>eighth</type>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
  <notations>
   <technical>
    <string>5</string>
-<<<<<<< HEAD
-=======
    <fret>1</fret>
    </technical>
   </notations>
@@ -16673,7 +16461,6 @@
  <notations>
   <technical>
    <string>3</string>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
    <fret>2</fret>
    </technical>
   </notations>
@@ -16682,8 +16469,6 @@
   <chord/>
  <pitch>
   <step>E</step>
-<<<<<<< HEAD
-=======
   <octave>3</octave>
   </pitch>
  <duration>6</duration>
@@ -16701,20 +16486,11 @@
 <note>
  <pitch>
   <step>E</step>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
   <octave>2</octave>
   </pitch>
-<<<<<<< HEAD
- <duration>16</duration>
-=======
  <duration>4</duration>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
  <voice>1</voice>
-<<<<<<< HEAD
- <type>quarter</type>
-=======
  <type>eighth</type>
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
  <notations>
   <technical>
    <string>6</string>
@@ -16722,8 +16498,6 @@
    </technical>
   </notations>
  </note>
-<<<<<<< HEAD
-=======
 <note>
  <pitch>
   <step>D</step>
@@ -17010,7 +16784,6 @@
  </note>
   </measure>
  <measure number="79">
->>>>>>> branch 'Lars_Branch' of https://github.com/MaishaRahman98/demo2311
   <barline location="right">
    <bar-style>light-heavy</bar-style>
    </barline>
