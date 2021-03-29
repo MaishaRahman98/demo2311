@@ -254,13 +254,16 @@ public class StringInstrument {
 		String noteType = "";
 		int x = 0,y = 0;
 		boolean graceToken = false;
+		double beat = 4, beatType = 4;
+		double durMes = beat * (1 / beatType);
+		int total = 0;
 
 		for (int i = 1; i < str1.length(); i++) {
 			if ((i + 1) != str1.length() && str1.charAt(i) == '|' && str1.charAt(i + 1) == '-') {
 				measureCount++;
 			}
 		}
-		
+	
 		for (int i = 2; i < str1.lastIndexOf('|'); i++) {
 			ArrayList<Character> column = new ArrayList<Character>();
 			column.add(str1.charAt(i));
@@ -280,6 +283,21 @@ public class StringInstrument {
 			listOfColumns.add(column);
 		}
 		
+		for (ArrayList<Character> s : listOfColumns) {
+			int c = 0;
+			if (s == null) break;
+			while (c < s.size() && s.get(c) != '|') {
+				if (Character.isDigit(s.get(c)))
+				{
+					total++;
+					break;
+				}
+				c++;
+			}
+			if (c == s.size()) c--;
+			if (s.get(c) == '|')
+				break;
+		}
 
 		//for (int k = 0; k < measureCount; k++) {
 
@@ -384,7 +402,7 @@ public class StringInstrument {
 							}		
 							counter++;
 						}
-						counter++;
+//						counter++;
 						i = origini;
 						if (i+2 < listOfColumns.size()) {
 							if (Character.toLowerCase(listOfColumns.get(i+2).get(j)) == 'p' || Character.toLowerCase(listOfColumns.get(i+2).get(j)) == 'h' || Character.toLowerCase(listOfColumns.get(i+1).get(j)) == 'p' || Character.toLowerCase(listOfColumns.get(i+1).get(j)) == 'h') {
@@ -395,7 +413,7 @@ public class StringInstrument {
 						}
 						body.append(" <duration>" + (counter + 1) + "</duration>\n");
 						body.append(" <voice>1</voice>\n");
-						body.append(" <type>"+measure.getDuration(counter + 1)+"</type>\n");
+						body.append(" <type>" + measure.getDuration(durMes / total)+ "</type>\n");
 						body.append(" <notations>\n");
 						body.append("  <technical>\n");
 						body.append("   <string>" + stringNum + "</string>\n");
