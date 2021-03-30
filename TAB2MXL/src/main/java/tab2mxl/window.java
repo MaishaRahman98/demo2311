@@ -71,7 +71,7 @@ public class window implements ActionListener{
 	boolean quit;
 	static String mean = "";
 	UndoManager um = new UndoManager();
-	Editmeansure un = new Editmeansure();
+//	Editmeansure un = new Editmeansure("");
 	//=========undo and redo
 //	private Document editorPaneDocument;
 //	protected UndoHandler undoHandler = new UndoHandler();
@@ -313,8 +313,7 @@ public class window implements ActionListener{
 				btnNewButton_3.setForeground(new Color(186, 85, 211));
 				btnNewButton_3.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Editmeansure em = new Editmeansure();
-						em.frame.setVisible(true);
+						file.edit();
 					}
 				});
 				
