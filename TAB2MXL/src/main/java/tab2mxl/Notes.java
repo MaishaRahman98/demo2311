@@ -49,7 +49,7 @@ public class Notes {
 		return mainNotes[fret];
 		}
 		else if(stringNum.equals("String3")) {
-			fret+=2;
+			fret+=3;
 			while (fret > 12)
 				fret = fret - 12;
 		return mainNotes[fret];
