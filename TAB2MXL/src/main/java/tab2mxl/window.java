@@ -296,8 +296,7 @@ public class window implements ActionListener{
 					public void actionPerformed(ActionEvent e) {
 //						Editmeansure em = new Editmeansure();
 //						em.frame.setVisible(true);
-						Editsecondtry es = new Editsecondtry();
-						es.frame.setVisible(true);
+
 					}
 				});
 				
