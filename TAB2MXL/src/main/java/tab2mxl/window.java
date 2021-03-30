@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -24,8 +25,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.Document;
+import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoManager;
 import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
+
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 
@@ -176,7 +180,6 @@ public class window implements ActionListener{
 		}
 //===================================================================================================cannot use window builder			
 		JButton btnNewButton = new JButton("Open");
-		btnNewButton.setBounds(36, 389, 116, 36);
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.PINK);
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -190,7 +193,6 @@ public class window implements ActionListener{
 
 		
 		btnNewButton_1 = new JButton("Translate");
-		btnNewButton_1.setBounds(119, 435, 116, 36);
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setForeground(Color.ORANGE);
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -206,7 +208,6 @@ public class window implements ActionListener{
 //				lblNewLabel.setBackground(Color.ORANGE);
 				
 				JButton btnNewButton_2 = new JButton("SaveAs");
-				btnNewButton_2.setBounds(36, 481, 116, 33);
 				btnNewButton_2.addActionListener(this);
 				btnNewButton_2.setActionCommand("SaveAs");
 //				btnNewButton_2.addActionListener(new ActionListener() {
@@ -219,7 +220,6 @@ public class window implements ActionListener{
 				
 						
 						JScrollPane scrollPane_1 = new JScrollPane();
-						scrollPane_1.setBounds(255, 32, 674, 529);
 						scrollPane_1.setBorder(null);
 						scrollPane_1.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 						scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -270,11 +270,6 @@ public class window implements ActionListener{
 												textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 												textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 												scrollPane_1.setViewportView(textArea);
-				frame.getContentPane().setLayout(null);
-				frame.getContentPane().add(btnNewButton);
-				frame.getContentPane().add(btnNewButton_1);
-				frame.getContentPane().add(btnNewButton_2);
-				frame.getContentPane().add(scrollPane_1);
 				
 				JComboBox comboBox = new JComboBox();
 				comboBox.addActionListener(new ActionListener() {
@@ -285,8 +280,6 @@ public class window implements ActionListener{
 					}
 				});
 				comboBox.setForeground(Color.PINK);
-				comboBox.setBounds(36, 297, 116, 36);
-				frame.getContentPane().add(comboBox);
 				comboBox.addItem("1/4");
 				comboBox.addItem("2/4");
 				comboBox.addItem("3/4");
@@ -301,17 +294,64 @@ public class window implements ActionListener{
 				btnNewButton_3.setForeground(new Color(186, 85, 211));
 				btnNewButton_3.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Editmeansure em = new Editmeansure();
-						em.frame.setVisible(true);
+//						Editmeansure em = new Editmeansure();
+//						em.frame.setVisible(true);
+						Editsecondtry es = new Editsecondtry();
+						es.frame.setVisible(true);
 					}
 				});
 				
-				btnNewButton_3.setBounds(119, 343, 116, 36);
-				frame.getContentPane().add(btnNewButton_3);
-				
 				JLabel lblNewLabel = new JLabel(new ImageIcon(img));
-				lblNewLabel.setBounds(0, 0, 1038, 602);
-				frame.getContentPane().add(lblNewLabel);
+				GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+				groupLayout.setHorizontalGroup(
+					groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(119)
+							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(36)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(36)
+							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(36)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(119)
+							.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(255)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+							.addGap(110))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 1038, Short.MAX_VALUE)
+							.addGap(1))
+				);
+				groupLayout.setVerticalGroup(
+					groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(435)
+							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(297)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(481)
+							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(389)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(343)
+							.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(32)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+							.addGap(41))
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 602, Short.MAX_VALUE)
+				);
+				frame.getContentPane().setLayout(groupLayout);
 		
 		UIManager.put("PopupMenu.border", new LineBorder(Color.darkGray));
 		JMenuBar menuBar = new JMenuBar();
@@ -382,7 +422,26 @@ public class window implements ActionListener{
 		mnNewMenu.setBorder(null);
 		mnNewMenu.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		menuBar.add(mnNewMenu);
-		
+//-------------------------------------------------------------------------		
+		Document doc= textArea.getDocument();
+		doc.addUndoableEditListener(new UndoableEditListener() {
+		    public void undoableEditHappened(UndoableEditEvent evt) {
+		        um.addEdit(evt.getEdit());
+		    }
+		});
+//		textArea.getActionMap().put("Undo",
+//			    new AbstractAction("Undo") {
+//			        public void actionPerformed(ActionEvent evt) {
+//			            try {
+//			                if (um.canUndo()) {
+//			                    um.undo();
+//			                }
+//			            } catch (CannotUndoException e) {
+//			            }
+//			        }
+//			   });
+//		textArea.getInputMap().put(KeyStroke.getKeyStroke("control Z"), "Undo");
+//-------------------------------------------------------------------------		
 		mntmNewMenuItem_Undo = new JMenuItem("Undo");
 		mntmNewMenuItem_Undo.setBorder(null);
 		mntmNewMenuItem_Undo.setForeground(Color.ORANGE);
@@ -390,7 +449,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_Undo.addActionListener(this);
 		mntmNewMenuItem_Undo.setActionCommand("Undo");
 		mntmNewMenuItem_Undo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent evt) {
 				try {
 					um.undo();
 				} catch (Exception ex) {
