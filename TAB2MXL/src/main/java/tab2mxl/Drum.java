@@ -14,7 +14,9 @@ public class Drum {
 	private char strNum; //number of strings
 	int measureCount = 0;
 	static int temp = 0;
-	public static int mCount = 0;
+	//edit 3:
+	//public static int mCount = 0; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
+	public int mCount = 0;
 	
 	private Drum() {
 		this.strNum = ' ';
@@ -233,7 +235,7 @@ public class Drum {
 			for (int i = 0; i < listOfColumns.size(); i++) {
 				Measure measure = new Measure("");
 				if (listOfColumns.get(i).contains('|')) {
-					mCount++;
+					mCount++; //mCount must start at being zero when we translate each drum tab
 					//fixed the spacing:
 					body.append(" </measure>\n");
 					body.append("<measure number=\"" + (mCount + 1) + "\">\n");
@@ -313,7 +315,7 @@ public class Drum {
 		
 		//edit 2:
 		//mCount++; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
-		mCount = 0; //resets mCount to 0
+		//mCount = 0; //resets mCount to 0
 		
 		//return "BYE\n";
 		//String ret = body.toString();
