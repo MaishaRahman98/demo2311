@@ -254,8 +254,8 @@ public class StringInstrument {
 		String noteType = "";
 		int x = 0,y = 0;
 		boolean graceToken = false;
-		double beat = 4, beatType = 4;
-		double durMes = beat * (1 / beatType);
+		int beat = 4, beatType = 4;
+		//double durMes = beat * (1 / beatType);
 		int total = 0;
 
 		for (int i = 1; i < str1.length(); i++) {
@@ -287,7 +287,7 @@ public class StringInstrument {
 			int c = 0;
 			if (s == null) break;
 			while (c < s.size() && s.get(c) != '|') {
-				if (Character.isDigit(s.get(c)))
+				if (s.get(c) != '|')
 				{
 					total++;
 					break;
@@ -298,7 +298,7 @@ public class StringInstrument {
 			if (s.get(c) == '|')
 				break;
 		}
-
+		total--;
 		//for (int k = 0; k < measureCount; k++) {
 
 			if (mCount != 0) {
@@ -394,7 +394,7 @@ public class StringInstrument {
 							if (i == listOfColumns.size())
 								break;
 							for (int a = 0; a < listOfColumns.get(i).size(); a++) {
-								if (Character.isDigit(listOfColumns.get(i).get(a)))
+								if (Character.isDigit(listOfColumns.get(i).get(a)) || listOfColumns.get(i).get(a) == '|')
 								{
 										bool = false;
 										break;
@@ -413,7 +413,7 @@ public class StringInstrument {
 						}
 						body.append(" <duration>" + (counter + 1) + "</duration>\n");
 						body.append(" <voice>1</voice>\n");
-						body.append(" <type>" + measure.getDuration(durMes / total)+ "</type>\n");
+						body.append(" <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType)+ "</type>\n");
 						body.append(" <notations>\n");
 						body.append("  <technical>\n");
 						body.append("   <string>" + stringNum + "</string>\n");
