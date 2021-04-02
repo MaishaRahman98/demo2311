@@ -239,6 +239,7 @@ public class StringInstrument {
 //		int spaceCount = 0;
 		ArrayList<String> legatoValue = new ArrayList<String>();
 		boolean legatoCheck = false;
+		boolean legatoStop = false;
 		int legatoFret = 0;
 		String legatoType = "";
 		String legatoFullName = "";
@@ -406,7 +407,7 @@ public class StringInstrument {
 						i = origini;
 						if (i+2 < listOfColumns.size()) {
 							if (Character.toLowerCase(listOfColumns.get(i+2).get(j)) == 'p' || Character.toLowerCase(listOfColumns.get(i+2).get(j)) == 'h' || Character.toLowerCase(listOfColumns.get(i+1).get(j)) == 'p' || Character.toLowerCase(listOfColumns.get(i+1).get(j)) == 'h') {
-								String text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j))+Character.toString(listOfColumns.get(i+3).get(j))+Character.toString(listOfColumns.get(i+4).get(j));
+								String text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j));//+Character.toString(listOfColumns.get(i+3).get(j))+Character.toString(listOfColumns.get(i+4).get(j));
 								legatoCheck = true;
 								legatoValue = measure.legatos(text);
 							}
@@ -418,6 +419,20 @@ public class StringInstrument {
 						body.append("  <technical>\n");
 						body.append("   <string>" + stringNum + "</string>\n");
 						body.append("   <fret>" + fret + "</fret>\n");
+						
+						if(legatoStop = true || legatoFret == fret && graceToken == false) {
+							if (legatoType == "H") {
+								body.append("      <"+legatoFullName+" number=\""+hammerCount+"\" type=\"stop\"/>\n");
+							}
+							if (legatoType == "P") {
+								body.append("      <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"stop\"/>\n");
+							}
+							legatoType = "";
+							legatoFullName = "";
+							legatoFret = 0;	
+							legatoStop = false;
+						}
+						
 						if (legatoCheck == true && graceToken == false) {
 							legatoType = legatoValue.get(1);
 							legatoFullName = legatoValue.get(0);
@@ -431,24 +446,12 @@ public class StringInstrument {
 								body.append("      <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"start\">"+legatoType+"</"+legatoFullName+">\n");
 							}
 							legatoCheck = false;
+							legatoStop = true;
 						}
-						if(legatoFret == fret && graceToken == false) {
-							if (legatoType == "H") {
-								body.append("      <"+legatoFullName+" number=\""+hammerCount+"\" type=\"stop\"/>\n");
-							}
-							if (legatoType == "P") {
-								body.append("      <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"stop\"/>\n");
-							}
-							legatoType = "";
-							legatoFullName = "";
-							legatoFret = 0;	
-						}
+						
 						body.append("   </technical>\n");
 						body.append("  </notations>\n");
 						body.append(" </note>\n");
-
-						
-
 					}
 				}
 				digit = 0;
