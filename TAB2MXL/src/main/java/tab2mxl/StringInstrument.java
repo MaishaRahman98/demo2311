@@ -243,6 +243,7 @@ public class StringInstrument {
 		int legatoFret = 0;
 		String legatoType = "";
 		String legatoFullName = "";
+		String text = "";
 		int fret = 0;
 		int stringNum = 0;
 		String[] allStrings = { str1, str2, str3, str4, str5, str6, str7 };
@@ -407,7 +408,15 @@ public class StringInstrument {
 						i = origini;
 						if (i+2 < listOfColumns.size()) {
 							if (Character.toLowerCase(listOfColumns.get(i+2).get(j)) == 'p' || Character.toLowerCase(listOfColumns.get(i+2).get(j)) == 'h' || Character.toLowerCase(listOfColumns.get(i+1).get(j)) == 'p' || Character.toLowerCase(listOfColumns.get(i+1).get(j)) == 'h') {
-								String text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j));//+Character.toString(listOfColumns.get(i+3).get(j))+Character.toString(listOfColumns.get(i+4).get(j));
+								if (Character.isDigit(listOfColumns.get(i+1).get(j)) &&  Character.isDigit(listOfColumns.get(i+3).get(j)) && Character.isDigit(listOfColumns.get(i+4).get(j))) {
+								 text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j)) + Character.toString(listOfColumns.get(i+3).get(j))+Character.toString(listOfColumns.get(i+4).get(j));
+								} else if (Character.isDigit(listOfColumns.get(i).get(j)) &&  Character.isDigit(listOfColumns.get(i+2).get(j)) && Character.isDigit(listOfColumns.get(i+3).get(j))) {
+									 text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j)) + Character.toString(listOfColumns.get(i+3).get(j));
+								} else if (Character.isDigit(listOfColumns.get(i+1).get(j)) && Character.isDigit(listOfColumns.get(i+3).get(j))) {
+									 text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j)) + Character.toString(listOfColumns.get(i+3).get(j));
+								} else {
+									 text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j)) + Character.toString(listOfColumns.get(i+3).get(j));
+							}
 								legatoCheck = true;
 								legatoValue = measure.legatos(text);
 							}
