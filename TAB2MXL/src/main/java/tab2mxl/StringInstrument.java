@@ -17,6 +17,7 @@ public class StringInstrument {
 	public static int mCount = 0;
 	public int c = 0;
 	public static int d;
+	static boolean repEnd = false;
 
 	public StringInstrument() {
 		this.type = ' ';
@@ -259,6 +260,7 @@ public class StringInstrument {
 		int beat = 4, beatType = 4;
 		//double durMes = beat * (1 / beatType);
 		int total = 0;
+		boolean rep = false;
 
 		for (int i = 1; i < str1.length(); i++) {
 			if ((i + 1) != str1.length() && str1.charAt(i) == '|' && str1.charAt(i + 1) == '-') {
@@ -307,13 +309,43 @@ public class StringInstrument {
 				body.append("  </measure>\n");
 				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
 			}
+			
+		if (listOfColumns.get(listOfColumns.size() - 1).contains('|') && listOfColumns.get(listOfColumns.size() - 1).toString().matches(".*\\d.*"))	
+			rep = true;
 		
 		for (int i = 0; i < listOfColumns.size(); i++) {
 			Measure measure = new Measure("");
-			if (listOfColumns.get(i).contains('|')) {
+//			String sss = listOfColumns.get(i).toString();
+//			boolean b = listOfColumns.get(i).toString().matches(".*\\d.*");
+			if (listOfColumns.get(i).contains('|') && !listOfColumns.get(i).toString().matches(".*\\d.*")) {
+				if (i != listOfColumns.size() - 1 && !listOfColumns.get(i+1).contains('|')) {
 				mCount++;
 				body.append("  </measure>\n");
 				body.append(" <measure number=\"" + (mCount + 1) + "\">\n");
+				}
+				
+			}
+//			if (repEnd) {
+//				body.append("<barline location=\"right\">\n");
+//				body.append("<bar-style>light-heavy</bar-style>\n");
+//				body.append("<repeat direction=\"backward\"/>\n");
+//				body.append(" </barline>\n");
+//				body.append("</measure>\n");
+//				body.append(" <measure number=\"" + (mCount + 1) + "\">\n");
+//				repEnd = false;
+//			}
+			if (rep && i != listOfColumns.size() - 1 && listOfColumns.get(i+1).contains('*')) {
+				body.append("<barline location=\"left\">\n");
+				body.append("<bar-style>heavy-light</bar-style>\n");
+				body.append("<repeat direction=\"forward\"/>\n");
+				body.append("</barline>\n");
+				body.append("<direction placement=\"above\">\n");
+				body.append("<direction-type>\n");
+				body.append("<words relative-x=\"256.17\" relative-y=\"16.01\">Repeat " + listOfColumns.get(listOfColumns.size() - 1).get(0) + " times</words>\n");
+				body.append("</direction-type>\n");
+				body.append("</direction>\n");
+				rep = false;
+				repEnd = true;
 			}
 			for (int a = 0; a < listOfColumns.get(i).size(); a++) {
 				if (Character.isDigit(listOfColumns.get(i).get(a))) {
@@ -321,7 +353,7 @@ public class StringInstrument {
 				}
 			}
 			
-			if (digit >= 1) {
+			if (digit >= 1 && !listOfColumns.get(i).contains('|')) {
 				for (int j = 0; j < listOfColumns.get(i).size(); j++) {
 					stringNum++;
 					
@@ -480,6 +512,16 @@ public class StringInstrument {
 	public static String endHeading() {
 		// Ender:
 		StringBuilder end = new StringBuilder();
+		if (repEnd) {
+			end.append("  <barline location=\"right\">\n");
+			end.append("   <bar-style>light-heavy</bar-style>\n");
+			end.append("   <repeat direction=\"backward\"/>\n");
+			end.append("   </barline>\n");
+			end.append("  </measure>\n");
+			end.append(" </part>\n");
+			end.append("</score-partwise>\n");
+			return end.toString();
+		} else {
 		end.append("  <barline location=\"right\">\n");
 		end.append("   <bar-style>light-heavy</bar-style>\n");
 		end.append("   </barline>\n");
@@ -487,6 +529,7 @@ public class StringInstrument {
 		end.append(" </part>\n");
 		end.append("</score-partwise>\n");
 		return end.toString();
+		}
 	}
 
 	// Getters and Setters:
