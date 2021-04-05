@@ -238,7 +238,7 @@
    <display-step>A</display-step>
    <display-octave>5</display-octave>
    </unpitched>
-  <duration>5</duration>
+  <duration>4</duration>
   <instrument id="P1-I43"/>
   <voice>1</voice>
   <type>quarter</type>
@@ -248,8 +248,6 @@
   </note>
  </measure>
 <measure number="2">
- </measure>
-<measure number="3">
  <note>
   <unpitched>
    <display-step>G</display-step>
@@ -363,7 +361,7 @@
    <display-step>D</display-step>
    <display-octave>6</display-octave>
    </unpitched>
-  <duration>9</duration>
+  <duration>8</duration>
   <instrument id="P1-150"/>
   <voice>1</voice>
   <type>half</type>
@@ -376,15 +374,13 @@
    <display-step>E</display-step>
    <display-octave>4</display-octave>
    </unpitched>
-  <duration>9</duration>
+  <duration>8</duration>
   <instrument id="P1-I36"/>
   <voice>1</voice>
   <type>half</type>
   <stem>up</stem>
   <beam number="1">continue</beam>
   </note>
- </measure>
-<measure number="4">
   <barline location="right">
    <bar-style>light-heavy</bar-style>
    </barline>

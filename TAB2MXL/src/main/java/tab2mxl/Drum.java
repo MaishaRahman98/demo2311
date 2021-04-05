@@ -16,7 +16,7 @@ public class Drum {
 	static int temp = 0;
 	//edit 3:
 	//public static int mCount = 0; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
-	public int mCount = 0;
+	public static int mCount = 0;
 	static boolean repEnd = false;
 	
 	private Drum() {
@@ -373,7 +373,7 @@ public class Drum {
 		
 		//edit 2:
 		//mCount++; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
-		//mCount = 0; //resets mCount to 0
+		mCount = 0; //resets mCount to 0
 		
 		//return "BYE\n";
 		//String ret = body.toString();
