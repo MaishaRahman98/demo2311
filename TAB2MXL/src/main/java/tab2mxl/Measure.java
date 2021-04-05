@@ -27,7 +27,7 @@ public class Measure {
 		}else if (spaceCount >= 0.0625) {
 			return "16th";
 		}else if (spaceCount >= 0.03125) {
-			return "32th";
+			return "32nd";
 		}else if (spaceCount >= 0.015625) {
 			return "64th";
 		}else if (spaceCount >= 0.0078125) {
