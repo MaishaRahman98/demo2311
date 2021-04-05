@@ -302,6 +302,7 @@ public class Drum {
 							int origini = i;
 							fret = listOfColumns.get(i).get(j);
 							
+							//flams are grace notes:
 							if(listOfColumns.get(i).get(j) == 'f') {
 								graceToken = true;
 							}
@@ -313,6 +314,7 @@ public class Drum {
 							instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
 							
 							body.append(" <note>\n");
+							//if flams exist, then it is a grace note:
 							if (graceToken == true) {
 								body.append("  <grace/> \n");
 								graceToken = false;
