@@ -17,6 +17,7 @@ public class Drum {
 	//edit 3:
 	//public static int mCount = 0; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
 	public int mCount = 0;
+	static boolean repEnd = false;
 	
 	private Drum() {
 		this.strNum = ' ';
@@ -41,6 +42,15 @@ public class Drum {
 		this.str6 = s6;	
 		this.strNum = '6';
 	}
+	private Drum(String s1, String s2, String s3, String s4, String s5, String s6, String s7) {
+		this(s1, s2, s3, s4, s5, s6);
+		this.str7 = s7;	
+		this.strNum = '7';
+	}
+	public static Drum getInstance(String s1, String s2, String s3, String s4, String s5, String s6, String s7) {
+		
+		return new Drum(s1, s2, s3, s4, s5, s6, s7);
+	}
 	public static Drum getInstance(String s1, String s2, String s3, String s4, String s5, String s6) {
 		
 		return new Drum(s1, s2, s3, s4, s5, s6);
@@ -53,7 +63,7 @@ public class Drum {
 	public static String xmlDrumHeader(int c) {
 		String instrument = "";
 		StringBuilder head = new StringBuilder();
-		if (c == 6 || c == 5) {
+		if (c == 6 || c == 5 || c == 7) {
 			instrument = "Drumset";
 		}
 		head.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
@@ -158,7 +168,7 @@ public class Drum {
 	
 	
 	//Will edit this part
-	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6) {
+	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
 		String instrument = "";
@@ -176,6 +186,10 @@ public class Drum {
 		int counter = 0;
 		ArrayList<ArrayList<Character> > listOfColumns =  new ArrayList<ArrayList<Character>>();
 		int digit = 0;
+		int beat = 4, beatType = 4;
+		int total = 0;
+		boolean rep = false;
+		boolean graceToken = false;
 		
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
@@ -202,6 +216,23 @@ public class Drum {
 			}
 			listOfColumns.add(column);
 		}
+		
+		for (ArrayList<Character> s : listOfColumns) {
+			int c = 0;
+			if (s == null) break;
+			while (c < s.size() && s.get(c) != '|') {
+				if (s.get(c) != '|')
+				{
+					total++;
+					break;
+				}
+				c++;
+			}
+			if (c == s.size()) c--;
+			if (s.get(c) == '|')
+				break;
+		}
+		total--;
 		
 //		for (int k = 0; k < measureCount; k++) {
 
@@ -231,7 +262,10 @@ public class Drum {
 //							fret = j.charAt(i);
 //							//counter = 0; //reset counter
 //						}
-						
+			
+			if (listOfColumns.get(listOfColumns.size() - 1).contains('|') && listOfColumns.get(listOfColumns.size() - 1).toString().matches(".*\\d.*")) {
+				rep = true;
+			}
 			for (int i = 0; i < listOfColumns.size(); i++) {
 				Measure measure = new Measure("");
 				if (listOfColumns.get(i).contains('|')) {
@@ -240,20 +274,38 @@ public class Drum {
 					body.append(" </measure>\n");
 					body.append("<measure number=\"" + (mCount + 1) + "\">\n");
 				}
+				if (rep && i != listOfColumns.size() - 1 && listOfColumns.get(i+1).contains('*')) {
+					body.append("<barline location=\"left\">\n");
+					body.append("<bar-style>heavy-light</bar-style>\n");
+					body.append("<repeat direction=\"forward\"/>\n");
+					body.append("</barline>\n");
+					body.append("<direction placement=\"above\">\n");
+					body.append("<direction-type>\n");
+					body.append("<words relative-x=\"256.17\" relative-y=\"16.01\">Repeat " + listOfColumns.get(listOfColumns.size() - 1).get(0) + " times</words>\n");
+					body.append("</direction-type>\n");
+					body.append("</direction>\n");
+					rep = false;
+					repEnd = true;
+				}
 				for (int a = 0; a < listOfColumns.get(i).size(); a++) {
-					if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o') {
+					if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o' || listOfColumns.get(i).get(a) == 'f') {
 						digit++;
 					}
 				}
 				
-				if (digit >= 1) {
+				if (digit >= 1 && !listOfColumns.get(i).contains('|')) {
 					for (int j = 0; j < listOfColumns.get(i).size(); j++) {
 					
 						stringNum++;
-						if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X' || listOfColumns.get(i).get(j) == 'o') {
+						
+						if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X' || listOfColumns.get(i).get(j) == 'o' || listOfColumns.get(i).get(j) == 'f') {
 							int origini = i;
 							fret = listOfColumns.get(i).get(j);
-						
+							
+							if(listOfColumns.get(i).get(j) == 'f') {
+								graceToken = true;
+							}
+							
 							//Nabaa needs to implement drumNotes and drumOctave methods in Notes class
 							note = Notes.drumNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 							octave = Notes.drumOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
@@ -261,6 +313,10 @@ public class Drum {
 							instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
 							
 							body.append(" <note>\n");
+							if (graceToken == true) {
+								body.append("  <grace/> \n");
+								graceToken = false;
+							}
 							body.append("  <unpitched>\n");
 							if (note.length() == 1) { 
 								body.append("   <display-step>" +  note + "</display-step>\n");
@@ -295,7 +351,7 @@ public class Drum {
 							body.append("  <duration>" + (counter + 1) + "</duration>\n"); //will need to edit duration later
 							body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
 							body.append("  <voice>1</voice>\n");
-							body.append("  <type>" + measure.getDuration(counter + 1) + "</type>\n"); //will need to edit type later
+							body.append("  <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType) + "</type>\n"); //will need to edit type later
 							body.append("  <stem>up</stem>\n");
 							if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X') {
 								body.append("  <notehead>x</notehead>\n"); //only cymbal lines (C, H, R) have x
@@ -328,15 +384,31 @@ public class Drum {
 	public static String endDrumHeading() {
 		//Ender:
 		StringBuilder end = new StringBuilder();
-		end.append("  <barline location=\"right\">\n");
-		end.append("   <bar-style>light-heavy</bar-style>\n");
-		end.append("   </barline>\n");
-		end.append("  </measure>\n");
-		end.append(" </part>\n");
-		end.append("</score-partwise>\n");
-		return end.toString();
+		if (repEnd) {
+			end.append("  <barline location=\"right\">\n");
+			end.append("   <bar-style>light-heavy</bar-style>\n");
+			end.append("   <repeat direction=\"backward\"/>\n");
+			end.append("   </barline>\n");
+			end.append("  </measure>\n");
+			end.append(" </part>\n");
+			end.append("</score-partwise>\n");
+			return end.toString();
+		} else {
+			end.append("  <barline location=\"right\">\n");
+			end.append("   <bar-style>light-heavy</bar-style>\n");
+			end.append("   </barline>\n");
+			end.append("  </measure>\n");
+			end.append(" </part>\n");
+			end.append("</score-partwise>\n");
+			return end.toString();
+		}
 	}
 	
+	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
+		Drum drumSeven;
+		drumSeven = Drum.getInstance(str1,str2,str3,str4,str5, str6, str7);
+		return drumSeven;
+	}
 	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6) {
 		Drum drumSix;
 		drumSix = Drum.getInstance(str1,str2,str3,str4,str5, str6);

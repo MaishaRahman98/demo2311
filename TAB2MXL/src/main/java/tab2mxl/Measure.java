@@ -15,17 +15,25 @@ public class Measure {
 		this.octaveMeasure = octaveMeasure;
 	}
 
-	public static String durationCheck(int spaceCount) {
-		if (spaceCount == 1 || spaceCount == 0) {
-			return "eighth";
-		} else if (spaceCount == 2) {
-			return "quarter";
-		} else if (spaceCount == 4) {
-			return "half";
-		} else if (spaceCount == 8) {
+	public static String durationCheck(double spaceCount) {
+		 if (spaceCount >= 1.0) {
 			return "whole";
-		}
-		return "quarter";
+		} else if (spaceCount >= 0.5) {
+			return "half";
+		} else if (spaceCount >= 0.25) {
+			return "quarter";
+		} else if (spaceCount >= 0.125) {
+			return "eighth";
+		}else if (spaceCount >= 0.0625) {
+			return "16th";
+		}else if (spaceCount >= 0.03125) {
+			return "32th";
+		}else if (spaceCount >= 0.015625) {
+			return "64th";
+		}else if (spaceCount >= 0.0078125) {
+			return "128th";
+		}else
+			return "256th";
 	}
 
 	public ArrayList<String> legatos(String text) {
@@ -64,8 +72,11 @@ public class Measure {
 		return output;
 	}
 
-	public String getDuration(int amount) {
-		return Measure.durationCheck(amount);
+	public String getDuration(int counter, int total,int beat, int beatType) {
+		double x = (double) (total / beat);
+		double y = (double) (counter / x);
+		double z = y *  (1 / (double) beatType);
+		return Measure.durationCheck(z);
 	}
 
 	public String getNoteMeasure(String strNum, int fret, String instrumentType) {

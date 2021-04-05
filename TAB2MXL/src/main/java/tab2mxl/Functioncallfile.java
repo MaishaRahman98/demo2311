@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Font;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,23 +13,49 @@ import java.io.IOException;
 public class Functioncallfile {
 
 	window win;
+	String userOrgInput;
+	newwindow newwin;
 	String filename;
 	String fileaddress;
 	Font arial, comicSansMS, timesNewRoman,Monospaced;
 	String fontname="MONOSPACED";
 	String text;
+	Showtheerror yeah = new Showtheerror();
 	//==============================================
 	outputFile musicFile = new outputFile(win);
 	//==============================================
+	public boolean de = false;
 	public Functioncallfile(window win) {
 		this.win = win;
 		
 	}
+	
+	public Functioncallfile(newwindow newwindow) {
+		// TODO Auto-generated constructor stub
+		this.newwin = newwindow;
+	}
+
 	public void newfile() {
-		win.textArea.setText("");
-		win.frame.setTitle("New");
-		filename = null;
-		fileaddress = null;
+//		win.textArea.setText("");
+//		win.frame.setTitle("New");
+//		filename = null;
+//		fileaddress = null;
+		String have = win.textArea.getText();
+//		if(have.isEmpty()) {
+			win.textArea.setText("");
+			win.frame.setTitle("New");
+			filename = null;
+			fileaddress = null;
+//		}
+//		else {
+			
+//			newwindow y= new newwindow();
+//			y.frame123.setVisible(true);
+//			win.ooo.showConfirmDialog(this.win.ooo, have);
+//
+//			
+//		}
+		
 	}
 	public void open() {
 		FileDialog fileopen = new FileDialog(win.frame, "Open a txt file", FileDialog.LOAD);
@@ -88,13 +116,19 @@ public class Functioncallfile {
 			FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicxml");
 			//FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicXML");
 			//FileWriter newfile1  = new FileWriter(fileaddress+""+name+".xml");
+			
+			//File inputFile = new File("C:\\Users\\redga\\git\\demo2311\\TAB2MXL\\usersTablatures\\"+name+".txt");
+			//BufferedWriter userInput  = new BufferedWriter(new FileWriter(inputFile));
+
 //			saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
 			newfile1.write(win.textArea.getText());
 //			win.frame.setTitle(name);
 			win.frame.setTitle(name);
+			//userInput.write(userOrgInput);
 			newfile1.close();
+			//userInput.close();
 		}catch(Exception e) {
-			System.out.println("Save file isn't success");
+			System.out.println("Save file isn't successful");
 		}
 	}
 	public void exit() {
@@ -145,9 +179,19 @@ public class Functioncallfile {
 	}
 	//============================================
 	public void translate() {
+		String textext = win.textArea.getText();
 		boolean em = win.textArea.getText().isEmpty();
 		if (em!=false) {
-			System.out.println("Empty text area");
+			String output = "Empty text area";
+			yeah.outputMessage(output);
+//			System.out.println("Empty text area");
+		}
+		else if(textext.contains("<?xml version")) {
+//			if(win.textArea.getText().matches("(.*)<?xml version(.*)")) {
+//			win.btnNewButton_1.setEnabled(false);
+			String output = "Already";
+			yeah.outputMessage(output);
+//			}
 		}
 		else {
 //			win.textArea.getText().printTab();
@@ -157,6 +201,7 @@ public class Functioncallfile {
 
 			BufferedReader firstbf;
 			try {
+				this.userOrgInput = text;
 				firstbf = new BufferedReader(new FileReader(musicFile.createFile(text)));
 				win.textArea.setText("");
 				String newtext = null;
@@ -168,31 +213,31 @@ public class Functioncallfile {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	
+
 		}
 	}
 	//============================================blow is color
 	public void changecolor(String color) {
 		switch(color) {
 		case"White":
-			win.frame.getContentPane().setBackground(Color.white);
+//			win.frame.getContentPane().setBackground(Color.white);
 			win.textArea.setBackground(Color.white);
 			win.frame.getJMenuBar().setBackground(Color.white);
 			win.textArea.setForeground(Color.black);
 			break;
 		case"Black":
-			win.frame.getContentPane().setBackground(Color.orange);
+//			win.frame.getContentPane().setBackground(Color.orange);
 			win.textArea.setBackground(Color.black);
 			win.frame.getJMenuBar().setBackground(Color.darkGray);
 			win.textArea.setForeground(Color.white);
 			break;
 		case"Pink":
-			win.frame.getContentPane().setBackground(Color.pink);
+//			win.frame.getContentPane().setBackground(Color.pink);
 			win.textArea.setBackground(Color.pink);
 			win.textArea.setForeground(Color.black);
 			break;
 		case"Blue":
-			win.frame.getContentPane().setBackground(new Color(28,186,186));
+//			win.frame.getContentPane().setBackground(new Color(28,186,186));
 			win.textArea.setBackground(new Color(28,186,186));
 			win.textArea.setForeground(Color.white);
 			break;
@@ -211,6 +256,11 @@ public class Functioncallfile {
 			win.um.redo();
 		}
 		
+	}
+	
+	public void edit() {
+		Editmeansure em = new Editmeansure(filename);
+		em.frame.setVisible(true);
 	}
 }
 

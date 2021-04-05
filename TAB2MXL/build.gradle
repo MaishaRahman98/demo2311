@@ -16,7 +16,11 @@ dependencies {
     //testCompile "org.testfx:testfx-core:4.0.16-alpha"
     //testCompile "org.testfx:testfx-junit5:4.0.16-alpha"
     //testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
+    //implementation'com.jtattoo:JTattoo:1.6.13'
     implementation'com.jtattoo:JTattoo:1.6.13'
+    testCompile "org.testfx:testfx-core:4.0.16-alpha"
+    testCompile "org.testfx:testfx-junit5:4.0.16-alpha"
+    testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
 }
 
 test {
@@ -24,6 +28,7 @@ test {
   useJUnitPlatform()
   testLogging {
     events 'passed', 'skipped', 'failed'
+     finalizedBy jacocoTestReport
   }
 }
 
@@ -61,8 +66,7 @@ task debug {
     group = "application"
     description = "Runs this project in debug mode on port 2311"
 	doFirst {
-		application {
-    		applicationDefaultJvmArgs = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=2311']
+		application {mArgs = ['-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=2311']
 		}
 	}
 }

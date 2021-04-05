@@ -218,19 +218,19 @@ public class TablatureScanner extends StringInstrument {
 					
 					if(listOfStrings.size() == 5) {
 						drum = Drum.getDrum(s1,s2,s3,s4,s5);
-						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null));
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
 					}
 					else if(listOfStrings.size() == 6) {
 						s6 = (listOfStrings).get(5);
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
 						//out.append("HI\n");
-						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6));
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
 					}
-//					else if(listOfStrings.size() == count) {
-//						s7 = (listOfStrings).get(6);
-//						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6,s7);
-//						out.append(drum.printToXML(s1, s2, s3, s4, s5, s6, s7));
-//					}
+					else if(listOfStrings.size() == 7) {
+						s7 = (listOfStrings).get(6);
+						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6,s7);
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7));
+					}
 					listOfStrings.clear();
 				}
 			}

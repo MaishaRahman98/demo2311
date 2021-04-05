@@ -18,6 +18,7 @@ public class StringInstrument {
 	public static int mCount = 0;
 	public int c = 0;
 	public static int d;
+	static boolean repEnd = false;
 
 	public StringInstrument() {
 		this.type = ' ';
@@ -240,9 +241,11 @@ public class StringInstrument {
 //		int spaceCount = 0;
 		ArrayList<String> legatoValue = new ArrayList<String>();
 		boolean legatoCheck = false;
+		boolean legatoStop = false;
 		int legatoFret = 0;
 		String legatoType = "";
 		String legatoFullName = "";
+		String text = "";
 		int fret = 0;
 		int stringNum = 0;
 		String[] allStrings = { str1, str2, str3, str4, str5, str6, str7 };
@@ -251,16 +254,21 @@ public class StringInstrument {
 		int numMeasureCount = 1;
 		int counter = 0;
 		int digit = 0;
-		ArrayList<ArrayList<Character> > listOfColumns =  new ArrayList<ArrayList<Character>>();
+		ArrayList<ArrayList<Character>> listOfColumns =  new ArrayList<ArrayList<Character>>();
 		String noteType = "";
 		int x = 0,y = 0;
+		boolean graceToken = false;
+		int beat = 4, beatType = 4;
+		//double durMes = beat * (1 / beatType);
+		int total = 0;
+		boolean rep = false;
 
 		for (int i = 1; i < str1.length(); i++) {
 			if ((i + 1) != str1.length() && str1.charAt(i) == '|' && str1.charAt(i + 1) == '-') {
 				measureCount++;
 			}
 		}
-		
+	
 		for (int i = 2; i < str1.lastIndexOf('|'); i++) {
 			ArrayList<Character> column = new ArrayList<Character>();
 			column.add(str1.charAt(i));
@@ -280,20 +288,65 @@ public class StringInstrument {
 			listOfColumns.add(column);
 		}
 		
-
+		for (ArrayList<Character> s : listOfColumns) {
+			int c = 0;
+			if (s == null) break;
+			while (c < s.size() && s.get(c) != '|') {
+				if (s.get(c) != '|')
+				{
+					total++;
+					break;
+				}
+				c++;
+			}
+			if (c == s.size()) c--;
+			if (s.get(c) == '|')
+				break;
+		}
+		total--;
 		//for (int k = 0; k < measureCount; k++) {
 
 			if (mCount != 0) {
 				body.append("  </measure>\n");
 				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
 			}
+			
+		if (listOfColumns.get(listOfColumns.size() - 1).contains('|') && listOfColumns.get(listOfColumns.size() - 1).toString().matches(".*\\d.*"))	
+			rep = true;
 		
 		for (int i = 0; i < listOfColumns.size(); i++) {
 			Measure measure = new Measure("");
-			if (listOfColumns.get(i).contains('|')) {
+//			String sss = listOfColumns.get(i).toString();
+//			boolean b = listOfColumns.get(i).toString().matches(".*\\d.*");
+			if (listOfColumns.get(i).contains('|') && !listOfColumns.get(i).toString().matches(".*\\d.*")) {
+				if (i != listOfColumns.size() - 1 && !listOfColumns.get(i+1).contains('|')) {
 				mCount++;
 				body.append("  </measure>\n");
 				body.append(" <measure number=\"" + (mCount + 1) + "\">\n");
+				}
+				
+			}
+//			if (repEnd) {
+//				body.append("<barline location=\"right\">\n");
+//				body.append("<bar-style>light-heavy</bar-style>\n");
+//				body.append("<repeat direction=\"backward\"/>\n");
+//				body.append(" </barline>\n");
+//				body.append("</measure>\n");
+//				body.append(" <measure number=\"" + (mCount + 1) + "\">\n");
+//				repEnd = false;
+//			}
+			if (rep && i != listOfColumns.size() - 1 && listOfColumns.get(i+1).contains('*')) {
+				body.append("<barline location=\"left\">\n");
+				body.append("<bar-style>heavy-light</bar-style>\n");
+				body.append("<repeat direction=\"forward\"/>\n");
+				body.append("</barline>\n");
+				body.append("<direction placement=\"above\">\n");
+				body.append("<direction-type>\n");
+				body.append("<words relative-x=\"256.17\" relative-y=\"16.01\">Repeat " + listOfColumns.get(listOfColumns.size() - 1).get(0) + " times</words>\n");
+				body.append("</direction-type>\n");
+				body.append("</direction>\n");
+				rep = false;
+				repEnd = true;
 			}
 			for (int a = 0; a < listOfColumns.get(i).size(); a++) {
 				if (Character.isDigit(listOfColumns.get(i).get(a))) {
@@ -301,10 +354,15 @@ public class StringInstrument {
 				}
 			}
 			
-			if (digit >= 1) {
+			if (digit >= 1 && !listOfColumns.get(i).contains('|')) {
 				for (int j = 0; j < listOfColumns.get(i).size(); j++) {
 					stringNum++;
 					
+					if (i-1 > 0) {
+						if (listOfColumns.get(i-1).get(j)=='g') {
+						graceToken = true;
+						}
+					}
 					if (Character.isDigit(listOfColumns.get(i).get(j))) {
 						int origini = i;
 						
@@ -328,6 +386,10 @@ public class StringInstrument {
 						}
 						
 						body.append("<note>\n");
+						if (graceToken == true) {
+							body.append(" <grace/> \n");
+							graceToken = false;
+						}
 						if (digit > 1 && chord) {
 							body.append("  <chord/>\n");
 						}
@@ -367,7 +429,7 @@ public class StringInstrument {
 							if (i == listOfColumns.size())
 								break;
 							for (int a = 0; a < listOfColumns.get(i).size(); a++) {
-								if (Character.isDigit(listOfColumns.get(i).get(a)))
+								if (Character.isDigit(listOfColumns.get(i).get(a)) || listOfColumns.get(i).get(a) == '|')
 								{
 										bool = false;
 										break;
@@ -375,23 +437,45 @@ public class StringInstrument {
 							}		
 							counter++;
 						}
-						counter++;
+//						counter++;
 						i = origini;
 						if (i+2 < listOfColumns.size()) {
 							if (Character.toLowerCase(listOfColumns.get(i+2).get(j)) == 'p' || Character.toLowerCase(listOfColumns.get(i+2).get(j)) == 'h' || Character.toLowerCase(listOfColumns.get(i+1).get(j)) == 'p' || Character.toLowerCase(listOfColumns.get(i+1).get(j)) == 'h') {
-								String text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j))+Character.toString(listOfColumns.get(i+3).get(j))+Character.toString(listOfColumns.get(i+4).get(j));
+								if (Character.isDigit(listOfColumns.get(i+1).get(j)) &&  Character.isDigit(listOfColumns.get(i+3).get(j)) && Character.isDigit(listOfColumns.get(i+4).get(j))) {
+								 text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j)) + Character.toString(listOfColumns.get(i+3).get(j))+Character.toString(listOfColumns.get(i+4).get(j));
+								} else if (Character.isDigit(listOfColumns.get(i).get(j)) &&  Character.isDigit(listOfColumns.get(i+2).get(j)) && Character.isDigit(listOfColumns.get(i+3).get(j))) {
+									 text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j)) + Character.toString(listOfColumns.get(i+3).get(j));
+								} else if (Character.isDigit(listOfColumns.get(i+1).get(j)) && Character.isDigit(listOfColumns.get(i+3).get(j))) {
+									 text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j)) + Character.toString(listOfColumns.get(i+3).get(j));
+								} else {
+									 text = Character.toString(listOfColumns.get(i).get(j))+Character.toString(listOfColumns.get(i+1).get(j))+Character.toString(listOfColumns.get(i+2).get(j)) + Character.toString(listOfColumns.get(i+3).get(j));
+							}
 								legatoCheck = true;
 								legatoValue = measure.legatos(text);
 							}
 						}
 						body.append(" <duration>" + (counter + 1) + "</duration>\n");
 						body.append(" <voice>1</voice>\n");
-						body.append(" <type>"+measure.getDuration(counter + 1)+"</type>\n");
+						body.append(" <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType)+ "</type>\n");
 						body.append(" <notations>\n");
 						body.append("  <technical>\n");
 						body.append("   <string>" + stringNum + "</string>\n");
 						body.append("   <fret>" + fret + "</fret>\n");
-						if (legatoCheck == true) {
+						
+						if(legatoStop = true || legatoFret == fret && graceToken == false) {
+							if (legatoType == "H") {
+								body.append("      <"+legatoFullName+" number=\""+hammerCount+"\" type=\"stop\"/>\n");
+							}
+							if (legatoType == "P") {
+								body.append("      <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"stop\"/>\n");
+							}
+							legatoType = "";
+							legatoFullName = "";
+							legatoFret = 0;	
+							legatoStop = false;
+						}
+						
+						if (legatoCheck == true && graceToken == false) {
 							legatoType = legatoValue.get(1);
 							legatoFullName = legatoValue.get(0);
 							legatoFret = Integer.parseInt(legatoValue.get(2));
@@ -404,24 +488,12 @@ public class StringInstrument {
 								body.append("      <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"start\">"+legatoType+"</"+legatoFullName+">\n");
 							}
 							legatoCheck = false;
+							legatoStop = true;
 						}
-						if(legatoFret == fret) {
-							if (legatoType == "H") {
-								body.append("      <"+legatoFullName+" number=\""+hammerCount+"\" type=\"stop\"/>\n");
-							}
-							if (legatoType == "P") {
-								body.append("      <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"stop\"/>\n");
-							}
-							legatoType = "";
-							legatoFullName = "";
-							legatoFret = 0;	
-						}
+						
 						body.append("   </technical>\n");
 						body.append("  </notations>\n");
 						body.append(" </note>\n");
-
-						
-
 					}
 				}
 				digit = 0;
@@ -441,6 +513,16 @@ public class StringInstrument {
 	public static String endHeading() {
 		// Ender:
 		StringBuilder end = new StringBuilder();
+		if (repEnd) {
+			end.append("  <barline location=\"right\">\n");
+			end.append("   <bar-style>light-heavy</bar-style>\n");
+			end.append("   <repeat direction=\"backward\"/>\n");
+			end.append("   </barline>\n");
+			end.append("  </measure>\n");
+			end.append(" </part>\n");
+			end.append("</score-partwise>\n");
+			return end.toString();
+		} else {
 		end.append("  <barline location=\"right\">\n");
 		end.append("   <bar-style>light-heavy</bar-style>\n");
 		end.append("   </barline>\n");
@@ -448,6 +530,7 @@ public class StringInstrument {
 		end.append(" </part>\n");
 		end.append("</score-partwise>\n");
 		return end.toString();
+		}
 	}
 
 	// Getters and Setters:
