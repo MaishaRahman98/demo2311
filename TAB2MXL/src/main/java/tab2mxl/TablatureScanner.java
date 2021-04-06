@@ -90,7 +90,17 @@ public class TablatureScanner extends StringInstrument {
 		return output;
 	}
 
-
+//	public static String xmlHeader(int c) {
+//		String h = "";
+//		StringBuilder head = new StringBuilder();
+//		if (c == 4 || c == 5) {
+//			head.append("Bass Guitar");
+//		}else {
+//			head.append("Guitar");
+//		}
+//		
+//        return head.toString();
+//	}
 	
 	public static String callBassClass(String text,int count){
 		Scanner myReader = new Scanner(text);
