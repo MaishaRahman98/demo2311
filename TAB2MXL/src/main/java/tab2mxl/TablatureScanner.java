@@ -216,25 +216,48 @@ public class TablatureScanner extends StringInstrument {
 					s4 = (listOfStrings).get(3);
 					s5 = (listOfStrings).get(4);
 					
-					if(listOfStrings.size() == 5) {
+					if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|' && s5.charAt(0)=='|') {
+						s1 = "CC"+s1;
+						s2 = "HH"+s2;
+						s3 = "SD"+s3;
+						s4 = "HT"+s4;
+						s5 = "MT"+s5;
+						
+					}
+					if(listOfStrings.size() == count) {
+					
 						drum = Drum.getDrum(s1,s2,s3,s4,s5);
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
 					}
-					else if(listOfStrings.size() == 6) {
-						s6 = (listOfStrings).get(5);
+					}
+				   else if(listOfStrings.size() == count) {
+					   s6 = (listOfStrings).get(5);
+						if (s6.charAt(5)=='|') {
+							s6 = "FT"+s6;
+						}
+						//s6 = (listOfStrings).get(5);
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
 						//out.append("HI\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
-					}
-					else if(listOfStrings.size() == 7) {
+					
+				   }
+				   else if(listOfStrings.size() == count) {
+					
 						s7 = (listOfStrings).get(6);
+						if (s7.charAt(6)=='|') {
+							s7 = "BD"+s7;
+						}
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6,s7);
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7));
 					}
-					listOfStrings.clear();
+					//listOfStrings.clear();
+				out.append(endHeading());
+				myReader1.close();
+				return out.toString();
 				}
-			}
 		}
+	
+		
 		setTemp(mCount);
 		mCount = 0; //resets mCount
 		out.append(Drum.endDrumHeading());
