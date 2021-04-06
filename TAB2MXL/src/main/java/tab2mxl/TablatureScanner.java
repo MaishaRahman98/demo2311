@@ -242,20 +242,21 @@ public class TablatureScanner extends StringInstrument {
 						
 					}
 					
-					if(listOfStrings.size() == 5) {
+					if(listOfStrings.size() == count) {
 						drum = Drum.getDrum(s1,s2,s3,s4,s5);
+						out.append("Five\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
 					}
-					else if(listOfStrings.size() == 6) {
+					else if(listOfStrings.size() == count) {
 						s6 = (listOfStrings).get(5);
 						if (s6.charAt(5)=='|') {
 							s6 = "FT"+s6;
 						}
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
-						//out.append("HI\n");
+						out.append("Six\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
 					}
-					else if(listOfStrings.size() == 7) {
+					else if(listOfStrings.size() == count) {
 						s7 = (listOfStrings).get(6);
 						if (s7.charAt(6)=='|') {
 							s7 = "BD"+s7;
