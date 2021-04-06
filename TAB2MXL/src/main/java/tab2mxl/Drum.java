@@ -61,8 +61,10 @@ public class Drum {
 	}
 	
 	public static String xmlDrumHeader(int c) {
+		//System.out.println("Hello");
 		String instrument = "";
 		StringBuilder head = new StringBuilder();
+		//head.append("Hello");
 		if (c == 6 || c == 5 || c == 7) {
 			instrument = "Drumset";
 		}
@@ -72,7 +74,7 @@ public class Drum {
        
         head.append(" <part-list>\n");
         head.append("  <score-part id=\"P1\">\n");
-        head.append("   <part-name>" + instrument + "</part-name>\n");
+        head.append("   <part-name>" + "Drumset" + "</part-name>\n");
         head.append("   <score-instrument id=\"P1-I36\">\n");
         head.append("    <instrument-name>Bass Drum 1</instrument-name>\n");
         head.append("    </score-instrument>\n");

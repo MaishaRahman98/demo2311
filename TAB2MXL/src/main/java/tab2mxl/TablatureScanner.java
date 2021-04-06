@@ -26,28 +26,41 @@ public class TablatureScanner extends StringInstrument {
 		String o = "";
 		Scanner myReader = new Scanner(text);
 		boolean check = false;
+		boolean checkD = false;
+		
 		while (myReader.hasNextLine()) {
 			String s = myReader.nextLine();
-			if (s.charAt(0) == ' ') {
-				if (count < 4) {
-					count = 0;
-				}
-				else if(myReader.hasNextLine() == true && check == true && count >= 4) {
-					s = myReader.nextLine();
-					//break;
-				}
-				else {
-					break;
-				}
-			} 
-			else if (s.contains("|") && s.contains("-")) {
+			if (s.contains("|") && s.contains("-")) {
 				count += 1;
 				//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
-				if (s.contains("x") || s.contains("X")) {
+				if (s.contains("x") || s.contains("X") || s.contains("o") || s.contains("f")) {
 					check = true;
 				}
 
 			}
+			else if (s.charAt(0) == ' ') {
+				if (count < 4 && myReader.hasNextLine() == false) {
+					count = 0;
+				}
+				else if(myReader.hasNextLine() == true && check == true && count >= 4) {
+					//s = myReader.nextLine();
+					//System.out.println("HI");
+					checkD = true;
+					//break;
+				}
+				else if (myReader.hasNextLine() == false){
+					//System.out.println("BYE");
+					break;
+				}
+			} 
+//			else if (s.contains("|") && s.contains("-")) {
+//				count += 1;
+//				//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
+//				if (s.contains("x") || s.contains("X")) {
+//					check = true;
+//				}
+//
+//			}
 //			else if (s.equals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")) {
 //				//add stuff here later
 //			}
@@ -62,7 +75,7 @@ public class TablatureScanner extends StringInstrument {
 			
 		}
 		//detects if it is drum
-		else if (check == true && (count == 5 || count == 6 || count == 7)) {
+		else if (check == true && (count == 5 || count == 6 || count == 7) || checkD == true) {
 			output = TablatureScanner.callDrumClass(text, count);
 		}
 
@@ -219,20 +232,21 @@ public class TablatureScanner extends StringInstrument {
 						
 					}
 					
-					if(listOfStrings.size() == 5) {
+					if(listOfStrings.size() == count) {
 						drum = Drum.getDrum(s1,s2,s3,s4,s5);
+						out.append("Five\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
 					}
-					else if(listOfStrings.size() == 6) {
+					else if(listOfStrings.size() == count) {
 						s6 = (listOfStrings).get(5);
 						if (s6.charAt(5)=='|') {
 							s6 = "FT"+s6;
 						}
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
-						//out.append("HI\n");
+						out.append("Six\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
 					}
-					else if(listOfStrings.size() == 7) {
+					else if(listOfStrings.size() == count) {
 						s7 = (listOfStrings).get(6);
 						if (s7.charAt(6)=='|') {
 							s7 = "BD"+s7;
