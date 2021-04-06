@@ -244,7 +244,7 @@ public class TablatureScanner extends StringInstrument {
 					
 					if(listOfStrings.size() == count) {
 						drum = Drum.getDrum(s1,s2,s3,s4,s5);
-						out.append("Five\n");
+						//out.append("Five\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
 					}
 					else if(listOfStrings.size() == count) {
@@ -253,7 +253,7 @@ public class TablatureScanner extends StringInstrument {
 							s6 = "FT"+s6;
 						}
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
-						out.append("Six\n");
+						//out.append("Six\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
 					}
 					else if(listOfStrings.size() == count) {
