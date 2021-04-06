@@ -190,6 +190,8 @@ public class Drum {
 		int total = 0;
 		boolean rep = false;
 		boolean graceToken = false;
+		int beatCount8 = 0;
+		int beatCount16 = 0;
 		
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
@@ -358,7 +360,36 @@ public class Drum {
 							if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X') {
 								body.append("  <notehead>x</notehead>\n"); //only cymbal lines (C, H, R) have x
 							}
-							body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+							
+							if(measure.getDuration(counter + 1 ,total ,beat , beatType).equals("eighth")) {
+								beatCount8++;
+								if (beatCount8 == 1) {
+									body.append("  <beam number=\"1\">begin</beam>\n");
+								}
+								if (beatCount8 >= 2 && beatCount8 < 4) {
+									body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+								}else if (beatCount8 == 4) {
+									body.append("  <beam number=\"1\">end</beam>\n");
+									beatCount8 = 0;
+								}
+							}
+							if(measure.getDuration(counter + 1 ,total ,beat , beatType).equals("16th")) {
+								beatCount16++;
+								if (beatCount16 == 1) {
+									body.append("  <beam number=\"1\">begin</beam>\n");
+									body.append("  <beam number=\"2\">begin</beam>\n");
+								}
+								if (beatCount16 >= 2 && beatCount16 < 8) {
+									body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+									body.append("  <beam number=\"2\">continue</beam>\n");
+								}else if (beatCount16 == 8) {
+									body.append("  <beam number=\"1\">end</beam>\n");
+									body.append("  <beam number=\"2\">end</beam>\n");
+									beatCount16 = 0;
+								}
+								//body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+								//body.append("  <beam number=\"2\">continue</beam>\n");
+							}
 							body.append("  </note>\n");            	
 						}	
 					}
