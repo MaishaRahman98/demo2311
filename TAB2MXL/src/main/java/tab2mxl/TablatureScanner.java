@@ -33,13 +33,14 @@ public class TablatureScanner extends StringInstrument {
 			if (s.contains("|") && s.contains("-")) {
 				count += 1;
 				//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
-				if (s.contains("x") || s.contains("X") || s.contains("o") || s.contains("f")) {
+				if (s.contains("x") || s.contains("X")) {
+					// || s.contains("o") || s.contains("f")
 					check = true;
 				}
 
 			}
 			else if (s.charAt(0) == ' ') {
-				if (count < 4 && myReader.hasNextLine() == false) {
+				if (count < 4) {
 					count = 0;
 				}
 				else if(myReader.hasNextLine() == true && check == true && count >= 4) {
@@ -48,7 +49,7 @@ public class TablatureScanner extends StringInstrument {
 					checkD = true;
 					//break;
 				}
-				else if (myReader.hasNextLine() == false){
+				else{
 					//System.out.println("BYE");
 					break;
 				}
@@ -66,16 +67,16 @@ public class TablatureScanner extends StringInstrument {
 //			}
 
 		}
-		if (check == false && (count == 4 || count == 5)) {
+		if (check == false && checkD == false && (count == 4 || count == 5) ) {
 			output = TablatureScanner.callBassClass(text,count);
 			//header = TablatureScanner.xmlHeader(count);
 			}
-		else if (check == false && (count == 6 || count == 7)) {
+		else if (check == false && checkD == false && (count == 6 || count == 7)) {
 			output = TablatureScanner.callGuitarClass(text,count);
 			
 		}
 		//detects if it is drum
-		else if (check == true && (count == 5 || count == 6 || count == 7) || checkD == true) {
+		else if (check == true || checkD == true && (count == 5 || count == 6 || count == 7)) {
 			output = TablatureScanner.callDrumClass(text, count);
 		}
 

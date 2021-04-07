@@ -454,7 +454,10 @@ public class StringInstrument {
 								legatoValue = measure.legatos(text);
 							}
 						}
-						body.append(" <duration>" + (counter + 1) + "</duration>\n");
+						if (counter != -1)
+							body.append(" <duration>" + (counter + 1) + "</duration>\n");
+						else
+							body.append(" <duration>" +  1 + "</duration>\n");
 						body.append(" <voice>1</voice>\n");
 						body.append(" <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType)+ "</type>\n");
 						body.append(" <notations>\n");
@@ -465,9 +468,11 @@ public class StringInstrument {
 						if(legatoStop = true || legatoFret == fret && graceToken == false) {
 							if (legatoType == "H") {
 								body.append("      <"+legatoFullName+" number=\""+hammerCount+"\" type=\"stop\"/>\n");
+								hammerCount = 0;
 							}
 							if (legatoType == "P") {
 								body.append("      <"+legatoFullName+" number=\""+pullOffCount+"\" type=\"stop\"/>\n");
+								pullOffCount = 0;
 							}
 							legatoType = "";
 							legatoFullName = "";
