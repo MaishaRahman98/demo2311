@@ -24,8 +24,16 @@ public class Measure {
 			return "quarter";
 		} else if (spaceCount >= 0.125) {
 			return "eighth";
-		}else
+		}else if (spaceCount >= 0.0625) {
 			return "16th";
+		}else if (spaceCount >= 0.03125) {
+			return "32nd";
+		}else if (spaceCount >= 0.015625) {
+			return "64th";
+		}else if (spaceCount >= 0.0078125) {
+			return "128th";
+		}else
+			return "256th";
 	}
 
 	public ArrayList<String> legatos(String text) {
@@ -64,8 +72,11 @@ public class Measure {
 		return output;
 	}
 
-	public String getDuration(double amount) {
-		return Measure.durationCheck(amount);
+	public String getDuration(int counter, int total,int beat, int beatType) {
+		double x = (double) (total / beat);
+		double y = (double) (counter / x);
+		double z = y *  (1 / (double) beatType);
+		return Measure.durationCheck(z);
 	}
 
 	public String getNoteMeasure(String strNum, int fret, String instrumentType) {
