@@ -126,7 +126,7 @@ public class Drum {
         head.append("   <score-instrument id=\"P1-I54\">\n");
         head.append("    <instrument-name>Ride Bell</instrument-name>\n");
         head.append("    </score-instrument>\n");
-        head.append("   <score-instrument id=\"P1-I555\">\n");
+        head.append("   <score-instrument id=\"P1-I55\">\n");
         head.append("    <instrument-name>Tambourine</instrument-name>\n");
         head.append("    </score-instrument>\n");
         head.append("   <score-instrument id=\"P1-I56\">\n");
@@ -237,35 +237,7 @@ public class Drum {
 				break;
 		}
 		total--;
-		
-//		for (int k = 0; k < measureCount; k++) {
-
-//			if (mCount != temp && mCount != 1) {
-			//edit 1:
-//			if (mCount != 0) {
-//				body.append("  </measure>\n");
-////				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
-//				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
-//			}
-			
-			//|| str1.charAt(i + 1) != '-'
-//			for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|') ; i++)
-//			{
-//				Measure measure = new Measure("");
-////	        	counter++;
-//	        	for (String j: allStrings) {
-//		        	stringNum++;
-//		        	
-//		        	//&& Character.isDigit(j.charAt(i))
-//					// && (j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o')
-//					if (j != null) {
-////						if(j.charAt(i) == '-') {
-////							counter++;
-////						}
-//						else if(j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o') {
-//							fret = j.charAt(i);
-//							//counter = 0; //reset counter
-//						}
+						
 			
 			if (listOfColumns.get(listOfColumns.size() - 1).contains('|') && listOfColumns.get(listOfColumns.size() - 1).toString().matches(".*\\d.*")) {
 				rep = true;
@@ -311,7 +283,7 @@ public class Drum {
 								graceToken = true;
 							}
 							
-							//Nabaa needs to implement drumNotes and drumOctave methods in Notes class
+							
 							note = Notes.drumNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 							octave = Notes.drumOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 							
