@@ -40,6 +40,7 @@ public class TablatureScanner extends StringInstrument {
 
 			}
 			else if (s.charAt(0) == ' ') {
+				// || s.contains("")
 				if (count < 4) {
 					count = 0;
 				}
