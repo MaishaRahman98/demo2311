@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TablatureScanner extends StringInstrument {
+public class TablatureScanner extends StringInstrument
+{
 	String text;
 	window win;
 	static String header;
@@ -220,7 +221,7 @@ public class TablatureScanner extends StringInstrument {
 		StringBuilder out = new StringBuilder();
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
 		ArrayList<String> listOfStrings = new ArrayList<String>();
-		out.append(xmlHeader(count));
+		out.append(Drum.xmlDrumHeader(count));
 		Drum drum;
 		while (myReader1.hasNextLine()) {
 			String line = myReader1.nextLine();
@@ -230,7 +231,8 @@ public class TablatureScanner extends StringInstrument {
 					listOfStrings.clear();
 				}
 				// test
-				else if (listOfStrings.size() == count || listOfStrings.size() == 7) {
+				while (line.contains("|") && line.contains("-")) {
+				if (listOfStrings.size() == count || listOfStrings.size() == 7) {
 					s1 = (listOfStrings).get(0);
 					s2 = (listOfStrings).get(1);
 					s3 = (listOfStrings).get(2);
@@ -261,10 +263,12 @@ public class TablatureScanner extends StringInstrument {
 				}
 			}
 		}
-		out.append(endHeading());
+		}
+		out.append(Drum.endDrumHeading());
 		myReader1.close();
 		return out.toString();
 
 	}
 	}
+
 		

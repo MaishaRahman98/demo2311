@@ -2,7 +2,7 @@ package tab2mxl;
 
 import java.util.ArrayList;
 
-public class StringInstrument {
+public class StringInstrument  {
 	private static String str1;
 	private static String str2;
 	private static String str3;
