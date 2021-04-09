@@ -231,8 +231,8 @@ public class TablatureScanner extends StringInstrument
 					listOfStrings.clear();
 				}
 				// test
-				while (line.contains("|") && line.contains("-")) {
-				if (listOfStrings.size() == count || listOfStrings.size() == 7) {
+				
+				else if (listOfStrings.size() == count || listOfStrings.size() == 7) {
 					s1 = (listOfStrings).get(0);
 					s2 = (listOfStrings).get(1);
 					s3 = (listOfStrings).get(2);
@@ -263,12 +263,12 @@ public class TablatureScanner extends StringInstrument
 				}
 			}
 		}
-		}
+		
 		out.append(Drum.endDrumHeading());
 		myReader1.close();
 		return out.toString();
 
 	}
-	}
+}
 
 		
