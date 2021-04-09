@@ -30,6 +30,9 @@ public class TablatureScanner extends StringInstrument {
 		
 		while (myReader.hasNextLine()) {
 			String s = myReader.nextLine();
+			if(s.isEmpty()) {
+				break;
+			}
 			if (s.contains("|") && s.contains("-")) {
 				count += 1;
 				//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
@@ -49,6 +52,7 @@ public class TablatureScanner extends StringInstrument {
 					checkD = true;
 					//break;
 				}
+				
 				else{
 					//System.out.println("BYE");
 					break;

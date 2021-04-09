@@ -40,13 +40,6 @@ javafx {
     version = "15"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
-jacoco {
-    toolVersion = "0.8.6"
-    reportsDirectory = file("$buildDir/customJacocoReportDir")
-}
-jacocoTestReport {
-    dependsOn test // tests are required to run before generating the report
-}
 
 run {
     if (javafx.platform.classifier == 'win') {

@@ -14,6 +14,7 @@ public class Drum {
 	private char strNum; //number of strings
 	int measureCount = 0;
 	static int temp = 0;
+	public int c = 0;
 	//edit 3:
 	//public static int mCount = 0; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
 	public static int mCount = 0;
@@ -177,16 +178,23 @@ public class Drum {
 //		String string = "";
 //		String output = "";
 //		int spaceCount = 0;
-//		ArrayList<String> legatoOutput = new ArrayList<>();
-//		boolean legatoCheck = false;
+		ArrayList<String> legatoOutput = new ArrayList<>();
+		boolean legatoCheck = false;
+		boolean legatoStop = false;
+		int legatoFret = 0;
+		String legatoType = "";
+		String legatoFullName = "";
+		String text = "";
 		char fret = 0;
 		int stringNum = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
 //		String name;
 		int octave = 0;
-//		String xml = "";
+
+	//	int numMeasureCount = 1;
 		int counter = 0;
 		ArrayList<ArrayList<Character> > listOfColumns =  new ArrayList<ArrayList<Character>>();
+		String noteType = "";
 		int digit = 0;
 		int beat = 4, beatType = 4;
 		int total = 0;
@@ -237,18 +245,36 @@ public class Drum {
 				break;
 		}
 		total--;
-						
+
+		if (mCount != 0) {
+			body.append("  </measure>\n");
+			body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
+		}		
 			
 			if (listOfColumns.get(listOfColumns.size() - 1).contains('|') && listOfColumns.get(listOfColumns.size() - 1).toString().matches(".*\\d.*")) {
 				rep = true;
 			}
+			//for (int i = 0; i < listOfColumns.size(); i++) {
+				//Measure measure = new Measure("");
+				
+			//	if (listOfColumns.get(i).contains('|')) {
+				//	mCount++; //mCount must start at being zero when we translate each drum tab
+					//fixed the spacing:
+					//body.append(" </measure>\n");
+					//body.append("<measure number=\"" + (mCount + 1) + "\">\n");
+				//}
+
 			for (int i = 0; i < listOfColumns.size(); i++) {
 				Measure measure = new Measure("");
-				if (listOfColumns.get(i).contains('|')) {
-					mCount++; //mCount must start at being zero when we translate each drum tab
-					//fixed the spacing:
-					body.append(" </measure>\n");
-					body.append("<measure number=\"" + (mCount + 1) + "\">\n");
+//				String sss = listOfColumns.get(i).toString();
+//				boolean b = listOfColumns.get(i).toString().matches(".*\\d.*");
+				if (listOfColumns.get(i).contains('|') && !listOfColumns.get(i).toString().matches(".*\\d.*")) {
+					if (i != listOfColumns.size() - 1 && !listOfColumns.get(i+1).contains('|')) {
+					mCount++;
+					body.append("  </measure>\n");
+					body.append(" <measure number=\"" + (mCount + 1) + "\">\n");
+					}
+					
 				}
 				if (rep && i != listOfColumns.size() - 1 && listOfColumns.get(i+1).contains('*')) {
 					body.append("<barline location=\"left\">\n");
@@ -281,7 +307,9 @@ public class Drum {
 							//flams are grace notes:
 							if(listOfColumns.get(i).get(j) == 'f') {
 								graceToken = true;
+								
 							}
+						
 							
 							
 							note = Notes.drumNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
@@ -378,7 +406,7 @@ public class Drum {
 		
 		//edit 2:
 		//mCount++; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
-		mCount = 0; //resets mCount to 0
+		mCount++; //resets mCount to 0
 		
 		//return "BYE\n";
 		//String ret = body.toString();
@@ -426,4 +454,13 @@ public class Drum {
 		drumFive = Drum.getInstance(str1,str2,str3,str4,str5);
 		return drumFive;
 	}
+	
+	public void resetGlobal() {
+		this.measureCount = 0;
+		this.mCount = 0;
+		this.c = 0;
+		
+		
+	}
+
 }
