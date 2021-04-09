@@ -43,6 +43,7 @@ public class TablatureScanner extends StringInstrument {
 
 			}
 			else if (s.charAt(0) == ' ') {
+				// || s.contains("")
 				if (count < 4) {
 					count = 0;
 				}
@@ -273,8 +274,8 @@ public class TablatureScanner extends StringInstrument {
 				}
 			}
 		}
-		setTemp(mCount);
-		mCount = 0; //resets mCount
+		//setTemp(mCount);
+		//mCount = 0; //resets mCount
 		out.append(Drum.endDrumHeading());
 		myReader1.close();
 		return out.toString();

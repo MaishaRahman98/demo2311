@@ -167,8 +167,7 @@ public class Drum {
         head.append("        </clef>\n");
         head.append("       </attributes>\n");
         return head.toString();
-	}
-	
+	}	
 	
 	//Will edit this part
 	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
@@ -246,6 +245,9 @@ public class Drum {
 		}
 		total--;
 
+
+
+
 		if (mCount != 0) {
 			body.append("  </measure>\n");
 			body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
@@ -253,6 +255,7 @@ public class Drum {
 			
 			if (listOfColumns.get(listOfColumns.size() - 1).contains('|') && listOfColumns.get(listOfColumns.size() - 1).toString().matches(".*\\d.*")) {
 				rep = true;
+
 			}
 			//for (int i = 0; i < listOfColumns.size(); i++) {
 				//Measure measure = new Measure("");
@@ -264,10 +267,22 @@ public class Drum {
 					//body.append("<measure number=\"" + (mCount + 1) + "\">\n");
 				//}
 
+
+			
+
 			for (int i = 0; i < listOfColumns.size(); i++) {
 				Measure measure = new Measure("");
+
 //				String sss = listOfColumns.get(i).toString();
 //				boolean b = listOfColumns.get(i).toString().matches(".*\\d.*");
+
+//				if (listOfColumns.get(i).contains('|')) {
+//					mCount++; //mCount must start at being zero when we translate each drum tab
+//					//fixed the spacing:
+//					body.append(" </measure>\n");
+//					body.append("<measure number=\"" + (mCount + 1) + "\">\n");
+//				}
+
 				if (listOfColumns.get(i).contains('|') && !listOfColumns.get(i).toString().matches(".*\\d.*")) {
 					if (i != listOfColumns.size() - 1 && !listOfColumns.get(i+1).contains('|')) {
 					mCount++;
@@ -289,6 +304,7 @@ public class Drum {
 					rep = false;
 					repEnd = true;
 				}
+	
 				for (int a = 0; a < listOfColumns.get(i).size(); a++) {
 					if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o' || listOfColumns.get(i).get(a) == 'f') {
 						digit++;
@@ -317,12 +333,86 @@ public class Drum {
 							
 							instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
 							
-							body.append(" <note>\n");
+//							body.append(" <note>\n");
 							//if flams exist, then it is a grace note:
 							if (graceToken == true) {
+								body.append(" <note>\n");
 								body.append("  <grace/> \n");
 								graceToken = false;
+								body.append("  <unpitched>\n");
+								if (note.length() == 1) { 
+									body.append("   <display-step>" +  note + "</display-step>\n");
+								}
+								else
+								{
+									body.append("   <display-step>" +  note.charAt(0) + "</display-step>\n");
+			
+								}
+								body.append("   <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
+								body.append("   </unpitched>\n");
+							
+								i = origini;
+								counter = -1;
+								boolean bool = true;
+								while (bool){
+									i++;
+									if (i == listOfColumns.size())
+										break;
+									for (int a = 0; a < listOfColumns.get(i).size(); a++) {
+										if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o' || listOfColumns.get(i).get(j) == 'f')
+										{
+												bool = false;
+												break;
+										}
+									}		
+									counter++;
+								}
+								//counter++;
+								i = origini;
+								
+								//body.append("  <duration>" + (counter + 1) + "</duration>\n"); //will need to edit duration later
+								if (counter != -1)
+									body.append(" <duration>" + (counter + 1) + "</duration>\n");
+								else
+									body.append(" <duration>" +  "1" + "</duration>\n");
+								body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
+								body.append("  <voice>1</voice>\n");
+								body.append("  <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType) + "</type>\n"); //will need to edit type later
+								body.append("  <stem>up</stem>\n");
+								if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X') {
+									body.append("  <notehead>x</notehead>\n"); //only cymbal lines (C, H, R) have x
+								}
+								
+								if(measure.getDuration(counter + 1 ,total ,beat , beatType).equals("eighth")) {
+									beatCount8++;
+									if (beatCount8 == 1) {
+										body.append("  <beam number=\"1\">begin</beam>\n");
+									}
+									if (beatCount8 >= 2 && beatCount8 < 4) {
+										body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+									}else if (beatCount8 == 4) {
+										body.append("  <beam number=\"1\">end</beam>\n");
+										beatCount8 = 0;
+									}
+								}
+								if(measure.getDuration(counter + 1 ,total ,beat , beatType).equals("16th")) {
+									beatCount16++;
+									if (beatCount16 == 1) {
+										body.append("  <beam number=\"1\">begin</beam>\n");
+										body.append("  <beam number=\"2\">begin</beam>\n");
+									}
+									if (beatCount16 >= 2 && beatCount16 < 8) {
+										body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+										body.append("  <beam number=\"2\">continue</beam>\n");
+									}else if (beatCount16 == 8) {
+										body.append("  <beam number=\"1\">end</beam>\n");
+										body.append("  <beam number=\"2\">end</beam>\n");
+										beatCount16 = 0;
+									}
+								}
+								body.append("  </note>\n");
 							}
+							body.append(" <note>\n");
 							body.append("  <unpitched>\n");
 							if (note.length() == 1) { 
 								body.append("   <display-step>" +  note + "</display-step>\n");
@@ -343,7 +433,7 @@ public class Drum {
 								if (i == listOfColumns.size())
 									break;
 								for (int a = 0; a < listOfColumns.get(i).size(); a++) {
-									if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o')
+									if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o' || listOfColumns.get(i).get(j) == 'f')
 									{
 											bool = false;
 											break;
@@ -351,10 +441,14 @@ public class Drum {
 								}		
 								counter++;
 							}
-							counter++;
+							//counter++;
 							i = origini;
 							
-							body.append("  <duration>" + (counter + 1) + "</duration>\n"); //will need to edit duration later
+							//body.append("  <duration>" + (counter + 1) + "</duration>\n"); //will need to edit duration later
+							if (counter != -1)
+								body.append(" <duration>" + (counter + 1) + "</duration>\n");
+							else
+								body.append(" <duration>" +  1 + "</duration>\n");
 							body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
 							body.append("  <voice>1</voice>\n");
 							body.append("  <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType) + "</type>\n"); //will need to edit type later

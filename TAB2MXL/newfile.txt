@@ -55,6 +55,7 @@
    <score-instrument id="P1-I54">
     <instrument-name>Ride Bell</instrument-name>
     </score-instrument>
+<<<<<<< HEAD
    <score-instrument id="P1-I55">
     <instrument-name>Tambourine</instrument-name>
     </score-instrument>
@@ -206,6 +207,168 @@
    <display-octave>5</display-octave>
    </unpitched>
   <duration>4</duration>
+=======
+   <score-instrument id="P1-I555">
+    <instrument-name>Tambourine</instrument-name>
+    </score-instrument>
+   <score-instrument id="P1-I56">
+    <instrument-name>Splash Cymbal</instrument-name>
+    </score-instrument>
+   <score-instrument id="P1-I57">
+    <instrument-name>Cowbell</instrument-name>
+    </score-instrument>
+   <score-instrument id="P1-I58">
+    <instrument-name>Crash Cymbal 2</instrument-name>
+    </score-instrument>
+   <score-instrument id="P1-I60">
+    <instrument-name>Ride Cymbal 2</instrument-name>
+    </score-instrument>
+   <score-instrument id="P1-I64">
+    <instrument-name>Open Hi Conga</instrument-name>
+    </score-instrument>
+   <score-instrument id="P1-I65">
+    <instrument-name>Low Conga</instrument-name>
+    </score-instrument>
+   </score-part>
+  </part-list>
+   <part id="P1">
+    <measure number="1">
+     <attributes>
+      <divisions>4</divisions>
+       <key>
+        <fifths>0</fifths>
+        </key>
+       <time>
+        <beats>4</beats>
+        <beat-type>4</beat-type>
+        </time>
+       <clef>
+        <sign>percussion</sign>
+        <line>2</line>
+        </clef>
+       </attributes>
+ <note>
+  <unpitched>
+   <display-step>D</display-step>
+   <display-octave>6</display-octave>
+   </unpitched>
+ <duration>2</duration>
+  <instrument id="P1-150"/>
+  <voice>1</voice>
+  <type>eighth</type>
+  <stem>up</stem>
+  <notehead>x</notehead>
+  <beam number="1">begin</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>A</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>2</duration>
+  <instrument id="P1-I43"/>
+  <voice>1</voice>
+  <type>eighth</type>
+  <stem>up</stem>
+  <notehead>x</notehead>
+  <beam number="1">continue</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>A</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>2</duration>
+  <instrument id="P1-I43"/>
+  <voice>1</voice>
+  <type>eighth</type>
+  <stem>up</stem>
+  <notehead>x</notehead>
+  <beam number="1">continue</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>G</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>2</duration>
+  <instrument id="P1-I39"/>
+  <voice>1</voice>
+  <type>eighth</type>
+  <stem>up</stem>
+  <beam number="1">end</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>A</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>2</duration>
+  <instrument id="P1-I43"/>
+  <voice>1</voice>
+  <type>eighth</type>
+  <stem>up</stem>
+  <notehead>x</notehead>
+  <beam number="1">begin</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>A</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>2</duration>
+  <instrument id="P1-I43"/>
+  <voice>1</voice>
+  <type>eighth</type>
+  <stem>up</stem>
+  <notehead>x</notehead>
+  <beam number="1">continue</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>A</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>2</duration>
+  <instrument id="P1-I43"/>
+  <voice>1</voice>
+  <type>eighth</type>
+  <stem>up</stem>
+  <notehead>x</notehead>
+  <beam number="1">continue</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>A</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>2</duration>
+  <instrument id="P1-I43"/>
+  <voice>1</voice>
+  <type>eighth</type>
+  <stem>up</stem>
+  <notehead>x</notehead>
+  <beam number="1">end</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>G</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>2</duration>
+  <instrument id="P1-I39"/>
+  <voice>1</voice>
+  <type>eighth</type>
+  <stem>up</stem>
+  <beam number="1">begin</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>A</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>3</duration>
+>>>>>>> refs/remotes/origin/Maisha_Branch
   <instrument id="P1-I43"/>
   <voice>1</voice>
   <type>quarter</type>
@@ -219,6 +382,7 @@
    <display-step>G</display-step>
    <display-octave>5</display-octave>
    </unpitched>
+<<<<<<< HEAD
   <duration>2</duration>
   <instrument id="P1-I39"/>
   <voice>1</voice>
@@ -316,6 +480,113 @@
    <display-octave>6</display-octave>
    </unpitched>
   <duration>8</duration>
+=======
+ <duration>1</duration>
+  <instrument id="P1-I39"/>
+  <voice>1</voice>
+  <type>16th</type>
+  <stem>up</stem>
+  <beam number="1">begin</beam>
+  <beam number="2">begin</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>G</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>1</duration>
+  <instrument id="P1-I39"/>
+  <voice>1</voice>
+  <type>16th</type>
+  <stem>up</stem>
+  <beam number="1">continue</beam>
+  <beam number="2">continue</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>G</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>1</duration>
+  <instrument id="P1-I39"/>
+  <voice>1</voice>
+  <type>16th</type>
+  <stem>up</stem>
+  <beam number="1">continue</beam>
+  <beam number="2">continue</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>G</display-step>
+   <display-octave>5</display-octave>
+   </unpitched>
+ <duration>1</duration>
+  <instrument id="P1-I39"/>
+  <voice>1</voice>
+  <type>16th</type>
+  <stem>up</stem>
+  <beam number="1">continue</beam>
+  <beam number="2">continue</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>D</display-step>
+   <display-octave>4</display-octave>
+   </unpitched>
+ <duration>1</duration>
+  <instrument id="P1-I49"/>
+  <voice>1</voice>
+  <type>16th</type>
+  <stem>up</stem>
+  <beam number="1">continue</beam>
+  <beam number="2">continue</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>D</display-step>
+   <display-octave>4</display-octave>
+   </unpitched>
+ <duration>1</duration>
+  <instrument id="P1-I49"/>
+  <voice>1</voice>
+  <type>16th</type>
+  <stem>up</stem>
+  <beam number="1">continue</beam>
+  <beam number="2">continue</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>A</display-step>
+   <display-octave>4</display-octave>
+   </unpitched>
+ <duration>1</duration>
+  <instrument id="P1-I48"/>
+  <voice>1</voice>
+  <type>16th</type>
+  <stem>up</stem>
+  <beam number="1">continue</beam>
+  <beam number="2">continue</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>A</display-step>
+   <display-octave>4</display-octave>
+   </unpitched>
+ <duration>1</duration>
+  <instrument id="P1-I48"/>
+  <voice>1</voice>
+  <type>16th</type>
+  <stem>up</stem>
+  <beam number="1">end</beam>
+  <beam number="2">end</beam>
+  </note>
+ <note>
+  <unpitched>
+   <display-step>D</display-step>
+   <display-octave>6</display-octave>
+   </unpitched>
+ <duration>7</duration>
+>>>>>>> refs/remotes/origin/Maisha_Branch
   <instrument id="P1-150"/>
   <voice>1</voice>
   <type>half</type>
