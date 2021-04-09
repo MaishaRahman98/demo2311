@@ -221,7 +221,7 @@ public class TablatureScanner extends StringInstrument {
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
 		ArrayList<String> listOfStrings = new ArrayList<String>();
 		out.append(xmlHeader(count));
-		Guitar guitar;
+		Drum drum;
 		while (myReader1.hasNextLine()) {
 			String line = myReader1.nextLine();
 			if (line.contains("|") && line.contains("-")) {
@@ -246,16 +246,16 @@ public class TablatureScanner extends StringInstrument {
 						s6 = "BD"+s6;
 					}
 					if(listOfStrings.size() == count) {
-						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6);
-						out.append(guitar.printToXML(s1, s2, s3, s4, s5, s6, null));
+						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
 					}
 					else if(listOfStrings.size() == count) {
 						s7 = (listOfStrings).get(6);
 						if (s7.charAt(5)=='|') {
-							s7 = "B"+s7;
+							s7 = "FT"+s7;
 						}
-						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6,s7);
-						out.append(guitar.printToXML(s1, s2, s3, s4, s5, s6, s7));
+						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6,s7);
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7));
 					}
 					listOfStrings.clear();
 				}
