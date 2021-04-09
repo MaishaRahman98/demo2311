@@ -238,47 +238,83 @@ public class TablatureScanner extends StringInstrument {
 					s3 = (listOfStrings).get(2);
 					s4 = (listOfStrings).get(3);
 					s5 = (listOfStrings).get(4);
-					
-					if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|' && s5.charAt(0)=='|') {
-						s1 = "CC"+s1;
-						s2 = "HH"+s2;
-						s3 = "SD"+s3;
-						s4 = "HT"+s4;
-						s5 = "MT"+s5;
+					s6 = (listOfStrings).get(5);
+					s7 = (listOfStrings).get(6);
+				
+					//if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|' && s5.charAt(0)=='|' && s6.charAt(0)=='|') {
+						//s1 = "CC"+s1;
+						//s2 = "HH"+s2;
+						//s3 = "SD"+s3;
+						//s4 = "HT"+s4;
+						//s5 = "MT"+s5;
+						//s6 = "BD"+s6;
 						
-					}
+				//	}
 					
-					if(listOfStrings.size() == count) {
-						drum = Drum.getDrum(s1,s2,s3,s4,s5);
-						//out.append("Five\n");
-						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
-					}
-					else if(listOfStrings.size() == count) {
-						s6 = (listOfStrings).get(5);
-						if (s6.charAt(5)=='|') {
-							s6 = "FT"+s6;
+					while(listOfStrings.size() == count) {
+						if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|' && s5.charAt(0)=='|' && s6.isEmpty() && s7.isEmpty()) {
+							s1 = "CC"+s1;
+							s2 = "HH"+s2;
+							s3 = "SD"+s3;
+							s4 = "HT"+s4;
+							s5 = "MT"+s5;
+							out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
 						}
-						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
-						//out.append("Six\n");
-						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
+						
+						if (s6.charAt(0)=='|' && s7.isEmpty()) {
+							s1 = "CC"+s1;
+							s2 = "HH"+s2;
+							s3 = "SD"+s3;
+							s4 = "HT"+s4;
+							s5 = "MT"+s5;
+							s6 = "BD"+s6;
+							out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
 					}
-					else if(listOfStrings.size() == count) {
-						s7 = (listOfStrings).get(6);
-						if (s7.charAt(6)=='|') {
-							s7 = "BD"+s7;
+						if (s6.charAt(0)=='|' && s7.charAt(0)=='|') {
+							out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7));
+							s1 = "CC"+s1;
+							s2 = "HH"+s2;
+							s3 = "SD"+s3;
+							s4 = "HT"+s4;
+							s5 = "MT"+s5;
+							s6 = "BD"+s6;
+							s7 = "FT"+s7;
 						}
-						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6,s7);
-						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7));
-					}
-					listOfStrings.clear();
+				}
 				}
 			}
+			
 		}
-		//setTemp(mCount);
-		//mCount = 0; //resets mCount
+		setTemp(mCount);
+		mCount = 0; //resets mCount
 		out.append(Drum.endDrumHeading());
+		
+		}
+					//else if(listOfStrings.size() == count) {
+						//s6 = (listOfStrings).get(5);
+						//if (s6.charAt(5)=='|') {
+							//s6 = "FT"+s6;
+						//}
+						//drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
+						//out.append("Six\n");
+						//out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
+					//}
+					//else if(listOfStrings.size() == count) {
+						//s7 = (listOfStrings).get(6);
+						//if (s7.charAt(6)=='|') {
+							//s7 = "BD"+s7;
+						//}
+						//drum = Drum.getDrum(s1,s2,s3,s4,s5,s6,s7);
+						//out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7));
+					//}
+				//	listOfStrings.clear();
+				//}
+			//}
+		//}
+	 
 		myReader1.close();
 		return out.toString();
-	}
-
-}
+	
+			}
+		}
+	
