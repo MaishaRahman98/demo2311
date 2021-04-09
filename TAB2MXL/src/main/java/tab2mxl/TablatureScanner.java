@@ -229,6 +229,7 @@ public class TablatureScanner extends StringInstrument {
 				}
 			
 				else if (listOfStrings.size() == count) {
+					// || listOfStrings.size() == 6 || listOfStrings.size() == 7
 					s1 = (listOfStrings).get(0);
 					s2 = (listOfStrings).get(1);
 					s3 = (listOfStrings).get(2);
@@ -249,7 +250,7 @@ public class TablatureScanner extends StringInstrument {
 						//out.append("Five\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
 					}
-					else if(listOfStrings.size() == count) {
+					else if(listOfStrings.size() == count && listOfStrings.size() == 6) {
 						s6 = (listOfStrings).get(5);
 						if (s6.charAt(5)=='|') {
 							s6 = "FT"+s6;
@@ -258,7 +259,7 @@ public class TablatureScanner extends StringInstrument {
 						//out.append("Six\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
 					}
-					else if(listOfStrings.size() == count) {
+					else if(listOfStrings.size() == count && listOfStrings.size() == 7) {
 						s7 = (listOfStrings).get(6);
 						if (s7.charAt(6)=='|') {
 							s7 = "BD"+s7;
