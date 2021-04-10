@@ -245,24 +245,24 @@ public class TablatureScanner extends StringInstrument {
 						
 					}
 					
-					if(listOfStrings.size() == count) {
+					if(listOfStrings.size() == 5) {
 						drum = Drum.getDrum(s1,s2,s3,s4,s5);
 						//out.append("Five\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
 					}
-					else if(listOfStrings.size() == count && listOfStrings.size() == 6) {
+					else if(listOfStrings.size() == count || listOfStrings.size() == 6) {
 						s6 = (listOfStrings).get(5);
-						if (s6.charAt(5)=='|') {
-							s6 = "FT"+s6;
+						if (s6.charAt(0)=='|') {
+							s6 = "BD"+s6;
 						}
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
 						//out.append("Six\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
 					}
-					else if(listOfStrings.size() == count && listOfStrings.size() == 7) {
+					else if(listOfStrings.size() == count || listOfStrings.size() == 7) {
 						s7 = (listOfStrings).get(6);
-						if (s7.charAt(6)=='|') {
-							s7 = "BD"+s7;
+						if (s7.charAt(0)=='|') {
+							s7 = "FT"+s7;
 						}
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6,s7);
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7));
