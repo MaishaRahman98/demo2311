@@ -52,10 +52,14 @@ public class TablatureScanner extends StringInstrument {
 					checkD = true;
 					//break;
 				}
-				else{
-					//System.out.println("BYE");
-					break;
-				}
+				if(myReader.hasNextLine() == true && check == true && count >= 4) {
+                    checkD = true;
+                    break;
+                }
+                else{
+                    //System.out.println("BYE");
+                    break;
+                }
 			} 
 //			else if (s.contains("|") && s.contains("-")) {
 //				count += 1;
@@ -166,7 +170,6 @@ public class TablatureScanner extends StringInstrument {
 		StringBuilder out = new StringBuilder();
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
 		ArrayList<String> listOfStrings = new ArrayList<String>();
-		
 		out.append(xmlHeader(count));
 		Guitar guitar;
 		while (myReader1.hasNextLine()) {
