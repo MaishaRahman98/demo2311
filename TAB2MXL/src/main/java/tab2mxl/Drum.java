@@ -237,10 +237,10 @@ public class Drum {
 		}
 		total--;
 		
-//		if (mCount != 0) {
-//			body.append("  </measure>\n");
-//			body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
-//		}
+			if (mCount != 0) {
+				body.append("  </measure>\n");
+				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
+			}
 		
 //		for (int k = 0; k < measureCount; k++) {
 
@@ -496,8 +496,8 @@ public class Drum {
 		//} for (int k = 0; k < measureCount; k++) {
 		
 		//edit 2:
-		//mCount++; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
-		mCount = 0; //resets mCount to 0
+		mCount++; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
+		//mCount = 0; //resets mCount to 0
 		
 		//return "BYE\n";
 		//String ret = body.toString();

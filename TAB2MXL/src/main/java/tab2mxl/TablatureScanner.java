@@ -7,6 +7,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class scans the tablature to determine which instrument it is from, and then creates the MusicXML output.
+ * 
+ * @author Group 16, EECS2311
+ * 
+ */
+
 public class TablatureScanner extends StringInstrument {
 	String text;
 	window win;
@@ -14,12 +21,25 @@ public class TablatureScanner extends StringInstrument {
 	public static int n = 1;
 	int co = 0;
 
+	/**
+     * A default constructor for TablatureScanner
+     * 
+     * @param text, contains the entire text tablature
+     * 
+     */
 	public TablatureScanner(String text) {
 		this.text = text;
 		this.win = win;
 		this.header = header;
 
 	}
+	/**
+	 * This method detects if the tablature (stored in ‘text’) is from a bass, guitar, or drum instrument.
+	 * Depending on this, it calls callBassClass, callGuitarClass, or callDrumClass to get the MusicXML output. 
+	 * It then returns the MusicXML output
+	 * @param text
+	 * @return output
+	 */
 	public String detect(String text){
 		int count = 0;
 		String output = "";
@@ -30,6 +50,9 @@ public class TablatureScanner extends StringInstrument {
 		
 		while (myReader.hasNextLine()) {
 			String s = myReader.nextLine();
+			if (s.isEmpty()) {
+				break;
+			}
 			if (s.contains("|") && s.contains("-")) {
 				count += 1;
 				//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
@@ -48,7 +71,7 @@ public class TablatureScanner extends StringInstrument {
 					//s = myReader.nextLine();
 					//System.out.println("HI");
 					checkD = true;
-					//break;
+					break;
 				}
 				else{
 					//System.out.println("BYE");
@@ -104,6 +127,12 @@ public class TablatureScanner extends StringInstrument {
 //        return head.toString();
 //	}
 	
+	/**
+	 * Assembles the MusicXML output for a bass tablature.
+	 * @param text
+	 * @param count
+	 * @return out
+	 */
 	public static String callBassClass(String text,int count){
 		Scanner myReader = new Scanner(text);
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "";
@@ -159,6 +188,12 @@ public class TablatureScanner extends StringInstrument {
 	}
 
 	// guitar scanner
+	/**
+	 * Assembles the MusicXML output for a guitar tablature
+	 * @param text
+	 * @param count
+	 * @return out
+	 */
 	public static String callGuitarClass(String text,int count){
 		Scanner myReader1 = new Scanner(text);
 		StringBuilder out = new StringBuilder();
@@ -211,6 +246,12 @@ public class TablatureScanner extends StringInstrument {
 
 	}
 	//drum scanner
+	/**
+	 * Assembles the MusicXML output for a drum tablature
+	 * @param text
+	 * @param count
+	 * @return out
+	 */
 	public static String callDrumClass(String text,int count){
 		Scanner myReader1 = new Scanner(text);
 		StringBuilder out = new StringBuilder();
@@ -274,6 +315,7 @@ public class TablatureScanner extends StringInstrument {
 		//setTemp(mCount);
 		//mCount = 0; //resets mCount
 		out.append(Drum.endDrumHeading());
+		mCount = 0;
 		myReader1.close();
 		return out.toString();
 	}

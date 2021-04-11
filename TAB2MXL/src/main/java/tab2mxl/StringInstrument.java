@@ -2,6 +2,11 @@ package tab2mxl;
 
 import java.util.ArrayList;
 
+/**
+ * This class creates the MusicXML output for string instruments, bass and guitar.
+ * @author Group 16, EECS2311
+ *
+ */
 public class StringInstrument {
 	private static String str1;
 	private static String str2;
@@ -20,6 +25,9 @@ public class StringInstrument {
 	public static int d;
 	static boolean repEnd = false;
 
+	/**
+	 * Default constructor for the StringInstrument object.
+	 */
 	public StringInstrument() {
 		this.type = ' ';
 		this.str1 = "";
@@ -31,6 +39,13 @@ public class StringInstrument {
 		this.str7 = "";
 	}
 
+	/**
+	 * The parameterized constructor for the StringInstrument object.
+	 * @param str1
+	 * @param str2
+	 * @param str3
+	 * @param str4
+	 */
 	public StringInstrument(String str1, String str2, String str3, String str4) {
 		this.str1 = str1;
 		this.str2 = str2;
@@ -57,6 +72,14 @@ public class StringInstrument {
 		this.type = '7';
 	}
 
+	/**
+	 * Returns the Bass object.
+	 * @param str1
+	 * @param str2
+	 * @param str3
+	 * @param str4
+	 * @return
+	 */
 	public static Bass getBass(String str1, String str2, String str3, String str4) {
 		Bass bassFour;
 		bassFour = Bass.getInstance(str1, str2, str3, str4);
@@ -71,6 +94,16 @@ public class StringInstrument {
 
 	}
 
+	/**
+	 * Returns the Guitar object.
+	 * @param str1
+	 * @param str2
+	 * @param str3
+	 * @param str4
+	 * @param str5
+	 * @param str6
+	 * @return
+	 */
 	public static Guitar getGuitar(String str1, String str2, String str3, String str4, String str5, String str6) {
 		Guitar guitarSix;
 		guitarSix = Guitar.getInstance(str1, str2, str3, str4, str5, str6);
@@ -86,6 +119,11 @@ public class StringInstrument {
 
 	}
 
+	/**
+	 * Builds the header part for the MusicXML output and returns it.
+	 * @param c
+	 * @return head
+	 */
 	public static String xmlHeader(int c) {
 		String instrument = "";
 		StringBuilder head = new StringBuilder();
@@ -230,6 +268,17 @@ public class StringInstrument {
 	}
 
 	// Prints bass or guitar tab in xml format:
+	/**
+	 * Builds the body part for the MusicXML output and returns it.
+	 * @param str1
+	 * @param str2
+	 * @param str3
+	 * @param str4
+	 * @param str5
+	 * @param str6
+	 * @param str7
+	 * @return body
+	 */
 	public String printToXML(String str1, String str2, String str3, String str4, String str5, String str6,
 			String str7) {
 		StringBuilder body = new StringBuilder();
@@ -512,9 +561,12 @@ public class StringInstrument {
 		mCount++;
 		return body.toString();
 	}
-
 	// End of printToXML method
 
+	/**
+	 * Builds the ending part for the MusicXML output and returns it.
+	 * @return end
+	 */
 	public static String endHeading() {
 		// Ender:
 		StringBuilder end = new StringBuilder();
