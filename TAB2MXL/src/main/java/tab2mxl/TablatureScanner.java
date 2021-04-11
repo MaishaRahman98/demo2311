@@ -315,7 +315,9 @@ public class TablatureScanner extends StringInstrument {
 		//setTemp(mCount);
 		//mCount = 0; //resets mCount
 		out.append(Drum.endDrumHeading());
-		mCount = 0;
+		if (mCount > 0) {
+			mCount = 0;
+		}
 		myReader1.close();
 		return out.toString();
 	}
