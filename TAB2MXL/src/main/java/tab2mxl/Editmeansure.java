@@ -1,6 +1,7 @@
 package tab2mxl;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
@@ -53,14 +54,15 @@ public class Editmeansure {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		Font Monospaced;
+		Monospaced = new Font("Monospaced",Font.PLAIN, 12);
 		JTextField userNum;
-		JTextArea userMeasure = new JTextArea();
 		JLabel askUser;
 		int x = 100;
 		int y = 100;
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(x, y, 500, 400);
+		frame.setBounds(x, y, 500, 500);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		askUser = new JLabel();
@@ -68,14 +70,15 @@ public class Editmeansure {
 		askUser.setBounds(x-30, y-50, 250, 30);
 		userNum = new JTextField("");
 		userNum.setBounds(x + 200, y-50, 80, 30);
-		userMeasure.setBounds(x-50, y, 400, 250);
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(x-50, y, 400, 250);
-		scrollPane_1.setViewportView(userMeasure);
-		frame.add(askUser);
-		frame.add(userNum);
-		frame.add(userMeasure);
-		frame.add(scrollPane_1);
+		frame.getContentPane().add(askUser);
+		frame.getContentPane().add(userNum);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(50, 100, 400, 250);
+		frame.getContentPane().add(scrollPane);
+		JTextArea userMeasure = new JTextArea();
+		scrollPane.setViewportView(userMeasure);
+		userMeasure.setFont(Monospaced);
 		
 //		JComboBox comboBox = new JComboBox();
 //		comboBox.setBounds(84, 36, 159, 23);
@@ -87,8 +90,8 @@ public class Editmeansure {
 //		comboBox.addItem("4/4");
 //		
 //		
-		JButton btnNewButton = new JButton("Confirm");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnNewButton1 = new JButton("Confirm");
+		btnNewButton1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				outputOrgTablature output = new outputOrgTablature(name);
 				String value = userNum.getText();
@@ -97,9 +100,17 @@ public class Editmeansure {
 				userMeasure.setText(output.outputMeasure(Integer.parseInt(value)));
 			}
 		});
-		btnNewButton.setBounds(x+285, y-45, 93, 23);
-		frame.getContentPane().add(btnNewButton);
+		btnNewButton1.setBounds(x+285, y-45, 93, 23);
+		frame.getContentPane().add(btnNewButton1);
 		
+		JButton btnNewButton2 = new JButton("Convert Again");
+		btnNewButton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String value = userMeasure.getText();
+			}
+		});
+		btnNewButton2.setBounds(x+70, y+270, 103, 33);
+		frame.getContentPane().add(btnNewButton2);
 //		JButton btnNewButton_1 = new JButton("Cancel");
 //		btnNewButton_1.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {

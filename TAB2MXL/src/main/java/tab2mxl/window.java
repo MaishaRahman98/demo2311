@@ -188,7 +188,7 @@ public class window implements ActionListener{
 		}
 //===================================================================================================cannot use window builder			
 		JButton btnNewButton = new JButton("Open");
-		btnNewButton.setBounds(36, 389, 116, 36);
+		btnNewButton.setBounds(36, 339, 116, 36);
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.PINK);
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -202,7 +202,7 @@ public class window implements ActionListener{
 
 		
 		btnNewButton_1 = new JButton("Translate");
-		btnNewButton_1.setBounds(119, 435, 116, 36);
+		btnNewButton_1.setBounds(119, 385, 116, 36);
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setForeground(Color.ORANGE);
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -218,7 +218,7 @@ public class window implements ActionListener{
 //				lblNewLabel.setBackground(Color.ORANGE);
 				
 				JButton btnNewButton_2 = new JButton("SaveAs");
-				btnNewButton_2.setBounds(36, 481, 116, 33);
+				btnNewButton_2.setBounds(36, 431, 116, 33);
 				btnNewButton_2.addActionListener(this);
 				btnNewButton_2.setActionCommand("SaveAs");
 //				btnNewButton_2.addActionListener(new ActionListener() {
@@ -229,7 +229,6 @@ public class window implements ActionListener{
 				btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD, 14));
 				btnNewButton_2.setForeground(new Color(0, 191, 255));
 				
-						
 						JScrollPane scrollPane_1 = new JScrollPane();
 						scrollPane_1.setBounds(255, 32, 674, 529);
 						scrollPane_1.setBorder(null);
@@ -297,7 +296,7 @@ public class window implements ActionListener{
 					}
 				});
 				comboBox.setForeground(Color.PINK);
-				comboBox.setBounds(36, 297, 116, 36);
+				comboBox.setBounds(36, 247, 116, 36);
 				frame.getContentPane().add(comboBox);
 				comboBox.addItem("1/4");
 				comboBox.addItem("2/4");
@@ -317,11 +316,22 @@ public class window implements ActionListener{
 					}
 				});
 				
-				btnNewButton_3.setBounds(119, 343, 116, 36);
+				btnNewButton_3.setBounds(119, 293, 116, 36);
 				frame.getContentPane().add(btnNewButton_3);
 				
+				JButton btnNewButton_4 = new JButton("Undo Translate");
+				btnNewButton_4.setBounds(39, 485, 196, 36);
+				btnNewButton_4.setBackground(Color.BLACK);
+				btnNewButton_4.setForeground(Color.GREEN);
+				btnNewButton_4.setFont(new Font("Times New Roman", Font.BOLD, 14));
+				btnNewButton_4.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						file.undoTranslate();
+					}
+				});
+				frame.getContentPane().add(btnNewButton_4);
 				JLabel lblNewLabel = new JLabel(new ImageIcon(img));
-				lblNewLabel.setBounds(0, 0, 1038, 602);
+				lblNewLabel.setBounds(0, 0, 988, 602);
 				frame.getContentPane().add(lblNewLabel);
 		
 		UIManager.put("PopupMenu.border", new LineBorder(Color.darkGray));

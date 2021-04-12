@@ -38,8 +38,8 @@ public class TablatureScanner extends StringInstrument {
 			else if (s.contains("|") && s.contains("-")) {
 				count += 1;
 			}
-			else if (s.equals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")) {
-				
+			else if (!s.contains("|") && !s.contains("-") && s.contains(" ")) {
+				count = 0;
 			}
 		}
 		if (count == 4 || count == 5) {
@@ -50,9 +50,12 @@ public class TablatureScanner extends StringInstrument {
 			output = TablatureScanner.callGuitarClass(text,count);
 			
 		}
-		else if (count < 4 || count > 7 ) {
-            errorMessage.outputMessage("wrong Instrument");
+		else if (count < 4 || count > 7 && count!= 0) {
+            Showtheerror.outputMessage("wrong Instrument");
         }
+		else if (count == 0) {
+			Showtheerror.outputMessage("Bad input");
+		}
 //		else {
 //			errorMessage.outputMessage("input error");
 //		}
@@ -106,9 +109,9 @@ public class TablatureScanner extends StringInstrument {
 						s4 = "E"+s4;
 					}
 					if(listOfStrings.size() == count) {
-						bass = StringInstrument.getBass(s1,s2,s3,s4);
-						//out.append(bass.xmlHeader(count));
-						out.append((bass.printToXML(s1, s2, s3, s4, null, null, null)));
+							bass = StringInstrument.getBass(s1,s2,s3,s4);
+							//out.append(bass.xmlHeader(count));
+							out.append((bass.printToXML(s1, s2, s3, s4, null, null, null)));
 					}
 					else if(listOfStrings.size() == count) {
 						s5 = (listOfStrings).get(4);
@@ -117,6 +120,7 @@ public class TablatureScanner extends StringInstrument {
 						}
 						bass = StringInstrument.getBass(s1,s2,s3,s4,s5);
 						out.append(bass.printToXML(s1, s2, s3, s4, s5, null, null));
+						
 					}
 					listOfStrings.clear();
 				}
@@ -125,6 +129,7 @@ public class TablatureScanner extends StringInstrument {
 		out.append(endHeading());
 		myReader.close();
 		return out.toString();
+		
 	}
 
 	// guitar scanner
@@ -169,6 +174,7 @@ public class TablatureScanner extends StringInstrument {
 						}
 						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6,s7);
 						out.append(guitar.printToXML(s1, s2, s3, s4, s5, s6, s7));
+						
 					}
 					listOfStrings.clear();
 				}

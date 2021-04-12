@@ -13,11 +13,11 @@ public class Showtheerror {
 	    		parent.setVisible(false);
 	    	}
 	    	if (problem.equals("wrong Instrument")) {
-	    		JOptionPane.showMessageDialog(parent,"Sorry the program couldn't read the Tablature, it only accepts bass and guitar tabs");
+	    		JOptionPane.showMessageDialog(parent,"Sorry the program couldn't read the tablature, please fix the tablature and be mindful that it only accepts bass, guitar and drum tablatures");
 	    		parent.setVisible(false);
 	    	}
 	    	if (problem.equals("Empty text area")) {
-	    		JOptionPane.showMessageDialog(parent,"Sorry the textarea is empty, please enter content then try again");
+	    		JOptionPane.showMessageDialog(parent,"Sorry the text area is empty, please enter content then try again");
 	    		parent.setVisible(false);
 	    	}
 	    	if (problem.equals("Already")) {
