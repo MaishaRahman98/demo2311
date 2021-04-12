@@ -11,6 +11,7 @@ public class Drum {
 	private static String str5;
 	private static String str6;
 	private static String str7;
+	private static String str8;
 	private char strNum; //number of strings
 	int measureCount = 0;
 	static int temp = 0;
@@ -29,11 +30,20 @@ public class Drum {
 		this.str6 = "";
 		this.str7 = "";
 	}
-	private Drum(String s1, String s2, String s3, String s4, String s5) {
+	
+	private Drum(String s1, String s2, String s3) {
 		this.str1 = s1;
 		this.str2 = s2;
 		this.str3 = s3;
-		this.str4 = s4;	
+		this.strNum = '3';
+	}
+	private Drum(String s1, String s2, String s3, String s4) {
+		this(s1, s2, s3);
+		this.str4 = s4;
+		this.strNum = '4';
+	}
+	private Drum(String s1, String s2, String s3, String s4, String s5) {
+		this(s1, s2, s3, s4);
 		this.str5 = s5;	
 		this.strNum = '5';
 	}
@@ -47,6 +57,15 @@ public class Drum {
 		this.str7 = s7;	
 		this.strNum = '7';
 	}
+	private Drum(String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8) {
+		this(s1, s2, s3, s4, s5, s6, s7);
+		this.str8 = s8;	
+		this.strNum = '8';
+	}
+	public static Drum getInstance(String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8) {
+		
+		return new Drum(s1, s2, s3, s4, s5, s6, s7, s8);
+	}
 	public static Drum getInstance(String s1, String s2, String s3, String s4, String s5, String s6, String s7) {
 		
 		return new Drum(s1, s2, s3, s4, s5, s6, s7);
@@ -58,6 +77,14 @@ public class Drum {
 	public static Drum getInstance(String s1, String s2, String s3, String s4, String s5) {
 		
 		return new Drum(s1, s2, s3, s4, s5);
+	}
+	public static Drum getInstance(String s1, String s2, String s3, String s4) {
+		
+		return new Drum(s1, s2, s3, s4);
+	}
+	public static Drum getInstance(String s1, String s2, String s3) {
+		
+		return new Drum(s1, s2, s3);
 	}
 	
 	public static String xmlDrumHeader(int c) {
@@ -169,7 +196,7 @@ public class Drum {
 	}	
 	
 	//Will edit this part
-	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
+	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7, String s8) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
 		String instrument = "";
@@ -530,6 +557,12 @@ public class Drum {
 		}
 	}
 	
+	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6, String str7, String str8) {
+		Drum drumEight;
+		drumEight = Drum.getInstance(str1,str2,str3,str4,str5, str6, str7, str8);
+		return drumEight;
+	}
+	
 	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
 		Drum drumSeven;
 		drumSeven = Drum.getInstance(str1,str2,str3,str4,str5, str6, str7);
@@ -544,5 +577,15 @@ public class Drum {
 		Drum drumFive;
 		drumFive = Drum.getInstance(str1,str2,str3,str4,str5);
 		return drumFive;
+	}
+	public static Drum getDrum(String str1, String str2, String str3, String str4) {
+		Drum drumFour;
+		drumFour = Drum.getInstance(str1,str2,str3,str4);
+		return drumFour;
+	}
+	public static Drum getDrum(String str1, String str2, String str3) {
+		Drum drumThree;
+		drumThree = Drum.getInstance(str1,str2,str3);
+		return drumThree;
 	}
 }
