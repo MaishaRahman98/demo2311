@@ -104,30 +104,30 @@ class MeasureTest {
 		String actual = testMeasure.getNoteMeasure("String5",9,"bass");
 		assertEquals(expected, actual, "The note should be Ab");
 		}
-	@Test
-	void durationCheck1() {
-		String expected = "Eighth" ;
-		String actual = testMeasure.getDuration(1);
-		assertEquals(expected, actual, "The duration should be eighth");
-	}
-	@Test
-	void durationCheck2() {
-		String expected = "Whole" ;
-		String actual = testMeasure.getDuration(8);
-		assertEquals(expected, actual, "The duration should be whole");
-	}
-	@Test
-	void durationCheck3() {
-		String expected = "Quarter" ;
-		String actual = testMeasure.getDuration(2);
-		assertEquals(expected, actual, "The duration should be Quarter");
-	}
-	@Test
-	void durationCheck4() {
-		String expected = "Half" ;
-		String actual = testMeasure.getDuration(4);
-		assertEquals(expected, actual, "The duration should be Half");
-	}
+//	@Test
+//	void durationCheck1() {
+//		String expected = "Eighth" ;
+//		String actual = testMeasure.getDuration(1);
+//		assertEquals(expected, actual, "The duration should be eighth");
+//	}
+//	@Test
+//	void durationCheck2() {
+//		String expected = "Whole" ;
+//		String actual = testMeasure.getDuration(8);
+//		assertEquals(expected, actual, "The duration should be whole");
+//	}
+//	@Test
+//	void durationCheck3() {
+//		String expected = "Quarter" ;
+//		String actual = testMeasure.getDuration(2);
+//		assertEquals(expected, actual, "The duration should be Quarter");
+//	}
+//	@Test
+//	void durationCheck4() {
+//		String expected = "Half" ;
+//		String actual = testMeasure.getDuration(4);
+//		assertEquals(expected, actual, "The duration should be Half");
+//	}
 	@Test
 	void octaveCheck1() {
 		int expected = 2;
