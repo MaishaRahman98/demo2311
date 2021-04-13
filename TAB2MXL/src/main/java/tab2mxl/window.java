@@ -51,6 +51,7 @@ import java.awt.BorderLayout;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 public class window implements ActionListener{
 
@@ -88,6 +89,7 @@ public class window implements ActionListener{
 	//==========================================================
 	StringInstrument stringin = new StringInstrument();
 	public JOptionPane ooo;
+	private JTextField textField;
 //	Bass bassin = new Bass();
 	//==========================================================
 	/**
@@ -180,6 +182,7 @@ public class window implements ActionListener{
 		}
 //===================================================================================================cannot use window builder			
 		JButton btnNewButton = new JButton("Open");
+		btnNewButton.setBounds(119, 349, 116, 36);
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.PINK);
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -193,6 +196,7 @@ public class window implements ActionListener{
 
 		
 		btnNewButton_1 = new JButton("Translate");
+		btnNewButton_1.setBounds(36, 395, 116, 36);
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setForeground(Color.ORANGE);
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -208,6 +212,7 @@ public class window implements ActionListener{
 //				lblNewLabel.setBackground(Color.ORANGE);
 				
 				JButton btnNewButton_2 = new JButton("SaveAs");
+				btnNewButton_2.setBounds(119, 441, 116, 33);
 				btnNewButton_2.addActionListener(this);
 				btnNewButton_2.setActionCommand("SaveAs");
 //				btnNewButton_2.addActionListener(new ActionListener() {
@@ -220,6 +225,7 @@ public class window implements ActionListener{
 				
 						
 						JScrollPane scrollPane_1 = new JScrollPane();
+						scrollPane_1.setBounds(255, 32, 674, 529);
 						scrollPane_1.setBorder(null);
 						scrollPane_1.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 						scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -272,9 +278,11 @@ public class window implements ActionListener{
 												scrollPane_1.setViewportView(textArea);
 				
 				JComboBox comboBox = new JComboBox();
+				comboBox.setBounds(119, 257, 116, 36);
 				comboBox.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						String feeback = (String)comboBox.getSelectedItem();
+						
 						textArea.setText(feeback);
 						window.mean(feeback);
 					}
@@ -289,6 +297,7 @@ public class window implements ActionListener{
 //				textArea.setText(feeback);
 				
 				JButton btnNewButton_3 = new JButton("Edit");
+				btnNewButton_3.setBounds(36, 303, 116, 36);
 				btnNewButton_3.setFont(new Font("Times New Roman", Font.BOLD, 14));
 				btnNewButton_3.setBackground(Color.BLACK);
 				btnNewButton_3.setForeground(new Color(186, 85, 211));
@@ -301,53 +310,28 @@ public class window implements ActionListener{
 				});
 				
 				Image img = new ImageIcon(this.getClass().getResource("/Wallpaper Music Equalizer Wallpaper 1080p HD Upload at January 29.jpg")).getImage();
+				frame.getContentPane().setLayout(null);
+				frame.getContentPane().add(comboBox);
+				frame.getContentPane().add(btnNewButton_3);
+				frame.getContentPane().add(btnNewButton);
+				frame.getContentPane().add(btnNewButton_1);
+				frame.getContentPane().add(btnNewButton_2);
+				frame.getContentPane().add(scrollPane_1);
+				
+				textField = new JTextField();
+				textField.setBounds(36, 211, 116, 36);
+				frame.getContentPane().add(textField);
+				textField.setColumns(10);
+				
+				JLabel lblNewLabel_1 = new JLabel("Song Title:");
+				lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 14));
+				lblNewLabel_1.setForeground(Color.WHITE);
+				lblNewLabel_1.setBounds(36, 191, 89, 21);
+				frame.getContentPane().add(lblNewLabel_1);
 				JLabel lblNewLabel = new JLabel(new ImageIcon(img));
-				GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-				groupLayout.setHorizontalGroup(
-					groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(36)
-							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(119)
-							.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(36)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(119)
-							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(36)
-							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(255)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
-							.addGap(110))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 1038, Short.MAX_VALUE)
-							.addGap(1))
-				);
-				groupLayout.setVerticalGroup(
-					groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(297)
-							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(32)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
-							.addGap(41))
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 602, Short.MAX_VALUE)
-				);
-				frame.getContentPane().setLayout(groupLayout);
+				lblNewLabel.setText("");
+				lblNewLabel.setBounds(0, 0, 1038, 602);
+				frame.getContentPane().add(lblNewLabel);
 		
 		UIManager.put("PopupMenu.border", new LineBorder(Color.darkGray));
 		JMenuBar menuBar = new JMenuBar();
