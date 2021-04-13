@@ -34,7 +34,7 @@ public class TablatureScanner extends StringInstrument {
 
 	}
 	/**
-	 * This method detects if the tablature (stored in ‘text’) is from a bass, guitar, or drum instrument.
+	 * This method detects if the tablature (stored in ï¿½textï¿½) is from a bass, guitar, or drum instrument.
 	 * Depending on this, it calls callBassClass, callGuitarClass, or callDrumClass to get the MusicXML output. 
 	 * It then returns the MusicXML output
 	 * @param text
@@ -291,11 +291,15 @@ public class TablatureScanner extends StringInstrument {
 		while (myReader1.hasNextLine()) {
 			//out.append("HELLO\n");
 			String line = myReader1.nextLine();
-			if (line.contains("|") && line.contains("-")) {
+			if (line.contains("|") && line.contains("-") && !line.contains("REPEAT")) {
 				listOfStrings.add(line);
 				if (listOfStrings.isEmpty()) {
 					listOfStrings.clear();
 				}
+				
+//			if (line.contains("REPEAT")) {
+//				count--;
+//			}
 			
 				else if (listOfStrings.size() == count) {
 					// || listOfStrings.size() == 6 || listOfStrings.size() == 7
