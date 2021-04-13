@@ -114,7 +114,7 @@ public class Functioncallfile {
 		}
 		try {
 			FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicXML");
-			File inputFile = new File("C:\\Users\\redga\\git\\demo2311\\TAB2MXL\\userTablatures\\"+name+".txt");
+			File inputFile = new File("userTablatures/"+name+".txt");
 			BufferedWriter userInput  = new BufferedWriter(new FileWriter(inputFile));
 //			saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
 			newfile1.write(win.textArea.getText());
