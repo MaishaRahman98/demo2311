@@ -196,7 +196,7 @@ public class Drum {
 	}	
 	
 	//Will edit this part
-	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7, String s8) {
+	public String printDrumXML(int r1, int r2, int rX, String str1, String str2, String str3, String str4, String str5, String str6, String str7, String s8) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
 		String instrument = "";
@@ -220,6 +220,7 @@ public class Drum {
 		boolean graceToken = false;
 		int beatCount8 = 0;
 		int beatCount16 = 0;
+		
 		
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
@@ -301,8 +302,6 @@ public class Drum {
 //							//counter = 0; //reset counter
 //						}
 			
-			if (listOfColumns.get(listOfColumns.size() - 1).contains('|') && listOfColumns.get(listOfColumns.size() - 1).toString().matches(".*\\d.*")) 
-				rep = true;
 			
 			for (int i = 0; i < listOfColumns.size(); i++) {
 				Measure measure = new Measure("");
@@ -312,6 +311,28 @@ public class Drum {
 //					body.append(" </measure>\n");
 //					body.append("<measure number=\"" + (mCount + 1) + "\">\n");
 //				}
+				
+				if (i == r1 && r2 != 0 && rX != 0) {
+					body.append("<barline location=\"left\">\n");
+					body.append("<bar-style>heavy-light</bar-style>\n");
+					body.append("<repeat direction=\"forward\"/>\n");
+					body.append("</barline>\n");
+					body.append("<direction placement=\"above\">\n");
+					body.append("<direction-type>\n");
+					body.append("<words relative-x=\"256.17\" relative-y=\"16.01\">Repeat " + rX + " times</words>\n");
+					body.append("</direction-type>\n");
+					body.append("</direction>\n");
+					r1 = -1;
+					rX = 0;
+				}
+				if (i == r2 && r2 != 0) {
+					body.append("  <barline location=\"right\">\n");
+					body.append("   <bar-style>light-heavy</bar-style>\n");
+					body.append("   <repeat direction=\"backward\"/>\n");
+					body.append("   </barline>\n");
+					r2 = 0;
+				}
+				
 				if (listOfColumns.get(i).contains('|') && !listOfColumns.get(i).toString().matches(".*\\d.*")) {
 					if (i != listOfColumns.size() - 1 && !listOfColumns.get(i+1).contains('|')) {
 					mCount++;
@@ -319,19 +340,6 @@ public class Drum {
 					body.append(" <measure number=\"" + (mCount + 1) + "\">\n");
 					}
 					
-				}
-				if (rep && i != listOfColumns.size() - 1 && listOfColumns.get(i+1).contains('*')) {
-					body.append("<barline location=\"left\">\n");
-					body.append("<bar-style>heavy-light</bar-style>\n");
-					body.append("<repeat direction=\"forward\"/>\n");
-					body.append("</barline>\n");
-					body.append("<direction placement=\"above\">\n");
-					body.append("<direction-type>\n");
-					body.append("<words relative-x=\"256.17\" relative-y=\"16.01\">Repeat " + listOfColumns.get(listOfColumns.size() - 1).get(0) + " times</words>\n");
-					body.append("</direction-type>\n");
-					body.append("</direction>\n");
-					rep = false;
-					repEnd = true;
 				}
 	
 				for (int a = 0; a < listOfColumns.get(i).size(); a++) {
@@ -591,4 +599,5 @@ public class Drum {
 		drumThree = Drum.getInstance(str1,str2,str3);
 		return drumThree;
 	}
+	
 }
