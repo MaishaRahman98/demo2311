@@ -409,8 +409,8 @@ public class TablatureScanner extends StringInstrument {
 						out.append(drum.printDrumXML(r1, r2, rX,  s1, s2, s3, s4, s5, s6, s7, null));
 					}
 					listOfStrings.clear();
-					end1 = false;
-					end2 = false;
+					end1 = end2 = false;
+					r1 = r2 = rX = 0;
 				}
 
 		}
