@@ -11,10 +11,10 @@ public class Drum {
 	private static String str5;
 	private static String str6;
 	private static String str7;
+	private static String str8;
 	private char strNum; //number of strings
 	int measureCount = 0;
 	static int temp = 0;
-	public int c = 0;
 	//edit 3:
 	//public static int mCount = 0; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
 	public static int mCount = 0;
@@ -30,11 +30,20 @@ public class Drum {
 		this.str6 = "";
 		this.str7 = "";
 	}
-	private Drum(String s1, String s2, String s3, String s4, String s5) {
+	
+	private Drum(String s1, String s2, String s3) {
 		this.str1 = s1;
 		this.str2 = s2;
 		this.str3 = s3;
-		this.str4 = s4;	
+		this.strNum = '3';
+	}
+	private Drum(String s1, String s2, String s3, String s4) {
+		this(s1, s2, s3);
+		this.str4 = s4;
+		this.strNum = '4';
+	}
+	private Drum(String s1, String s2, String s3, String s4, String s5) {
+		this(s1, s2, s3, s4);
 		this.str5 = s5;	
 		this.strNum = '5';
 	}
@@ -48,6 +57,15 @@ public class Drum {
 		this.str7 = s7;	
 		this.strNum = '7';
 	}
+	private Drum(String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8) {
+		this(s1, s2, s3, s4, s5, s6, s7);
+		this.str8 = s8;	
+		this.strNum = '8';
+	}
+	public static Drum getInstance(String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8) {
+		
+		return new Drum(s1, s2, s3, s4, s5, s6, s7, s8);
+	}
 	public static Drum getInstance(String s1, String s2, String s3, String s4, String s5, String s6, String s7) {
 		
 		return new Drum(s1, s2, s3, s4, s5, s6, s7);
@@ -59,6 +77,14 @@ public class Drum {
 	public static Drum getInstance(String s1, String s2, String s3, String s4, String s5) {
 		
 		return new Drum(s1, s2, s3, s4, s5);
+	}
+	public static Drum getInstance(String s1, String s2, String s3, String s4) {
+		
+		return new Drum(s1, s2, s3, s4);
+	}
+	public static Drum getInstance(String s1, String s2, String s3) {
+		
+		return new Drum(s1, s2, s3);
 	}
 	
 	public static String xmlDrumHeader(int c) {
@@ -127,7 +153,7 @@ public class Drum {
         head.append("   <score-instrument id=\"P1-I54\">\n");
         head.append("    <instrument-name>Ride Bell</instrument-name>\n");
         head.append("    </score-instrument>\n");
-        head.append("   <score-instrument id=\"P1-I55\">\n");
+        head.append("   <score-instrument id=\"P1-I555\">\n");
         head.append("    <instrument-name>Tambourine</instrument-name>\n");
         head.append("    </score-instrument>\n");
         head.append("   <score-instrument id=\"P1-I56\">\n");
@@ -170,30 +196,23 @@ public class Drum {
 	}	
 	
 	//Will edit this part
-	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
+	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7, String s8) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
 		String instrument = "";
 //		String string = "";
 //		String output = "";
 //		int spaceCount = 0;
-		ArrayList<String> legatoOutput = new ArrayList<>();
-		boolean legatoCheck = false;
-		boolean legatoStop = false;
-		int legatoFret = 0;
-		String legatoType = "";
-		String legatoFullName = "";
-		String text = "";
+//		ArrayList<String> legatoOutput = new ArrayList<>();
+//		boolean legatoCheck = false;
 		char fret = 0;
 		int stringNum = 0;
 		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
 //		String name;
 		int octave = 0;
-
-	//	int numMeasureCount = 1;
+//		String xml = "";
 		int counter = 0;
 		ArrayList<ArrayList<Character> > listOfColumns =  new ArrayList<ArrayList<Character>>();
-		String noteType = "";
 		int digit = 0;
 		int beat = 4, beatType = 4;
 		int total = 0;
@@ -244,45 +263,52 @@ public class Drum {
 				break;
 		}
 		total--;
-
-
-
-
-		if (mCount != 0) {
-			body.append("  </measure>\n");
-			body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
-		}		
-			
-			if (listOfColumns.get(listOfColumns.size() - 1).contains('|') && listOfColumns.get(listOfColumns.size() - 1).toString().matches(".*\\d.*")) {
-				rep = true;
-
+		
+			if (mCount != 0) {
+				body.append("  </measure>\n");
+				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
 			}
-			//for (int i = 0; i < listOfColumns.size(); i++) {
-				//Measure measure = new Measure("");
-				
-			//	if (listOfColumns.get(i).contains('|')) {
-				//	mCount++; //mCount must start at being zero when we translate each drum tab
-					//fixed the spacing:
-					//body.append(" </measure>\n");
-					//body.append("<measure number=\"" + (mCount + 1) + "\">\n");
-				//}
+		
+//		for (int k = 0; k < measureCount; k++) {
 
-
+//			if (mCount != temp && mCount != 1) {
+			//edit 1:
+//			if (mCount != 0) {
+//				body.append("  </measure>\n");
+////				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
+//				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
+//			}
 			
-
+			//|| str1.charAt(i + 1) != '-'
+//			for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|') ; i++)
+//			{
+//				Measure measure = new Measure("");
+////	        	counter++;
+//	        	for (String j: allStrings) {
+//		        	stringNum++;
+//		        	
+//		        	//&& Character.isDigit(j.charAt(i))
+//					// && (j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o')
+//					if (j != null) {
+////						if(j.charAt(i) == '-') {
+////							counter++;
+////						}
+//						else if(j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o') {
+//							fret = j.charAt(i);
+//							//counter = 0; //reset counter
+//						}
+			
+			if (listOfColumns.get(listOfColumns.size() - 1).contains('|') && listOfColumns.get(listOfColumns.size() - 1).toString().matches(".*\\d.*")) 
+				rep = true;
+			
 			for (int i = 0; i < listOfColumns.size(); i++) {
 				Measure measure = new Measure("");
-
-//				String sss = listOfColumns.get(i).toString();
-//				boolean b = listOfColumns.get(i).toString().matches(".*\\d.*");
-
 //				if (listOfColumns.get(i).contains('|')) {
 //					mCount++; //mCount must start at being zero when we translate each drum tab
 //					//fixed the spacing:
 //					body.append(" </measure>\n");
 //					body.append("<measure number=\"" + (mCount + 1) + "\">\n");
 //				}
-
 				if (listOfColumns.get(i).contains('|') && !listOfColumns.get(i).toString().matches(".*\\d.*")) {
 					if (i != listOfColumns.size() - 1 && !listOfColumns.get(i+1).contains('|')) {
 					mCount++;
@@ -323,11 +349,9 @@ public class Drum {
 							//flams are grace notes:
 							if(listOfColumns.get(i).get(j) == 'f') {
 								graceToken = true;
-								
 							}
-						
 							
-							
+							//Nabaa needs to implement drumNotes and drumOctave methods in Notes class
 							note = Notes.drumNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 							octave = Notes.drumOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
 							
@@ -499,8 +523,8 @@ public class Drum {
 		//} for (int k = 0; k < measureCount; k++) {
 		
 		//edit 2:
-		//mCount++; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
-		mCount++; //resets mCount to 0
+		mCount++; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
+		//mCount = 0; //resets mCount to 0
 		
 		//return "BYE\n";
 		//String ret = body.toString();
@@ -533,6 +557,12 @@ public class Drum {
 		}
 	}
 	
+	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6, String str7, String str8) {
+		Drum drumEight;
+		drumEight = Drum.getInstance(str1,str2,str3,str4,str5, str6, str7, str8);
+		return drumEight;
+	}
+	
 	public static Drum getDrum(String str1, String str2, String str3, String str4, String str5, String str6, String str7) {
 		Drum drumSeven;
 		drumSeven = Drum.getInstance(str1,str2,str3,str4,str5, str6, str7);
@@ -548,13 +578,14 @@ public class Drum {
 		drumFive = Drum.getInstance(str1,str2,str3,str4,str5);
 		return drumFive;
 	}
-	
-	public void resetGlobal() {
-		this.measureCount = 0;
-		this.mCount = 0;
-		this.c = 0;
-		
-		
+	public static Drum getDrum(String str1, String str2, String str3, String str4) {
+		Drum drumFour;
+		drumFour = Drum.getInstance(str1,str2,str3,str4);
+		return drumFour;
 	}
-
+	public static Drum getDrum(String str1, String str2, String str3) {
+		Drum drumThree;
+		drumThree = Drum.getInstance(str1,str2,str3);
+		return drumThree;
+	}
 }

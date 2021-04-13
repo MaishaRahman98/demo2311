@@ -7,6 +7,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * This class scans the tablature to determine which instrument it is from, and then creates the MusicXML output.
+ * 
+ * @author Group 16, EECS2311
+ * 
+ */
+
 public class TablatureScanner extends StringInstrument {
 	String text;
 	window win;
@@ -14,12 +21,25 @@ public class TablatureScanner extends StringInstrument {
 	public static int n = 1;
 	int co = 0;
 
+	/**
+     * A default constructor for TablatureScanner
+     * 
+     * @param text, contains the entire text tablature
+     * 
+     */
 	public TablatureScanner(String text) {
 		this.text = text;
 		this.win = win;
 		this.header = header;
 
 	}
+	/**
+	 * This method detects if the tablature (stored in �text�) is from a bass, guitar, or drum instrument.
+	 * Depending on this, it calls callBassClass, callGuitarClass, or callDrumClass to get the MusicXML output. 
+	 * It then returns the MusicXML output
+	 * @param text
+	 * @return output
+	 */
 	public String detect(String text){
 		int count = 0;
 		String output = "";
@@ -27,17 +47,24 @@ public class TablatureScanner extends StringInstrument {
 		Scanner myReader = new Scanner(text);
 		boolean check = false;
 		boolean checkD = false;
+		int drumCount = 0;
 		
 		while (myReader.hasNextLine()) {
 			String s = myReader.nextLine();
-			 if (s.isEmpty())
-	                break;
+			while (s.isEmpty() && myReader.hasNextLine()) {
+				s = myReader.nextLine();
+				//break;
+			}
+//			if (s.isEmpty()) {
+//				break;
+//			}
 			if (s.contains("|") && s.contains("-")) {
 				count += 1;
 				//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
 				if (s.contains("x") || s.contains("X")) {
 					// || s.contains("o") || s.contains("f")
 					check = true;
+					//drumCount += 1;
 				}
 
 			}
@@ -45,21 +72,18 @@ public class TablatureScanner extends StringInstrument {
 				// || s.contains("")
 				if (count < 4) {
 					count = 0;
+					//drumCount = 0;
 				}
-				else if(myReader.hasNextLine() == true && check == true && count >= 4) {
-					//s = myReader.nextLine();
-					//System.out.println("HI");
-					checkD = true;
-					//break;
+//				else if(myReader.hasNextLine() == true && check == true && count >= 4) {
+//					//s = myReader.nextLine();
+//					//System.out.println("HI");
+//					checkD = true;
+//					break;
+//				}
+				else{
+					//System.out.println("BYE");
+					break;
 				}
-				if(myReader.hasNextLine() == true && check == true && count >= 4) {
-                    checkD = true;
-                    break;
-                }
-                else{
-                    //System.out.println("BYE");
-                    break;
-                }
 			} 
 //			else if (s.contains("|") && s.contains("-")) {
 //				count += 1;
@@ -74,20 +98,22 @@ public class TablatureScanner extends StringInstrument {
 //			}
 
 		}
-		if (check == false && checkD == false && (count == 4 || count == 5) ) {
+		if (check == false && (count == 4 || count == 5) ) {
 			output = TablatureScanner.callBassClass(text,count);
 			//header = TablatureScanner.xmlHeader(count);
 			}
-		else if (check == false && checkD == false && (count == 6 || count == 7)) {
+		if (check == false && (count == 6 || count == 7)) {
 			output = TablatureScanner.callGuitarClass(text,count);
 			
 		}
 		//detects if it is drum
-		else if (check == true || checkD == true && (count == 5 || count == 6 || count == 7)) {
+		if (check == true) {
+			//drumHelper(text);
 			output = TablatureScanner.callDrumClass(text, count);
+			
 		}
 
-		else if (count < 4 || count > 7 ) {
+		else if (count < 3 || count > 7) {
             errorMessage.outputMessage("wrong Instrument");
         }
 //		else {
@@ -98,6 +124,25 @@ public class TablatureScanner extends StringInstrument {
 		return output;
 	}
 
+	public void drumHelper(String text) {
+		int count = 0;
+		boolean check = false;
+		Scanner myReader = new Scanner(text);
+		while (myReader.hasNextLine()) {
+			String s = myReader.nextLine();
+			if (s.contains("|") && s.contains("-")) {
+				count += 1;
+				//Checks if the text contains 'x' or 'X', if so, then text is a drum tab
+				if (s.contains("x") || s.contains("X")) {
+					// || s.contains("o") || s.contains("f")
+					check = true;
+					//drumCount += 1;
+				}
+			}
+		}
+
+	}
+	
 //	public static String xmlHeader(int c) {
 //		String h = "";
 //		StringBuilder head = new StringBuilder();
@@ -110,6 +155,12 @@ public class TablatureScanner extends StringInstrument {
 //        return head.toString();
 //	}
 	
+	/**
+	 * Assembles the MusicXML output for a bass tablature.
+	 * @param text
+	 * @param count
+	 * @return out
+	 */
 	public static String callBassClass(String text,int count){
 		Scanner myReader = new Scanner(text);
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "";
@@ -165,6 +216,12 @@ public class TablatureScanner extends StringInstrument {
 	}
 
 	// guitar scanner
+	/**
+	 * Assembles the MusicXML output for a guitar tablature
+	 * @param text
+	 * @param count
+	 * @return out
+	 */
 	public static String callGuitarClass(String text,int count){
 		Scanner myReader1 = new Scanner(text);
 		StringBuilder out = new StringBuilder();
@@ -217,10 +274,16 @@ public class TablatureScanner extends StringInstrument {
 
 	}
 	//drum scanner
+	/**
+	 * Assembles the MusicXML output for a drum tablature
+	 * @param text
+	 * @param count
+	 * @return out
+	 */
 	public static String callDrumClass(String text,int count){
 		Scanner myReader1 = new Scanner(text);
 		StringBuilder out = new StringBuilder();
-		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
+		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "", s8 = "";
 		ArrayList<String> listOfStrings = new ArrayList<String>();
 		Drum drum;
 		out.append(Drum.xmlDrumHeader(count));
@@ -228,7 +291,7 @@ public class TablatureScanner extends StringInstrument {
 		while (myReader1.hasNextLine()) {
 			//out.append("HELLO\n");
 			String line = myReader1.nextLine();
-			if (line.contains("|") && line.contains("-")) {
+			if (line.contains("|") && line.contains("-") && !line.contains("REPEAT")) {
 				listOfStrings.add(line);
 				if (listOfStrings.isEmpty()) {
 					listOfStrings.clear();
@@ -236,42 +299,95 @@ public class TablatureScanner extends StringInstrument {
 			
 				else if (listOfStrings.size() == count) {
 					// || listOfStrings.size() == 6 || listOfStrings.size() == 7
-					s1 = (listOfStrings).get(0);
-					s2 = (listOfStrings).get(1);
-					s3 = (listOfStrings).get(2);
-					s4 = (listOfStrings).get(3);
-					s5 = (listOfStrings).get(4);
 					
-					if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|' && s5.charAt(0)=='|') {
-						s1 = "CC"+s1;
-						s2 = "HH"+s2;
-						s3 = "SD"+s3;
-						s4 = "HT"+s4;
-						s5 = "MT"+s5;
-						
+					if (listOfStrings.size() == 3) {
+						s1 = (listOfStrings).get(0);
+						s2 = (listOfStrings).get(1);
+						s3 = (listOfStrings).get(2);
+						drum = Drum.getDrum(s1,s2,s3);
+						out.append(drum.printDrumXML(s1, s2, s3, null, null, null, null, null));
 					}
-					
+					if (listOfStrings.size() == 4) {
+						s1 = (listOfStrings).get(0);
+						s2 = (listOfStrings).get(1);
+						s3 = (listOfStrings).get(2);
+						s4 = (listOfStrings).get(3);
+						drum = Drum.getDrum(s1,s2,s3, s4);
+						out.append(drum.printDrumXML(s1, s2, s3, s4, null, null, null, null));
+					}
 					if(listOfStrings.size() == 5) {
+						s1 = (listOfStrings).get(0);
+						s2 = (listOfStrings).get(1);
+						s3 = (listOfStrings).get(2);
+						s4 = (listOfStrings).get(3);
+						s5 = (listOfStrings).get(4);
+						
+						if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|' && s5.charAt(0)=='|') {
+							s1 = "CC"+s1;
+							s2 = "HH"+s2;
+							s3 = "SD"+s3;
+							s4 = "HT"+s4;
+							s5 = "MT"+s5;	
+						}
+						
 						drum = Drum.getDrum(s1,s2,s3,s4,s5);
 						//out.append("Five\n");
-						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null));
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null, null));
 					}
 					else if(listOfStrings.size() == count || listOfStrings.size() == 6) {
+						s1 = (listOfStrings).get(0);
+						s2 = (listOfStrings).get(1);
+						s3 = (listOfStrings).get(2);
+						s4 = (listOfStrings).get(3);
+						s5 = (listOfStrings).get(4);
 						s6 = (listOfStrings).get(5);
-						if (s6.charAt(0)=='|') {
+						if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|' && s5.charAt(0)=='|' && s6.charAt(0)=='|') {
+							s1 = "CC"+s1;
+							s2 = "HH"+s2;
+							s3 = "SD"+s3;
+							s4 = "HT"+s4;
+							s5 = "MT"+s5;
 							s6 = "BD"+s6;
 						}
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6);
 						//out.append("Six\n");
-						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null));
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null, null));
 					}
 					else if(listOfStrings.size() == count || listOfStrings.size() == 7) {
+						s1 = (listOfStrings).get(0);
+						s2 = (listOfStrings).get(1);
+						s3 = (listOfStrings).get(2);
+						s4 = (listOfStrings).get(3);
+						s5 = (listOfStrings).get(4);
+						s6 = (listOfStrings).get(5);
 						s7 = (listOfStrings).get(6);
-						if (s7.charAt(0)=='|') {
+						
+						if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|' && s5.charAt(0)=='|' && s6.charAt(0)=='|' && s7.charAt(0)=='|') {
+							s1 = "CC"+s1;
+							s2 = "HH"+s2;
+							s3 = "SD"+s3;
+							s4 = "HT"+s4;
+							s5 = "MT"+s5;
+							s6 = "BD"+s6;
 							s7 = "FT"+s7;
 						}
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6,s7);
-						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7));
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7, null));
+					}
+					else if(listOfStrings.size() == count || listOfStrings.size() == 8) {
+						s1 = (listOfStrings).get(0);
+						s2 = (listOfStrings).get(1);
+						s3 = (listOfStrings).get(2);
+						s4 = (listOfStrings).get(3);
+						s5 = (listOfStrings).get(4);
+						s6 = (listOfStrings).get(5);
+						s7 = (listOfStrings).get(6);
+						s8 = (listOfStrings).get(7);
+						if (s1.charAt(0)=='|' && s2.charAt(0)=='|' && s3.charAt(0)=='|' && s4.charAt(0)=='|' && s5.charAt(0)=='|' && s6.charAt(0)=='|' && s7.charAt(0)=='|' && s8.charAt(0)=='|') {
+							s8 = "T3"+s8;
+						}
+						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6,s7, s8);
+						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7, null));
 					}
 					listOfStrings.clear();
 				}
@@ -280,6 +396,9 @@ public class TablatureScanner extends StringInstrument {
 		//setTemp(mCount);
 		//mCount = 0; //resets mCount
 		out.append(Drum.endDrumHeading());
+		if (mCount > 0) {
+			mCount = 0;
+		}
 		myReader1.close();
 		return out.toString();
 	}
