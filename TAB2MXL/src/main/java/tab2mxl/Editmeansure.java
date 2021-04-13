@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
 public class Editmeansure {
 	public static String name;
@@ -60,6 +61,7 @@ public class Editmeansure {
 		Monospaced = new Font("Monospaced",Font.PLAIN, 12);
 		JTextField userNum;
 		JLabel askUser;
+		Edit output = new Edit(name);
 		int x = 100;
 		int y = 100;
 		frame = new JFrame();
@@ -75,16 +77,18 @@ public class Editmeansure {
 		frame.getContentPane().add(askUser);
 		frame.getContentPane().add(userNum);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		JScrollPane scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
+		ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		JTextArea userMeasure = new JTextArea();
+
 		scrollPane.setBounds(50, 100, 400, 250);
 		scrollPane.setBorder(null);
 		scrollPane.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 		scrollPane.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		scrollPane.setBorder(null);
-		scrollPane.getVerticalScrollBar().setBorder(null);
 		scrollPane.getVerticalScrollBar().setBackground(Color.gray);
 		scrollPane.getHorizontalScrollBar().setBackground(Color.gray);
+		
 		scrollPane.setViewportView(userMeasure);
 		frame.getContentPane().add(scrollPane);
 		userMeasure.setFont(Monospaced);
@@ -119,9 +123,8 @@ public class Editmeansure {
 		JButton btnNewButton2 = new JButton("Confirm");
 		btnNewButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Edit output = new Edit(name);
 				String value = userNum.getText();
-				userMeasure.setLineWrap(true);
+				userMeasure.setLineWrap(false);
 				userMeasure.setWrapStyleWord(true);
 				userMeasure.setText(output.outputMeasure(Integer.parseInt(value)));
 			}
@@ -133,6 +136,7 @@ public class Editmeansure {
 		btnNewButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String value = userMeasure.getText();
+				userMeasure.setText(output.returnNewTab(value));
 			}
 		});
 		btnNewButton3.setBounds(x+90, y+330, 103, 33);

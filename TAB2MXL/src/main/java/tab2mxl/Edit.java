@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class Edit {
 	public String fileName;
+	public String userOrgTab;
 
 	
 	public Edit(String fileName){
@@ -51,6 +52,7 @@ public class Edit {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		this.userOrgTab = tablature.toString();
 		Scanner scan = new Scanner(tablature.toString());
 		while (scan.hasNextLine()) {
 			String line = scan.nextLine();
@@ -88,13 +90,14 @@ public class Edit {
 			}
 			x++;
 		}
-		output.append("--------------------MEASURE NUMBER ="+measureNum+"--------------------\n");
+		output.append("************MEASURE NUMBER = "+measureNum+"************\n");
 		output.append(outTab);
 		return output.toString();
 	}
 	
-	public static String returnNewTab(String origTab, String editTab) {
-		return null;
+	public String returnNewTab(String editTab) {
+		
+		return this.userOrgTab + editTab;
 	}
 	
 }
