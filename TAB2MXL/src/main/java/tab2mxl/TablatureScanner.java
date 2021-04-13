@@ -286,6 +286,8 @@ public class TablatureScanner extends StringInstrument {
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "", s8 = "";
 		ArrayList<String> listOfStrings = new ArrayList<String>();
 		Drum drum;
+		int newCount = 0;
+		boolean end1 = false, end2 =false;
 		out.append(Drum.xmlDrumHeader(count));
 		//out.append(count + "\n");
 		while (myReader1.hasNextLine()) {
@@ -293,15 +295,20 @@ public class TablatureScanner extends StringInstrument {
 			String line = myReader1.nextLine();
 			if (line.contains("|") && line.contains("-") && !line.contains("REPEAT")) {
 				listOfStrings.add(line);
+				newCount++;
+				end1 = true;
+				end2 = false;
 				if (listOfStrings.isEmpty()) {
 					listOfStrings.clear();
 				}
+			}
+			else if (!line.contains("|") || !line.contains("-") || line.contains("REPEAT") && end1)
+				end2 = true;
 				
-//			if (line.contains("REPEAT")) {
-//				count--;
-//			}
+				
+				 if (end1 && end2) {
 			
-				else if (listOfStrings.size() == count) {
+//				else if (listOfStrings.size() == count) {
 					// || listOfStrings.size() == 6 || listOfStrings.size() == 7
 					
 					if (listOfStrings.size() == 3) {
@@ -338,7 +345,7 @@ public class TablatureScanner extends StringInstrument {
 						//out.append("Five\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, null, null, null));
 					}
-					else if(listOfStrings.size() == count || listOfStrings.size() == 6) {
+					else if(listOfStrings.size() == newCount || listOfStrings.size() == 6) {
 						s1 = (listOfStrings).get(0);
 						s2 = (listOfStrings).get(1);
 						s3 = (listOfStrings).get(2);
@@ -357,7 +364,7 @@ public class TablatureScanner extends StringInstrument {
 						//out.append("Six\n");
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, null, null));
 					}
-					else if(listOfStrings.size() == count || listOfStrings.size() == 7) {
+					else if(listOfStrings.size() == newCount || listOfStrings.size() == 7) {
 						s1 = (listOfStrings).get(0);
 						s2 = (listOfStrings).get(1);
 						s3 = (listOfStrings).get(2);
@@ -378,7 +385,7 @@ public class TablatureScanner extends StringInstrument {
 						drum = Drum.getDrum(s1,s2,s3,s4,s5,s6,s7);
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7, null));
 					}
-					else if(listOfStrings.size() == count || listOfStrings.size() == 8) {
+					else if(listOfStrings.size() == newCount || listOfStrings.size() == 8) {
 						s1 = (listOfStrings).get(0);
 						s2 = (listOfStrings).get(1);
 						s3 = (listOfStrings).get(2);
@@ -394,8 +401,10 @@ public class TablatureScanner extends StringInstrument {
 						out.append(drum.printDrumXML(s1, s2, s3, s4, s5, s6, s7, null));
 					}
 					listOfStrings.clear();
+					end1 = false;
+					end2 = false;
 				}
-			}
+
 		}
 		//setTemp(mCount);
 		//mCount = 0; //resets mCount
@@ -406,5 +415,4 @@ public class TablatureScanner extends StringInstrument {
 		myReader1.close();
 		return out.toString();
 	}
-
 }

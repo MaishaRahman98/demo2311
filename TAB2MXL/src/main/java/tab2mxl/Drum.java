@@ -230,12 +230,14 @@ public class Drum {
 		
 		for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|'); i++) {
 			ArrayList<Character> column = new ArrayList<Character>();
-			System.out.println(str2);
+			//System.out.println(str1);
 			column.add(str1.charAt(i));
 			column.add(str2.charAt(i));
 			column.add(str3.charAt(i));
-			column.add(str4.charAt(i));
-			if (str5 != null && str6 == null && str7 == null) {
+			if (str4 != null && str6 == null && str7 == null) {
+				column.add(str4.charAt(i));
+			}
+			else if (str5 != null && str6 == null && str7 == null) {
 				column.add(str5.charAt(i));
 			} else if (str5 != null && str6 != null && str7 == null) {
 				column.add(str5.charAt(i));
