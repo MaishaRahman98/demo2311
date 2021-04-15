@@ -13,14 +13,14 @@ public class TablatureScanner extends StringInstrument {
 	static String header;
 	public static int n = 1;
 	int co = 0;
-
+ 
 	public TablatureScanner(String text) {
 		this.text = text;
 		this.win = win;
 		this.header = header;
 
 	}
-	public String detect(String text){
+	public String detect(String text, int num1, int num2){
 		int count = 0;
 		String output = "";
 		String o = "";
@@ -41,13 +41,16 @@ public class TablatureScanner extends StringInstrument {
 			else if (!s.contains("|") && !s.contains("-") && s.contains(" ")) {
 				count = 0;
 			}
+			else if (s.contains("BEAT TYPE")) {
+				//
+			}
 		}
 		if (count == 4 || count == 5) {
-			output = TablatureScanner.callBassClass(text,count);
+			output = TablatureScanner.callBassClass(text,count,num1,num2);
 			//header = TablatureScanner.xmlHeader(count);
 			}
 		if (count == 6 || count == 7) {
-			output = TablatureScanner.callGuitarClass(text,count);
+			output = TablatureScanner.callGuitarClass(text,count,num1,num2);
 			
 		}
 		else if (count < 4 || count > 7 && count!= 0) {
@@ -76,7 +79,7 @@ public class TablatureScanner extends StringInstrument {
 //        return head.toString();
 //	}
 	
-	public static String callBassClass(String text,int count){
+	public static String callBassClass(String text,int count, int num1, int num2){
 		Scanner myReader = new Scanner(text);
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "";
 		StringBuilder out = new StringBuilder();
@@ -111,7 +114,7 @@ public class TablatureScanner extends StringInstrument {
 					if(listOfStrings.size() == count) {
 							bass = StringInstrument.getBass(s1,s2,s3,s4);
 							//out.append(bass.xmlHeader(count));
-							out.append((bass.printToXML(s1, s2, s3, s4, null, null, null)));
+							out.append((bass.printToXML(num1, num2, s1, s2, s3, s4, null, null, null)));
 					}
 					else if(listOfStrings.size() == count) {
 						s5 = (listOfStrings).get(4);
@@ -119,7 +122,7 @@ public class TablatureScanner extends StringInstrument {
 							s5 = "B"+s5;
 						}
 						bass = StringInstrument.getBass(s1,s2,s3,s4,s5);
-						out.append(bass.printToXML(s1, s2, s3, s4, s5, null, null));
+						out.append(bass.printToXML(num1, num2, s1, s2, s3, s4, s5, null, null));
 						
 					}
 					listOfStrings.clear();
@@ -133,7 +136,7 @@ public class TablatureScanner extends StringInstrument {
 	}
 
 	// guitar scanner
-	public static String callGuitarClass(String text,int count){
+	public static String callGuitarClass(String text,int count, int num1, int num2){
 		Scanner myReader1 = new Scanner(text);
 		StringBuilder out = new StringBuilder();
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
@@ -165,7 +168,7 @@ public class TablatureScanner extends StringInstrument {
 					}
 					if(listOfStrings.size() == count) {
 						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6);
-						out.append(guitar.printToXML(s1, s2, s3, s4, s5, s6, null));
+						out.append(guitar.printToXML(num1, num2, s1, s2, s3, s4, s5, s6, null));
 					}
 					else if(listOfStrings.size() == count) {
 						s7 = (listOfStrings).get(6);
@@ -173,7 +176,7 @@ public class TablatureScanner extends StringInstrument {
 							s7 = "B"+s7;
 						}
 						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6,s7);
-						out.append(guitar.printToXML(s1, s2, s3, s4, s5, s6, s7));
+						out.append(guitar.printToXML(num1, num2, s1, s2, s3, s4, s5, s6, s7));
 						
 					}
 					listOfStrings.clear();

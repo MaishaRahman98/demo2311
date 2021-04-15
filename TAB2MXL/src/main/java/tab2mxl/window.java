@@ -26,6 +26,8 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.Document;
 import javax.swing.undo.UndoManager;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 
@@ -56,7 +58,7 @@ public class window implements ActionListener{
 	private JScrollPane scrollPane;
 	private JMenuItem iNew, iOpen,iSave, iSaveAs, iExit;
 	public JMenuItem mntmNewMenuItem_Undo,mntmNewMenuItem_Redo;
-	public JTextArea textArea;
+	public static JTextArea textArea;
 	boolean wrap_on = false;
 	public JMenuItem mntmNewMenuItemwarp;
 	Functioncallfile file = new Functioncallfile(this);
@@ -200,6 +202,56 @@ public class window implements ActionListener{
 		btnNewButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 
 
+
+		JTextField timeSigBeats = new JTextField("4");
+		JTextField timeSigBeatType = new JTextField("4");
+		JLabel askTimeSig = new JLabel();
+		JLabel empty = new JLabel();
+		askTimeSig.setText("<html> <div style='text-align: center'> Preferred Time Signature</div></html>");
+		askTimeSig.setFont(new Font("Arial", Font.BOLD, 12));
+		askTimeSig.setBackground(Color.lightGray);
+		askTimeSig.setBounds(16, 210, 100,50);
+		askTimeSig.setOpaque(true);
+		empty.setText("<html> <div style='text-align: center'> ------------------ </div></html>");
+		empty.setBackground(Color.lightGray);
+		empty.setBounds(116, 210, 100,50);
+		empty.setOpaque(true);
+		timeSigBeats.setBounds(117,214,70,20);
+		timeSigBeatType.setBounds(117,238,70,20);
+		frame.getContentPane().add(askTimeSig);
+		frame.getContentPane().add(timeSigBeats);
+		frame.getContentPane().add(timeSigBeatType);
+		frame.getContentPane().add(empty);
+		
+		JTextField composerName = new JTextField("Composer Name");
+		JTextField songName = new JTextField("Song Name");
+		JLabel askComposerName = new JLabel();
+		JLabel askSongName = new JLabel();
+		JLabel blank = new JLabel();
+
+		askSongName.setText("<html> <div style='text-align: center'>Song Name</div></html>");
+		askSongName.setFont(new Font("Arial", Font.BOLD, 12));
+		askSongName.setBackground(Color.lightGray);
+		askSongName.setBounds(16, 120, 60,50);
+		askSongName.setOpaque(true);
+		askComposerName.setText("<html> <div style='text-align: center'>Composer Name</div></html>");
+		askComposerName.setFont(new Font("Arial", Font.BOLD, 12));
+		askComposerName.setBackground(Color.lightGray);
+		askComposerName.setBounds(16, 160, 60,50);
+		askComposerName.setOpaque(true);
+		blank.setText("<html> </html>");
+		blank.setBackground(Color.lightGray);
+		blank.setBounds(76, 120, 140,100);
+		blank.setOpaque(true);
+		songName.setBounds(80,134, 130,25);
+		composerName.setBounds(80,170,130,25);
+		frame.getContentPane().add(askComposerName);
+		frame.getContentPane().add(askSongName);
+		frame.getContentPane().add(songName);
+		frame.getContentPane().add(composerName);
+		frame.getContentPane().add(blank);
+		
+		
 		
 		btnNewButton_1 = new JButton("Translate");
 		btnNewButton_1.setBounds(119, 385, 116, 36);
@@ -208,7 +260,7 @@ public class window implements ActionListener{
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				file.translate();
+				file.translate(timeSigBeats.getText(),timeSigBeatType.getText(), songName.getText(), composerName.getText());
 			}
 		});
 				
@@ -287,22 +339,27 @@ public class window implements ActionListener{
 				frame.getContentPane().add(btnNewButton_2);
 				frame.getContentPane().add(scrollPane_1);
 				
-				JComboBox comboBox = new JComboBox();
-				comboBox.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String feeback = (String)comboBox.getSelectedItem();
-						textArea.setText(feeback);
-						window.mean(feeback);
-					}
-				});
-				comboBox.setForeground(Color.PINK);
-				comboBox.setBounds(36, 247, 116, 36);
-				frame.getContentPane().add(comboBox);
-				comboBox.addItem("1/4");
-				comboBox.addItem("2/4");
-				comboBox.addItem("3/4");
-				comboBox.addItem("4/4");
-				comboBox.setSelectedItem(null);
+				
+				
+
+				
+			
+//				JComboBox comboBox = new JComboBox();
+//				comboBox.addActionListener(new ActionListener() {
+//					public void actionPerformed(ActionEvent e) {
+//						String feeback = (String)comboBox.getSelectedItem();
+//						textArea.setText(feeback);
+//						window.mean(feeback);
+//					}
+//				});
+//				comboBox.setForeground(Color.PINK);
+//				comboBox.setBounds(36, 247, 116, 36);
+//				frame.getContentPane().add(comboBox);
+//				comboBox.addItem("1/4");
+//				comboBox.addItem("2/4");
+//				comboBox.addItem("3/4");
+//				comboBox.addItem("4/4");
+//				comboBox.setSelectedItem(null);
 //				String feeback = (String)comboBox.getSelectedItem();
 //				textArea.setText(feeback);
 				
@@ -313,6 +370,7 @@ public class window implements ActionListener{
 				btnNewButton_3.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						file.edit();
+						
 					}
 				});
 				

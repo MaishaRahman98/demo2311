@@ -10,6 +10,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.WindowConstants;
+
 public class Functioncallfile {
 
 	window win;
@@ -174,7 +176,7 @@ public class Functioncallfile {
 		}
 	}
 	//============================================
-	public void translate() {
+	public void translate(String num1, String num2, String songName, String composerName) {
 		String textext = win.textArea.getText();
 		boolean em = win.textArea.getText().isEmpty();
 		if (em!=false) {
@@ -195,8 +197,10 @@ public class Functioncallfile {
 			win.textArea.setText(null);
 			BufferedReader firstbf;
 			try {
+				int timeSig = Integer.parseInt(num1);
+				int timeSigBeat = Integer.parseInt(num2);
 				this.userOrgInput = text;
-				firstbf = new BufferedReader(new FileReader(musicFile.createFile(text)));
+				firstbf = new BufferedReader(new FileReader(musicFile.createFile(text,timeSig,timeSigBeat,songName, composerName)));
 				win.textArea.setText("");
 				String newtext = null;
 				while ((newtext = firstbf.readLine())!=null) {
@@ -206,6 +210,10 @@ public class Functioncallfile {
 			}  catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			
+			catch (NumberFormatException e){
+				yeah.outputMessage("num error");
 			}
 
 		}
@@ -219,6 +227,7 @@ public class Functioncallfile {
 			win.textArea.append(this.userOrgInput);
 
 	}
+	
 	//============================================blow is color
 	public void changecolor(String color) {
 		switch(color) {
@@ -262,7 +271,8 @@ public class Functioncallfile {
 	
 	public void edit() {
 		Editmeansure em = new Editmeansure(filename);
-		em.frame.setVisible(true);
+		em.initialize();
+		em.dialogBox.setVisible(true);
 	}
 }
 

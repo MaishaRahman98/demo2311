@@ -16,8 +16,11 @@ public class outputFile {
 
 	}
 
-	public String createFile(String text) {
-		xml = ts.detect(text);
+	public String createFile(String text, int num1, int num2, String songName, String composerName) {
+		StringBuilder metaData = new StringBuilder();
+//		metaData.append();
+		xml += metaData.toString();
+		xml += ts.detect(text,num1,num2);
 		try {
 			File myObj = new File("newfile.txt");
 			FileWriter myWriter = new FileWriter("newfile.txt",false);

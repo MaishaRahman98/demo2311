@@ -10,6 +10,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -22,7 +23,8 @@ import javax.swing.ScrollPaneConstants;
 
 public class Editmeansure {
 	public static String name;
-	public JFrame frame;
+	public JDialog dialogBox;
+	public String userChange;
 
 	/**
 	 * Launch the application.
@@ -32,7 +34,7 @@ public class Editmeansure {
 			public void run() {
 				try {
 					Editmeansure window = new Editmeansure(name);
-					window.frame.setVisible(true);
+					window.dialogBox.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -44,19 +46,19 @@ public class Editmeansure {
 	 * Create the application.
 	 */
 	public void close() {
-		WindowEvent closeWindow = new WindowEvent(this.frame, WindowEvent.WINDOW_CLOSING);
+		WindowEvent closeWindow = new WindowEvent(this.dialogBox, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
 	}
 	
 	public Editmeansure(String name) {
 		this.name = name;
-		initialize();
+//		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	void initialize() {
 		Font Monospaced;
 		Monospaced = new Font("Monospaced",Font.PLAIN, 12);
 		JTextField userNum;
@@ -64,18 +66,18 @@ public class Editmeansure {
 		Edit output = new Edit(name);
 		int x = 100;
 		int y = 100;
-		frame = new JFrame();
-		frame.setResizable(false);
-		frame.setBounds(x, y, 500, 500);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		dialogBox = new JDialog();
+		dialogBox.setResizable(false);
+		dialogBox.setBounds(x, y, 500, 500);
+		dialogBox.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		dialogBox.getContentPane().setLayout(null);
 		askUser = new JLabel();
 		askUser.setText("Please enter a measure number to edit: ");
 		askUser.setBounds(x-30, y-50, 250, 30);
 		userNum = new JTextField("");
 		userNum.setBounds(x + 200, y-50, 80, 30);
-		frame.getContentPane().add(askUser);
-		frame.getContentPane().add(userNum);
+		dialogBox.getContentPane().add(askUser);
+		dialogBox.getContentPane().add(userNum);
 		
 		JScrollPane scrollPane = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
 		ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -90,7 +92,7 @@ public class Editmeansure {
 		scrollPane.getHorizontalScrollBar().setBackground(Color.gray);
 		
 		scrollPane.setViewportView(userMeasure);
-		frame.getContentPane().add(scrollPane);
+		dialogBox.getContentPane().add(scrollPane);
 		userMeasure.setFont(Monospaced);
 		
 		
@@ -104,10 +106,10 @@ public class Editmeansure {
 		userBeatSignature.setBounds(x+140,y+265,30,20);
 		askBeatTypeSig.setBounds(x-50,y+290,200,30);
 		userBeatTypeSignature.setBounds(x+110,y+295,30,20);
-		frame.getContentPane().add(askBeatSig);
-		frame.getContentPane().add(askBeatTypeSig);
-		frame.getContentPane().add(userBeatTypeSignature);
-		frame.getContentPane().add(userBeatSignature);
+		dialogBox.getContentPane().add(askBeatSig);
+		dialogBox.getContentPane().add(askBeatTypeSig);
+		dialogBox.getContentPane().add(userBeatTypeSignature);
+		dialogBox.getContentPane().add(userBeatSignature);
 		
 		
 //		JComboBox comboBox = new JComboBox();
@@ -130,17 +132,21 @@ public class Editmeansure {
 			}
 		});
 		btnNewButton2.setBounds(x+285, y-45, 93, 23);
-		frame.getContentPane().add(btnNewButton2);
+		dialogBox.getContentPane().add(btnNewButton2);
 		
 		JButton btnNewButton3 = new JButton("Convert Again");
 		btnNewButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String value = userMeasure.getText();
-				userMeasure.setText(output.returnNewTab(value));
+				userChange = output.returnNewTab(value);
+				userMeasure.setText("");
+				userMeasure.setText(userChange);
+				window.textArea.setText(userChange);
+				close();
 			}
 		});
 		btnNewButton3.setBounds(x+90, y+330, 103, 33);
-		frame.getContentPane().add(btnNewButton3);
+		dialogBox.getContentPane().add(btnNewButton3);
 //		JButton btnNewButton_1 = new JButton("Cancel");
 //		btnNewButton_1.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
@@ -156,4 +162,6 @@ public class Editmeansure {
 //		frame.getContentPane().add(lblNewLabel);
 		
 	}
+	
+	
 }

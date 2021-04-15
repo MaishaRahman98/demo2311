@@ -229,7 +229,7 @@ public class StringInstrument {
 	}
 
 	// Prints bass or guitar tab in xml format:
-	public String printToXML(String str1, String str2, String str3, String str4, String str5, String str6,
+	public String printToXML(int beat, int beatType, String str1, String str2, String str3, String str4, String str5, String str6,
 			String str7) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
@@ -257,7 +257,7 @@ public class StringInstrument {
 		String noteType = "";
 		int x = 0,y = 0;
 		boolean graceToken = false;
-		int beat = 4, beatType = 4;
+//		int beat = 4, beatType = 4;
 		//double durMes = beat * (1 / beatType);
 		int total = 0;
 		boolean rep = false;

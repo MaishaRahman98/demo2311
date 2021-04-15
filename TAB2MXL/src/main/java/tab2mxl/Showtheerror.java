@@ -24,5 +24,10 @@ public class Showtheerror {
 	    		JOptionPane.showMessageDialog(parent,"Sorry, It already is a xml");
 	    		parent.setVisible(false);
 	    	}
+	    	
+	    	if (problem.equals("num error")) {
+	    		JOptionPane.showMessageDialog(parent,"Sorry, the time signature is not a number, please try again");
+	    		parent.setVisible(false);
+	    	}
 	    }
 }
