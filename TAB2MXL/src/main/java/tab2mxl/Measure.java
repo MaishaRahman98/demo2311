@@ -90,7 +90,7 @@ public class Measure {
 			return noteMeasure;
 		} 
 		else if (instrumentType.equals("drum")) {
-			noteMeasure = Notes.drumNotes(strNum, fret);
+			noteMeasure = Notes.drumNotes(strNum);
 			return noteMeasure;
 		} else {
 			return noteMeasure;
@@ -107,7 +107,7 @@ public class Measure {
 			octaveMeasure = Notes.guitarOctave(strNum, fret);
 			return octaveMeasure;
 		}else if (instrumentType.equals("drum")) {
-			octaveMeasure = Notes.drumOctave(strNum, fret);
+			octaveMeasure = Notes.drumOctave(strNum);
 			return octaveMeasure;
 		}
 		else {

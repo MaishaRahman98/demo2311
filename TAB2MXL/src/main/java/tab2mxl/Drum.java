@@ -352,8 +352,8 @@ public class Drum {
 							}
 							
 							//Nabaa needs to implement drumNotes and drumOctave methods in Notes class
-							note = Notes.drumNotes("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
-							octave = Notes.drumOctave("String" + String.valueOf(stringNum) ,Character.getNumericValue(fret));
+							note = Notes.drumNotes("String" + String.valueOf(stringNum));
+							octave = Notes.drumOctave("String" + String.valueOf(stringNum));
 							
 							instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
 							
