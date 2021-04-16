@@ -33,6 +33,7 @@ Music XML Converter is designed to translate guitar, bass, and drum tablature to
 - Supports Bass, Guitar, and Drums tablatures. 
 
 ### Guides:
+- Please refer to the Tablatures Folder with examples of acceptable text tablatures.
 - A complete User Manual is available for download. It is available on the peerScholar website or by this link: 
 https://docs.google.com/document/d/11qnYmFJCw-nILIEpQRodOPCwSoYVgEUgQ-sIqxTE7V4/edit?usp=sharing
 - Video: https://drive.google.com/file/d/1od-uFQz56az2wgBGw4dp7sMfGSxWE1tr/view?usp=sharing
