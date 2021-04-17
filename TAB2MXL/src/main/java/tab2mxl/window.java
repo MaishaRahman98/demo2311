@@ -71,38 +71,7 @@ public class window implements ActionListener{
 	boolean quit;
 	static String mean = "";
 	UndoManager um = new UndoManager(); //=========undo and redo
-//	Editmeansure un = new Editmeansure("");
 
-	//=========undo and redo
-//	private Document editorPaneDocument;
-//	protected UndoHandler undoHandler = new UndoHandler();
-//	protected UndoManager undoManager = new UndoManager();
-//	private UndoAction undoAction = null;
-//	private RedoAction redoAction = null;
-	//=========
-	
-	
-	//==========================================================
-	StringInstrument stringin = new StringInstrument();
-	public JOptionPane ooo;
-//	Bass bassin = new Bass();
-	//==========================================================
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					window window = new window();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-
-//	}
 
 
 	public static void main(String[] args) {
@@ -131,34 +100,7 @@ public class window implements ActionListener{
 		frame.setVisible(true);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-//	private void beforeinitialize() {
-//		
-//		frame = new JFrame();
-//		frame.setBackground(Color.BLACK);
-//		frame.setBounds(100, 100, 590, 428);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		
-//		JPanel panel = new JPanel();
-//		frame.getContentPane().add(panel, BorderLayout.CENTER);
-//		panel.setLayout(null);
-//		
-//		JButton btnNewButton_2 = new JButton("New button");
-//		btnNewButton_2.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				
-//				initialize();
-//				close();
-//				
-//			}
-//		});
-//		btnNewButton_2.setBounds(229, 172, 93, 23);
-//		panel.add(btnNewButton_2);
-//		
-//	}
-	/////////////////////////////////////////////////////////
+	
 	public void close() {
 		WindowEvent closeWindow = new WindowEvent(this.frame, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
@@ -171,12 +113,7 @@ public class window implements ActionListener{
 		frame = new JFrame();
 //		JFrame f = new JFrame();
 		
-//		try {
-//			frame.getContentPane().add(new overridepiant("sample.jpeg"));
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
+
 		
 		frame.getContentPane().setForeground(new Color(75, 0, 130));
 		frame.setBackground(SystemColor.activeCaption);
@@ -216,34 +153,17 @@ public class window implements ActionListener{
 			}
 		});
 				
-				//Maisha
-//				textArea.setBorder(null);
-//				textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
-//				textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
-//				scrollPane_1.setViewportView(textArea);
-//				
-//				//Image img = new ImageIcon(this.getClass().getResource("/background.jpeg")).getImage();
-//
-////				JLabel lblNewLabel = new JLabel(new ImageIcon("background.jpeg")); //old maisha version
-//////				frame.setContentPane(lblNewLabel);
-//
-//				JLabel lblNewLabel = new JLabel(new ImageIcon(img));
-
-				//From Lars branch:
+			
+			
 				Image img = new ImageIcon(this.getClass().getResource("/789.png")).getImage();
 				//
-//				JLabel lblNewLabel = new JLabel("");
-//				lblNewLabel.setForeground(Color.ORANGE);
-//				lblNewLabel.setBackground(Color.ORANGE);
+
 				
 				JButton btnNewButton_2 = new JButton("SaveAs");
 				btnNewButton_2.setBounds(36, 481, 116, 33);
 				btnNewButton_2.addActionListener(this);
 				btnNewButton_2.setActionCommand("SaveAs");
-//				btnNewButton_2.addActionListener(new ActionListener() {
-//					public void actionPerformed(ActionEvent e) {
-//					}
-//				});
+
 				btnNewButton_2.setBackground(Color.BLACK);
 				btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD, 14));
 				btnNewButton_2.setForeground(new Color(0, 191, 255));
@@ -258,22 +178,7 @@ public class window implements ActionListener{
 						scrollPane_1.getVerticalScrollBar().setBorder(null);
 						scrollPane_1.getVerticalScrollBar().setBackground(Color.gray);
 						scrollPane_1.getHorizontalScrollBar().setBackground(Color.gray);
-						//===================================================================================================cannot use window builder	
-						//		scrollPane_1.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
-						//		    @Override
-						//		    protected void configureScrollBarColors() {
-						////		        this.thumbColor = Color.DARK_GRAY;
-						//		        this.thumbColor = Color.black;
-						//		    }
-						//		});
-						//		scrollPane_1.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
-						//		    @Override
-						//		    protected void configureScrollBarColors() {
-						////		        this.thumbColor = Color.DARK_GRAY;
-						//		    	this.thumbColor = Color.black;
-						//		    }
-						//		});
-						//===================================================================================================cannot use window builder	
+						
 								textArea = new JTextArea();
 								textArea.getDocument().addUndoableEditListener(
 										new UndoableEditListener() {
@@ -281,21 +186,13 @@ public class window implements ActionListener{
 												um.addEdit(e.getEdit());
 											}
 										});
-								
-//		editorPaneDocument=textArea.getDocument();
-//		editorPaneDocument.addUndoableEditListener(undoHandler);
-								
+
 								textArea.addKeyListener(sc);
 								textArea.setForeground(Color.WHITE);
 								textArea.setBackground(new Color(0, 0, 0));
 								textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
 								textArea.setCaretColor(Color.pink);
-								//		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
-								//		System.setOut(printStream);
-								//		System.setErr(printStream);
-										
-								//				PrintStream printStream1 = new PrintStream(new CustomOutputStream(textArea));
-												
+							
 												
 												textArea.setBorder(null);
 												textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
@@ -323,9 +220,7 @@ public class window implements ActionListener{
 				comboBox.addItem("3/4");
 				comboBox.addItem("4/4");
 				comboBox.setSelectedItem(null);
-//				String feeback = (String)comboBox.getSelectedItem();
-//				textArea.setText(feeback);
-				
+
 				JButton btnNewButton_3 = new JButton("Edit");
 				btnNewButton_3.setFont(new Font("Times New Roman", Font.BOLD, 14));
 				btnNewButton_3.setBackground(Color.BLACK);
@@ -617,14 +512,6 @@ public class window implements ActionListener{
 		mnNewMenu_2.add(icolor4);
 		icolor4.addActionListener(this);
 		icolor4.setActionCommand("Blue");
-//		scrollPane = new JScrollPane(textArea1, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-//		frame.getContentPane().add(scrollPane);
-//		textAreanum1 = new JTextArea();
-//		textAreanum1.setBounds(1, 1, 110, 24);
-//		frame.getContentPane().add(textAreanum1);
-//		scrollPane = new JScrollPane(textAreanum1, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-//		frame.getContentPane().add(scrollPane);
-		
 	}
 
 	@Override
@@ -662,4 +549,3 @@ public class window implements ActionListener{
 		mean = ni;
 	}
 }
-

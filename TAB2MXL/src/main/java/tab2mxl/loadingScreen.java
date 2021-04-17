@@ -2,12 +2,11 @@ package tab2mxl;
 import java.awt.*;
 
 import javax.swing.*;
-
-// push
+// updated
 public class loadingScreen {
 	// push
     JFrame frame;
-    JLabel background=new JLabel(new ImageIcon("loadingScreenImage.gif"));
+    JLabel background=new JLabel(new ImageIcon("MusicXML_logo.gif"));
     JProgressBar progressBar=new JProgressBar();
     JLabel message=new JLabel();
     loadingScreen()

@@ -52,8 +52,13 @@ class BassTest {
 	@Test
 	void testString1() {
 		String actualS1 = b5.getStr1();
+<<<<<<< HEAD
+		String expectedS1 = "String 1";
+		assertEquals(expectedS1, actualS1, "The string should be String 1 because that is the first argument being passed to getInstance.");
+=======
 		String expectedS1 = s1;
 		assertEquals(expectedS1, actualS1, "The string should be s1 because that is the first argument being passed to getInstance.");
+>>>>>>> refs/heads/Dev1
 	}
 
 }

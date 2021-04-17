@@ -49,7 +49,7 @@ public class Notes {
 		return mainNotes[fret];
 		}
 		else if(stringNum.equals("String3")) {
-			fret+=3;
+			fret+=2;
 			while (fret > 12)
 				fret = fret - 12;
 		return mainNotes[fret];
@@ -213,30 +213,30 @@ public class Notes {
 //		}
 //	}
 	//from Nabaa's branch:
-	public static String drumNotes(String stringNum, int fret) {
-		if(stringNum.equals("String1")) { //crash cymbal
-			
-			return mainNotes[5];
-
-		}
-		else if(stringNum.equals("String2")) { //Hi Hat
-			
-			return mainNotes[3];
-		}
-		else if(stringNum.equals("String3")) { // Snare Drum 
-			
-			return mainNotes[8];
-		}
-		else if(stringNum.equals("String4")) { //High Tom
-			
-		return mainNotes[0];
-		}
-		else if(stringNum.equals("String5")) { //Mid Tom
-			return mainNotes[10];
-		}
-		else {// if(stringNum.equals("String6")) { //Snare Drum
-			return mainNotes[1];
-		}
+//	public static String drumNotes(String stringNum, int fret) {
+//		if(stringNum.equals("String1")) { //crash cymbal
+//			
+//			return mainNotes[5];
+//
+//		}
+//		else if(stringNum.equals("String2")) { //Hi Hat
+//			
+//			return mainNotes[3];
+//		}
+//		else if(stringNum.equals("String3")) { // Snare Drum 
+//			
+//			return mainNotes[8];
+//		}
+//		else if(stringNum.equals("String4")) { //High Tom
+//			
+//		return mainNotes[0];
+//		}
+//		else if(stringNum.equals("String5")) { //Mid Tom
+//			return mainNotes[10];
+//		}
+//		else {// if(stringNum.equals("String6")) { //Snare Drum
+//			return mainNotes[1];
+//		}
 //		if(stringNum.equals("String1") || stringNum.equals("String6") ) {
 //			while (fret > 12)
 //				fret = fret - 12;
@@ -271,8 +271,47 @@ public class Notes {
 //				fret = fret - 12;
 //			return mainNotes[fret];
 //		}
+	//}
+//<<<<<<< HEAD
+//	public static int drumOctave(String stringNum, int fret) {
+//=======
+	//"E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"}
+	public static String drumNotes(String stringNum) {
+		if(stringNum.equals("String1")) { //crash cymbal
+			
+		return mainNotes[5];
+
+			}
+		else if(stringNum.equals("String2")) { //Hi Hat
+			
+			return mainNotes[3];
+		}
+		else if(stringNum.equals("String3")) { // Snare Drum 
+			
+			return mainNotes[8];
+		}
+		else if(stringNum.equals("String4")) { //High Tom
+			
+		return mainNotes[0];
+		}
+		else if(stringNum.equals("String5")) { //Mid Tom
+			return mainNotes[10];
+		}
+		else // if(stringNum.equals("String6")) { //Snare Drum
+			return mainNotes[1];
+		
 	}
-	public static int drumOctave(String stringNum, int fret) {
+	//	else if(stringNum.equals("String7")) { //Floor Tom
+//			return mainNotes[10];
+	//	}
+		//else  { //Bass Drum
+	//		return mainNotes[10];
+		//}
+		
+	//}
+	//"E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E"}
+	public static int drumOctave(String stringNum) {
+
 		if(stringNum.equals("String1")){
 			return 5;
 		}
@@ -356,16 +395,6 @@ public class Notes {
 //		}
 	}
 	public static String drumInstrument(String stringNum, char fret) {
-//		if(stringNum.equals("String1") && fret == 'x') {
-//			return "P1-150";//Crash Cymbal 1
-//		}
-//		if(stringNum.equals("String2") && fret == 'x') {
-//			return "P1-I43"; //closed hi-hat
-//		}
-//		else if (stringNum.equals("String2") && fret == 'X') {
-//			return "P1-I47"; //open hi-hat
-//		}
-//		return "";
 		if(stringNum.equals("String1") && fret == 'x') {
 			return "P1-150";//Crash Cymbal 1
 		}
@@ -394,6 +423,9 @@ public class Notes {
 	   
 	   
 	 return "";
+		
+		
+		
 		
 	}
 }
