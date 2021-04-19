@@ -20,7 +20,7 @@ public class outputFile {
 		xml = ts.detect(text);
 		try {
 			File myObj = new File("newfile.txt");
-			FileWriter myWriter = new FileWriter("newfile.txt");
+			FileWriter myWriter = new FileWriter("newfile.txt",false);
 			myWriter.write(xml);
 			myWriter.close();
 			//System.out.println("file made");

@@ -105,19 +105,29 @@ public class TablatureScanner
             			if (myReader1.hasNextLine())
             			line = myReader1.nextLine();
             			
-            			if (line.startsWith("B|"))
+            			if (line.startsWith("E|"))
             			{
+<<<<<<< HEAD
+            				s6 = line;
+            				StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6);
+=======
             				s7 = line;
             				guitar = StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6, s7);
             				//guitar.printTab();
             				guitar.printToXML(s1, s2, s3, s4, s5, s6, s7);
+>>>>>>> refs/heads/Dev1
             				break;
             			}
             			else
             			{
+<<<<<<< HEAD
+            				s7 = line;
+            				StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6, s7);
+=======
             				guitar = StringInstrument.getGuitar(s1, s2, s3, s4, s5, s6);
             				//guitar.printTab();
             				guitar.printToXML(s1, s2, s3, s4, s5, s6, null);
+>>>>>>> refs/heads/Dev1
             				break;
             			}
             		    }
