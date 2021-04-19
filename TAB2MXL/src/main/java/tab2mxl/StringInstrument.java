@@ -10,6 +10,7 @@ public class StringInstrument {
 	private static String str5;
 	private static String str6;
 	private static String str7;
+	int indexOfMeasure = 0;
 	int measureCount = 0;
 	int hammerCount = 0;
 	int pullOffCount = 0;
@@ -85,7 +86,7 @@ public class StringInstrument {
 
 	}
 
-	public static String xmlHeader(int c) {
+	public static String xmlHeader(int beats, int beatType, int c) {
 		String instrument = "";
 		StringBuilder head = new StringBuilder();
 		if (c == 4 || c == 5) {
@@ -112,8 +113,8 @@ public class StringInstrument {
 		head.append("                <fifths>0</fifths>\n");
 		head.append("                </key>\n");
 		head.append("            <time>\n");
-		head.append("                <beats>4</beats>\n");
-		head.append("                <beat-type>4</beat-type>\n");
+		head.append("                <beats>"+beats+"</beats>\n");
+		head.append("                <beat-type>"+beatType+"</beat-type>\n");
 		head.append("            </time>\n");
 		head.append("            <clef>\n");
 		head.append("               <sign>TAB</sign>\n");
@@ -229,7 +230,7 @@ public class StringInstrument {
 	}
 
 	// Prints bass or guitar tab in xml format:
-	public String printToXML(int beat, int beatType, String str1, String str2, String str3, String str4, String str5, String str6,
+	public String printToXML(ArrayList<Integer> measureForChange, ArrayList<Integer> timeSigTops, ArrayList<Integer> timeSigBottoms, int beat, int beatType, String str1, String str2, String str3, String str4, String str5, String str6,
 			String str7) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
@@ -237,7 +238,6 @@ public class StringInstrument {
 		boolean DD = false; //double digit
 //		String string = "";
 //		String output = "";
-//		int spaceCount = 0;
 		ArrayList<String> legatoValue = new ArrayList<String>();
 		boolean legatoCheck = false;
 		boolean legatoStop = false;
@@ -247,8 +247,7 @@ public class StringInstrument {
 		String text = "";
 		int fret = 0;
 		int stringNum = 0;
-		String[] allStrings = { str1, str2, str3, str4, str5, str6, str7 };
-//		String name;
+		//		String name;
 		int octave = 0;
 		int numMeasureCount = 1;
 		int counter = 0;
@@ -458,7 +457,17 @@ public class StringInstrument {
 						else
 							body.append(" <duration>" +  1 + "</duration>\n");
 						body.append(" <voice>1</voice>\n");
-						body.append(" <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType)+ "</type>\n");
+		
+						if (measureForChange.size()>0 && mCount == measureForChange.get(indexOfMeasure)) {
+							body.append(" <type>" + measure.getDuration(counter + 1 ,total ,timeSigTops.get(indexOfMeasure) , timeSigBottoms.get(indexOfMeasure) )+ "</type>\n");
+
+						}
+						else {
+							body.append(" <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType)+ "</type>\n");
+						}
+						if (measureForChange.size()>0 && indexOfMeasure+1 < measureForChange.size() && mCount == measureForChange.get(indexOfMeasure+1)) {
+							indexOfMeasure++;
+						}
 						body.append(" <notations>\n");
 						body.append("  <technical>\n");
 						body.append("   <string>" + stringNum + "</string>\n");
@@ -607,6 +616,7 @@ public class StringInstrument {
 		this.measureCount = 0;
 		this.hammerCount = 0;
 		this.pullOffCount = 0;
+		this.indexOfMeasure = 0;
 		this.type = ' ';
 		this.mCount = 0;
 		this.c = 0;

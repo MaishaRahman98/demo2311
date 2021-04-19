@@ -25,6 +25,7 @@ public class Editmeansure {
 	public static String name;
 	public JDialog dialogBox;
 	public String userChange;
+	Showtheerror showError = new Showtheerror();
 
 	/**
 	 * Launch the application.
@@ -96,20 +97,21 @@ public class Editmeansure {
 		userMeasure.setFont(Monospaced);
 		
 		
-		JTextField userBeatSignature = new JTextField("");
-		JLabel askBeatSig = new JLabel();
-		JTextField userBeatTypeSignature = new JTextField("");
-		JLabel askBeatTypeSig = new JLabel();
-		askBeatSig.setText("Please enter the amount of beats:");
-		askBeatTypeSig.setText("Please enter the beat type:");
-		askBeatSig.setBounds(x-50,y+260,200,30);
-		userBeatSignature.setBounds(x+140,y+265,30,20);
-		askBeatTypeSig.setBounds(x-50,y+290,200,30);
-		userBeatTypeSignature.setBounds(x+110,y+295,30,20);
-		dialogBox.getContentPane().add(askBeatSig);
-		dialogBox.getContentPane().add(askBeatTypeSig);
-		dialogBox.getContentPane().add(userBeatTypeSignature);
-		dialogBox.getContentPane().add(userBeatSignature);
+		JTextField sigTop = new JTextField("");
+		JLabel askTimeSig = new JLabel();
+		JLabel timeSigLabel = new JLabel();
+		JTextField sigBottom = new JTextField("");
+		askTimeSig.setText("<html>If you would like to change the time signature<br> Please enter the new time signature below");
+		timeSigLabel.setText("<html>------------");
+		timeSigLabel.setFont(new Font("Arial", Font.BOLD, 16));
+		askTimeSig.setBounds(x-40,y+240,250,60);
+		timeSigLabel.setBounds(x-30,y+280,250,60);
+		sigTop.setBounds(x-20,y+290,40,20);
+		sigBottom.setBounds(x-20,y+315,40,20);
+		dialogBox.getContentPane().add(askTimeSig);
+		dialogBox.getContentPane().add(sigBottom);
+		dialogBox.getContentPane().add(sigTop);
+		dialogBox.getContentPane().add(timeSigLabel);
 		
 		
 //		JComboBox comboBox = new JComboBox();
@@ -128,7 +130,7 @@ public class Editmeansure {
 				String value = userNum.getText();
 				userMeasure.setLineWrap(false);
 				userMeasure.setWrapStyleWord(true);
-				userMeasure.setText(output.outputMeasure(Integer.parseInt(value)));
+				userMeasure.setText(output.outputMeasure(value+" "));
 			}
 		});
 		btnNewButton2.setBounds(x+285, y-45, 93, 23);
@@ -137,12 +139,22 @@ public class Editmeansure {
 		JButton btnNewButton3 = new JButton("Convert Again");
 		btnNewButton3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String value = userMeasure.getText();
-				userChange = output.returnNewTab(value);
+			try {
+				int topSigNum = Integer.parseInt(sigTop.getText());
+				int bottomSigNum = Integer.parseInt(sigBottom.getText());
+				String newEditTab = userMeasure.getText();
+				System.out.println(newEditTab);
+				userChange = output.returnNewTab(newEditTab, topSigNum, bottomSigNum);
 				userMeasure.setText("");
-				userMeasure.setText(userChange);
+				window.textArea.setText("");
 				window.textArea.setText(userChange);
+				output.resetGlobal();
 				close();
+				}
+			catch (NumberFormatException e1){
+				showError.outputMessage("num error");
+			}
+				
 			}
 		});
 		btnNewButton3.setBounds(x+90, y+330, 103, 33);

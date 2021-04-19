@@ -18,7 +18,8 @@ public class outputFile {
 
 	public String createFile(String text, int num1, int num2, String songName, String composerName) {
 		StringBuilder metaData = new StringBuilder();
-//		metaData.append();
+		metaData.append("<work-title>"+songName+"</work-title>\n");
+		metaData.append("<creator type=\"composer\">"+composerName+"</creator>\n");
 		xml += metaData.toString();
 		xml += ts.detect(text,num1,num2);
 		try {

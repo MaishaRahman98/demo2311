@@ -86,14 +86,54 @@ public class TablatureScanner extends StringInstrument {
 		Bass bass;
 		ArrayList<String> listOfStrings = new ArrayList<String>();
 		int counter = 0;
-		out.append(xmlHeader(count));
-		
+		out.append(xmlHeader(num1, num2, count));
+		ArrayList<Integer> measureForChange = new ArrayList<Integer>();
+		ArrayList<Integer> timeSigTops = new ArrayList<Integer>();
+		ArrayList<Integer> timeSigBottoms = new ArrayList<Integer>();
 //		while (myReader.hasNextLine()) {
 //			  counter++;
 //			  myReader.nextLine();
 //			}
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
+			String tmp = "";
+			String tmp1 = "";
+			String tmp2 = "";
+			int x = 1;
+			if (line.contains("Time signature for measure")) {
+				for(int i = 0; i < line.length();i++) {
+					if (line.charAt(i) == '*' && Character.isDigit(line.charAt(i+1))) {
+						while(line.charAt(i+1)!='*') {
+							tmp+=line.charAt(i+1);
+							i++;
+						}
+					}
+					if (line.charAt(i) == '/') {
+						while(line.charAt(i-x) != ' ' && line.charAt(i) =='/') {
+							tmp1 = line.charAt(i-x) + tmp1;
+							x++;
+						}
+
+						while(line.charAt(i+1) != ' ') {
+							tmp2+= line.charAt(i+1);
+//							System.out.println(tmp2);
+							i++;
+						}
+	
+					}
+				}
+				measureForChange.add(Integer.parseInt(tmp));
+				timeSigTops.add(Integer.parseInt(tmp1));
+				timeSigBottoms.add(Integer.parseInt(tmp2));
+//				System.out.println(measureForChange);
+//				System.out.println(timeSigTops);
+//				System.out.println(timeSigBottoms);
+				x = 0;
+				tmp="";
+				tmp1="";
+				tmp2="";
+				
+			}
 			if ((line.contains("|") && line.contains("-"))) {
 				listOfStrings.add(line);
 				if (listOfStrings.isEmpty()) {
@@ -114,7 +154,7 @@ public class TablatureScanner extends StringInstrument {
 					if(listOfStrings.size() == count) {
 							bass = StringInstrument.getBass(s1,s2,s3,s4);
 							//out.append(bass.xmlHeader(count));
-							out.append((bass.printToXML(num1, num2, s1, s2, s3, s4, null, null, null)));
+							out.append((bass.printToXML(measureForChange, timeSigTops,timeSigBottoms, num1, num2, s1, s2, s3, s4, null, null, null)));
 					}
 					else if(listOfStrings.size() == count) {
 						s5 = (listOfStrings).get(4);
@@ -122,7 +162,7 @@ public class TablatureScanner extends StringInstrument {
 							s5 = "B"+s5;
 						}
 						bass = StringInstrument.getBass(s1,s2,s3,s4,s5);
-						out.append(bass.printToXML(num1, num2, s1, s2, s3, s4, s5, null, null));
+						out.append(bass.printToXML(measureForChange, timeSigTops,timeSigBottoms, num1, num2, s1, s2, s3, s4, s5, null, null));
 						
 					}
 					listOfStrings.clear();
@@ -141,16 +181,57 @@ public class TablatureScanner extends StringInstrument {
 		StringBuilder out = new StringBuilder();
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
 		ArrayList<String> listOfStrings = new ArrayList<String>();
-		out.append(xmlHeader(count));
+		out.append(xmlHeader(num1, num2, count));
+		int timeSigTop = 0;
+		int timeSigBottom = 0;
 		Guitar guitar;
+		ArrayList<Integer> measureForChange = new ArrayList<Integer>();
+		ArrayList<Integer> timeSigTops = new ArrayList<Integer>();
+		ArrayList<Integer> timeSigBottoms = new ArrayList<Integer>();
 		while (myReader1.hasNextLine()) {
 			String line = myReader1.nextLine();
+			String tmp = "";
+			String tmp1 = "";
+			String tmp2 = "";
+			int x = 1;
+			if (line.contains("Time signature for measure")) {
+				for(int i = 0; i < line.length();i++) {
+					if (line.charAt(i) == '*' && Character.isDigit(line.charAt(i+1))) {
+						while(line.charAt(i+1)!='*') {
+							tmp+=line.charAt(i+1);
+							i++;
+						}
+					}
+					if (line.charAt(i) == '/') {
+						while(line.charAt(i-x) != ' ' && line.charAt(i) =='/') {
+							tmp1 = line.charAt(i-x) + tmp1;
+							x++;
+						}
+
+						while(line.charAt(i+1) != ' ') {
+							tmp2+= line.charAt(i+1);
+//							System.out.println(tmp2);
+							i++;
+						}
+	
+					}
+				}
+				measureForChange.add(Integer.parseInt(tmp));
+				timeSigTops.add(Integer.parseInt(tmp1));
+				timeSigBottoms.add(Integer.parseInt(tmp2));
+//				System.out.println(measureForChange);
+//				System.out.println(timeSigTops);
+//				System.out.println(timeSigBottoms);
+				x = 0;
+				tmp="";
+				tmp1="";
+				tmp2="";
+			}
 			if (line.contains("|") && line.contains("-")) {
 				listOfStrings.add(line);
 				if (listOfStrings.isEmpty()) {
 					listOfStrings.clear();
 				}
-				// test
 				else if (listOfStrings.size() == count || listOfStrings.size() == 7) {
 					s1 = (listOfStrings).get(0);
 					s2 = (listOfStrings).get(1);
@@ -166,17 +247,17 @@ public class TablatureScanner extends StringInstrument {
 						s5 = "A"+s5;
 						s6 = "D"+s6;
 					}
-					if(listOfStrings.size() == count) {
+					if(listOfStrings.size() == 6) {
 						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6);
-						out.append(guitar.printToXML(num1, num2, s1, s2, s3, s4, s5, s6, null));
+						out.append(guitar.printToXML(measureForChange, timeSigTops, timeSigBottoms, num1, num2, s1, s2, s3, s4, s5, s6, null));
 					}
-					else if(listOfStrings.size() == count) {
+					else if(listOfStrings.size() == 7) {
 						s7 = (listOfStrings).get(6);
 						if (s7.charAt(5)=='|') {
 							s7 = "B"+s7;
 						}
 						guitar = StringInstrument.getGuitar(s1,s2,s3,s4,s5,s6,s7);
-						out.append(guitar.printToXML(num1, num2, s1, s2, s3, s4, s5, s6, s7));
+						out.append(guitar.printToXML(measureForChange, timeSigTops, timeSigBottoms,num1, num2, s1, s2, s3, s4, s5, s6, s7));
 						
 					}
 					listOfStrings.clear();
