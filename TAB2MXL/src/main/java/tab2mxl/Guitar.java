@@ -24,6 +24,5 @@ public class Guitar extends StringInstrument {
 	}
 	
 	
-	
 
 }
