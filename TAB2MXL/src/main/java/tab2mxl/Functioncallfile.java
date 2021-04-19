@@ -194,17 +194,17 @@ public class Functioncallfile {
 		else {
 //			win.textArea.getText().printTab();
 			text = win.textArea.getText();
-			win.textArea.setText(null);
+			window.textArea.setText(null);
 			BufferedReader firstbf;
 			try {
 				int timeSig = Integer.parseInt(num1);
 				int timeSigBeat = Integer.parseInt(num2);
 				this.userOrgInput = text;
 				firstbf = new BufferedReader(new FileReader(musicFile.createFile(text,timeSig,timeSigBeat,songName, composerName)));
-				win.textArea.setText("");
+				window.textArea.setText("");
 				String newtext = null;
 				while ((newtext = firstbf.readLine())!=null) {
-					win.textArea.append(newtext+"\n");
+					window.textArea.append(newtext+"\n");
 				}
 				firstbf.close();
 			}  catch (IOException e) {

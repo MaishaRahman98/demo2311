@@ -20,7 +20,7 @@ public class TablatureScanner extends StringInstrument {
 		this.header = header;
 
 	}
-	public String detect(String text, int num1, int num2){
+	public String detect(String text, int num1, int num2, String songName, String composerName){
 		int count = 0;
 		String output = "";
 		String o = "";
@@ -46,11 +46,11 @@ public class TablatureScanner extends StringInstrument {
 			}
 		}
 		if (count == 4 || count == 5) {
-			output = TablatureScanner.callBassClass(text,count,num1,num2);
+			output = TablatureScanner.callBassClass(text,count,num1,num2,songName, composerName);
 			//header = TablatureScanner.xmlHeader(count);
 			}
 		if (count == 6 || count == 7) {
-			output = TablatureScanner.callGuitarClass(text,count,num1,num2);
+			output = TablatureScanner.callGuitarClass(text,count,num1,num2,songName, composerName);
 			
 		}
 		else if (count < 4 || count > 7 && count!= 0) {
@@ -79,14 +79,14 @@ public class TablatureScanner extends StringInstrument {
 //        return head.toString();
 //	}
 	
-	public static String callBassClass(String text,int count, int num1, int num2){
+	public static String callBassClass(String text,int count, int num1, int num2, String songName, String composerName){
 		Scanner myReader = new Scanner(text);
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "";
 		StringBuilder out = new StringBuilder();
 		Bass bass;
 		ArrayList<String> listOfStrings = new ArrayList<String>();
 		int counter = 0;
-		out.append(xmlHeader(num1, num2, count));
+		out.append(xmlHeader(num1, num2, count,songName, composerName));
 		ArrayList<Integer> measureForChange = new ArrayList<Integer>();
 		ArrayList<Integer> timeSigTops = new ArrayList<Integer>();
 		ArrayList<Integer> timeSigBottoms = new ArrayList<Integer>();
@@ -176,12 +176,12 @@ public class TablatureScanner extends StringInstrument {
 	}
 
 	// guitar scanner
-	public static String callGuitarClass(String text,int count, int num1, int num2){
+	public static String callGuitarClass(String text,int count, int num1, int num2, String songName, String composerName){
 		Scanner myReader1 = new Scanner(text);
 		StringBuilder out = new StringBuilder();
 		String s1 = "", s2 = "", s3 = "", s4 = "", s5 = "", s6 = "", s7 = "";
 		ArrayList<String> listOfStrings = new ArrayList<String>();
-		out.append(xmlHeader(num1, num2, count));
+		out.append(xmlHeader(num1, num2, count,songName,composerName));
 		int timeSigTop = 0;
 		int timeSigBottom = 0;
 		Guitar guitar;

@@ -86,7 +86,7 @@ public class StringInstrument {
 
 	}
 
-	public static String xmlHeader(int beats, int beatType, int c) {
+	public static String xmlHeader(int beats, int beatType, int c, String songName, String composerName) {
 		String instrument = "";
 		StringBuilder head = new StringBuilder();
 		if (c == 4 || c == 5) {
@@ -99,7 +99,12 @@ public class StringInstrument {
 		head.append(
 				"<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n");
 		head.append("<score-partwise version=\"3.1\">\n");
-
+		head.append("<work>\n");
+		head.append("  <work-title>"+songName+"</work-title>\n");
+		head.append("</work>\n");
+		head.append("<identification>\n");
+		head.append("  <creator type=\"composer\">"+composerName+"</creator>\n");
+		head.append("</identification>\n");
 		head.append(" <part-list>\n");
 		head.append("  <score-part id=\"P1\">\n");
 		head.append("   <part-name>" + instrument + "</part-name>\n");
