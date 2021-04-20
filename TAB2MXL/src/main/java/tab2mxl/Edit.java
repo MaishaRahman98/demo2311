@@ -42,24 +42,29 @@ public class Edit {
 	}
 	
 	private String getOrgTab(int measureNum) {
-		StringBuffer tablature = new StringBuffer();
-		StringBuffer output = new StringBuffer();
-		ArrayList<String> listOfStrings = new ArrayList<String>();
-		String tab = null;
-		int lineCount = 1;
-		File dir = new File("userTablatures/");
-		FilenameFilter filter = new FilenameFilter() { 
-			public boolean accept (File dir, String name) { 
-				return name.equals(fileName); } 
-			}; 
-		String[] children = dir.list(filter);
-		for (int i = 0; i<children.length ;i++) {
-			tab = children[i];
-			}
-		BufferedReader reader;
-		try {
-			reader = new BufferedReader(new FileReader(dir+"\\"+tab));
-			
+        StringBuffer tablature = new StringBuffer();
+        StringBuffer output = new StringBuffer();
+        ArrayList<String> listOfStrings = new ArrayList<String>();
+        String tab = null;
+        String newTab = null;
+        int lineCount = 1;
+        int lc = 1;
+        File dir = new File("./userTablatures/");
+        FilenameFilter filter = new FilenameFilter() { 
+            public boolean accept (File dir, String name) { 
+                return name.equals(fileName); } 
+            }; 
+        String[] children = dir.list(filter);
+        for (int i = 0; i<children.length ;i++) {
+            tab = children[i];
+            }
+        BufferedReader reader;
+        try {
+            if (tab != null)
+                 newTab = tab.replace(".txt","");
+            else
+                 newTab = "null";
+            reader = new BufferedReader(new FileReader(dir+"/"+newTab+".txt"));
 			String line = reader.readLine();
 			this.userOrgTab.clear();
 			while (line != null) {
@@ -76,10 +81,12 @@ public class Edit {
 			String line = scan.nextLine();
 			if ((line.contains("|") && line.contains("-"))) {
 				listOfStrings.add(line);
-				lineCount += 1;
+				lc += 1;
+				
 			}
 			else{
-				lineCount = 0;
+				if (lineCount <= lc) lineCount = lc;
+				lc = 0;
 			}
 		}
 		int x = 0;
@@ -88,22 +95,21 @@ public class Edit {
 		int line = 0;
 		StringBuilder measureTab = new StringBuilder();
 		StringBuilder outTab = new StringBuilder();
-//		System.out.println(lineCount);
+		
 		for (String s: listOfStrings){
+//			System.out.println(s);
 			for (int i = 0; i < s.length(); i++) {
-				if (s.charAt(i) == '|') {
-					if (i != 1) {
-						num++;
-					}
+				if (s.charAt(i) == '|' && i+1<s.length() && s.charAt(i+1) == '-') {
+					num++;
+//					System.out.println(num);	
 				}
 			}
-			
+//			System.out.println(lineCount);
 			if (x == lineCount) {
 				x = 0;
 				mCount+=num;
 			}
 			num = 0;
-			
 			if (mCount == measureNum) {
 				outTab.append(s+"\n");
 			}

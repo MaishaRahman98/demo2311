@@ -143,7 +143,6 @@ public class Editmeansure {
 				int topSigNum = Integer.parseInt(sigTop.getText());
 				int bottomSigNum = Integer.parseInt(sigBottom.getText());
 				String newEditTab = userMeasure.getText();
-				System.out.println(newEditTab);
 				userChange = output.returnNewTab(newEditTab, topSigNum, bottomSigNum);
 				userMeasure.setText("");
 				window.textArea.setText("");
