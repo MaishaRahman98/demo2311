@@ -4,13 +4,18 @@ import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Font;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.WindowConstants;
+
 public class Functioncallfile {
 
 	window win;
+	String userOrgInput;
 	newwindow newwin;
 	String filename;
 	String fileaddress;
@@ -110,28 +115,18 @@ public class Functioncallfile {
 			win.frame.setTitle(filename);
 		}
 		try {
-
-			FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicxml");
-			//FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicXML");
-			//FileWriter newfile1  = new FileWriter(fileaddress+""+name+".xml");
-			
-			//File inputFile = new File("C:\\Users\\redga\\git\\demo2311\\TAB2MXL\\usersTablatures\\"+name+".txt");
-			//BufferedWriter userInput  = new BufferedWriter(new FileWriter(inputFile));
-
-
+			FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicXML");
+			File inputFile = new File("userTablatures/"+name+".txt");
+			BufferedWriter userInput  = new BufferedWriter(new FileWriter(inputFile));
 //			saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
 			newfile1.write(win.textArea.getText());
 //			win.frame.setTitle(name);
 			win.frame.setTitle(name);
-
-			//userInput.write(userOrgInput);
-
+			userInput.write(userOrgInput);
 			newfile1.close();
-
-			//userInput.close();
-
+			userInput.close();
 		}catch(Exception e) {
-			System.out.println("Save file isn't success");
+			System.out.println("Save file isn't successful");
 		}
 	}
 	public void exit() {
@@ -181,7 +176,7 @@ public class Functioncallfile {
 		}
 	}
 	//============================================
-	public void translate() {
+	public void translate(String num1, String num2, String songName, String composerName) {
 		String textext = win.textArea.getText();
 		boolean em = win.textArea.getText().isEmpty();
 		if (em!=false) {
@@ -199,27 +194,40 @@ public class Functioncallfile {
 		else {
 //			win.textArea.getText().printTab();
 			text = win.textArea.getText();
-			win.textArea.setText(null);
-
-			//Shawn want to not comment out (bottom):
-			//musicFile.createFile(text);
-
+			window.textArea.setText(null);
 			BufferedReader firstbf;
 			try {
-				firstbf = new BufferedReader(new FileReader(musicFile.createFile(text)));
-				win.textArea.setText("");
+				int timeSig = Integer.parseInt(num1);
+				int timeSigBeat = Integer.parseInt(num2);
+				this.userOrgInput = text;
+				firstbf = new BufferedReader(new FileReader(musicFile.createFile(text,timeSig,timeSigBeat,songName, composerName)));
+				window.textArea.setText("");
 				String newtext = null;
 				while ((newtext = firstbf.readLine())!=null) {
-					win.textArea.append(newtext+"\n");
+					window.textArea.append(newtext+"\n");
 				}
 				firstbf.close();
 			}  catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			catch (NumberFormatException e){
+				yeah.outputMessage("num error");
+			}
 
 		}
 	}
+	public void undoTranslate() {
+		String textext = win.textArea.getText();
+		boolean em = win.textArea.getText().isEmpty();
+//			win.textArea.getText().printTab();
+			text = win.textArea.getText();
+			win.textArea.setText("");
+			win.textArea.append(this.userOrgInput);
+
+	}
+	
 	//============================================blow is color
 	public void changecolor(String color) {
 		switch(color) {
@@ -247,7 +255,6 @@ public class Functioncallfile {
 			break;
 		}
 	}
-
 	public void undo() {
 		try {
 			win.um.undo();
@@ -261,13 +268,19 @@ public class Functioncallfile {
 		}
 		
 	}
-
 	
-//	public void edit() {
-//		Editmeansure em = new Editmeansure(filename);
-//		em.frame.setVisible(true);
-//	}
+	public void edit() {
+//		try {
+		if (filename != null) {
+		Editmeansure em = new Editmeansure(filename);
+		em.initialize();
+		em.dialogBox.setVisible(true);
+		}
+		
+		else {
+			Showtheerror.outputMessage("file error");
+		}
+//		}
+//		catch 
+	}
 }
-
-
-

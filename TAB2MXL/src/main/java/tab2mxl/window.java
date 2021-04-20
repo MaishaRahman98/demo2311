@@ -4,7 +4,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -25,10 +24,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.Document;
-import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoManager;
 import javax.swing.JTextArea;
-import javax.swing.KeyStroke;
+import javax.swing.JTextField;
 
 import java.awt.SystemColor;
 import java.awt.Toolkit;
@@ -51,7 +49,6 @@ import java.awt.BorderLayout;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JComboBox;
-import javax.swing.JTextField;
 
 public class window implements ActionListener{
 
@@ -60,8 +57,8 @@ public class window implements ActionListener{
 	private BufferedImage ori;
 	private JScrollPane scrollPane;
 	private JMenuItem iNew, iOpen,iSave, iSaveAs, iExit;
-	public JMenuItem mntmNewMenuItem_Undo,mntmNewMenuItem_Redo; //for undo, redo
-	public JTextArea textArea;
+	public JMenuItem mntmNewMenuItem_Undo,mntmNewMenuItem_Redo;
+	public static JTextArea textArea;
 	boolean wrap_on = false;
 	public JMenuItem mntmNewMenuItemwarp;
 	Functioncallfile file = new Functioncallfile(this);
@@ -75,12 +72,8 @@ public class window implements ActionListener{
 	public JButton btnNewButton_1;
 	boolean quit;
 	static String mean = "";
-
-	//UndoManager um = new UndoManager(); //=========undo and redo
-
-
 	UndoManager um = new UndoManager();
-	Editmeansure un = new Editmeansure();
+//	Editmeansure un = new Editmeansure("");
 	//=========undo and redo
 //	private Document editorPaneDocument;
 //	protected UndoHandler undoHandler = new UndoHandler();
@@ -93,27 +86,36 @@ public class window implements ActionListener{
 	//==========================================================
 	StringInstrument stringin = new StringInstrument();
 	public JOptionPane ooo;
-	private JTextField textField;
 //	Bass bassin = new Bass();
 	//==========================================================
 	/**
 	 * Launch the application.
 	 */
-
-
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					window window = new window();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 	public static void main(String[] args) {
-		new loadingScreen();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					window window = new window();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+        new loadingScreen();
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    window window = new window();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
 	/**
 	 * Create the application.
@@ -127,7 +129,34 @@ public class window implements ActionListener{
 		frame.setVisible(true);
 	}
 
-	
+	/**
+	 * Initialize the contents of the frame.
+	 */
+//	private void beforeinitialize() {
+//		
+//		frame = new JFrame();
+//		frame.setBackground(Color.BLACK);
+//		frame.setBounds(100, 100, 590, 428);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		
+//		JPanel panel = new JPanel();
+//		frame.getContentPane().add(panel, BorderLayout.CENTER);
+//		panel.setLayout(null);
+//		
+//		JButton btnNewButton_2 = new JButton("New button");
+//		btnNewButton_2.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				
+//				initialize();
+//				close();
+//				
+//			}
+//		});
+//		btnNewButton_2.setBounds(229, 172, 93, 23);
+//		panel.add(btnNewButton_2);
+//		
+//	}
+	/////////////////////////////////////////////////////////
 	public void close() {
 		WindowEvent closeWindow = new WindowEvent(this.frame, WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
@@ -140,7 +169,12 @@ public class window implements ActionListener{
 		frame = new JFrame();
 //		JFrame f = new JFrame();
 		
-
+//		try {
+//			frame.getContentPane().add(new overridepiant("sample.jpeg"));
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
 		
 		frame.getContentPane().setForeground(new Color(75, 0, 130));
 		frame.setBackground(SystemColor.activeCaption);
@@ -156,6 +190,7 @@ public class window implements ActionListener{
 		}
 //===================================================================================================cannot use window builder			
 		JButton btnNewButton = new JButton("Open");
+		btnNewButton.setBounds(36, 339, 116, 36);
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.PINK);
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -167,39 +202,87 @@ public class window implements ActionListener{
 		btnNewButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 
 
+
+		JTextField timeSigBeats = new JTextField("4");
+		JTextField timeSigBeatType = new JTextField("4");
+		JLabel askTimeSig = new JLabel();
+		JLabel empty = new JLabel();
+		askTimeSig.setText("<html> <div style='text-align: center'> Preferred Time Signature</div></html>");
+		askTimeSig.setFont(new Font("Arial", Font.BOLD, 12));
+		askTimeSig.setBackground(Color.lightGray);
+		askTimeSig.setBounds(16, 210, 100,50);
+		askTimeSig.setOpaque(true);
+		empty.setText("<html> <div style='text-align: center'> ------------------ </div></html>");
+		empty.setBackground(Color.lightGray);
+		empty.setBounds(116, 210, 100,50);
+		empty.setOpaque(true);
+		timeSigBeats.setBounds(117,214,70,20);
+		timeSigBeatType.setBounds(117,238,70,20);
+		frame.getContentPane().add(askTimeSig);
+		frame.getContentPane().add(timeSigBeats);
+		frame.getContentPane().add(timeSigBeatType);
+		frame.getContentPane().add(empty);
 		
-		btnNewButton_1 = new JButton("Translate");
+		JTextField composerName = new JTextField("Composer Name");
+		JTextField songName = new JTextField("Song Name");
+		JLabel askComposerName = new JLabel();
+		JLabel askSongName = new JLabel();
+		JLabel blank = new JLabel();
+
+		askSongName.setText("<html> <div style='text-align: center'>Song Name</div></html>");
+		askSongName.setFont(new Font("Arial", Font.BOLD, 12));
+		askSongName.setBackground(Color.lightGray);
+		askSongName.setBounds(16, 120, 60,50);
+		askSongName.setOpaque(true);
+		askComposerName.setText("<html> <div style='text-align: center'>Composer Name</div></html>");
+		askComposerName.setFont(new Font("Arial", Font.BOLD, 12));
+		askComposerName.setBackground(Color.lightGray);
+		askComposerName.setBounds(16, 160, 60,50);
+		askComposerName.setOpaque(true);
+		blank.setText("<html> </html>");
+		blank.setBackground(Color.lightGray);
+		blank.setBounds(76, 120, 140,100);
+		blank.setOpaque(true);
+		songName.setBounds(80,134, 130,25);
+		composerName.setBounds(80,170,130,25);
+		frame.getContentPane().add(askComposerName);
+		frame.getContentPane().add(askSongName);
+		frame.getContentPane().add(songName);
+		frame.getContentPane().add(composerName);
+		frame.getContentPane().add(blank);
+		
+		
+		
+		btnNewButton_1 = new JButton("Convert");
+		btnNewButton_1.setBounds(119, 385, 116, 36);
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setForeground(Color.ORANGE);
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				file.translate();
+				file.translate(timeSigBeats.getText(),timeSigBeatType.getText(), songName.getText(), composerName.getText());
 			}
 		});
 				
-			
-			
-				//Image img = new ImageIcon(this.getClass().getResource("/789.png")).getImage();
-				//
-
-
-
+//				Image img = new ImageIcon(this.getClass().getResource("/789.png")).getImage();
 //				JLabel lblNewLabel = new JLabel("");
 //				lblNewLabel.setForeground(Color.ORANGE);
 //				lblNewLabel.setBackground(Color.ORANGE);
-
 				
 				JButton btnNewButton_2 = new JButton("SaveAs");
+				btnNewButton_2.setBounds(36, 431, 116, 33);
 				btnNewButton_2.addActionListener(this);
 				btnNewButton_2.setActionCommand("SaveAs");
-
+//				btnNewButton_2.addActionListener(new ActionListener() {
+//					public void actionPerformed(ActionEvent e) {
+//					}
+//				});
 				btnNewButton_2.setBackground(Color.BLACK);
 				btnNewButton_2.setFont(new Font("Times New Roman", Font.BOLD, 14));
 				btnNewButton_2.setForeground(new Color(0, 191, 255));
 				
-						
 						JScrollPane scrollPane_1 = new JScrollPane();
+						scrollPane_1.setBounds(255, 32, 674, 529);
 						scrollPane_1.setBorder(null);
 						scrollPane_1.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 						scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -207,7 +290,22 @@ public class window implements ActionListener{
 						scrollPane_1.getVerticalScrollBar().setBorder(null);
 						scrollPane_1.getVerticalScrollBar().setBackground(Color.gray);
 						scrollPane_1.getHorizontalScrollBar().setBackground(Color.gray);
-						
+						//===================================================================================================cannot use window builder	
+						//		scrollPane_1.getVerticalScrollBar().setUI(new BasicScrollBarUI() {
+						//		    @Override
+						//		    protected void configureScrollBarColors() {
+						////		        this.thumbColor = Color.DARK_GRAY;
+						//		        this.thumbColor = Color.black;
+						//		    }
+						//		});
+						//		scrollPane_1.getHorizontalScrollBar().setUI(new BasicScrollBarUI() {
+						//		    @Override
+						//		    protected void configureScrollBarColors() {
+						////		        this.thumbColor = Color.DARK_GRAY;
+						//		    	this.thumbColor = Color.black;
+						//		    }
+						//		});
+						//===================================================================================================cannot use window builder	
 								textArea = new JTextArea();
 								textArea.getDocument().addUndoableEditListener(
 										new UndoableEditListener() {
@@ -215,110 +313,85 @@ public class window implements ActionListener{
 												um.addEdit(e.getEdit());
 											}
 										});
-
+								
+//		editorPaneDocument=textArea.getDocument();
+//		editorPaneDocument.addUndoableEditListener(undoHandler);
+								
 								textArea.addKeyListener(sc);
 								textArea.setForeground(Color.WHITE);
 								textArea.setBackground(new Color(0, 0, 0));
 								textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
 								textArea.setCaretColor(Color.pink);
-							
+								//		PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
+								//		System.setOut(printStream);
+								//		System.setErr(printStream);
+										
+								//				PrintStream printStream1 = new PrintStream(new CustomOutputStream(textArea));
+												
 												
 												textArea.setBorder(null);
 												textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 												textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 												scrollPane_1.setViewportView(textArea);
+				frame.getContentPane().setLayout(null);
+				frame.getContentPane().add(btnNewButton);
+				frame.getContentPane().add(btnNewButton_1);
+				frame.getContentPane().add(btnNewButton_2);
+				frame.getContentPane().add(scrollPane_1);
 				
-				JComboBox comboBox = new JComboBox();
-				comboBox.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String feeback = (String)comboBox.getSelectedItem();
-						
-						textArea.setText(feeback);
-						window.mean(feeback);
-					}
-				});
-				comboBox.setForeground(Color.PINK);
-				comboBox.addItem("1/4");
-				comboBox.addItem("2/4");
-				comboBox.addItem("3/4");
-				comboBox.addItem("4/4");
-				comboBox.setSelectedItem(null);
+				
+				
 
+				
+			
+//				JComboBox comboBox = new JComboBox();
+//				comboBox.addActionListener(new ActionListener() {
+//					public void actionPerformed(ActionEvent e) {
+//						String feeback = (String)comboBox.getSelectedItem();
+//						textArea.setText(feeback);
+//						window.mean(feeback);
+//					}
+//				});
+//				comboBox.setForeground(Color.PINK);
+//				comboBox.setBounds(36, 247, 116, 36);
+//				frame.getContentPane().add(comboBox);
+//				comboBox.addItem("1/4");
+//				comboBox.addItem("2/4");
+//				comboBox.addItem("3/4");
+//				comboBox.addItem("4/4");
+//				comboBox.setSelectedItem(null);
+//				String feeback = (String)comboBox.getSelectedItem();
+//				textArea.setText(feeback);
+				
 				JButton btnNewButton_3 = new JButton("Edit");
 				btnNewButton_3.setFont(new Font("Times New Roman", Font.BOLD, 14));
 				btnNewButton_3.setBackground(Color.BLACK);
 				btnNewButton_3.setForeground(new Color(186, 85, 211));
 				btnNewButton_3.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Editmeansure em = new Editmeansure();
-						em.frame.setVisible(true);
-
+						file.edit();
+						
 					}
 				});
 				
+				btnNewButton_3.setBounds(119, 293, 116, 36);
+				frame.getContentPane().add(btnNewButton_3);
+				
+				JButton btnNewButton_4 = new JButton("Convert Back");
+				btnNewButton_4.setBounds(39, 485, 196, 36);
+				btnNewButton_4.setBackground(Color.BLACK);
+				btnNewButton_4.setForeground(Color.GREEN);
+				btnNewButton_4.setFont(new Font("Times New Roman", Font.BOLD, 14));
+				btnNewButton_4.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						file.undoTranslate();
+					}
+				});
+				frame.getContentPane().add(btnNewButton_4);
 				Image img = new ImageIcon(this.getClass().getResource("/Wallpaper Music Equalizer Wallpaper 1080p HD Upload at January 29.jpg")).getImage();
-				
-				textField = new JTextField();
-				textField.setColumns(10);
-				
-				JLabel lblNewLabel_1 = new JLabel("Song Title:");
-				lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 14));
-				lblNewLabel_1.setForeground(Color.WHITE);
 				JLabel lblNewLabel = new JLabel(new ImageIcon(img));
-				lblNewLabel.setText("");
-				GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
-				groupLayout.setHorizontalGroup(
-					groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(36)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(83)
-									.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-								.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(83)
-									.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)))
-							.addGap(20)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
-							.addGap(110))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(119)
-							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 1038, Short.MAX_VALUE)
-							.addGap(1))
-				);
-				groupLayout.setVerticalGroup(
-					groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(191)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(20)
-									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)))
-							.addGap(56)
-							.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(32)
-							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
-							.addGap(41))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(257)
-							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 602, Short.MAX_VALUE)
-				);
-				frame.getContentPane().setLayout(groupLayout);
+				lblNewLabel.setBounds(0, 0, 988, 602);
+				frame.getContentPane().add(lblNewLabel);
 		
 		UIManager.put("PopupMenu.border", new LineBorder(Color.darkGray));
 		JMenuBar menuBar = new JMenuBar();
@@ -389,26 +462,7 @@ public class window implements ActionListener{
 		mnNewMenu.setBorder(null);
 		mnNewMenu.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		menuBar.add(mnNewMenu);
-//-------------------------------------------------------------------------		
-		Document doc= textArea.getDocument();
-		doc.addUndoableEditListener(new UndoableEditListener() {
-		    public void undoableEditHappened(UndoableEditEvent evt) {
-		        um.addEdit(evt.getEdit());
-		    }
-		});
-//		textArea.getActionMap().put("Undo",
-//			    new AbstractAction("Undo") {
-//			        public void actionPerformed(ActionEvent evt) {
-//			            try {
-//			                if (um.canUndo()) {
-//			                    um.undo();
-//			                }
-//			            } catch (CannotUndoException e) {
-//			            }
-//			        }
-//			   });
-//		textArea.getInputMap().put(KeyStroke.getKeyStroke("control Z"), "Undo");
-//-------------------------------------------------------------------------		
+		
 		mntmNewMenuItem_Undo = new JMenuItem("Undo");
 		mntmNewMenuItem_Undo.setBorder(null);
 		mntmNewMenuItem_Undo.setForeground(Color.ORANGE);
@@ -416,7 +470,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_Undo.addActionListener(this);
 		mntmNewMenuItem_Undo.setActionCommand("Undo");
 		mntmNewMenuItem_Undo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
+			public void actionPerformed(ActionEvent e) {
 				try {
 					um.undo();
 				} catch (Exception ex) {
@@ -448,7 +502,7 @@ public class window implements ActionListener{
 		mnNewMenu_Format.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		menuBar.add(mnNewMenu_Format);
 //===========================================================================
-		mntmNewMenuItemwarp = new JMenuItem("Word Wrap: Off");
+		mntmNewMenuItemwarp = new JMenuItem("Word Warp: Off");
 		mntmNewMenuItemwarp.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		mntmNewMenuItemwarp.setForeground(new Color(153, 50, 204));
 		mntmNewMenuItemwarp.setBackground(Color.BLACK);
@@ -613,6 +667,14 @@ public class window implements ActionListener{
 		mnNewMenu_2.add(icolor4);
 		icolor4.addActionListener(this);
 		icolor4.setActionCommand("Blue");
+//		scrollPane = new JScrollPane(textArea1, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+//		frame.getContentPane().add(scrollPane);
+//		textAreanum1 = new JTextArea();
+//		textAreanum1.setBounds(1, 1, 110, 24);
+//		frame.getContentPane().add(textAreanum1);
+//		scrollPane = new JScrollPane(textAreanum1, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+//		frame.getContentPane().add(scrollPane);
+		
 	}
 
 	@Override
@@ -650,4 +712,3 @@ public class window implements ActionListener{
 		mean = ni;
 	}
 }
-
