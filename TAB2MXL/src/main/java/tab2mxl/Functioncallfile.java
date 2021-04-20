@@ -270,9 +270,17 @@ public class Functioncallfile {
 	}
 	
 	public void edit() {
+//		try {
+		if (filename != null) {
 		Editmeansure em = new Editmeansure(filename);
 		em.initialize();
 		em.dialogBox.setVisible(true);
+		}
+		
+		else {
+			Showtheerror.outputMessage("file error");
+		}
+//		}
+//		catch 
 	}
 }
-

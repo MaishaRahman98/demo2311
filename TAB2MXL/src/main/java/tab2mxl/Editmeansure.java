@@ -97,10 +97,10 @@ public class Editmeansure {
 		userMeasure.setFont(Monospaced);
 		
 		
-		JTextField sigTop = new JTextField("");
+		JTextField sigTop = new JTextField("4");
 		JLabel askTimeSig = new JLabel();
 		JLabel timeSigLabel = new JLabel();
-		JTextField sigBottom = new JTextField("");
+		JTextField sigBottom = new JTextField("4");
 		askTimeSig.setText("<html>If you would like to change the time signature<br> Please enter the new time signature below");
 		timeSigLabel.setText("<html>------------");
 		timeSigLabel.setFont(new Font("Arial", Font.BOLD, 16));

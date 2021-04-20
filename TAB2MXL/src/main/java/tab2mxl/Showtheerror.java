@@ -29,5 +29,10 @@ public class Showtheerror {
 	    		JOptionPane.showMessageDialog(parent,"Sorry, the time signature is not a number, please try again");
 	    		parent.setVisible(false);
 	    	}
+	    	
+	    	if (problem.equals("file error")) {
+	    		JOptionPane.showMessageDialog(parent,"Sorry, this file isn't in the directory. Please try again.");
+	    		parent.setVisible(false);
+	    	}
 	    }
 }

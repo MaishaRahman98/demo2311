@@ -253,7 +253,7 @@ public class window implements ActionListener{
 		
 		
 		
-		btnNewButton_1 = new JButton("Translate");
+		btnNewButton_1 = new JButton("Convert");
 		btnNewButton_1.setBounds(119, 385, 116, 36);
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setForeground(Color.ORANGE);
@@ -264,7 +264,7 @@ public class window implements ActionListener{
 			}
 		});
 				
-				Image img = new ImageIcon(this.getClass().getResource("/789.png")).getImage();
+//				Image img = new ImageIcon(this.getClass().getResource("/789.png")).getImage();
 //				JLabel lblNewLabel = new JLabel("");
 //				lblNewLabel.setForeground(Color.ORANGE);
 //				lblNewLabel.setBackground(Color.ORANGE);
@@ -377,7 +377,7 @@ public class window implements ActionListener{
 				btnNewButton_3.setBounds(119, 293, 116, 36);
 				frame.getContentPane().add(btnNewButton_3);
 				
-				JButton btnNewButton_4 = new JButton("Undo Translate");
+				JButton btnNewButton_4 = new JButton("Convert Back");
 				btnNewButton_4.setBounds(39, 485, 196, 36);
 				btnNewButton_4.setBackground(Color.BLACK);
 				btnNewButton_4.setForeground(Color.GREEN);
@@ -388,6 +388,7 @@ public class window implements ActionListener{
 					}
 				});
 				frame.getContentPane().add(btnNewButton_4);
+				Image img = new ImageIcon(this.getClass().getResource("/Wallpaper Music Equalizer Wallpaper 1080p HD Upload at January 29.jpg")).getImage();
 				JLabel lblNewLabel = new JLabel(new ImageIcon(img));
 				lblNewLabel.setBounds(0, 0, 988, 602);
 				frame.getContentPane().add(lblNewLabel);
@@ -711,4 +712,3 @@ public class window implements ActionListener{
 		mean = ni;
 	}
 }
-

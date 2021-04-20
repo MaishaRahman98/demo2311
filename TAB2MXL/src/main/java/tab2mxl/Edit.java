@@ -18,6 +18,7 @@ public class Edit {
 	
 	public Edit(String fileName){
 		this.fileName = fileName.replace(".musicXML",".txt");
+
 	}
 	
 	public String outputMeasure(String measureNum) {
@@ -76,6 +77,15 @@ public class Edit {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+         if(window.textArea.getText().contains("***THIS TABLATURE HAS BEEN EDITED***")) {
+        	 this.userOrgTab.clear();
+        	 Scanner scan = new Scanner(window.textArea.getText());
+        	 while (scan.hasNextLine()) {
+        		 String line = scan.nextLine();
+        		 if (!line.contains("***THIS TABLATURE HAS BEEN EDITED***")) this.userOrgTab.add(line);
+        	 }
+         }
+
 		Scanner scan = new Scanner(tablature.toString());
 		while (scan.hasNextLine()) {
 			String line = scan.nextLine();
@@ -107,14 +117,16 @@ public class Edit {
 //			System.out.println(lineCount);
 			if (x == lineCount) {
 				x = 0;
-				mCount+=num;
+				if (num == 1) mCount+=num;
+				if (num > 1) mCount+=1;
 			}
-			num = 0;
 			if (mCount == measureNum) {
 				outTab.append(s+"\n");
 			}
 			if (s!= " ") x++;
 			line++;
+			
+			num = 0;
 		}
 		this.lineCount = lineCount;
 		output.append("************MEASURE NUMBER = "+measureNum+"************\n");
@@ -123,7 +135,6 @@ public class Edit {
 	}
 	
 	public String returnNewTab(String editTab, int topSigNum, int bottomSigNum) {
-		System.out.println(editTab);
 		ArrayList<String> edits = new ArrayList<String>();
 		Scanner scan = new Scanner(editTab);
 		String info = "";

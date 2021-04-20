@@ -20,10 +20,10 @@ public class outputFile {
 		xml += ts.detect(text,num1,num2, songName, composerName);
 		try {
 			File myObj = new File("newfile.txt");
-			FileWriter myWriter = new FileWriter("newfile.txt",false);
+			FileWriter myWriter = new FileWriter("newfile.txt");
 			myWriter.write(xml);
 			myWriter.close();
-			ts.resetGlobal();
+			System.out.println("file made");
 			return myObj.getName();
 
 		} catch (IOException e) {
