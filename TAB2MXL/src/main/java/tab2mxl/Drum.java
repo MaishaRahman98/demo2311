@@ -196,18 +196,24 @@ public class Drum {
 	}	
 	
 	//Will edit this part
-	public String printDrumXML(String str1, String str2, String str3, String str4, String str5, String str6, String str7, String s8) {
+	public String printDrumXML(int r1, int r2, int rX, String str1, String str2, String str3, String str4, String str5, String str6, String str7, String str8) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
 		String instrument = "";
 //		String string = "";
 //		String output = "";
 //		int spaceCount = 0;
-//		ArrayList<String> legatoOutput = new ArrayList<>();
-//		boolean legatoCheck = false;
+		//ArrayList<String> legatoOutput = new ArrayList<>();
+		//boolean legatoCheck = false;
+		// legatoStop = false;
+		int legatoFret = 0;
+		//String legatoType = "";
+		
+		//String legatoFullName = "";
+		String text = "";
 		char fret = 0;
 		int stringNum = 0;
-		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
+		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7, str8};
 //		String name;
 		int octave = 0;
 //		String xml = "";
@@ -221,31 +227,50 @@ public class Drum {
 		int beatCount8 = 0;
 		int beatCount16 = 0;
 		
+		
 		for (int i = 1 ; i <str1.length() ; i++)
 		{
 			if((i+1)!= str1.length()  && str1.charAt(i)=='|' && str1.charAt(i+1) == '-') {
 				measureCount++;
 			}
+			
 		}
 		
 		for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|'); i++) {
 			ArrayList<Character> column = new ArrayList<Character>();
+			//System.out.println(str1);
 			column.add(str1.charAt(i));
 			column.add(str2.charAt(i));
 			column.add(str3.charAt(i));
-			column.add(str4.charAt(i));
-			if (str5 != null && str6 == null && str7 == null) {
+			if (str4 != null && str6 == null && str7 == null && str8 == null) {
+				column.add(str4.charAt(i));
+			}
+			else if (str4!= null && str5 != null && str6 == null && str7 == null && str8 == null) {
+				column.add(str4.charAt(i));
 				column.add(str5.charAt(i));
-			} else if (str5 != null && str6 != null && str7 == null) {
+			} else if (str4!=null && str5 != null && str6 != null && str7 == null && str8 == null) {
+				column.add(str4.charAt(i));
 				column.add(str5.charAt(i));
 				column.add(str6.charAt(i));
-			} else if (str5 != null && str6 != null && str7 != null) {
+			} else if (str4 != null && str5 != null && str6 != null && str7 != null && str8 == null) {
+				column.add(str4.charAt(i));
 				column.add(str5.charAt(i));
 				column.add(str6.charAt(i));
 				column.add(str7.charAt(i));
 			}
+			else if (str4 != null && str5 != null && str6 != null && str7 != null && str8 != null) {
+				column.add(str4.charAt(i));
+				column.add(str5.charAt(i));
+				column.add(str6.charAt(i));
+				column.add(str7.charAt(i));
+				column.add(str8.charAt(i));
+			}
 			listOfColumns.add(column);
 		}
+		ArrayList<String> id = new ArrayList <String>();
+		
+		
+		
 		
 		for (ArrayList<Character> s : listOfColumns) {
 			int c = 0;
@@ -268,47 +293,35 @@ public class Drum {
 				body.append("  </measure>\n");
 				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
 			}
-		
-//		for (int k = 0; k < measureCount; k++) {
-
-//			if (mCount != temp && mCount != 1) {
-			//edit 1:
-//			if (mCount != 0) {
-//				body.append("  </measure>\n");
-////				body.append("  <measure number=\"" + (mCount - temp + 1) + "\">\n");
-//				body.append("  <measure number=\"" + (mCount + 1) + "\">\n");
-//			}
 			
-			//|| str1.charAt(i + 1) != '-'
-//			for (int i = str1.indexOf('|') + 1 ; i < str1.lastIndexOf('|') ; i++)
-//			{
-//				Measure measure = new Measure("");
-////	        	counter++;
-//	        	for (String j: allStrings) {
-//		        	stringNum++;
-//		        	
-//		        	//&& Character.isDigit(j.charAt(i))
-//					// && (j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o')
-//					if (j != null) {
-////						if(j.charAt(i) == '-') {
-////							counter++;
-////						}
-//						else if(j.charAt(i) == 'x' || j.charAt(i) == 'X' || j.charAt(i) == 'o') {
-//							fret = j.charAt(i);
-//							//counter = 0; //reset counter
-//						}
-			
-			if (listOfColumns.get(listOfColumns.size() - 1).contains('|') && listOfColumns.get(listOfColumns.size() - 1).toString().matches(".*\\d.*")) 
+			if (listOfColumns.get(listOfColumns.size() - 1).contains('|') && listOfColumns.get(listOfColumns.size() - 1).toString().matches(".*\\d.*"))	
 				rep = true;
+		
 			
 			for (int i = 0; i < listOfColumns.size(); i++) {
 				Measure measure = new Measure("");
-//				if (listOfColumns.get(i).contains('|')) {
-//					mCount++; //mCount must start at being zero when we translate each drum tab
-//					//fixed the spacing:
-//					body.append(" </measure>\n");
-//					body.append("<measure number=\"" + (mCount + 1) + "\">\n");
-//				}
+				
+				if (i == r1 && r2 != 0 && rX != 0) {
+					body.append("<barline location=\"left\">\n");
+					body.append("<bar-style>heavy-light</bar-style>\n");
+					body.append("<repeat direction=\"forward\"/>\n");
+					body.append("</barline>\n");
+					body.append("<direction placement=\"above\">\n");
+					body.append("<direction-type>\n");
+					body.append("<words relative-x=\"256.17\" relative-y=\"16.01\">Repeat " + rX + " times</words>\n");
+					body.append("</direction-type>\n");
+					body.append("</direction>\n");
+					r1 = -1;
+					rX = 0;
+				}
+				if (i == r2 && r2 != 0) {
+					body.append("  <barline location=\"right\">\n");
+					body.append("   <bar-style>light-heavy</bar-style>\n");
+					body.append("   <repeat direction=\"backward\"/>\n");
+					body.append("   </barline>\n");
+					r2 = 0;
+				}
+				
 				if (listOfColumns.get(i).contains('|') && !listOfColumns.get(i).toString().matches(".*\\d.*")) {
 					if (i != listOfColumns.size() - 1 && !listOfColumns.get(i+1).contains('|')) {
 					mCount++;
@@ -317,19 +330,7 @@ public class Drum {
 					}
 					
 				}
-				if (rep && i != listOfColumns.size() - 1 && listOfColumns.get(i+1).contains('*')) {
-					body.append("<barline location=\"left\">\n");
-					body.append("<bar-style>heavy-light</bar-style>\n");
-					body.append("<repeat direction=\"forward\"/>\n");
-					body.append("</barline>\n");
-					body.append("<direction placement=\"above\">\n");
-					body.append("<direction-type>\n");
-					body.append("<words relative-x=\"256.17\" relative-y=\"16.01\">Repeat " + listOfColumns.get(listOfColumns.size() - 1).get(0) + " times</words>\n");
-					body.append("</direction-type>\n");
-					body.append("</direction>\n");
-					rep = false;
-					repEnd = true;
-				}
+				
 	
 				for (int a = 0; a < listOfColumns.get(i).size(); a++) {
 					if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o' || listOfColumns.get(i).get(a) == 'f') {
@@ -337,12 +338,78 @@ public class Drum {
 					}
 				}
 				
+				
 				if (digit >= 1 && !listOfColumns.get(i).contains('|')) {
-					for (int j = 0; j < listOfColumns.get(i).size(); j++) {
+					for (int j = 0; j < listOfColumns.get(i).size()-1; j++) {
 					
 						stringNum++;
 						
-						if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X' || listOfColumns.get(i).get(j) == 'o' || listOfColumns.get(i).get(j) == 'f') {
+						if (allStrings[stringNum-1].contains("CC") && allStrings[stringNum-1].contains("x")) {
+							
+							instrument = ("P1-I50");
+						
+						}
+						else if (allStrings[stringNum-1].contains("HH") && allStrings[stringNum-1].contains("o")) {
+							instrument = "P1-I47";
+						
+						}
+						else if (allStrings[stringNum-1].contains("HH") && allStrings[stringNum-1].contains("x")) {
+							instrument =("P1-I43");
+					
+						}
+						
+						else if (allStrings[stringNum-1].contains("HH") && allStrings[stringNum-1].contains("O")) {
+							instrument =("P1-I45");
+							
+						}
+						else if (allStrings[stringNum-1].contains("SD") && allStrings[stringNum-1].contains("O")) {
+							instrument = "P1-I39";
+						
+						}
+						else if (allStrings[stringNum-1].contains("HT") && allStrings[stringNum-1].contains("o")) {
+							instrument =("P1-I51");
+							
+						}
+						else if (allStrings[stringNum-1].contains("MT") && allStrings[stringNum-1].contains("o")) {
+							instrument =("P1-I49");
+							
+						}
+						else if (allStrings[stringNum-1].contains("FT") && allStrings[stringNum-1].contains("o")) {
+							instrument =("P1-I42");
+						
+						}
+						else if (allStrings[stringNum-1].contains("BD") && allStrings[stringNum-1].contains("o")) {
+							instrument =( "P1-I36");
+						
+						}
+						else if (allStrings[stringNum-1].contains("T")) {
+							instrument =("P1-I51");
+						
+						}
+						
+						else if (allStrings[stringNum-1].contains("R")) {
+							instrument =( "P1-I52");
+						
+						}
+						else if (allStrings[stringNum-1].contains("C")) {
+							instrument =( "P1-I50");
+						
+						}
+						else if (allStrings[stringNum-1].contains("B")) {
+							instrument =( "P1-I36");
+						
+						}
+						else if (allStrings[stringNum-1].contains("t")) {
+							instrument =( "P1-I46");
+						
+						}
+						else if (allStrings[stringNum-1].contains("F")) {
+							instrument =( "P1-I52");
+						
+						}
+						
+						
+					 if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X' || listOfColumns.get(i).get(j) == 'o' || listOfColumns.get(i).get(j) == 'f' ) {
 							int origini = i;
 							fret = listOfColumns.get(i).get(j);
 							
@@ -350,12 +417,11 @@ public class Drum {
 							if(listOfColumns.get(i).get(j) == 'f') {
 								graceToken = true;
 							}
+						
 							
-							//Nabaa needs to implement drumNotes and drumOctave methods in Notes class
 							note = Notes.drumNotes("String" + String.valueOf(stringNum));
 							octave = Notes.drumOctave("String" + String.valueOf(stringNum));
 							
-							instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
 							
 //							body.append(" <note>\n");
 							//if flams exist, then it is a grace note:
@@ -383,7 +449,8 @@ public class Drum {
 									if (i == listOfColumns.size())
 										break;
 									for (int a = 0; a < listOfColumns.get(i).size(); a++) {
-										if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o' || listOfColumns.get(i).get(j) == 'f')
+										if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o' || 
+												listOfColumns.get(i).get(j) == 'f' || listOfColumns.get(i).get(j) == '-')
 										{
 												bool = false;
 												break;
@@ -398,7 +465,185 @@ public class Drum {
 								if (counter != -1)
 									body.append(" <duration>" + (counter + 1) + "</duration>\n");
 								else
-									body.append(" <duration>" +  "1" + "</duration>\n");
+									body.append(" <duration>" +  1 + "</duration>\n");
+								body.append("  <instrument id=\"" +instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
+								body.append("  <voice>1</voice>\n");
+								body.append("  <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType) + "</type>\n"); //will need to edit type later
+								body.append("  <stem>up</stem>\n");
+								if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X') {
+									body.append("  <notehead>x</notehead>\n"); //only cymbal lines (C, H, R) have x
+								}
+								
+								if(measure.getDuration(counter + 1 ,total ,beat , beatType).equals("eighth")) {
+									beatCount8++;
+									if (beatCount8 == 1) {
+										body.append("  <beam number=\"1\">begin</beam>\n");
+									}
+									if (beatCount8 >= 2 && beatCount8 < 4) {
+										body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+									}else if (beatCount8 == 4) {
+										body.append("  <beam number=\"1\">end</beam>\n");
+										beatCount8 = 0;
+									}
+								}
+								if(measure.getDuration(counter + 1 ,total ,beat , beatType).equals("16th")) {
+									beatCount16++;
+									if (beatCount16 == 1) {
+										body.append("  <beam number=\"1\">begin</beam>\n");
+										body.append("  <beam number=\"2\">begin</beam>\n");
+									}
+									if (beatCount16 >= 2 && beatCount16 < 8) {
+										body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+										body.append("  <beam number=\"2\">continue</beam>\n");
+									}else if (beatCount16 == 8) {
+										body.append("  <beam number=\"1\">end</beam>\n");
+										body.append("  <beam number=\"2\">end</beam>\n");
+										beatCount16 = 0;
+									}
+								}
+								body.append("  </note>\n");
+							}
+							body.append(" <note>\n");
+							body.append("  <unpitched>\n");
+							if (note.length() == 1) { 
+								body.append("   <display-step>" +  note + "</display-step>\n");
+							}
+							else
+							{
+								body.append("   <display-step>" +  note.charAt(0) + "</display-step>\n");
+		
+							}
+							body.append("   <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
+							body.append("   </unpitched>\n");
+						
+							i = origini;
+							counter = -1;
+							boolean bool = true;
+							while (bool){
+								i++;
+								if (i == listOfColumns.size())
+									break;
+								for (int a = 0; a < listOfColumns.get(i).size(); a++) {
+									if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o' || listOfColumns.get(i).get(j) == 'f')
+									{
+											bool = false;
+											break;
+									}
+								}		
+								counter++;
+							}
+							
+			
+							//counter++;
+							i = origini;
+							
+							//body.append("  <duration>" + (counter + 1) + "</duration>\n"); //will need to edit duration later
+							if (counter != -1)
+								body.append(" <duration>" + (counter + 1) + "</duration>\n");
+							else
+								body.append(" <duration>" +  1 + "</duration>\n");
+							body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
+							body.append("  <voice>1</voice>\n");
+							body.append("  <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType) + "</type>\n"); //will need to edit type later
+							body.append("  <stem>up</stem>\n");
+							if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X') {
+								body.append("  <notehead>x</notehead>\n"); //only cymbal lines (C, H, R) have x
+							}
+							
+							if(measure.getDuration(counter + 1 ,total ,beat , beatType).equals("eighth")) {
+								beatCount8++;
+								if (beatCount8 == 1) {
+									body.append("  <beam number=\"1\">begin</beam>\n");
+								}
+								if (beatCount8 >= 2 && beatCount8 < 4) {
+									body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+								}else if (beatCount8 == 4) {
+									body.append("  <beam number=\"1\">end</beam>\n");
+									beatCount8 = 0;
+								}
+							}
+							if(measure.getDuration(counter + 1 ,total ,beat , beatType).equals("16th")) {
+								beatCount16++;
+								if (beatCount16 == 1) {
+									body.append("  <beam number=\"1\">begin</beam>\n");
+									body.append("  <beam number=\"2\">begin</beam>\n");
+								}
+								if (beatCount16 >= 2 && beatCount16 < 8) {
+									body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+									body.append("  <beam number=\"2\">continue</beam>\n");
+								}else if (beatCount16 == 8) {
+									body.append("  <beam number=\"1\">end</beam>\n");
+									body.append("  <beam number=\"2\">end</beam>\n");
+									beatCount16 = 0;
+								}
+								//body.append("  <beam number=\"1\">continue</beam>\n"); //need to implement this later
+								//body.append("  <beam number=\"2\">continue</beam>\n");
+							}
+							body.append("  </note>\n");            	
+						}	
+					}
+						 
+					for (int j = 0; j > listOfColumns.get(i).size()-1 && j < listOfColumns.get(i).size(); j++) {
+			
+						
+						if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X' || listOfColumns.get(i).get(j) == 'o' || listOfColumns.get(i).get(j) == 'f' ) {
+							int origini = i;
+							fret = listOfColumns.get(i).get(j);
+							
+							//flams are grace notes:
+							if(listOfColumns.get(i).get(j) == 'f') {
+								graceToken = true;
+							}
+						
+							
+							note = Notes.drumNotes("String" + String.valueOf(stringNum));
+							octave = Notes.drumOctave("String" + String.valueOf(stringNum));
+							
+						//	instrument = Notes.drumInstrument("String" + String.valueOf(name), fret);
+							
+//							body.append(" <note>\n");
+							//if flams exist, then it is a grace note:
+							if (graceToken == true) {
+								body.append(" <note>\n");
+								body.append("  <grace/> \n");
+								graceToken = false;
+								body.append("  <unpitched>\n");
+								if (note.length() == 1) { 
+									body.append("   <display-step>" +  note + "</display-step>\n");
+								}
+								else
+								{
+									body.append("   <display-step>" +  note.charAt(0) + "</display-step>\n");
+			
+								}
+								body.append("   <display-octave>" +  octave + "</display-octave>\n"); //octave needs to be implemented
+								body.append("   </unpitched>\n");
+							
+								i = origini;
+								counter = -1;
+								boolean bool = true;
+								while (bool){
+									i++;
+									if (i == listOfColumns.size())
+										break;
+									for (int a = 0; a < listOfColumns.get(i).size(); a++) {
+										if (listOfColumns.get(i).get(a) == 'x' || listOfColumns.get(i).get(a) == 'X' || listOfColumns.get(i).get(a) == 'o' || 
+												listOfColumns.get(i).get(j) == 'f' || listOfColumns.get(i).get(j) == '-')
+										{
+												bool = false;
+												break;
+										}
+									}		
+									counter++;
+								}
+								//counter++;
+								i = origini;
+								
+								//body.append("  <duration>" + (counter + 1) + "</duration>\n"); //will need to edit duration later
+								if (counter != -1)
+									body.append(" <duration>" + (counter + 1) + "</duration>\n");
+								else
+									body.append(" <duration>" +  1 + "</duration>\n");
 								body.append("  <instrument id=\"" + instrument + "\"/>\n"); //states what type of drum it is. Needs to be implemented properly later
 								body.append("  <voice>1</voice>\n");
 								body.append("  <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType) + "</type>\n"); //will need to edit type later
@@ -465,6 +710,8 @@ public class Drum {
 								}		
 								counter++;
 							}
+							
+			
 							//counter++;
 							i = origini;
 							
@@ -520,15 +767,7 @@ public class Drum {
 				stringNum = 0;
 			}
 		}
-		//} for (int k = 0; k < measureCount; k++) {
-		
-		//edit 2:
 		mCount++; //this caused the bug where the measure numbers were incorrect and would not reset after translation of each drum tab
-		//mCount = 0; //resets mCount to 0
-		
-		//return "BYE\n";
-		//String ret = body.toString();
-		//body.append("BYE\n");
 		return body.toString();	
 		//}
 	
@@ -588,4 +827,5 @@ public class Drum {
 		drumThree = Drum.getInstance(str1,str2,str3);
 		return drumThree;
 	}
+	
 }
