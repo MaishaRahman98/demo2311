@@ -1,5 +1,4 @@
 plugins {
-  id 'java'
   id 'application'
   id 'org.openjfx.javafxplugin' version '0.0.8'
   id 'jacoco'
@@ -13,27 +12,26 @@ dependencies {
     // Use JUnit test framework
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+//<<<<<<< HEAD
     //testCompile "org.testfx:testfx-core:4.0.16-alpha"
     //testCompile "org.testfx:testfx-junit5:4.0.16-alpha"
     //testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
+//=======
+//>>>>>>> refs/remotes/origin/newshawn
     implementation'com.jtattoo:JTattoo:1.6.13'
+//<<<<<<< HEAD
+//=======
+    testCompile "org.testfx:testfx-core:4.0.16-alpha"
+    testCompile "org.testfx:testfx-junit5:4.0.16-alpha"
+    testCompile group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
+//>>>>>>> refs/remotes/origin/newshawn
 }
 
 test {
-  finalizedBy jacocoTestReport // report is always generated after tests run
   useJUnitPlatform()
   testLogging {
     events 'passed', 'skipped', 'failed'
   }
-}
-
-jacoco {
-    toolVersion = "0.8.6"
-    reportsDirectory = file("$buildDir/customJacocoReportDir")
-}
-
-jacocoTestReport {
-    dependsOn test // tests are required to run before generating the report
 }
 
 javafx {
@@ -49,7 +47,6 @@ run {
 }
 
 mainClassName = 'tab2mxl.window'
-
 task debug {
     group = "application"
     description = "Runs this project in debug mode on port 2311"

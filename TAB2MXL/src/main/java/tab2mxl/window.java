@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -24,8 +25,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.Document;
+import javax.swing.undo.CannotUndoException;
 import javax.swing.undo.UndoManager;
 import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
+
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 
@@ -47,6 +51,7 @@ import java.awt.BorderLayout;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
 
 public class window implements ActionListener{
 
@@ -70,23 +75,44 @@ public class window implements ActionListener{
 	public JButton btnNewButton_1;
 	boolean quit;
 	static String mean = "";
-	UndoManager um = new UndoManager(); //=========undo and redo
 
+	//UndoManager um = new UndoManager(); //=========undo and redo
+
+
+	UndoManager um = new UndoManager();
+	Editmeansure un = new Editmeansure();
+	//=========undo and redo
+//	private Document editorPaneDocument;
+//	protected UndoHandler undoHandler = new UndoHandler();
+//	protected UndoManager undoManager = new UndoManager();
+//	private UndoAction undoAction = null;
+//	private RedoAction redoAction = null;
+	//=========
+	
+	
+	//==========================================================
+	StringInstrument stringin = new StringInstrument();
+	public JOptionPane ooo;
+	private JTextField textField;
+//	Bass bassin = new Bass();
+	//==========================================================
+	/**
+	 * Launch the application.
+	 */
 
 
 	public static void main(String[] args) {
-        //new loadingScreen();
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    window window = new window();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					window window = new window();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
@@ -129,7 +155,6 @@ public class window implements ActionListener{
 		}
 //===================================================================================================cannot use window builder			
 		JButton btnNewButton = new JButton("Open");
-		btnNewButton.setBounds(36, 389, 116, 36);
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.PINK);
 		btnNewButton.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -143,7 +168,6 @@ public class window implements ActionListener{
 
 		
 		btnNewButton_1 = new JButton("Translate");
-		btnNewButton_1.setBounds(119, 435, 116, 36);
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setForeground(Color.ORANGE);
 		btnNewButton_1.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -155,12 +179,17 @@ public class window implements ActionListener{
 				
 			
 			
-				Image img = new ImageIcon(this.getClass().getResource("/789.png")).getImage();
+				//Image img = new ImageIcon(this.getClass().getResource("/789.png")).getImage();
 				//
+
+
+
+//				JLabel lblNewLabel = new JLabel("");
+//				lblNewLabel.setForeground(Color.ORANGE);
+//				lblNewLabel.setBackground(Color.ORANGE);
 
 				
 				JButton btnNewButton_2 = new JButton("SaveAs");
-				btnNewButton_2.setBounds(36, 481, 116, 33);
 				btnNewButton_2.addActionListener(this);
 				btnNewButton_2.setActionCommand("SaveAs");
 
@@ -170,7 +199,6 @@ public class window implements ActionListener{
 				
 						
 						JScrollPane scrollPane_1 = new JScrollPane();
-						scrollPane_1.setBounds(255, 32, 674, 529);
 						scrollPane_1.setBorder(null);
 						scrollPane_1.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 						scrollPane_1.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -198,23 +226,17 @@ public class window implements ActionListener{
 												textArea.setAlignmentY(Component.BOTTOM_ALIGNMENT);
 												textArea.setAlignmentX(Component.RIGHT_ALIGNMENT);
 												scrollPane_1.setViewportView(textArea);
-				frame.getContentPane().setLayout(null);
-				frame.getContentPane().add(btnNewButton);
-				frame.getContentPane().add(btnNewButton_1);
-				frame.getContentPane().add(btnNewButton_2);
-				frame.getContentPane().add(scrollPane_1);
 				
 				JComboBox comboBox = new JComboBox();
 				comboBox.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						String feeback = (String)comboBox.getSelectedItem();
+						
 						textArea.setText(feeback);
 						window.mean(feeback);
 					}
 				});
 				comboBox.setForeground(Color.PINK);
-				comboBox.setBounds(36, 297, 116, 36);
-				frame.getContentPane().add(comboBox);
 				comboBox.addItem("1/4");
 				comboBox.addItem("2/4");
 				comboBox.addItem("3/4");
@@ -227,16 +249,75 @@ public class window implements ActionListener{
 				btnNewButton_3.setForeground(new Color(186, 85, 211));
 				btnNewButton_3.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						file.edit();
+						Editmeansure em = new Editmeansure();
+						em.frame.setVisible(true);
+
 					}
 				});
 				
-				btnNewButton_3.setBounds(119, 343, 116, 36);
-				frame.getContentPane().add(btnNewButton_3);
+				Image img = new ImageIcon(this.getClass().getResource("/Wallpaper Music Equalizer Wallpaper 1080p HD Upload at January 29.jpg")).getImage();
 				
+				textField = new JTextField();
+				textField.setColumns(10);
+				
+				JLabel lblNewLabel_1 = new JLabel("Song Title:");
+				lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 14));
+				lblNewLabel_1.setForeground(Color.WHITE);
 				JLabel lblNewLabel = new JLabel(new ImageIcon(img));
-				lblNewLabel.setBounds(0, 0, 1038, 602);
-				frame.getContentPane().add(lblNewLabel);
+				lblNewLabel.setText("");
+				GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+				groupLayout.setHorizontalGroup(
+					groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(36)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+								.addComponent(textField, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(83)
+									.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+								.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(83)
+									.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)))
+							.addGap(20)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 674, Short.MAX_VALUE)
+							.addGap(110))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(119)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 1038, Short.MAX_VALUE)
+							.addGap(1))
+				);
+				groupLayout.setVerticalGroup(
+					groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(191)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(20)
+									.addComponent(textField, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)))
+							.addGap(56)
+							.addComponent(btnNewButton_3, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
+							.addGap(10)
+							.addComponent(btnNewButton_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(32)
+							.addComponent(scrollPane_1, GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+							.addGap(41))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(257)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 602, Short.MAX_VALUE)
+				);
+				frame.getContentPane().setLayout(groupLayout);
 		
 		UIManager.put("PopupMenu.border", new LineBorder(Color.darkGray));
 		JMenuBar menuBar = new JMenuBar();
@@ -307,7 +388,26 @@ public class window implements ActionListener{
 		mnNewMenu.setBorder(null);
 		mnNewMenu.setFont(new Font("Times New Roman", Font.BOLD, 15));
 		menuBar.add(mnNewMenu);
-		
+//-------------------------------------------------------------------------		
+		Document doc= textArea.getDocument();
+		doc.addUndoableEditListener(new UndoableEditListener() {
+		    public void undoableEditHappened(UndoableEditEvent evt) {
+		        um.addEdit(evt.getEdit());
+		    }
+		});
+//		textArea.getActionMap().put("Undo",
+//			    new AbstractAction("Undo") {
+//			        public void actionPerformed(ActionEvent evt) {
+//			            try {
+//			                if (um.canUndo()) {
+//			                    um.undo();
+//			                }
+//			            } catch (CannotUndoException e) {
+//			            }
+//			        }
+//			   });
+//		textArea.getInputMap().put(KeyStroke.getKeyStroke("control Z"), "Undo");
+//-------------------------------------------------------------------------		
 		mntmNewMenuItem_Undo = new JMenuItem("Undo");
 		mntmNewMenuItem_Undo.setBorder(null);
 		mntmNewMenuItem_Undo.setForeground(Color.ORANGE);
@@ -315,7 +415,7 @@ public class window implements ActionListener{
 		mntmNewMenuItem_Undo.addActionListener(this);
 		mntmNewMenuItem_Undo.setActionCommand("Undo");
 		mntmNewMenuItem_Undo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent evt) {
 				try {
 					um.undo();
 				} catch (Exception ex) {
@@ -549,3 +649,4 @@ public class window implements ActionListener{
 		mean = ni;
 	}
 }
+
