@@ -394,38 +394,38 @@ public class Notes {
 //				return 3;
 //		}
 	}
-	public static String drumInstrument(String stringNum, char fret) {
-		if(stringNum.equals("String1") && fret == 'x') {
-			return "P1-150";//Crash Cymbal 1
-		}
-		if (stringNum.equals("String1") && fret == 'X') {
-			return "P1-160"; //Crash Cymbal 2
-		}
-		if(stringNum.equals("String2") && fret == 'x') {
-			return "P1-I43"; //closed hi-hat
-		}
-	   if (stringNum.equals("String2") && fret == 'X') {
-			return "P1-I47"; //open hi-hat
-		}
-	   if(stringNum.equals("String3") && fret == 'o') {
-			return "P1-I39"; //snare
-		}
-	
-	   if(stringNum.equals("String4") && fret == 'o') {
-			return "P1-I49"; // high mid-tom
-		}
-	   if(stringNum.equals("String5") && fret == 'o') {
-			return "P1-I48"; //low-mid tom
-		}
-	   else if(stringNum.equals("String6") && fret == 'o') {
-			return "P1-I36"; //Bass Drum 
-		}
-	   
-	   
-	 return "";
+//	public static String drumInstrument(String stringNum, char fret) {
+//		if(stringNum.equals("String1") && fret == 'x') {
+//			return "P1-150";//Crash Cymbal 1
+//		}
+//		if (stringNum.equals("String1") && fret == 'X') {
+//			return "P1-160"; //Crash Cymbal 2
+//		}
+//		if(stringNum.equals("String2") && fret == 'x') {
+//			return "P1-I43"; //closed hi-hat
+//		}
+//	   if (stringNum.equals("String2") && fret == 'X') {
+//			return "P1-I47"; //open hi-hat
+//		}
+//	   if(stringNum.equals("String3") && fret == 'o') {
+//			return "P1-I39"; //snare
+//		}
+//	
+//	   if(stringNum.equals("String4") && fret == 'o') {
+//			return "P1-I49"; // high mid-tom
+//		}
+//	   if(stringNum.equals("String5") && fret == 'o') {
+//			return "P1-I48"; //low-mid tom
+//		}
+//	   else if(stringNum.equals("String6") && fret == 'o') {
+//			return "P1-I36"; //Bass Drum 
+//		}
+//	   
+//	   
+//	 return "";
 		
 		
 		
 		
-	}
+	//}
 }
