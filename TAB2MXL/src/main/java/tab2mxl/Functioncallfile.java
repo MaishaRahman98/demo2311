@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.FileDialog;
 import java.awt.Font;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,7 +11,6 @@ import java.io.IOException;
 public class Functioncallfile {
 
 	window win;
-	String userOrgInput;
 	newwindow newwin;
 	String filename;
 	String fileaddress;
@@ -113,6 +110,7 @@ public class Functioncallfile {
 			win.frame.setTitle(filename);
 		}
 		try {
+
 			FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicxml");
 			//FileWriter newfile1  = new FileWriter(fileaddress+""+name+".musicXML");
 			//FileWriter newfile1  = new FileWriter(fileaddress+""+name+".xml");
@@ -120,15 +118,20 @@ public class Functioncallfile {
 			//File inputFile = new File("C:\\Users\\redga\\git\\demo2311\\TAB2MXL\\usersTablatures\\"+name+".txt");
 			//BufferedWriter userInput  = new BufferedWriter(new FileWriter(inputFile));
 
+
 //			saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"  ;
 			newfile1.write(win.textArea.getText());
 //			win.frame.setTitle(name);
 			win.frame.setTitle(name);
+
 			//userInput.write(userOrgInput);
+
 			newfile1.close();
+
 			//userInput.close();
+
 		}catch(Exception e) {
-			System.out.println("Save file isn't successful");
+			System.out.println("Save file isn't success");
 		}
 	}
 	public void exit() {
@@ -197,11 +200,12 @@ public class Functioncallfile {
 //			win.textArea.getText().printTab();
 			text = win.textArea.getText();
 			win.textArea.setText(null);
+
+			//Shawn want to not comment out (bottom):
 			//musicFile.createFile(text);
 
 			BufferedReader firstbf;
 			try {
-				this.userOrgInput = text;
 				firstbf = new BufferedReader(new FileReader(musicFile.createFile(text)));
 				win.textArea.setText("");
 				String newtext = null;
@@ -257,9 +261,13 @@ public class Functioncallfile {
 		}
 		
 	}
+
 	
-	public void edit() {
-		Editmeansure em = new Editmeansure(filename);
-		em.frame.setVisible(true);
-	}
+//	public void edit() {
+//		Editmeansure em = new Editmeansure(filename);
+//		em.frame.setVisible(true);
+//	}
 }
+
+
+

@@ -20,11 +20,13 @@ public class outputFile {
 		xml = ts.detect(text);
 		try {
 			File myObj = new File("newfile.txt");
-			FileWriter myWriter = new FileWriter("newfile.txt",false);
+			FileWriter myWriter = new FileWriter("newfile.txt");
 			myWriter.write(xml);
 			myWriter.close();
+
 			//System.out.println("file made");
 			ts.resetGlobal();
+
 			return myObj.getName();
 
 		} catch (IOException e) {
