@@ -2,11 +2,6 @@ package tab2mxl;
 
 import java.util.ArrayList;
 
-/**
- * This class creates the MusicXML output for string instruments, bass and guitar.
- * @author Group 16, EECS2311
- *
- */
 public class StringInstrument {
 	private static String str1;
 	private static String str2;
@@ -15,8 +10,8 @@ public class StringInstrument {
 	private static String str5;
 	private static String str6;
 	private static String str7;
+	int indexOfMeasure = 0;
 	int measureCount = 0;
-	static int temp = 0;
 	int hammerCount = 0;
 	int pullOffCount = 0;
 	private char type; // number of strings
@@ -25,9 +20,6 @@ public class StringInstrument {
 	public static int d;
 	static boolean repEnd = false;
 
-	/**
-	 * Default constructor for the StringInstrument object.
-	 */
 	public StringInstrument() {
 		this.type = ' ';
 		this.str1 = "";
@@ -39,13 +31,6 @@ public class StringInstrument {
 		this.str7 = "";
 	}
 
-	/**
-	 * The parameterized constructor for the StringInstrument object.
-	 * @param str1
-	 * @param str2
-	 * @param str3
-	 * @param str4
-	 */
 	public StringInstrument(String str1, String str2, String str3, String str4) {
 		this.str1 = str1;
 		this.str2 = str2;
@@ -72,14 +57,6 @@ public class StringInstrument {
 		this.type = '7';
 	}
 
-	/**
-	 * Returns the Bass object.
-	 * @param str1
-	 * @param str2
-	 * @param str3
-	 * @param str4
-	 * @return
-	 */
 	public static Bass getBass(String str1, String str2, String str3, String str4) {
 		Bass bassFour;
 		bassFour = Bass.getInstance(str1, str2, str3, str4);
@@ -94,16 +71,6 @@ public class StringInstrument {
 
 	}
 
-	/**
-	 * Returns the Guitar object.
-	 * @param str1
-	 * @param str2
-	 * @param str3
-	 * @param str4
-	 * @param str5
-	 * @param str6
-	 * @return
-	 */
 	public static Guitar getGuitar(String str1, String str2, String str3, String str4, String str5, String str6) {
 		Guitar guitarSix;
 		guitarSix = Guitar.getInstance(str1, str2, str3, str4, str5, str6);
@@ -119,12 +86,7 @@ public class StringInstrument {
 
 	}
 
-	/**
-	 * Builds the header part for the MusicXML output and returns it.
-	 * @param c
-	 * @return head
-	 */
-	public static String xmlHeader(int c) {
+	public static String xmlHeader(int beats, int beatType, int c, String songName, String composerName) {
 		String instrument = "";
 		StringBuilder head = new StringBuilder();
 		if (c == 4 || c == 5) {
@@ -137,7 +99,12 @@ public class StringInstrument {
 		head.append(
 				"<!DOCTYPE score-partwise PUBLIC \"-//Recordare//DTD MusicXML 3.1 Partwise//EN\" \"http://www.musicxml.org/dtds/partwise.dtd\">\n");
 		head.append("<score-partwise version=\"3.1\">\n");
-
+		head.append("<work>\n");
+		head.append("  <work-title>"+songName+"</work-title>\n");
+		head.append("</work>\n");
+		head.append("<identification>\n");
+		head.append("  <creator type=\"composer\">"+composerName+"</creator>\n");
+		head.append("</identification>\n");
 		head.append(" <part-list>\n");
 		head.append("  <score-part id=\"P1\">\n");
 		head.append("   <part-name>" + instrument + "</part-name>\n");
@@ -151,12 +118,12 @@ public class StringInstrument {
 		head.append("                <fifths>0</fifths>\n");
 		head.append("                </key>\n");
 		head.append("            <time>\n");
-		head.append("                <beats>4</beats>\n");
-		head.append("                <beat-type>4</beat-type>\n");
+		head.append("                <beats>"+beats+"</beats>\n");
+		head.append("                <beat-type>"+beatType+"</beat-type>\n");
 		head.append("            </time>\n");
 		head.append("            <clef>\n");
 		head.append("               <sign>TAB</sign>\n");
-		head.append("               <line>5</line>\n");
+		head.append("               <line>1</line>\n");
 		head.append("            </clef>\n");
 		head.append("            <staff-details>\n");
 
@@ -268,18 +235,7 @@ public class StringInstrument {
 	}
 
 	// Prints bass or guitar tab in xml format:
-	/**
-	 * Builds the body part for the MusicXML output and returns it.
-	 * @param str1
-	 * @param str2
-	 * @param str3
-	 * @param str4
-	 * @param str5
-	 * @param str6
-	 * @param str7
-	 * @return body
-	 */
-	public String printToXML(String str1, String str2, String str3, String str4, String str5, String str6,
+	public String printToXML(ArrayList<Integer> measureForChange, ArrayList<Integer> timeSigTops, ArrayList<Integer> timeSigBottoms, int beat, int beatType, String str1, String str2, String str3, String str4, String str5, String str6,
 			String str7) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
@@ -287,7 +243,6 @@ public class StringInstrument {
 		boolean DD = false; //double digit
 //		String string = "";
 //		String output = "";
-//		int spaceCount = 0;
 		ArrayList<String> legatoValue = new ArrayList<String>();
 		boolean legatoCheck = false;
 		boolean legatoStop = false;
@@ -297,8 +252,7 @@ public class StringInstrument {
 		String text = "";
 		int fret = 0;
 		int stringNum = 0;
-		String[] allStrings = { str1, str2, str3, str4, str5, str6, str7 };
-//		String name;
+		//		String name;
 		int octave = 0;
 		int numMeasureCount = 1;
 		int counter = 0;
@@ -307,7 +261,7 @@ public class StringInstrument {
 		String noteType = "";
 		int x = 0,y = 0;
 		boolean graceToken = false;
-		int beat = 4, beatType = 4;
+//		int beat = 4, beatType = 4;
 		//double durMes = beat * (1 / beatType);
 		int total = 0;
 		boolean rep = false;
@@ -508,7 +462,17 @@ public class StringInstrument {
 						else
 							body.append(" <duration>" +  1 + "</duration>\n");
 						body.append(" <voice>1</voice>\n");
-						body.append(" <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType)+ "</type>\n");
+		
+						if (measureForChange.size()>0 && mCount == measureForChange.get(indexOfMeasure)) {
+							body.append(" <type>" + measure.getDuration(counter + 1 ,total ,timeSigTops.get(indexOfMeasure) , timeSigBottoms.get(indexOfMeasure) )+ "</type>\n");
+
+						}
+						else {
+							body.append(" <type>" + measure.getDuration(counter + 1 ,total ,beat , beatType)+ "</type>\n");
+						}
+						if (measureForChange.size()>0 && indexOfMeasure+1 < measureForChange.size() && mCount == measureForChange.get(indexOfMeasure+1)) {
+							indexOfMeasure++;
+						}
 						body.append(" <notations>\n");
 						body.append("  <technical>\n");
 						body.append("   <string>" + stringNum + "</string>\n");
@@ -561,12 +525,9 @@ public class StringInstrument {
 		mCount++;
 		return body.toString();
 	}
+
 	// End of printToXML method
 
-	/**
-	 * Builds the ending part for the MusicXML output and returns it.
-	 * @return end
-	 */
 	public static String endHeading() {
 		// Ender:
 		StringBuilder end = new StringBuilder();
@@ -654,15 +615,13 @@ public class StringInstrument {
 	public void setType(char type) {
 		this.type = type;
 	}
-	
-	public static void setTemp(int i) {
-		temp = i;
-	}
+
 	// 
 	public void resetGlobal() {
 		this.measureCount = 0;
 		this.hammerCount = 0;
 		this.pullOffCount = 0;
+		this.indexOfMeasure = 0;
 		this.type = ' ';
 		this.mCount = 0;
 		this.c = 0;

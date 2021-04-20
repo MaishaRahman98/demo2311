@@ -196,7 +196,7 @@ public class Drum {
 	}	
 	
 	//Will edit this part
-	public String printDrumXML(int r1, int r2, int rX, String str1, String str2, String str3, String str4, String str5, String str6, String str7, String s8) {
+	public String printDrumXML(int r1, int r2, int rX, String str1, String str2, String str3, String str4, String str5, String str6, String str7, String str8) {
 		StringBuilder body = new StringBuilder();
 		String note = "";
 		String instrument = "";
@@ -207,7 +207,7 @@ public class Drum {
 //		boolean legatoCheck = false;
 		char fret = 0;
 		int stringNum = 0;
-		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7};
+		String[] allStrings = {str1, str2, str3, str4, str5, str6, str7, str8};
 //		String name;
 		int octave = 0;
 //		String xml = "";
@@ -235,18 +235,28 @@ public class Drum {
 			column.add(str1.charAt(i));
 			column.add(str2.charAt(i));
 			column.add(str3.charAt(i));
-			if (str4 != null && str6 == null && str7 == null) {
+			if (str4 != null && str5 == null && str6 == null && str7 == null && str8 == null) {
 				column.add(str4.charAt(i));
 			}
-			else if (str5 != null && str6 == null && str7 == null) {
+			else if (str4!= null && str5 != null && str6 == null && str7 == null && str8 == null) {
+				column.add(str4.charAt(i));
 				column.add(str5.charAt(i));
-			} else if (str5 != null && str6 != null && str7 == null) {
+			} else if (str4!=null && str5 != null && str6 != null && str7 == null && str8 == null) {
+				column.add(str4.charAt(i));
 				column.add(str5.charAt(i));
 				column.add(str6.charAt(i));
-			} else if (str5 != null && str6 != null && str7 != null) {
+			} else if (str4 != null && str5 != null && str6 != null && str7 != null && str8 == null) {
+				column.add(str4.charAt(i));
 				column.add(str5.charAt(i));
 				column.add(str6.charAt(i));
 				column.add(str7.charAt(i));
+			}
+			else if (str4 != null && str5 != null && str6 != null && str7 != null && str8 != null) {
+				column.add(str4.charAt(i));
+				column.add(str5.charAt(i));
+				column.add(str6.charAt(i));
+				column.add(str7.charAt(i));
+				column.add(str8.charAt(i));
 			}
 			listOfColumns.add(column);
 		}
@@ -353,6 +363,70 @@ public class Drum {
 					
 						stringNum++;
 						
+						if (allStrings[stringNum-1].contains("CC") && allStrings[stringNum-1].contains("x")) {
+							
+							instrument = ("P1-I50");
+						
+						}
+						else if (allStrings[stringNum-1].contains("HH") && allStrings[stringNum-1].contains("o")) {
+							instrument = "P1-I47";
+						
+						}
+						else if (allStrings[stringNum-1].contains("HH") && allStrings[stringNum-1].contains("x")) {
+							instrument =("P1-I43");
+					
+						}
+						
+						else if (allStrings[stringNum-1].contains("HH") && allStrings[stringNum-1].contains("O")) {
+							instrument =("P1-I45");
+							
+						}
+						else if (allStrings[stringNum-1].contains("SD") && allStrings[stringNum-1].contains("O")) {
+							instrument = "P1-I39";
+						
+						}
+						else if (allStrings[stringNum-1].contains("HT") && allStrings[stringNum-1].contains("o")) {
+							instrument =("P1-I51");
+							
+						}
+						else if (allStrings[stringNum-1].contains("MT") && allStrings[stringNum-1].contains("o")) {
+							instrument =("P1-I49");
+							
+						}
+						else if (allStrings[stringNum-1].contains("FT") && allStrings[stringNum-1].contains("o")) {
+							instrument =("P1-I42");
+						
+						}
+						else if (allStrings[stringNum-1].contains("BD") && allStrings[stringNum-1].contains("o")) {
+							instrument =( "P1-I36");
+						
+						}
+						else if (allStrings[stringNum-1].contains("T")) {
+							instrument =("P1-I51");
+						
+						}
+						
+						else if (allStrings[stringNum-1].contains("R")) {
+							instrument =( "P1-I52");
+						
+						}
+						else if (allStrings[stringNum-1].contains("C")) {
+							instrument =( "P1-I50");
+						
+						}
+						else if (allStrings[stringNum-1].contains("B")) {
+							instrument =( "P1-I36");
+						
+						}
+						else if (allStrings[stringNum-1].contains("t")) {
+							instrument =( "P1-I46");
+						
+						}
+						else if (allStrings[stringNum-1].contains("F")) {
+							instrument =( "P1-I52");
+						
+						}
+						
 						if (listOfColumns.get(i).get(j) == 'x' || listOfColumns.get(i).get(j) == 'X' || listOfColumns.get(i).get(j) == 'o' || listOfColumns.get(i).get(j) == 'f') {
 							int origini = i;
 							fret = listOfColumns.get(i).get(j);
@@ -366,7 +440,7 @@ public class Drum {
 							note = Notes.drumNotes("String" + String.valueOf(stringNum));
 							octave = Notes.drumOctave("String" + String.valueOf(stringNum));
 							
-							instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
+							//instrument = Notes.drumInstrument("String" + String.valueOf(stringNum), fret);
 							
 //							body.append(" <note>\n");
 							//if flams exist, then it is a grace note:
